@@ -4,7 +4,7 @@ title: NLP2
 email: wilker.aziz@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     Here you will the course material for NLP2.
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/uva-nlp2" # the subpath of your site, e.g. /blog/
 github_username:  wilkeraziz
 #paginate: 3
 
