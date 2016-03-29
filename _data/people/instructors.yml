@@ -2,6 +2,13 @@
   layout: person
   selected: y
   institution: UvA
+  img: khalil
+  name: "Khalil Sima'an"
+  url: https://staff.fnwi.uva.nl/k.simaan/
+-
+  layout: person
+  selected: y
+  institution: UvA
   img: wilker
   name: Wilker Aziz
   github: wilkeraziz
@@ -10,9 +17,25 @@
   layout: person
   selected: y
   institution: UvA
-  img: khalil
-  name: Khalil Sima'an
-  url: https://staff.fnwi.uva.nl/k.simaan/
+  img: stella
+  name: Stella Frank
+  url: https://www.illc.uva.nl/People/show_person.php?Person_id=Frank+S.C. 
+-
+  layout: person
+  selected: y
+  institution: UvA
+  img: desmond
+  name: Desmond
+  url: https://staff.fnwi.uva.nl/d.elliott/
+  github: elliottd
+-
+  layout: person
+  selected: y
+  institution: UvA
+  img: philip
+  name: Philip Schulz
+  url: http://www.uva.nl/over-de-uva/organisatie/medewerkers/content/s/c/p.schulz/p.schulz.html
+  github: philschulz
 -
   layout: person
   selected: y
@@ -25,7 +48,23 @@
   layout: person
   selected: y
   institution: UvA
-  img: philip
-  name: Philip Schulz
-  url: http://www.uva.nl/over-de-uva/organisatie/medewerkers/content/s/c/p.schulz/p.schulz.html
-  github: philschulz
+  img: sophie
+  name: Sophie Arnoult
+  url: http://www.illc.uva.nl/People/show_person.php?Person_id=Arnoult+S.I.
+  github: 
+-
+  layout: person
+  selected: y
+  institution: UvA
+  img: jo
+  name: Joachim Daiber
+  url: http://jodaiber.github.io
+  github: jodaiber
+-
+  layout: person
+  selected: y
+  institution: UvA
+  img: joost
+  name: Joost Bastings
+  url: http://joost.ninja
+  github: bastings

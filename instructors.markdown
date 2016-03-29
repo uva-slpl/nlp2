@@ -1,9 +1,9 @@
 ---
 layout: photolist
-title: People
+title: Instructors
 ---
 
-# Instructors
+[Statistical Language Processing and Learning Lab][SLPLL] (minus just a few).
 
 {% assign instructors = (site.data.people.instructors | where: "selected", "y") %}
 {% for person in instructors %}
@@ -11,3 +11,5 @@ title: People
 {% endfor %}
 
 
+
+[SLPLL]: {{ site.slpll_url }} "Statistical Language Processing and Learning Lab"

@@ -1,9 +1,9 @@
 # Site settings
 exclude: [README.md]
-title: NLP2
+title: Natural Language Processing II
 email: wilker.aziz@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-    Here you will the course material for NLP2.
+    Here you will the course material for NLP2 offered at UvA.
 baseurl: "/uva-nlp2" # the subpath of your site, e.g. /blog/
 github_username:  wilkeraziz
 #paginate: 3
@@ -21,3 +21,4 @@ ksimaanstyle: Khalil Sima<font color="red">`</font>an
 
 # Build settings
 markdown: kramdown
+

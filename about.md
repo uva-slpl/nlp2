@@ -1,9 +1,7 @@
 ---
-layout: main
+layout: default
+title: About
 ---
-
-This is the main page of the NLP2 course offered at the [University of Amsterdam][UvA].
-
 # Content and other Courses
 
 This course, which builds on NLP I, is about statistical language processing with graphical representations (like trees) as hidden structures underlying the data. 

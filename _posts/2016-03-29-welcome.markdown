@@ -1,0 +1,16 @@
+---
+layout: post
+title:  Welcome!
+date:   2016-03-29
+author: Wilker
+categories: lectures
+---
+
+Honestly, we got bored of using Blackboard and decided to host our course page on github (yay!).
+Stay tuned for announcements, resources and slides.
+Very soon we will update the *reading* and *discussion* sections in the syllabus.
+
+# Lab issue
+
+It seems the lab sessions overlap with some other course. In our introductory lecture it was decided that you (students) will agree on a date which best suits (hopefully) you all. For that a colleague of yours (Maartje) kindly set up a [doodle poll](http://doodle.com/poll/evgxx5sef7583udt).
+
