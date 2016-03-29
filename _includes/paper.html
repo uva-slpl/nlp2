@@ -1,10 +1,10 @@
 <div class="media">
   <a class="pull-left thumbnail" {% if include.paper.doc-url %} href="{{ include.paper.doc-url }}" {% endif %}>
-    <img src="/img/paper/{{ include.paper.img }}.png" alt=""/>
+    <img src="img/paper/{{ include.paper.img }}.png" alt=""/>
   </a>
   <div class="media-body">
     <!-- citation -->
-    {% if include.paper.logo %}<img src="/img/ico/{{ include.paper.logo }}.png" alt=""/>{% endif %}
+    {% if include.paper.logo %}<img src="img/ico/{{ include.paper.logo }}.png" alt=""/>{% endif %}
     <strong>{{ include.paper.title }}</strong><br/>
     {% if include.paper.authors %}{{ include.paper.authors }}.{% endif %}
     {% case include.paper.paper-type %}
