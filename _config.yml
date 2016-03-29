@@ -1,0 +1,23 @@
+# Site settings
+exclude: [README.md]
+title: NLP2
+email: wilker.aziz@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+    Here you will the course material for NLP2.
+baseurl: "" # the subpath of your site, e.g. /blog/
+github_username:  wilkeraziz
+#paginate: 3
+
+# current department
+current_dpt_email: w.aziz@uva.nl
+
+# useful links
+khalil_simaan: https://staff.fnwi.uva.nl/k.simaan/
+slpll_url: https://staff.fnwi.uva.nl/k.simaan/research_all.html
+illc_url: http://www.illc.uva.nl
+uva_url: http://www.uva.nl/en/home
+
+ksimaanstyle: Khalil Sima<font color="red">`</font>an
+
+# Build settings
+markdown: kramdown

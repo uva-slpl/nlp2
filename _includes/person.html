@@ -1,0 +1,54 @@
+<div class="media">
+  <a class="pull-left thumbnail" {% if include.person.url %} href="{{ include.person.url }}" {% endif %}>
+    <img src="/img/people/{{ include.person.img }}.png" alt=""/>
+</a>
+  <div class="media-body">
+    <strong>{% if include.person.name == "Khalil Sima'an" %} {{ site.ksimaanstyle }} {% else %} {{ include.person.name }} {% endif %}</strong>
+
+
+
+    <br/>
+    {% if include.person.relation %}
+    <span data-toggle="modal" class="label label-default">{{ include.person.relation }}</span>
+    {% endif %}
+
+    {% if include.person.extra %}
+    <a data-toggle="modal" href="#abstract{{ include.person.img }}" class="label label-warning">extra</a>
+    <!-- Modal -->
+    <div class="modal fade" id="abstract{{ include.person.img }}" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">{{ include.person.name }}</h4>
+          </div>
+          <div class="modal-body">
+            {{ include.person.extra }}
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    {% endif %}
+
+    <!-- quick links -->
+
+    {% if include.person.institution %}
+    <a href="{{ include.person.url }}">
+      <img src="/img/ico/{{ include.person.institution }}.png" alt=""/>
+    </a>
+    {% endif %}
+    {% if include.person.github %}
+    <a href="https://github.com/{{ include.person.github }}">
+      <img src="/img/ico/github.png" alt=""/>
+    </a>
+    {% endif %}
+
+
+    <!-- about -->
+
+    <div class="modal-body">
+      {{ include.person.about }}
+    </div>
+
+  </div>
+</div>
