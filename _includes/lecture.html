@@ -1,0 +1,90 @@
+<div class="media">
+  <a class="pull-left thumbnail" {% if include.lecture.slides %} href="{{ include.lecture.slides }}" {% endif %}>
+    <img src="img/lectures/{{ include.lecture.img }}.png" alt=""/>
+  </a>
+  <div class="media-body">
+    <!-- citation -->
+    <strong>{{ include.lecture.title }}</strong><br/>
+    {% if include.lecture.instructor %}{{ include.lecture.instructor }}.{% endif %}
+    {{ include.lecture.date }}.
+    {% if include.lecture.note %}<i>{{ include.lecture.note }}</i>{% endif %}
+    <br/>
+
+    <!-- abstract -->
+    {% if include.lecture.abstract %}
+      <a data-toggle="modal" href="#abstract{{ include.lecture.img }}" class="label label-default">Abstract</a>
+      <!-- Modal -->
+      <div class="modal fade" id="abstract{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">{{ include.lecture.title }}</h4>
+            </div>
+            <div class="modal-body">
+              {{ include.lecture.abstract }}
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    {% endif %}
+
+
+    <!-- resources -->
+
+    {% if include.lecture.slides %}
+      <a href="{{ include.lecture.slides }}" class="label label-info">Slides</a>
+    {% endif %}
+
+    <!-- code and data -->
+    {% if include.lecture.code %}
+      <a href="{{ include.lecture.code }}" class="label label-info">Code</a>
+    {% endif %}
+
+    {% if include.lecture.data %}
+    <a href="{{ include.lecture.data }}" class="label label-info">Data</a>
+    {% endif %}
+    
+    {% if include.lecture.reading %}
+      <a data-toggle="modal" href="#reading{{ include.lecture.img }}" class="label label-warning">Reading</a>
+      <!-- Modal -->
+      <div class="modal fade" id="reading{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">{{ include.lecture.title }}</h4>
+            </div>
+            <div class="modal-body">
+                <ul>
+                {% for paper in include.lecture.reading %}
+                    <li>{{ paper | markdownify }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    {% endif %}
+    
+    {% if include.lecture.discussion %}
+      <a data-toggle="modal" href="#discussion{{ include.lecture.img }}" class="label label-danger">Discussion</a>
+      <!-- Modal -->
+      <div class="modal fade" id="discussion{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">{{ include.lecture.title }}</h4>
+            </div>
+            <div class="modal-body">
+                <ul>
+                {% for paper in include.lecture.discussion %}
+                    <li>{{ paper | markdownify }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    {% endif %}
+
+  </div>
+</div>

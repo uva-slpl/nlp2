@@ -64,6 +64,14 @@
   layout: person
   selected: y
   institution: UvA
+  img: gideon
+  name: Gideon Wenniger
+  url: https://staff.fnwi.uva.nl/g.e.maillettedebuijwenniger/
+  github: 
+-
+  layout: person
+  selected: y
+  institution: UvA
   img: joost
   name: Joost Bastings
   url: http://joost.ninja
