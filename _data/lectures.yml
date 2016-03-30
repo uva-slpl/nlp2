@@ -30,6 +30,7 @@
   reading:
     - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf)"
     - "M. Collins. [Lecture notes](resources/papers/CollinsIBM.pdf)"
+    - "R. Moore. 2004. [Improving IBM Word-Alignment Model 1](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf)"
     - "Brown et al. 1993. [The mathematics of statistical machine translation: parameter estimation](http://www.aclweb.org/anthology/J93-2003)"
     - "Vogel et al. 1996. [HMM-based Word Alignment in Statistical Translation](http://www.aclweb.org/anthology/C96-2141)"
     - "Dyer et al. 2013. [A Simple, Fast, and Effective Reparameterization of IBM Model 2](http://www.aclweb.org/anthology/N13-1073.pdf)"
