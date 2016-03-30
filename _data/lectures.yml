@@ -28,6 +28,7 @@
     We will view them as constrained mixture models. After motivating the models intuitively, we will develop them formally and devise an EM parameter estimation algorithm for them. 
     We will also try to understand why the resulting optimisation problem contains multiple optima. 
   reading:
+    - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf)"
     - "M. Collins. [Lecture notes](resources/papers/CollinsIBM.pdf)"
     - "Brown et al. 1993. [The mathematics of statistical machine translation: parameter estimation](http://www.aclweb.org/anthology/J93-2003)"
     - "Vogel et al. 1996. [HMM-based Word Alignment in Statistical Translation](http://www.aclweb.org/anthology/C96-2141)"
