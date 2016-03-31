@@ -52,8 +52,8 @@
   background:
     - "[Wu (1997)](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf) is the best introduction to ITG in the literature."
     - "I will discuss bitext parsing using deductive systems, if you are not familiar with that you might want to read a good [tutorial](http://arxiv.org/abs/cmp-lg/9404008)."
+  furtherwarn: "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
   further:
-    - "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
     - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
     - "[Neubig et al. (2011)](http://www.aclweb.org/anthology/P11-1064) apply non-parametric Bayesian methods to avoid degenerate maximum likelihood estimates for phrase-based ITGs."
     - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 

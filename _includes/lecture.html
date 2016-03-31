@@ -44,7 +44,7 @@
     <a href="{{ include.lecture.data }}" class="label label-info">Data</a>
     {% endif %}
     
-    {% if include.lecture.background %}
+    {% if include.lecture.background or include.lecture.backgroundwarn %}
       <a data-toggle="modal" href="#background{{ include.lecture.img }}" class="label label-success">Background reading</a>
       <!-- Modal -->
       <div class="modal fade" id="background{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
@@ -54,6 +54,9 @@
               <h4 class="modal-title">{{ include.lecture.title }} | Background reading</h4>
             </div>
             <div class="modal-body">
+                {% if include.lecture.backgroundwarn %}
+                    {{ include.lecture.backgroundwarn | markdownify }}
+                {% endif %}
                 <ul>
                 {% for paper in include.lecture.background %}
                     <li>{{ paper | markdownify }}</li>
@@ -65,7 +68,7 @@
       </div><!-- /.modal -->
     {% endif %}
     
-    {% if include.lecture.further %}
+    {% if include.lecture.further or include.lecture.furtherwarn %}
       <a data-toggle="modal" href="#further{{ include.lecture.img }}" class="label label-warning">Further reading</a>
       <!-- Modal -->
       <div class="modal fade" id="further{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
@@ -75,6 +78,9 @@
               <h4 class="modal-title">{{ include.lecture.title }} | Further reading</h4>
             </div>
             <div class="modal-body">
+                {% if include.lecture.furtherwarn %}
+                    {{ include.lecture.furtherwarn | markdownify }}
+                {% endif %}
                 <ul>
                 {% for paper in include.lecture.further %}
                     <li>{{ paper | markdownify }}</li>
