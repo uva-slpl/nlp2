@@ -6,7 +6,7 @@ author: Wilker
 categories: lectures
 ---
 
-Philip has just delivered a great lecture on IBM model 1 and IBM model 2 which can both be seen as a constrained mixture components model.
+Philip has just delivered a great lecture on IBM model 1 and IBM model 2 which can both be seen as a constrained mixture model.
 If you understood the previous sentence, you are on track!
 If you didn't, you should read Philip's tutorial. Well, you should read it anyway!
 You can also look for us to clarify things if you need.
