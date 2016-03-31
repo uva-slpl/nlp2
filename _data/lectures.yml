@@ -9,7 +9,7 @@
   abstract: >
     In this introductory lecture we will discuss the role of machine translation in society, 
     the nature of translation data, and we will also present an overview of the history of MT. 
-  reading:
+  background:
     - "Chapters 1-2 of Koehn's 2010 book: [Statistical machine translation](http://www.statmt.org/book/)"
   discussion:
   slides: resources/slides/introduction.pdf
@@ -27,14 +27,16 @@
     In this session we will discuss the IBM word alignment models 1 and 2. 
     We will view them as constrained mixture models. After motivating the models intuitively, we will develop them formally and devise an EM parameter estimation algorithm for them. 
     We will also try to understand why the resulting optimisation problem contains multiple optima. 
-  reading:
+  background:
     - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf)"
     - "M. Collins. [Lecture notes](resources/papers/CollinsIBM.pdf)"
     - "R. Moore. 2004. [Improving IBM Word-Alignment Model 1](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf)"
     - "Toutanova et al. 2011. [Why Initialization Matters for IBM Model 1: Multiple Optima and Non-Strict Convexity](http://www.aclweb.org/anthology/P11-2081)"
-    - "Brown et al. 1993. [The mathematics of statistical machine translation: parameter estimation](http://www.aclweb.org/anthology/J93-2003)"
-    - "Vogel et al. 1996. [HMM-based Word Alignment in Statistical Translation](http://www.aclweb.org/anthology/C96-2141)"
-    - "Dyer et al. 2013. [A Simple, Fast, and Effective Reparameterization of IBM Model 2](http://www.aclweb.org/anthology/N13-1073.pdf)"
+  further: |
+      The original IBM paper is very dense, but if you want to go around 
+      * Brown et al. 1993. [The mathematics of statistical machine translation: parameter estimation](http://www.aclweb.org/anthology/J93-2003)
+      * Vogel et al. 1996. [HMM-based Word Alignment in Statistical Translation](http://www.aclweb.org/anthology/C96-2141)
+      * Dyer et al. 2013. [A Simple, Fast, and Effective Reparameterization of IBM Model 2](http://www.aclweb.org/anthology/N13-1073.pdf)
   discussion:
   slides: resources/slides/word-alignment.pdf
   code: 
@@ -48,7 +50,7 @@
   instructor: Wilker Aziz
   note: 
   abstract: In this lecture we will present alignments models that are impose explicit reordering constraints through a grammar.
-  reading:
+  background:
     - "Wu. 1997. [Stochastic Inversion Transduction Grammars and Bilingual Parsing of Parallel Corpora](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf)"
   discussion:
   slides: resources/slides/itg.pdf
@@ -63,7 +65,7 @@
   instructor: Sophie Arnoult
   note: 
   abstract: In this lecture we will motivate the need for a larger translation unit.
-  reading:
+  background:
     - "Koehn et al. 2003. [Statistial Phrase-Based Translation](http://www.aclweb.org/anthology/N/N03/N03-1017.pdf)"
   discussion:
     - "Marcu and Wong. 2002. [A Phrase-Based, Joint Probability Model for Statistical Machine Translation](http://www.aclweb.org/anthology/W02-1018)"
@@ -79,7 +81,7 @@
   instructor: Wilker Aziz
   note: 
   abstract: In this lecture we will generalise the phrase-based approach to include phrases with gaps.
-  reading:
+  background:
     - "David Chiang. [An introduction to synchronous grammars](resources/papers/ChiangSCFG.pdf)"
     - "Chiang. 2007. [Hierarchical Phrase-Based Translation](http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201)"
   discussion:
@@ -96,7 +98,7 @@
   instructor: "Miloš Stanojević"
   note: 
   abstract: In this lecture we will talk about automatic evaluation and tuning.
-  reading:
+  background:
   discussion:
   slides: resources/slides/eval-tuning.pdf
   code: 
@@ -110,7 +112,7 @@
   instructor: "Miloš Stanojević"
   note: 
   abstract: In this lecture we will talk about preordering, factorization of permutations and reordering grammar.
-  reading:
+  background:
     - "Stanojevic ́ and Sima'an. 2015. [Reordering Grammar Induction](http://www.aclweb.org/anthology/D15-1005)"
   discussion:
     - "Tromble and Eisner. 2009. [Learning Linear Ordering Problems for Better Translation](http://www.aclweb.org/anthology/D09-1105)"
@@ -126,7 +128,7 @@
   instructor: Gideon Wenniger
   note: 
   abstract: In this lecture we will talk about ways to label a Hiero grammar.
-  reading:
+  background:
     - "[Hierarchical alignment decomposition labels for Hiero grammar rules](http://www.aclweb.org/anthology/W13-0803)"
   discussion:
   slides: resources/slides/labelling.pdf
@@ -141,7 +143,7 @@
   instructor: Joachim Daiber
   note: 
   abstract: In this lecture we will talk about the role of morphology in translation.
-  reading:
+  background:
   discussion:
   slides: resources/slides/morphology.pdf
   code: 
@@ -158,7 +160,7 @@
     In the last couple of years, deep learning has proven useful in many areas. 
     Also for machine translation, models have been proposed, in some cases reaching state-of-the-art performance. 
     In this lecture we will look at the (now classic) encoder-decoder framework, as well as more recent models.
-  reading:
+  background:
     - "Sutskever et al. 2014. [Sequence to Sequence Learning with Neural Networks](http://arxiv.org/abs/1409.3215)"
     - "Cho et al. 2014. [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](http://arxiv.org/abs/1406.1078)"
   discussion:
@@ -177,7 +179,7 @@
   instructor: Desmond Elliot
   note: 
   abstract: In this lecture we will talk about learning representations of images that co-occur with text.
-  reading:
+  background:
   discussion:
   slides: resources/slides/multimodal.pdf
   code: 
@@ -191,7 +193,7 @@
   instructor: Stella Frank
   note: 
   abstract: In this lecture we will talk about transfer learning.
-  reading:
+  background:
   discussion:
   slides: resources/slides/transfer.pdf
   code: 

@@ -44,10 +44,10 @@
     <a href="{{ include.lecture.data }}" class="label label-info">Data</a>
     {% endif %}
     
-    {% if include.lecture.reading %}
-      <a data-toggle="modal" href="#reading{{ include.lecture.img }}" class="label label-warning">Reading</a>
+    {% if include.lecture.background %}
+      <a data-toggle="modal" href="#background{{ include.lecture.img }}" class="label label-success">Background reading</a>
       <!-- Modal -->
-      <div class="modal fade" id="reading{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+      <div class="modal fade" id="background{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -55,10 +55,27 @@
             </div>
             <div class="modal-body">
                 <ul>
-                {% for paper in include.lecture.reading %}
+                {% for paper in include.lecture.background %}
                     <li>{{ paper | markdownify }}</li>
                 {% endfor %}
                 </ul>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    {% endif %}
+    
+    {% if include.lecture.further %}
+      <a data-toggle="modal" href="#further{{ include.lecture.img }}" class="label label-warning">Further reading</a>
+      <!-- Modal -->
+      <div class="modal fade" id="further{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">{{ include.lecture.title }}</h4>
+            </div>
+            <div class="modal-body">
+                {{ include.lecture.further | markdownify }}
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
