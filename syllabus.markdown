@@ -3,8 +3,32 @@ layout: photolist
 title: Syllabus
 ---
 
+# Preliminaries 
 
-{% assign lectures = (site.data.lectures | where: "selected", "y") %}
+Here is how you should read the information below:
+
+1. `abstract` will give you a hint on what the lecture is about; 
+2. `slides` may be available for reference, but do not expect them to mean much without a speaker
+3. `background reading` is the stuff we would like you to read before the lecture; this will be available at least a week before the lecture;
+4. `further reading` is the stuff we think you should read if you want to master the topic; you should at least inspect the information there before you decide to skip it;
+5. in the second half of the course we will have `discussion` sessions, where a pair of students will prepare a presentation about one of the papers we offer; 
+6. sometimes we might make `code` and `data` available, then you would also find it here.
+
+Our team dedicates a lot of time to this course, thus we love to come to the lectures and find a team of dedicated students. 
+For that reason, we *hate* mobile phones, computers, and other electronics that take your full attention from us (we are that jealous!).
+Hence, we ask you not to use those during our meetings. 
+
+# Foundation
+
+{% assign lectures = (site.data.foundation | where: "selected", "y") %}
+{% for lecture in lectures %}
+{% include lecture.html lecture=lecture %}
+{% endfor %}
+
+
+# Recent advances
+
+{% assign lectures = (site.data.advances | where: "selected", "y") %}
 {% for lecture in lectures %}
 {% include lecture.html lecture=lecture %}
 {% endfor %}

@@ -1,0 +1,96 @@
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-21
+  img: rg
+  title: Word-order and reordering grammar
+  instructor: "Miloš Stanojević"
+  note: 
+  abstract: In this lecture we will talk about preordering, factorization of permutations and reordering grammar.
+  background:
+    - "Stanojevic ́ and Sima'an. 2015. [Reordering Grammar Induction](http://www.aclweb.org/anthology/D15-1005)"
+  discussion:
+    - "Tromble and Eisner. 2009. [Learning Linear Ordering Problems for Better Translation](http://www.aclweb.org/anthology/D09-1105)"
+  slides: resources/slides/rg.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-26
+  img: labelling
+  title: Labelling Hiero
+  instructor: Gideon Wenniger
+  note: 
+  abstract: In this lecture we will talk about ways to label a Hiero grammar.
+  background:
+    - "[Hierarchical alignment decomposition labels for Hiero grammar rules](http://www.aclweb.org/anthology/W13-0803)"
+  discussion:
+  slides: resources/slides/labelling.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-28
+  img: morpho
+  title: Translating into morphologically rich languages
+  instructor: Joachim Daiber
+  note: 
+  abstract: In this lecture we will talk about the role of morphology in translation.
+  background:
+  discussion:
+  slides: resources/slides/morphology.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-05-03
+  img: nmt
+  title: Neural models for translation
+  instructor: Joost Bastings
+  note: 
+  abstract: >
+    In the last couple of years, deep learning has proven useful in many areas. 
+    Also for machine translation, models have been proposed, in some cases reaching state-of-the-art performance. 
+    In this lecture we will look at the (now classic) encoder-decoder framework, as well as more recent models.
+  background:
+    - "Sutskever et al. 2014. [Sequence to Sequence Learning with Neural Networks](http://arxiv.org/abs/1409.3215)"
+    - "Cho et al. 2014. [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](http://arxiv.org/abs/1406.1078)"
+  discussion:
+    - "Jean et al. 2015. [On Using Very Large Target Vocabulary for Neural Machine Translation](http://www.aclweb.org/anthology/P15-1001.pdf)"
+    - "Chung et al. 2016. [A Character-level Decoder without Explicit Segmentation for Neural Machine Translation](http://arxiv.org/abs/1603.06147)"
+    - "Luong et al. 2015. [Effective Approaches to Attention-based Neural Machine Translation](http://arxiv.org/abs/1508.04025)"
+  slides: resources/slides/nmt.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-05-10
+  img: multi
+  title: Multimodal MT
+  instructor: Desmond Elliot
+  note: 
+  abstract: In this lecture we will talk about learning representations of images that co-occur with text.
+  background:
+  discussion:
+  slides: resources/slides/multimodal.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-05-12
+  img: transfer
+  title: Parallel texts as a linguistic resource
+  instructor: Stella Frank
+  note: 
+  abstract: In this lecture we will talk about transfer learning.
+  background:
+  discussion:
+  slides: resources/slides/transfer.pdf
+  code: 
+  data: 
+

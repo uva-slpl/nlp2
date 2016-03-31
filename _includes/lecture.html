@@ -75,7 +75,11 @@
               <h4 class="modal-title">{{ include.lecture.title }}</h4>
             </div>
             <div class="modal-body">
-                {{ include.lecture.further | markdownify }}
+                <ul>
+                {% for paper in include.lecture.further %}
+                    <li>{{ paper | markdownify }}</li>
+                {% endfor %}
+                </ul>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

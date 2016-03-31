@@ -1,0 +1,104 @@
+-
+  layout: lecture
+  selected: y
+  date: 2016-03-29
+  img: introduction
+  title: Introduction
+  instructor: "Khalil Sima'an"
+  note: 
+  abstract: >
+    In this introductory lecture we will discuss the role of machine translation in society, 
+    the nature of translation data, and we will also present an overview of the history of MT. 
+  background:
+    - "Chapters 1-2 of Koehn's 2010 book: [Statistical machine translation](http://www.statmt.org/book/)"
+  discussion:
+  slides: resources/slides/introduction.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-03-31
+  img: alignments
+  title: Word alignment models
+  instructor: Philip Schulz
+  note: 
+  abstract: >
+    In this session we will discuss the IBM word alignment models 1 and 2. 
+    We will view them as constrained mixture models. After motivating the models intuitively, we will develop them formally and devise an EM parameter estimation algorithm for them. 
+    We will also try to understand why the resulting optimisation problem contains multiple optima. 
+  background:
+    - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf) which is the basis for his lecture."
+    - "In order to get a more concrete view of implementation, including pseudo-codes for the EM procedure, read M. Collins's [Lecture notes](resources/papers/CollinsIBM.pdf)."
+  further: 
+    - "[R. Moore (2004)](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf) discusses a number of problems with IBM model 1 involving 1) null words, 2) rare words, and 3) initialisation for EM. If you can understand the problems he raises and the solutions he proposes, you are really getting it about IBM1. Also, implementing some of his improvements will be worth some extra points in project 1."
+    - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
+    - "The original [IBM paper](http://www.aclweb.org/anthology/J93-2003) is very dense, but if you want to go around teaching IBM models you should probably read it a few times."
+    - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
+    - "[Dyer et al. 2013](http://www.aclweb.org/anthology/N13-1073.pdf) revisit the parameterisation of IBM model 2. Their model, called 'fast_align' achieves state-of-the-art performance and a robust and efficient [implementation](https://github.com/clab/fast_align) is available."
+  discussion:
+  slides:
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-05
+  img: itg
+  title: Inversion Transduction Grammars
+  instructor: Wilker Aziz
+  note: 
+  abstract: In this lecture we will present alignments models that are impose explicit reordering constraints through a grammar.
+  background:
+    - "Wu. 1997. [Stochastic Inversion Transduction Grammars and Bilingual Parsing of Parallel Corpora](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf)"
+  discussion:
+  slides: resources/slides/itg.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-07
+  img: pbsmt
+  title: Phrase-based models
+  instructor: Sophie Arnoult
+  note: 
+  abstract: In this lecture we will motivate the need for a larger translation unit.
+  background:
+    - "Koehn et al. 2003. [Statistial Phrase-Based Translation](http://www.aclweb.org/anthology/N/N03/N03-1017.pdf)"
+    - "Marcu and Wong. 2002. [A Phrase-Based, Joint Probability Model for Statistical Machine Translation](http://www.aclweb.org/anthology/W02-1018)"
+  discussion:
+  slides: resources/slides/pbsmt.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-12
+  img: hpbsmt
+  title: Hierarchical models
+  instructor: Wilker Aziz
+  note: 
+  abstract: In this lecture we will generalise the phrase-based approach to include phrases with gaps.
+  background:
+    - "David Chiang. [An introduction to synchronous grammars](resources/papers/ChiangSCFG.pdf)"
+    - "Chiang. 2007. [Hierarchical Phrase-Based Translation](http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201)"
+    - "Chiang. 2005. [A Hierarchical Phrase-Based Model for Statistical Machine Translation](http://www.aclweb.org/anthology/P05-1033)" 
+  discussion:
+  slides: resources/slides/hpbsmt.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-14
+  img: tuning
+  title: Evaluation and Tuning
+  instructor: "Miloš Stanojević"
+  note: 
+  abstract: In this lecture we will talk about automatic evaluation and tuning.
+  background:
+  discussion:
+  slides: resources/slides/eval-tuning.pdf
+  code: 
+  data: 
