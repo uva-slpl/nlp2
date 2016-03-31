@@ -4,6 +4,7 @@ title: Natural Language Processing II
 email: wilker.aziz@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     Here you will the course material for NLP2 offered at UvA.
+url: "http://wilkeraziz.github.io" # the base hostname & protocol for your site
 baseurl: "/uva-nlp2" # the subpath of your site, e.g. /blog/
 github_username:  wilkeraziz
 #paginate: 3
@@ -21,4 +22,8 @@ ksimaanstyle: Khalil Sima<font color="red">`</font>an
 
 # Build settings
 markdown: kramdown
+
+# Projects
+projects: projects.html
+project1: resources/project1/project1.pdf"
 
