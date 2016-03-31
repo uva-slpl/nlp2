@@ -10,7 +10,7 @@
     In this introductory lecture we will discuss the role of machine translation in society, 
     the nature of translation data, and we will also present an overview of the history of MT. 
   background:
-    - "Chapters 1-2 of Koehn's 2010 book: [Statistical machine translation](http://www.statmt.org/book/)"
+    - "For you to get a sense of the task, learn more about key concepts such as words, sentence, parallel corpora (the most important translation data), read chapters 1-2 of [Koehn's 2010 book](http://www.statmt.org/book/)."
   discussion:
   slides: resources/slides/introduction.pdf
   code: 
@@ -29,7 +29,7 @@
     We will also try to understand why the resulting optimisation problem contains multiple optima. 
   background:
     - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf) which is the basis for his lecture."
-    - "In order to get a more concrete view of implementation, including pseudo-codes for the EM procedure, read M. Collins's [Lecture notes](resources/papers/CollinsIBM.pdf)."
+    - "In order to get a more concrete view of implementation, including pseudo-codes for the EM procedure, read M. Collins's [lecture notes](resources/papers/CollinsIBM.pdf)."
   further: 
     - "[R. Moore (2004)](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf) discusses a number of problems with IBM model 1 involving 1) null words, 2) rare words, and 3) initialisation for EM. If you can understand the problems he raises and the solutions he proposes, you are really getting it about IBM1. Also, implementing some of his improvements will be worth some extra points in project 1."
     - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
@@ -48,9 +48,15 @@
   title: Inversion Transduction Grammars
   instructor: Wilker Aziz
   note: 
-  abstract: In this lecture we will present alignments models that are impose explicit reordering constraints through a grammar.
+  abstract: In this lecture we will present alignments models that impose explicit reordering constraints through a grammar. We will cover bitext parsing, inference and parameter estimation.
   background:
-    - "Wu. 1997. [Stochastic Inversion Transduction Grammars and Bilingual Parsing of Parallel Corpora](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf)"
+    - "[Wu (1997)](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf) is the best introduction to ITG in the literature."
+    - "I will discuss bitext parsing using deductive systems, if you are not familiar with that you might want to read a good [tutorial](http://arxiv.org/abs/cmp-lg/9404008)."
+  further:
+    - "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
+    - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
+    - "[Neubig et al. (2011)](http://www.aclweb.org/anthology/P11-1064) apply non-parametric Bayesian methods to avoid degenerate maximum likelihood estimates for phrase-based ITGs."
+    - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
   discussion:
   slides: resources/slides/itg.pdf
   code: 
