@@ -70,11 +70,9 @@
   instructor: Sophie Arnoult
   note: 
   abstract: >
-      In this lecture we will introduce phrase-based models.
-      We will motivate the need for larger translation units than word pairs,
-  and show how their modelling introduces a new issue: phrase segmentation.
-      We will see how standard phrase-based SMT deals with this issue,
-      and present estimation and inference under this model.
+    In this lecture we will introduce phrase-based models. 
+    We will motivate the need for larger translation units than word pairs, and show how their modelling introduces a new issue: phrase segmentation. 
+    We will see how standard phrase-based SMT deals with this issue, and present estimation and inference under this model.
   background:
     - "Koehn et al. 2003. [Statistial Phrase-Based Translation](http://www.aclweb.org/anthology/N/N03/N03-1017.pdf)"
     - "Marcu and Wong. 2002. [A Phrase-Based, Joint Probability Model for Statistical Machine Translation](http://www.aclweb.org/anthology/W02-1018)"
