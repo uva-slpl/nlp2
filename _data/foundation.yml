@@ -105,8 +105,20 @@
   title: Evaluation and Tuning
   instructor: "Miloš Stanojević"
   note: 
-  abstract: In this lecture we will talk about automatic evaluation and tuning.
+  abstract: >
+    In this lecture we will talk about automatic evaluation and tuning. 
+    Evaluation in Machine Translation is dealing with automatic assesment of the translation quality. 
+    Unlike many machine learning tasks, here there is no unique gold truth to which we can compare the translation -- there are many equally good translations. 
+    Also translations can be good or bad in many dimensions: morphology, syntax or semantics. 
+    Evaluation is important not only for assesing the quality of the final system but also for automatic tuning of the systems. 
+    In the second part of the lecture we will cover few algorithms that allow us to fine tune many parameters that our MT system can have (weights for language model, translation model, word penalty...).
   background:
+      - "A [survey](http://www.phontron.com/paper/neubig16cl.pdf) of optimisation techniques for machine translation."
+      - "MERT is nicely explained in Koehn's book (Chapter 9.3.2: Powell search algorithm)"
+      - "MT tuning can be seen as a learning to rank task. In learning to rank, a typical approach is to approximate a complex ranking task by a series of pairwise ranking decision. This idea has been popularised in MT by the algorithm [PRO](http://www.aclweb.org/anthology/D11-1125)."
+      - "For a nice overview of large margin discriminative learning in MT refer to [(Eidelman, 2012)](http://www.aclweb.org/anthology/W12-3160)"
+  further:
+      - "For MIRA with batched updates in MT refer to [(Cherry and Forster, 2012)](http://www.aclweb.org/anthology/N12-1047)"
   discussion:
   slides: resources/slides/eval-tuning.pdf
   code: 

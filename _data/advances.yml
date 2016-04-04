@@ -58,6 +58,8 @@
   background:
     - "Sutskever et al. 2014. [Sequence to Sequence Learning with Neural Networks](http://arxiv.org/abs/1409.3215)"
     - "Cho et al. 2014. [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](http://arxiv.org/abs/1406.1078)"
+  further:
+    - One problem with the models of the background literature is that they use a single vector to represent the source sentence. [Attention models](http://rxiv.org/abs/1409.0473) address this limitation.
   discussion:
     - "Jean et al. 2015. [On Using Very Large Target Vocabulary for Neural Machine Translation](http://www.aclweb.org/anthology/P15-1001.pdf)"
     - "Chung et al. 2016. [A Character-level Decoder without Explicit Segmentation for Neural Machine Translation](http://arxiv.org/abs/1603.06147)"
