@@ -51,9 +51,12 @@
   abstract: In this lecture we will present alignments models that impose explicit reordering constraints through a grammar. We will cover bitext parsing, inference and parameter estimation.
   background:
     - "[Wu (1997)](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf) is the best introduction to ITG in the literature."
-    - "I will discuss bitext parsing using deductive systems, if you are not familiar with that you might want to read a good [tutorial](http://arxiv.org/abs/cmp-lg/9404008)."
-  furtherwarn: "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
+    - "I will discuss bitext parsing using deductive systems, if you are not familiar with that you might want to read a good [tutorial](http://arxiv.org/abs/cmp-lg/9404008)."  
+    - "IBM alignment models fit within a larger translation component inspired by the noisy channel approach from information theory. ITGs can also play that role, see [Wu and Wong (1998)](http://www.aclweb.org/anthology/P98-2230). "
+  furtherwarn:
   further:
+      - "ITGs have a very generic vocabulary of nonterminals leading to very flat distributions. One can use the idea of state splitting to refine the vocabulary of a vanilla ITG. This is very difficul to do in terms of MLE. [Blunsom et al. (2008)](http://papers.nips.cc/paper/3453-bayesian-synchronous-grammar-induction) develop an non-parametric Bayesian model which learns how far to refine the vocabulary of a vanilla ITG. [Blunsom and Cohn (2010)](http://www.aclweb.org/anthology/N10-1028) build on that work and propose a more efficient inference technique based on slice sampling."
+    - "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
     - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
     - "[Neubig et al. (2011)](http://www.aclweb.org/anthology/P11-1064) apply non-parametric Bayesian methods to avoid degenerate maximum likelihood estimates for phrase-based ITGs."
     - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
@@ -113,11 +116,13 @@
     Evaluation is important not only for assesing the quality of the final system but also for automatic tuning of the systems. 
     In the second part of the lecture we will cover few algorithms that allow us to fine tune many parameters that our MT system can have (weights for language model, translation model, word penalty...).
   background:
+      - "A good survey of evaluation methods can be found in Chapter 8 of [Koehn's book](http://www.statmt.org/book/). You can also refer to statmt's survey [page](http://www.statmt.org/survey/Topic/Evaluation)"
       - "A [survey](http://www.phontron.com/paper/neubig16cl.pdf) of optimisation techniques for machine translation."
-      - "MERT is nicely explained in Koehn's book (Chapter 9.3.2: Powell search algorithm)"
+      - "MERT is nicely explained in [Koehn's book](http://www.statmt.org/book/) (Chapter 9.3.2: Powell search algorithm)"
       - "MT tuning can be seen as a learning to rank task. In learning to rank, a typical approach is to approximate a complex ranking task by a series of pairwise ranking decision. This idea has been popularised in MT by the algorithm [PRO](http://www.aclweb.org/anthology/D11-1125)."
       - "For a nice overview of large margin discriminative learning in MT refer to [(Eidelman, 2012)](http://www.aclweb.org/anthology/W12-3160)"
   further:
+      - "Read [(Lopez, 2012)](http://www.aclweb.org/anthology/W/W12/W12-3101.pdf) for a formal view of evaluation of automatic evaluation metrics (you read it right!)." 
       - "For MIRA with batched updates in MT refer to [(Cherry and Forster, 2012)](http://www.aclweb.org/anthology/N12-1047)"
   discussion:
   slides: resources/slides/eval-tuning.pdf
