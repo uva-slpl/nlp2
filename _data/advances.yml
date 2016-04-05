@@ -34,12 +34,19 @@
   selected: y
   date: 2016-04-28
   img: morpho
-  title: Translating into morphologically rich languages
+  title: Morphology in machine translation
   instructor: Joachim Daiber
   note: 
-  abstract: In this lecture we will talk about the role of morphology in translation.
-  background:
+  abstract: "In this lecture we will discover that not all language pairs are created equal. We will discuss some problems that morphologically rich languages pose and how they are approached in machine translation."
+  background: 
+    - "Soricut and Och. 2015. [Unsupervised Morphology Induction Using Word Embeddings](http://www.aclweb.org/anthology/N15-1186.pdf)"
+    - "Sennrich and Haddow. 2015. [A Joint Dependency Model of Morphological and Syntactic Structure for Statistical Machine Translation.](http://www.aclweb.org/anthology/D/D15/D15-1248.pdf)"
   discussion:
+    - "Koehn and Hoang. 2007. [Factored Translation Models](http://homepages.inf.ed.ac.uk/pkoehn/publications/emnlp2007-factored.pdf)"
+    - "Williams and Koehn. 2011. [Agreement Constraints for Statistical Machine Translation into German](http://www.aclweb.org/anthology/W11-2126.pdf)"
+  further:
+    - "Compounds have long been a problem for word- and phrase-level machine translation. Soricut and Och's method for morphology can be extended to split compounds into their meaningful parts."
+    - "Daiber et al. 2015. [Splitting Compounds by Semantic Analogy](http://jodaiber.github.io/doc/compound_analogy.pdf)"
   slides: resources/slides/morphology.pdf
   code: 
   data: 
@@ -75,9 +82,13 @@
   title: Multimodal MT
   instructor: Desmond Elliot
   note: 
-  abstract: In this lecture we will talk about learning representations of images that co-occur with text.
+  abstract:  In this lecture we will discuss approaches to translating sentences that occur alongside images. In this context, the images can be seen as a common grounding for both languages, potentially easing the translation task.
   background:
+      - It will be useful to attend the Neural models for translation lecture.
+      - "Neural sequence models for multimodal machine translation: [Elliott et al. (2015)](http://arxiv.org/abs/1510.04709)"
+      - "Multimodal target-side re-ranking [Hitschler et al. (2016)](http://arxiv.org/abs/1601.03916)"
   discussion:
+      - "[Are You Talking to a Machine?](http://arxiv.org/abs/1505.05612) Dataset and Methods for Multilingual Image Question Answering"
   slides: resources/slides/multimodal.pdf
   code: 
   data: 

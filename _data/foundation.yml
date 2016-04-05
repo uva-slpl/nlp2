@@ -79,8 +79,18 @@
     We will see how standard phrase-based SMT deals with this issue, and present estimation and inference under this model.
   background:
     - "Koehn et al. 2003. [Statistial Phrase-Based Translation](http://www.aclweb.org/anthology/N/N03/N03-1017.pdf)"
-    - "Marcu and Wong. 2002. [A Phrase-Based, Joint Probability Model for Statistical Machine Translation](http://www.aclweb.org/anthology/W02-1018)"
-  discussion:
+    - "[Kumar and Byrne (2003)](http://www.aclweb.org/anthology/N03-1019) present a derivation and implementation of the [alignment template model](http://www.aclweb.org/anthology/W99-0604) using FSTs."
+  further:
+    - "On estimation:"
+    - "[Marcu and Wong (2002)](http://www.aclweb.org/anthology/W02-1018) proposed a model that is conceptually very similar to the IBM models 1 and 2, but applied to phrases instead of words. Estimation in that model is intractable, requiring initial approximations and hard EM."
+    - "[DeNero et al. (2006)](http://www.aclweb.org/anthology/W06-3105) inferred phrase translation estimates in a (uniform) segmentation space constrained by word alignments trained with the IBM models. This leads to degenerate estimates."
+    - "[Mylonakis and Sima'an (2008)](http://www.aclweb.org/anthology/D08-1066) used word alignments and the phrase-extraction method of [Koehn et al. (2003)](http://www.aclweb.org/anthology/N/N03/N03-1017.pdf), but infer phrase-translation estimates with EM. They restrict the segmentation space to ITG derivations, and use cross-validation techniques to avoid overfitting."
+    - "[DeNero and Klein (2008)](http://www.aclweb.org/anthology/P08-2007) showed that estimation for phrase-based models is NP-complete." 
+    - "On inference:"
+    - "[Sima'an (2002)](https://staff.fnwi.uva.nl/k.simaan/D-Papers/Grammars01.pdf) proved that disambiguation of formal grammars (Stochastic Context-Free and Tree-Substitution Grammars) is NP-complete. The result carries over to any problem where one needs to sum over derivations (or segmentations in the case of this lecture)."  
+    - "[Knight (1999)](http://www.aclweb.org/anthology/J/J99/J99-4005.pdf) proved that decoding (for word-based models) is NP-complete, and laid out the analogy between decoding and the Travelling Salesman Problem (TSP)."
+    - "[Zaslavskiy et al. (2009)](http://www.aclweb.org/anthology/P/P09/P09-1038.pdf) proposed to apply TSP solvers for decoding instead of beam-search decoding."
+    - "[Aziz et al. (2014)](http://www.aclweb.org/anthology/D14-1131) replace beam-search decoding by an exact coarse-to-fine search inspired by rejection sampling."
   slides: resources/slides/pbsmt.pdf
   code: 
   data: 
