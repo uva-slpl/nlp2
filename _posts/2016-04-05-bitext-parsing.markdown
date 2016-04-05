@@ -6,7 +6,7 @@ author: Wilker
 categories: lectures
 ---
 
-As you know, there has benn I slight change of plans. 
+As you know, there has been I slight change of plans. 
 I decided to give a detailed lecture on *Bitext Parsing* hoping that you will be more comfortable with it in the future.
 The machinery presented in the lecture is really general and will feature frequently in our course.
 In general, this goes well beyond MT, being a general and powerful tool to represent discrete distributions over structured objects.
