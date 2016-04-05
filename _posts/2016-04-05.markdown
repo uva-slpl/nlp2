@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  New date/time for lab sessions
+title:  New slot for labs/ Training dat for project 1 available
 date:   2016-04-05
 author: Philip
 categories: lectures
@@ -10,5 +10,11 @@ There is a new slot for the lab sessions. From now on, programming labs will tak
 (starting from Thur, 7th of April). Until further notice, the location of the lab sessions is Science Park 107, room F1.15.
 That is across the street from the Science Park main building 904. You will have to enter the building through the Nikhef
 entrance whose address is Science Park 105. 
+
+We have also made available the training data for project 1. It is an English-French corpus that you will need to align.
+We will provide you with test data and an evaluation script in due time. For the time being, you should develop your program
+on the training data only. As usual with EM, you can verify that your algorithm is working correctly by printing the OBSERVED
+data likelihood (i.e. P(E,F)) after each iteration. If this likelihood increases with each iteration, you are probably doing
+everything correctly.
 
 See you all next Thursday!
