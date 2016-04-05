@@ -11,7 +11,7 @@ If you understood the previous sentence, you are on track!
 If you didn't, you should read Philip's tutorial. Well, you should read it anyway!
 You can also look for us to clarify things if you need.
 
-Guess what [project 1]({{ site.url }}/{{ site.baseurl }}/{{ site.projects }}) is going to be about? IBM models 1 and 2, naturally.
+Guess what [project 1](../../../../{{ site.projects }}) is going to be about? IBM models 1 and 2, naturally.
 The description is now online and next week you all should start asking questions. More importantly, you should get to work!
 
 Also, do not forget to answer the [doodle poll](http://doodle.com/poll/evgxx5sef7583udt), so that we consider everyone's opinions when setting the date and time for the lab sessions.
