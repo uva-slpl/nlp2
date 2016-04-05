@@ -11,7 +11,7 @@ There is a new slot for the lab sessions. From now on, programming labs will tak
 That is across the street from the Science Park main building 904. You will have to enter the building through the Nikhef
 entrance whose address is Science Park 105. 
 
-We have also made available the training data for project 1 [here](resources/project1/NLP2_Project1_data.tar.gz). 
+We have also made available the training data for project 1 [here](../resources/project1/NLP2_Project1_data.tar.gz). 
 It is an English-French corpus that you will need to align.
 We will provide you with test data and an evaluation script in due time. For the time being, you should develop your program
 on the training data only. As usual with EM, you can verify that your algorithm is working correctly by printing the OBSERVED
