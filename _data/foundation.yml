@@ -44,25 +44,19 @@
   layout: lecture
   selected: y
   date: 2016-04-05
-  img: itg
-  title: Inversion Transduction Grammars
+  img: biparsing
+  title: Bitext Parsing
   instructor: Wilker Aziz
-  note: 
-  abstract: In this lecture we will present alignments models that impose explicit reordering constraints through a grammar. We will cover bitext parsing, inference and parameter estimation.
+  note: This lecture substituted the one on ITG (see below).
+  abstract: In this lecture we will review PCFG parsing as weighted deduction. We will then extend the idea to parsing with synchronous grammars. This lecture can be seen as background for parameter estimation and decoding/generation with CFG-structured models.
   background:
-    - "ITG is a form of context-free transducer. Thus the more you know about context-free grammars (CFGs) and their probabilistic extensions (PCFGs), the better. You can start with M Collins's [lecture notes](http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/pcfgs.pdf) on PCFGs. In estimating parameters for a PCFG with EM we need expectations (as always), there is an efficient algorithm to compute those from parse forests. Again, M Collins's has nice [lecture notes](http://www.cs.columbia.edu/~mcollins/io.pdf) on this algorithm (the Inside-Outside algorithm) as well as EM for PCFGs."
     - "I will discuss bitext parsing using deductive systems, if you are not familiar with that you might want to read a good [tutorial](http://arxiv.org/abs/cmp-lg/9404008)."  
-    - "[Wu (1997)](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf) is the best introduction to ITG in the literature."
-    - "IBM alignment models fit within a larger translation component inspired by the noisy channel approach from information theory. ITGs can also play that role, see [Wu and Wong (1998)](http://www.aclweb.org/anthology/P98-2230). "
+    - "David Chiang has a nice [tutorial](resources/papers/ChiangSCFG.pdf) on synchronous grammar. I will not stick too much to it though."
   further:
     - "[Dyer (2010)](http://www.aclweb.org/anthology/N10-1033) shows that a cascade of monolingual parsers is a very neat and general way to perform bitext parsing."
-    - "ITGs have a very generic vocabulary of nonterminals leading to very flat distributions. One can use the idea of state splitting to refine the vocabulary of a vanilla ITG. This is very difficul to do in terms of MLE. [Blunsom et al. (2008)](http://papers.nips.cc/paper/3453-bayesian-synchronous-grammar-induction) develop a non-parametric Bayesian model which learns how far to refine the vocabulary of a vanilla ITG. [Blunsom and Cohn (2010)](http://www.aclweb.org/anthology/N10-1028) build on that work and propose a more efficient inference technique based on slice sampling."
-    - "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
-    - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
-    - "[Neubig et al. (2011)](http://www.aclweb.org/anthology/P11-1064) apply non-parametric Bayesian methods to avoid degenerate maximum likelihood estimates for phrase-based ITGs."
-    - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
+    - "Laura Kallmeyer's book (i.e. *Parsing Beyond Context-Free Grammars*) is a really good reference. Particularly, Chapter 3 on *parsing as deduction*."
   discussion:
-  slides: resources/slides/itg.pdf
+  slides: resources/slides/bitext-parsing.pdf
   code: 
   data: 
 -
@@ -92,6 +86,29 @@
     - "[Zaslavskiy et al. (2009)](http://www.aclweb.org/anthology/P/P09/P09-1038.pdf) proposed to apply TSP solvers for decoding instead of beam-search decoding."
     - "[Aziz et al. (2014)](http://www.aclweb.org/anthology/D14-1131) replace beam-search decoding by an exact coarse-to-fine search inspired by rejection sampling."
   slides: resources/slides/pbsmt.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-12
+  img: itg
+  title: Inversion Transduction Grammars
+  instructor: Wilker Aziz
+  note: This lecture will be merged with the next one on hierarchical models.
+  abstract: In this lecture we will present alignments models that impose explicit reordering constraints through a grammar. We will cover bitext parsing, inference and parameter estimation.
+  background:
+    - "ITG is a form of context-free transducer. Thus the more you know about context-free grammars (CFGs) and their probabilistic extensions (PCFGs), the better. You can start with M Collins's [lecture notes](http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/pcfgs.pdf) on PCFGs. In estimating parameters for a PCFG with EM we need expectations (as always), there is an efficient algorithm to compute those from parse forests. Again, M Collins's has nice [lecture notes](http://www.cs.columbia.edu/~mcollins/io.pdf) on this algorithm (the Inside-Outside algorithm) as well as EM for PCFGs."
+    - "[Wu (1997)](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf) is the best introduction to ITG in the literature."
+    - "IBM alignment models fit within a larger translation component inspired by the noisy channel approach from information theory. ITGs can also play that role, see [Wu and Wong (1998)](http://www.aclweb.org/anthology/P98-2230). "
+  further:
+    - "ITGs have a very generic vocabulary of nonterminals leading to very flat distributions. One can use the idea of state splitting to refine the vocabulary of a vanilla ITG. This is very difficul to do in terms of MLE. [Blunsom et al. (2008)](http://papers.nips.cc/paper/3453-bayesian-synchronous-grammar-induction) develop a non-parametric Bayesian model which learns how far to refine the vocabulary of a vanilla ITG. [Blunsom and Cohn (2010)](http://www.aclweb.org/anthology/N10-1028) build on that work and propose a more efficient inference technique based on slice sampling."
+    - "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
+    - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
+    - "[Neubig et al. (2011)](http://www.aclweb.org/anthology/P11-1064) apply non-parametric Bayesian methods to avoid degenerate maximum likelihood estimates for phrase-based ITGs."
+    - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
+  discussion:
+  slides: 
   code: 
   data: 
 -
