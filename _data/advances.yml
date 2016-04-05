@@ -82,9 +82,13 @@
   title: Multimodal MT
   instructor: Desmond Elliot
   note: 
-  abstract: In this lecture we will talk about learning representations of images that co-occur with text.
+  abstract:  In this lecture we will discuss approaches to translating sentences that occur alongside images. In this context, the images can be seen as a common grounding for both languages, potentially easing the translation task.
   background:
+      - It will be useful to attend the Neural models for translation lecture.
+      - "Neural sequence models for multimodal machine translation: [Elliott et al. (2015)](http://arxiv.org/abs/1510.04709)"
+      - "Multimodal target-side re-ranking [Hitschler et al. (2016)](http://arxiv.org/abs/1601.03916)"
   discussion:
+      - "[Are You Talking to a Machine?](http://arxiv.org/abs/1505.05612) Dataset and Methods for Multilingual Image Question Answering"
   slides: resources/slides/multimodal.pdf
   code: 
   data: 
