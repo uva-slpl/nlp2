@@ -21,7 +21,7 @@
               <h4 class="modal-title">{{ include.lecture.title }} | Abstract</h4>
             </div>
             <div class="modal-body">
-              {{ include.lecture.abstract }}
+              {{ include.lecture.abstract | markdownify }}
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
