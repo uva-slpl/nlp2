@@ -61,6 +61,26 @@
   data: 
 -
   layout: lecture
+  selected: n
+  date: 2016-04-07
+  img: wbsmt
+  title: Word-based models
+  instructor: Wilker Aziz
+  note: 
+  abstract: |
+    In this lecture we will introduce a complete translation model based on word-to-word translation. 
+    We will introduce IBM model 3 whose generative story is complete enough to be used in generation mode as part of a translation system.
+    We will discuss translation using finite-state transducers and decoding challenges.
+  background:
+    - "[Knight and Al-Onaizan (1998)](http://www.isi.edu/natural-language/mt/mt-wfst.ps) discuss how to use finite-state transducers to implement a word-based translation model based on IBM models."
+  further:
+    - "[Knight (1999)](http://www.aclweb.org/anthology/J/J99/J99-4005.pdf) proved that decoding (for word-based models) is NP-complete, and laid out the analogy between decoding and the Travelling Salesman Problem (TSP)."
+    - "[Sima'an (2002)](https://staff.fnwi.uva.nl/k.simaan/D-Papers/Grammars01.pdf) proved that disambiguation of formal grammars (Stochastic Context-Free and Tree-Substitution Grammars) is NP-complete. The result carries over to any problem where one needs to sum over derivations (or segmentations in the case of this lecture)."  
+  slides: resources/slides/wbsmt.pdf
+  code: 
+  data: 
+-
+  layout: lecture
   selected: y
   date: 2016-04-07
   img: pbsmt
@@ -126,6 +146,25 @@
     - "Chiang. 2005. [A Hierarchical Phrase-Based Model for Statistical Machine Translation](http://www.aclweb.org/anthology/P05-1033)" 
   discussion:
   slides: resources/slides/hpbsmt.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: n
+  date: 2016-04-12
+  img: decoding
+  title: Decoding
+  instructor: Wilker Aziz
+  note: 
+  abstract: In this lecture we will present hypergraphs, translation as deduction, discuss decision rules, integration of nonlocal features (as weighted CFG-FSA intersection), and finally beam search and cube pruning.
+  background:
+    - "[Lopez (2009)](http://www.aclweb.org/anthology/E/E09/E09-1061.pdf) formalises translation as weighted deduction."
+    - "[Chiang (2007)](http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201) introduces cube pruning."
+  further:
+    - "[Huang and Chiang (2007)](http://www.aclweb.org/anthology/P/P07/P07-1019.pdf) introduce algorithms for approximate forest rescoring (i.e. cube pruning and cube growing)."
+    - "[Watanabe et al. (2006)](http://www.aclweb.org/anthology/P06-1098) introduce an interesting left-to-right hierarchical decoder based on a synchronous grammar constrained to a GNF target side (a regular grammar on the target side)."
+  discussion:
+  slides: resources/slides/decoding.pdf
   code: 
   data: 
 -
