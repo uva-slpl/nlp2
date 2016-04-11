@@ -1,0 +1,176 @@
+
+%\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+
+\usetheme{Amsterdam}
+
+\usefonttheme[onlymath]{serif}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+%\usepackage{paralist}
+%\usepackage{enumerate}
+\usepackage{colortbl}
+\usepackage{lmodern}
+\usepackage{comment}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{pbox}
+\usepackage{pifont}
+\usepackage{alltt}
+\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage{xspace}
+\usepackage{cases}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage[absolute,overlay]{textpos}
+\usetikzlibrary{arrows,automata,positioning}
+%\usepackage[absolute,overlay]{textpos}
+\usepackage[normalem]{ulem}
+\usepackage{tikz-qtree}
+\usepackage{pbox}
+
+\usepackage{ucs}
+\usepackage[first=1, last=6]{lcg}
+\usepackage[utf8x]{inputenc}
+\usepackage{rotating}
+%\usepackage[all]{xy}
+%\usepackage{ragged2e}
+%\usepackage{pifont}
+
+%\usepackage[all]{xy}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xfrac}
+
+\usepackage{notation}
+\usepackage{variables}
+\usepackage{drawing}
+%\usepackage{xparse}
+%\usepackage{tikz}
+%\usetikzlibrary{calc}
+\usepackage{olddef}
+
+\newcounter{savedenum}
+\newcommand*{\saveenum}{\setcounter{savedenum}{\theenumi}}
+\newcommand*{\resume}{\setcounter{enumi}{\thesavedenum}}
+
+% declares a document
+\begin{document}
+
+
+
+	%\title{Employee's social media use}
+	%\title{Social media use by employees}
+	\title{Hierarchical Machine Translation}
+	%\subtitle{for unsupervised language learning}
+
+	\author{Wilker Aziz}
+	\institute[UvA]{
+		%\inst{1}
+		Universiteit van Amsterdam\\
+		\texttt{w.aziz@uva.nl}
+	}
+
+	\date{\today}
+	
+	% Title page
+	{\setbeamertemplate{footline}{}
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+	}
+
+
+	% Table of contents	
+	%\frame[allowframebreaks]{
+	{\setbeamertemplate{footline}{}
+	\begin{frame}
+		\frametitle{Content}
+		\tableofcontents
+	\end{frame}
+	}
+
+
+
+	% trick to start counting from the table of contents
+	\setcounter{framenumber}{0}
+
+
+	% SLIDES
+	\input{motivation}
+	%\input{expressiveness}
+	
+	\AtBeginSection[]
+    {
+    \begin{frame}<beamer>{Content}
+    \tableofcontents[currentsection,currentsubsection, 
+        hideothersubsections, 
+        sectionstyle=show/shaded,
+    ]
+    \end{frame}
+    }
+    
+    
+	\input{hpbsmt}
+	
+	
+	%\section{Conclusion}
+
+	\input{syntax}
+		
+	
+	\frame{
+	\frametitle{Conclusions and further reading}
+	
+	Hierarchical structure
+	\begin{itemize}
+		\item reasonable accounts of languages with different word-order \pause
+		\begin{itemize}
+			\item however, rather strict/fixed word-order (simpler morphology)
+		\end{itemize}
+	\end{itemize}
+	
+	\pause
+	
+	Linguistically-informed labels
+	\begin{itemize}
+		\item constrain hiero grammar \citep{Zollmann+2006:SAMT}
+		\item tree-based grammars \citep{DeNeefe+2009:STAG}
+		\item feature-rich models \citep{Chiang+2009:11k}
+		\item tree transducers and EM training \citep{Galley+2006:CRST}
+	\end{itemize}
+	
+	}
+	
+	
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+	
+	
+	{\setbeamertemplate{footline}{}
+    \begin{frame}[plain]{Questions?}
+    \end{frame}
+  	}
+	
+	
+	\input{backup}
+
+
+	\frame[allowframebreaks]{ \frametitle{References}
+        \bibliographystyle{plainnat}
+        \bibliography{../bib}
+	}
+
+	
+
+	% Trick to discount regular frames from the total of backup frames
+	\setcounter{framenumber}{\value{finalframe}}
+	
+	
+\end{document}
