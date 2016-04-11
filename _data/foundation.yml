@@ -108,7 +108,7 @@
     - "[Neubig et al. (2011)](http://www.aclweb.org/anthology/P11-1064) apply non-parametric Bayesian methods to avoid degenerate maximum likelihood estimates for phrase-based ITGs."
     - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
   discussion:
-  slides: 
+  slides: resources/slides/itg.pdf
   code: 
   data: 
 -
