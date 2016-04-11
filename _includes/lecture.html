@@ -92,7 +92,7 @@
       </div><!-- /.modal -->
     {% endif %}
     
-    {% if include.lecture.discussion %}
+    {% if include.lecture.discussion or include.lecture.discussionwarn %}
       <a data-toggle="modal" href="#discussion{{ include.lecture.img }}" class="label label-danger">Discussion</a>
       <!-- Modal -->
       <div class="modal fade" id="discussion{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
@@ -102,6 +102,9 @@
               <h4 class="modal-title">{{ include.lecture.title }} | Discussion</h4>
             </div>
             <div class="modal-body">
+                {% if include.lecture.discussionwarn %}
+                    {{ include.lecture.discussionwarn | markdownify }}
+                {% endif %}
                 <ul>
                 {% for paper in include.lecture.discussion %}
                     <li>{{ paper | markdownify }}</li>

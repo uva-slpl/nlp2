@@ -100,9 +100,20 @@
   title: Parallel texts as a linguistic resource
   instructor: Stella Frank
   note: 
-  abstract: In this lecture we will talk about transfer learning.
+  abstract: >
+    In this lecture we will look at using parallel and multiply-aligned text for non-machine translation tasks, such as  part-of-speech tagging and parsing. The motivation behind this line of work is the idea that good models (parsers, taggers) for high-resource languages can be transfered to low-resource languages, which do not have sufficient (annotated) data to train good models on their own. Secondly, in an unsupervised setting, multilingual data can provide cues that disambiguate across languages.
   background:
+    - "Snyder et al. 2008[Unsupervised POS tagging over two languages at once is easier/better than monolingual models](http://www.aclweb.org/anthology/D/D08/D08-1109.pdf)."
+    - "McDonald et al. 2011. [How to apply a trained parser from language A to language B](http://www.aclweb.org/anthology/D/D11/D11-1006.pdf)"
+  further:
+    - "'Universal' (at least standardised) annotation [guidelines and treebanks](http://universaldependencies.org/) for multiple languages."
+    - "Non-parametric [follow-up](http://www.aclweb.org/anthology/N/N09/N09-1010.pdf) to (Snyder et al., 2008)"
+    - "[Follow-up](http://www.aclweb.org/anthology/N/N13/N13-1126.pdf) to (McDonald et al, 2011)."
+    - "Quasi-synchronous grammars for annotation projection: [foundation](http://www.aclweb.org/anthology/W/W06/W06-3104.pdf), [parser adaptation](http://www.aclweb.org/anthology/D/D09/D09-1086.pdf)"
+  discussionwarn: On multilingual representations in neural models
   discussion:
+    - "Hermann and Blunsom. 2014. [Multilingual Models for Compositional Distributed Semantics](http://www.aclweb.org/anthology/P/P14/P14-1006.pdf)"
+    - "Ammar et al. 2016. [Massively Multilingual Word Embeddings](http://arxiv.org/abs/1602.01925)"
   slides: resources/slides/transfer.pdf
   code: 
   data: 
