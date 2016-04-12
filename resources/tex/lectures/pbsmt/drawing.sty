@@ -1,0 +1,6 @@
+% circled text
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+            
+\newcommand{\ftext}[1]{\textcolor{blue}{\text{#1}}}
+\newcommand{\etext}[1]{\textcolor{red}{\text{#1}}}

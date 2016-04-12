@@ -1,9 +1,0 @@
-resources/tex/*/*.aux
-resources/tex/*/*.log
-resources/tex/*/*.toc
-resources/tex/*/*.snm
-resources/tex/*/*.bbl
-resources/tex/*/*.blg
-resources/tex/*/*.nav
-resources/tex/*/*.out
-resources/tex/*/*.synctex.gz

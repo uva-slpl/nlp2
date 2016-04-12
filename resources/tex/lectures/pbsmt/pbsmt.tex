@@ -1,0 +1,519 @@
+\section{Introduction}
+
+\frame{
+	\frametitle{Noisy channel}
+	
+	Bayes rule 
+	
+	$$P(E|F) = \frac{P(E)P(F|E)}{P(F)}$$
+	
+	Inference
+	
+	$$\hat{E} = \argmax_E P(E)P(F|E)$$
+	
+	Estimation
+	
+	\begin{itemize}
+		\item $P(E)$ $n$-gram LM
+		\item $P(F|E)$ ...
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Word-based SMT}
+
+	IBM models
+
+	\begin{align*}
+		P(F|E) 
+			&= \sum_A P(A,F|E) \\
+			&= \sum_A P(A|E) \times P(F|A, E) \\
+			&= \sum_A \prod_j P(j|E) \times P(f_j|A,E) \\
+	\end{align*}
+}
+
+\frame{
+	\frametitle{Limitations of word-based approach}
+
+	Linguistically
+	\begin{itemize}
+		\item cannot translate many-to-one or many-to-many %what about insertions?
+		\item compositionality of translation\\
+			multi-word / idiomatic expressions
+	\end{itemize}
+
+	~
+
+	Computationally
+	\begin{itemize}
+		\item $n!$ permutations in decoding
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Phrase-based model}
+	
+	Phrase pairs as translation units
+	\begin{itemize}
+		\item capture non-compositional translations 
+		\item exploit (local) reordering patterns
+	\end{itemize}
+
+	~	
+
+	\pause
+	\alert{How to segment sentence into phrases?}
+}
+
+\section{Model}
+\frame{
+	\frametitle{Phrase-based model}
+	
+	One more unknown: segmentation $S$
+
+	\begin{align*}
+		P(F|E) 
+			&= \sum_S \sum_A P(S,A,F|E) \\
+			&= \sum_S \sum_A P(S|E) \times P(A|S,E) \times P(F|A,S, E) \\
+			%&= \sum_A \prod_k t(\bar{f}_k|\bar{e}_k) d(\text{start}_k - \text{end}_{k-1} - 1)
+	\end{align*}
+
+	($A$ is now a phrase alignment)
+}
+
+\frame{
+	\frametitle{Generative story}
+	\includegraphics[scale=0.5]{"img/PB extraction 2"}
+
+	\pause
+	~
+	\begin{center}
+	\begin{tabular}{l  r}
+		J'$_1$ ai$_2$ les$_3$ yeux$_4$ noirs$_5$ & input\\ \pause
+		{[\textcolor{blue}{J'$_1$ ai$_2$}] [\textcolor{Green}{les$_3$ yeux$_4$}] [\textcolor{red}{noirs$_5$}]} & segmentation\\ \pause
+		{[\textcolor{blue}{J'$_1$ ai$_2$}]$_1$ [\textcolor{red}{noirs$_5$}]$_3$ [\textcolor{Green}{les$_3$ yeux$_4$}]$_2$} & ordering\\		\pause
+		{[\textcolor{blue}{I have}]$_1$ [\textcolor{red}{black}]$_3$ [\textcolor{Green}{eyes}]$_2$} & translation \\			
+	\end{tabular}
+	\end{center}
+}
+
+\frame{
+	\frametitle{Approaches to segmentation}
+	\begin{itemize}
+	\item (Marcu and Wong, 2002)\\
+	~ model segmentation and joint generation of phrase pairs 
+	\item (deNero et al., 2006)\\
+	~ use Viterbi IBM alignments, and uniform distribution over segmentations to infer translation estimates
+	\item (Koehn et al., 2003; Och and Ney, 2002)\\
+	~ use Viterbi IBM alignments, do not model segmentation, but use heuristic translation probability estimate 
+	\end{itemize}
+
+	~
+
+	%\pause
+	%\structure{The model of (Koehn et al., 2003) works best; why would that be?}
+}
+
+
+\frame{
+	\frametitle{ Model assumptions (Koehn et al., 2003)}
+	\begin{enumerate}
+	\item model $P(F,S|E)$, and assume a uniform distribution for $P(S|E)$ 
+	$$ P(F,S|E)= \epsilon P(F|S,E)$$
+	\item alignments are observed
+	\begin{align*}
+		P(F|S,E) 
+			&= P(F,A|S,E) \\
+			&= P(A|S,E) \times P(F|A,S, E) 
+	\end{align*}
+	\item phrase independence assumptions  
+		$$P(F|S,E) = \prod_{k=1}^{K} P(a_k|S,E) \times P(\bar{f_k}|S,E)$$ 
+	\end{enumerate}
+
+}
+
+\frame{
+	\frametitle{Modeling phrase translation and reordering}
+
+	\begin{itemize}
+	\item Phrase translation is modelled as in IBM models 1 and 2
+	\item Phrase reordering model is distance based 
+	\end{itemize}
+
+	$$P(F|S,E)=\prod_k \delta(\textrm{start}_k - \textrm{end}_{k-1} -1) \varphi(\bar{f_k}|\bar{e_k}) $$ 
+}
+
+\frame{
+	\frametitle{Distance-based reordering}
+	
+	Example
+	
+	\begin{center}
+	\begin{tabular}{| l | l | p{1cm} | p{1cm} | p{1cm} | p{1cm} |}
+	\hline
+	& & \textcolor{red}{I} & \textcolor{red}{have} & \textcolor{red}{black} & \textcolor{red}{eyes} \\ \hline
+	\textcolor{gray}{1}& \textcolor{blue}{J'} & \multicolumn{2}{c|}{\multirow{2}{*}{1}}  & & \\ \cline{1-2}\cline{5-6}
+	\textcolor{gray}{2}& \textcolor{blue}{ai} & \multicolumn{2}{c|}{} & & \\ \hline
+	\textcolor{gray}{3}& \textcolor{blue}{les} & & & & \multicolumn{1}{c|}{\multirow{2}{*}{3}} \\ \cline{1-5}
+	\textcolor{gray}{4}& \textcolor{blue}{yeux} & & & &  \\ \hline
+	\textcolor{gray}{5}& \textcolor{blue}{noirs} & & & \multicolumn{1}{c|}{2} & \\ \hline
+	\end{tabular}
+	\end{center}
+		
+	\begin{columns}
+	
+	\begin{column}{0.3\textwidth}
+	\begin{itemize}
+		\item $\bar{f}_1 = \textcolor{blue}{\text{J' ai}}$
+		\item $\bar{e}_1 = \textcolor{red}{\text{I have}}$
+		\item $\text{start}_1 = 1$
+		\item $\text{end}_1 = 2$
+	\end{itemize}
+	\end{column}
+	\begin{column}{0.3\textwidth}
+	\begin{itemize}
+		\item $\bar{f}_2 = \textcolor{blue}{\text{noirs}}$
+		\item $\bar{e}_2 = \textcolor{red}{\text{black}}$
+		\item $\text{start}_2 = 5$
+		\item $\text{end}_2 = 5$
+	\end{itemize}
+	\end{column}
+	\begin{column}{0.3\textwidth}
+	\begin{itemize}
+		\item $\bar{f}_3 = \textcolor{blue}{\text{les yeux}}$
+		\item $\bar{e}_3 = \textcolor{red}{\text{eyes}}$
+		\item $\text{start}_3 = 3$
+		\item $\text{end}_3 = 4$
+	\end{itemize}
+	\end{column}
+	
+	\end{columns}
+}
+
+\section{Estimation}
+\frame{
+	\frametitle{Estimation}
+	
+	Reordering model
+	\begin{itemize}
+		\item exponential $\delta(x) = \alpha^{|x|}$
+	\end{itemize}
+	
+	\pause
+	
+	~
+	
+	Phrase translation model
+	\begin{itemize}
+		\item EM: requires computing {\bf expected counts} of unseen events (phrase alignments) \hfill \citep{Marcu+2002:JPBSMT}\\ 
+		\citet{DeNero+2008:complexity} proved the problem NP-complete \pause
+		\item Heuristic: view phrase pairs as {\bf observed}\\
+		irrespective of context or overlap \hfill \citep{Koehn+2003:pbsmt}
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Phrase pairs from word alignments}
+	
+	%\citet{Koehn+2003:PBSMT}
+	\only<1>{
+		\includegraphics[scale=0.5]{"img/PB extraction 0"}
+	}
+	\only<2>{
+		\includegraphics[scale=0.5]{"img/PB extraction 1"}
+	}
+	\only<3>{
+		\includegraphics[scale=0.5]{"img/PB extraction 1b"}
+	}
+	\only<4>{
+		\includegraphics[scale=0.5]{"img/PB extraction 2"}
+	}
+	\only<5>{
+		\includegraphics[scale=0.5]{"img/PB extraction 2b"}
+	}
+	\only<6>{
+		\includegraphics[scale=0.5]{"img/PB extraction 3"}
+	}
+	\only<7>{
+		\includegraphics[scale=0.5]{"img/PB extraction 4"}
+	}
+	\only<8>{
+		\includegraphics[scale=0.5]{"img/PB extraction 5"}
+	}
+	\only<9>{
+		\includegraphics[scale=0.5]{"img/PB extraction all"}
+	}
+	
+	
+	\begin{itemize}
+		\item<2-> multiple derivations can explain an ``observed'' phrase pair \\
+		\item<9> we extract all of them once, irrespective of derivation
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Phrase extraction}
+				Let $(\bar{f},\bar{e})$ be a phrase pair\\
+				Let $A$ be an alignment matrix\\
+				\pause
+				\begin{block}{$(\bar{f},\bar{e})$ consistent with $A$ if, and only if:}
+					\begin{itemize}
+						\pause
+						\item Words in $\bar{f}$, if aligned, align only with words in $\bar{e}$\\
+						\pause	
+						\begin{tiny}
+						\begin{columns}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline 
+							\cellg $\bullet$ & \cellg & \cellg \\ \hline
+							\cellg & \cellg $\bullet$ & \cellg $\bullet$ \\ \hline
+							 &  & \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & \cellg & \cellg \\ \hline
+							\cellg & \cellg $\bullet$ & \cellg $\bullet$ \\ \hline
+							\cellg & \cellg & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cred{I}} \\ \hline
+							\cellg $\bullet$ & \cellg & \\ \hline
+							\cellg & \cellg $\bullet$ & \textcolor{red}{$\bullet$} \\ \hline
+							 &  & \\ \hline
+						\end{tabular}
+						\end{column}
+						\end{columns}
+						\end{tiny}
+						
+						\pause
+						\item Words in $\bar{e}$, if aligned, align only with words in $\bar{f}$\\
+						\pause
+						\begin{tiny}
+						\begin{columns}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & \cellg & \\ \hline
+							\cellg & \cellg $\bullet$ & \\ \hline
+							\cellg & \cellg $\bullet$ & \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & \cellg & \cellg \\ \hline
+							\cellg & \cellg $\bullet$ & \cellg \\ \hline
+							\cellg & \cellg $\bullet$ & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cred{I}} \\ \hline
+							\cellg $\bullet$ & \cellg & \\ \hline
+							\cellg & \cellg $\bullet$ & \\ \hline
+							 & \textcolor{red}{$\bullet$} & \\ \hline
+						\end{tabular}
+						\end{column}
+						\end{columns}
+						\end{tiny}
+								
+						\pause			
+						\item $(\bar{f},\bar{e})$ must contain at least one alignment point\\
+						\pause
+						\begin{tiny}
+						\begin{columns}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & \cellg & \cellg \\ \hline
+							\cellg  &\cellg $\bullet$ & \cellg \\ \hline
+							\cellg  & \cellg & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & & \\ \hline
+							  & \cellg $\bullet$ & \cellg \\ \hline
+							 & \cellg & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cred{I}} \\ \hline
+							$\bullet$ &  & \\ \hline
+							 & $\bullet$ & \\ \hline
+							 &  & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\end{columns}
+						\end{tiny}						
+						
+					\end{itemize}
+				\end{block}
+	
+}
+
+\frame{
+	\frametitle{Scoring}
+	
+	Number of times a (consistent) phrase pair is ``observed''
+	$$c(\bar{f}, \bar{e})$$
+	
+	Relative frequency counting
+	$$\phi(\bar{f}|\bar{e}) = \frac{c(\bar{f}, \bar{e})}{\sum_{\bar{f}'} c(\bar{f}', \bar{e})}$$
+
+}
+
+\section{Inference}
+
+\frame{
+	\frametitle{Decoding}
+
+	Disambiguation problem
+	\begin{align*}
+		\hat{E} 
+		&= \argmax_E P(E)P(F|E) \\
+		&= \argmax_E P(E) \sum_S P(F,S|E)
+	\end{align*}
+	{\small \hfill NP-complete \citep{Simaan:2002:complexity}}
+	
+	\pause
+	
+	~
+	
+	Viterbi approximation
+	\begin{align*}
+		\hat{E} 
+		&\approx \argmax_{E, S} P(E) P(F,S|E)\\
+	\end{align*}
+
+}
+
+\frame{
+	\frametitle{Viterbi decoding}
+	The alignment space (or space of \emph{derivations})
+	\begin{itemize}
+		\item $O(2^n)$ segmentations\\
+		\item $O(n!)$ permutations\\
+		\item $O(t^n)$ substitutions\\
+	\end{itemize}
+	
+	Packed representation using finite-state transducers
+	$$O(n^2 \times \alert{2^n} \times t)$$
+	\hfill NP-complete (TSP) \citep{Knight:1999:tsp,Zaslavskiy+2009:tsp} 
+	
+	\begin{itemize}
+		\item<2-> distortion limit $d$: $2^n \to 2^d$
+		\item<3-> maximum phrase length $m$: $n^2 \to n \times m$
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Complete model}
+	
+	\begin{align*}
+		\alert{P(E)}P(F,S|E) 
+		&= \alert{\prod_{j=1}^{|E|} \psi(e_j|e_{j - n + 1}^{j - 1})} \prod_{i=1}^{|S|} \textcolor{blue}{\phi(\bar{f}_i|\bar{e}_i)} \textcolor{Green}{\delta(\text{start}_i - \text{end}_{i-1} - 1)}
+	\end{align*}
+	
+	\begin{itemize}
+		\item alignment space $O(\textcolor{Green}{2^d} \times \textcolor{blue}{n \times t \times m})$
+		\item weighted derivations $O(\textcolor{Green}{2^d} \times \textcolor{blue}{n \times t \times m} \times \alert{|\Delta|^{k-1}})$ \\
+		where $P(E)$ is a $k$-gram LM components over $\Delta^*$\\
+		and $|\Delta| \propto t \times n$
+	\end{itemize}
+
+	\only<2->{
+	\textbf<2->{This space is too large for exact inference}
+	\begin{itemize}
+		\item<3> pruning: beam search
+	\end{itemize}
+	}
+	
+}
+
+\section{Conclusions}
+
+\frame{
+	\frametitle{Wrap up: model}
+	
+	\begin{itemize}
+		\item relies on Viterbi word-alignments \pause \\
+		Is it a good thing? \pause
+		\item underlying model is unclear \pause \\
+		Do you see why? \pause
+		\item heuristic estimation is straightforward \pause \\
+		Can you guess why it works? 
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Wrap up: complexity}
+	
+	Alignment space
+	\begin{itemize}
+		\item unconstrained reordering: NP-complete \pause \\
+		Do you think it is sensible to allow all permutations? \pause
+		\item tractability requires an ad-hoc distortion limit \pause \\
+		Do you see the problem here? 
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Wrap up: reordering}
+	
+	Local
+	\begin{itemize}
+		\item implicitly modelled within phrases \\ \pause
+		e.g. \ftext{prob\`eme difficile}/\textcolor{red}{difficult problem} \\ \pause
+		e.g. \ftext{ne mange pas}/\textcolor{red}{do not eat}\\ \pause
+		Do you see any problem?
+	\end{itemize}
+	
+	\pause
+	
+	~
+	
+	Nonlocal
+	\begin{itemize}
+		\item penalised in general \pause
+		\item arbitrarily constrained \pause \\
+		Does it suit every language pair? 
+	\end{itemize}
+}
+
+\section{Extensions (further reading)}
+
+\frame{
+	\frametitle{Discriminative models}
+	
+	Linear model
+	\begin{align*}
+		\text{score}(E, A|F) 
+			&= \theta^\top h(F, E, A)
+	\end{align*}
+	
+	Features
+	\begin{itemize}
+		\item language model
+		\item forward translation probability $P(F|E)$
+		\item backward translation probability $P(E|F)$
+		\item forward and backward lexical smoothing
+		\item word penalty 
+		\item phrase penalty
+	\end{itemize}
+	
+	Feature weights can be optimised \hfill \citep{Och:2003:MERT} %,Smith+2006:MRtrain,Gimpel+2012:RLM}
+	
+}
