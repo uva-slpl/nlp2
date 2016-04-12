@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Test data available
+title:  Test data for project 1 available
 date:   2016-04-12
 author: Philip
 categories: labs
