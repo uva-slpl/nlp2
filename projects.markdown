@@ -15,8 +15,8 @@ First of all, you will implement word alignment models. These models typically p
 Resources:
 
 * [project description](resources/project1/project1.pdf)
-* [training data](resources/project1/NLP2_Project1_data.tar.gz)
-* test data
+* [training data](resources/project1/training.tar.gz)
+* [test data](resources/project1/testing.tar.gz)
 
 # Project 2: translation (06 May)
 
