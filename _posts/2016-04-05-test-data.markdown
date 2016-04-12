@@ -1,0 +1,16 @@
+---
+layout: post
+title:  Test data available
+date:   2016-04-12
+author: Philip
+categories: labs
+---
+
+We have uploaded the test data. In the same folder you will find the gold standard alignments and an evaluation script.
+Please make sure to read all the READMEs and contact Philip if you have any questions. The output alignments need
+to be in a specific format for the evaluation script to work. You will encounter unknown words in the test set. 
+Simply leave them unaligned.
+
+Finally, some of you have pointed out that there are many duplicate lines in the training data. The same will occur in
+the test data. The reason is that these are parliament proceedings and you repeatedly get lines like "Applaus!" or 
+"The president:". So this is really just a data artifact.
