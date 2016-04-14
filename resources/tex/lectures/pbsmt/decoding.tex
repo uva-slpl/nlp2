@@ -1,0 +1,88 @@
+\section{Decoding}
+\subsection{Complexity}
+\frame{
+        \frametitle{Decoding}
+
+        Disambiguation problem
+        \begin{align*}
+                \hat{E} 
+                &= \argmax_E P(E)P(F|E) \\
+                &= \argmax_E P(E) \sum_A P(F,A|E)
+        \end{align*}
+        {\small \hfill NP-complete \citep{Simaan:2002:complexity}}
+
+        \pause
+
+        ~
+
+        Viterbi approximation
+        \begin{align*}
+                \hat{E} 
+                &\approx \argmax_{E, A} P(E) P(F,A|E)\\
+        \end{align*}
+
+}
+
+\frame{
+	\frametitle{Viterbi decoding}
+	The alignment space (or space of \emph{derivations})
+	\begin{itemize}
+		\item $O(2^n)$ segmentations\\
+		\item $O(n!)$ permutations\\
+		\item $O(t^n)$ substitutions\\
+	\end{itemize}
+	\pause
+	~
+	
+	Packed representation using finite-state transducers
+	$$O(n^2 \times \alert{2^n} \times t)$$
+	\hfill NP-complete (TSP) \citep{Knight:1999:tsp,Zaslavskiy+2009:tsp} 
+	
+	
+}
+
+\frame{
+	\frametitle{Complete model}
+	
+	\begin{align*}
+		\alert{P(E)}P(F,S|E) 
+		&= \alert{\prod_{j=1}^{|E|} \psi(e_j|e_{j - n + 1}^{j - 1})} \prod_{i=1}^{|S|} \textcolor{blue}{\phi(\bar{f}_i|\bar{e}_i)} \textcolor{Green}{\delta(\text{start}_i - \text{end}_{i-1} - 1)}
+	\end{align*}
+
+	Approximations:
+	\begin{itemize}
+		\item distortion limit $d$: $2^n \to 2^d$
+		\item maximum phrase length $m$: $n^2 \to n \times m$
+	\end{itemize}
+	
+	~
+
+	\begin{itemize}
+
+		\item alignment space $O(\textcolor{Green}{2^d} \times \textcolor{blue}{n \times m}\times t )$
+		\item weighted derivations $O(\textcolor{Green}{2^d} \times \textcolor{blue}{n \times m} \times t \times \alert{|\Delta|^{k-1}})$ \\
+		where $P(E)$ is a $k$-gram LM components over $\Delta^*$\\
+		and $|\Delta| \propto t \times n$
+	\end{itemize}
+
+	\only<2->{
+	\textbf<2->{This space is too large for exact inference}
+	\begin{itemize}
+		\item<3> pruning: beam search
+	\end{itemize}
+	}
+	
+}
+
+\frame{
+    \frametitle{Complexity}
+	 \citep{Knight:1999:tsp}
+	\begin{center}
+       \only<1>{
+                \includegraphics[width=0.7\textwidth]{"img/knight-tsp1"}
+        }
+        \only<2>{
+                \includegraphics[width=0.5\textwidth]{"img/knight-tsp2"}
+        }
+	\end{center}
+}

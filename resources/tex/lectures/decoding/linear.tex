@@ -1,0 +1,79 @@
+\section{Linear models}
+
+\frame{
+	\frametitle{Linear models}
+	
+	$$f(\mdd) = \mww^\top \bPhi(\mdd)$$
+	
+	where
+	\begin{itemize}
+		\item $\mww \in \Reals^m$ 
+		\item $\bPhi(\mdd) = \angbrack{\Phi_1(\mdd), \ldots, \Phi_m(\mdd)}$
+		\item $\Phi_i(\mdd) \in \Reals$ is a feature function
+		\item $w_i$ is the relative contribution of the $i$th feature
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Linear models and independence assumptions}
+	
+	\begin{align}
+		f(\mdd) 
+		 &= \mww^\top \bPhi(\mdd) \\
+		 &= \sum_{i=1}^m w_i \Phi_i(\mdd)  \\ 
+		 &= \sum_{i=1}^m w_i  \prod_{e \in \mdd} \phi_i(e)   \\ 
+		 &= \prod_{e \in \mdd} \sum_{i=1}^m w_i \phi_i(e)  \\ 
+		 &= \prod_{e \in \mdd} \mww^\top \bphi(e)
+	\end{align}
+	
+	Assumption
+	\begin{itemize}
+		\item $\Phi_i(\mdd)$ factorises over edges\\
+		$\phi_i(e)$ is a local feature function
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Linear models and CFGs}
+	
+	Linear models can be expressed through hypergraphs using an appropriate semiring
+	
+}
+
+\section{Decision rules}
+
+\frame{
+	\frametitle{Decision rules}
+
+	Best translation (MAP)
+	$$\myy\ustar = \argmax_{\myy} \sum_{d \in \mDD_\myy} f(\mdd)$$
+	
+	~ \pause
+	
+	Best derivation (Viterbi)
+	$$\myy\ustar \approx \yield\left\{\argmax_{\mdd} f(\mdd)\right\}$$
+	\begin{itemize}
+		\item less disambiguation power
+		\item \textsc{Viterbi} semiring
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Other decision rules?}
+	
+	Minimum Bayes risk (MBR)
+	$$\myy\ustar = \argmin_{\myy'} \expec{L(\myy', \myy)}{p(\myy)}$$
+	
+	\begin{itemize}
+		\item requires the underlying model to have a probabilistic interpretation
+		\item can be estimated through sampling
+	\end{itemize}
+	
+	\pause
+	
+	Log-linear models
+	$$p(\mdd) = \frac{\exp(f(\mdd))}{\sum_{\mdd'} \exp(f(\mdd'))} \propto \exp\left(\sum_{e \in \mdd} \mww^\top \bphi(e)\right) = \prod_{e \in \mdd} \exp(\mww^\top \bphi(e))$$
+	\hfill \textsc{LogProb} semiring
+	
+	
+}

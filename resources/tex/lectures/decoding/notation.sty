@@ -1,0 +1,42 @@
+% math operators
+
+\newcommand{\myint}[2]{\int\ensuremath{#1}\mathrm{d}{\ensuremath{#2}}}
+
+\newcommand{\myintsup}[3]{\int_{\ensuremath{#3}}\ensuremath{#1}\mathrm{d}{\ensuremath{#2}}}
+
+\newcommand{\expec}[2]{\ensuremath{\angbrack{\ensuremath{#1}}_{\ensuremath{#2}}}}
+
+\newcommand{\mydera}[2]{\ensuremath{\frac{\partial\ensuremath{#1}}{\partial \ensuremath{#2}}}}
+
+\newcommand{\myderb}[2]{\ensuremath{\frac{\partial}{\partial \ensuremath{#2}}\ensuremath{#1}}}
+
+
+
+% brackets 
+\newcommand{\angbrack}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\nobrack}[1]{\ensuremath{#1}}
+\newcommand{\itembrack}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\rulebrack}[1]{\ensuremath{\angbrack{#1}}}
+
+
+% set operations
+\newcommand{\union}{\ensuremath{\cup}\xspace}
+\newcommand{\inter}{\ensuremath{\cap}\xspace}
+\newcommand{\norm}[1]{\|#1\|}
+
+% arrows
+\newcommand{\la}{\ensuremath{\leftarrow}\xspace}
+\newcommand{\ra}{\ensuremath{\rightarrow}\xspace}
+\newcommand{\ara}[1]{\ensuremath{\xrightarrow[]{#1}}\xspace}
+\newcommand{\xra}[1]{\ensuremath{\xrightarrow[#1]{ }}\xspace}
+\newcommand{\nura}[1]{\ensuremath{\xrightarrow[\nu_{#1}]{ }}\xspace}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\yield}{yield}
+\DeclareMathOperator{\tail}{tail}
+\DeclareMathOperator{\head}{head}
+
+
+% weighted deduction
+\newcommand{\drule}[3]{\dfrac{#1}{#2} ~~ #3}

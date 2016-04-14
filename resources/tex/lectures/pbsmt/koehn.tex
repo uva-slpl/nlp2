@@ -1,0 +1,384 @@
+\section{Phrase-based SMT}
+\subsection{Motivation}
+\frame{
+    \frametitle{From word-based to phrase-based SMT}
+Capturing non-compositional translation equivalents
+	\begin{itemize}
+	\item multi-word expressions
+		\begin{itemize}
+		\item (Fr) ``est-ce que'' $\leftrightarrow$ ``do/did''
+		\item ``kick the bucket'' $\leftrightarrow$ ``die''
+		\end{itemize}
+	\pause
+	\item morphology / inflection
+		\begin{itemize}
+		\item very limited in English
+		\item verb inflection and noun agreement in Romance languages
+		\pause
+		\item ``est-ce que tu voulais'' $\leftrightarrow$ ``did you want''\\
+			({\em ? you want-P{\scriptsize ast}-you} $\leftrightarrow$ {\em ?-P{\scriptsize ast} you want})
+		\item ``tu as gagn\'e / gagnais '' $\not\leftrightarrow$ ``you won / have won'' (aspect)\\
+		\end{itemize}
+	\pause
+	\item local reorderings \\
+		\begin{itemize}
+		\item ``un homme grand'' $\leftrightarrow$ ``a tall man'' \\ 
+		\item ``un grand homme''$\leftrightarrow$ ``a great man''
+		\end{itemize}
+	\end{itemize}
+
+}
+
+\frame{
+    \frametitle{Example}
+
+	\includegraphics[scale=0.5]{"img/PB extraction 2"}
+	
+}
+
+\frame{
+    \frametitle{Generative story}
+	A new hidden variable: segmentation $S$
+
+	 ~
+
+	One possible story
+	\begin{align*}
+		P(F|E) 
+			&= \sum_S \sum_A P(S,A,F|E) \\
+			&= \sum_S \sum_A P(S|E) \times P(A|S,E) \times P(F|A,S, E) \\
+			%&= \sum_A \prod_k t(\bar{f}_k|\bar{e}_k) d(\text{start}_k - \text{end}_{k-1} - 1)
+	\end{align*}
+
+	\pause
+	\begin{center}
+	\begin{tabular}{l  r}
+		I$_1$ have$_2$ black$_3$ eyes$_4$ & input\\ \pause
+		{[\textcolor{blue}{I$_1$ have$_2$}] [\textcolor{Green}{black$_3$ }] [\textcolor{red}{eyes$_4$}]} & segmentation\\ \pause
+		{[\textcolor{blue}{I$_1$ have$_2$}]$_1$ [\textcolor{red}{eyes$_4$}]$_3$ [\textcolor{Green}{black$_3$ }]$_2$} & ordering\\		\pause
+		{[\textcolor{blue}{J' ai}]$_1$ [\textcolor{red}{les yeux}]$_3$ [\textcolor{Green}{noirs}]$_2$} & translation \\			
+	\end{tabular}
+	\end{center}
+
+}
+
+\subsection{Generative Modelling}
+\frame{
+    \frametitle{(MLE) inference in phrase-based models}
+	\begin{itemize}
+	\item \citep{Marcu+2002:JPBSMT}
+		\begin{itemize}
+		\item hidden segmentation and alignment
+		\item uniform segmentation, infer distortion and translation probabilities 
+		\pause
+		\item approximate inference, overfitting
+		\end{itemize}
+	\pause
+	\item \citep{DeNero+2006:heuristics}\\
+		\begin{itemize}
+		\item comparable to \citep{Marcu+2002:JPBSMT}, with observed (word) alignments
+		\pause
+		\item approximate inference, overfitting
+		\end{itemize}
+	\pause
+	\item \citep{Koehn+2003:pbsmt}\\
+		\begin{itemize}
+		\item observed (word) alignment and phrase pairs (\alert{not segmentations!})
+		\item parametric distortion and heuristic translation estimates  
+		\end{itemize}
+	\pause
+	\item \citep{Mylonakis+2008:itgprior}
+		\begin{itemize}
+		\item observed (word) alignment and phrase pairs
+		\item ITG-based segmentation, infer translation probabilities  
+		\end{itemize}
+	\end{itemize}
+
+}
+
+
+\subsection{Discriminative modelling}
+\frame{
+    \frametitle{The Alignment-Template Approach}
+
+	\citep{Och+2000:atm} laid out the fundations for \citep{Koehn+2003:pbsmt}
+
+	~
+\begin{center}	
+\includegraphics[scale=0.4]{"img/och99-atm"}
+\end{center}
+	~
+
+	Alignment template: (class) phrase pair \& internal alignment
+	
+}
+
+\frame{
+    \frametitle{Model}
+        \begin{align*}
+                \text{score}(E,S, A|F) 
+                        &= \theta^\top h(F, E, A, S)
+        \end{align*}
+
+	~
+	\pause
+	features include
+	\begin{itemize}
+	\item language model
+	\item alignment (distortion)
+	\item translation
+	\end{itemize}
+	~
+	\pause
+	independence assumptions
+	\begin{itemize}
+	\item $h_A(F,E,A,S)= \log \prod_k p(a_k|F,E,A,S)$
+	\item $h_F(F,E,A,S)= \log \prod_k p(\bar{f}_k|F,E,A,S)$
+	\end{itemize}	
+}
+
+\frame{
+    \frametitle{Alignment symmetrization}
+\begin{center}
+\includegraphics[scale=0.45]{"img/symal"}
+\end{center}
+}
+
+\frame{
+    \frametitle{Alignment consistency}
+
+				Let $(\bar{f},\bar{e})$ be a phrase pair\\
+				Let $A$ be an alignment matrix\\
+				\pause
+				\begin{block}{$(\bar{f},\bar{e})$ consistent with $A$ if, and only if:}
+					\begin{itemize}
+						\pause
+						\item Words in $\bar{f}$, if aligned, align only with words in $\bar{e}$\\
+						\pause	
+						\begin{tiny}
+						\begin{columns}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline 
+							\cellg $\bullet$ & \cellg & \cellg \\ \hline
+							\cellg & \cellg $\bullet$ & \cellg $\bullet$ \\ \hline
+							 &  & \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & \cellg & \cellg \\ \hline
+							\cellg & \cellg $\bullet$ & \cellg $\bullet$ \\ \hline
+							\cellg & \cellg & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cred{I}} \\ \hline
+							\cellg $\bullet$ & \cellg & \\ \hline
+							\cellg & \cellg $\bullet$ & \textcolor{red}{$\bullet$} \\ \hline
+							 &  & \\ \hline
+						\end{tabular}
+						\end{column}
+						\end{columns}
+						\end{tiny}
+						
+						\pause
+						\item Words in $\bar{e}$, if aligned, align only with words in $\bar{f}$\\
+						\pause
+						\begin{tiny}
+						\begin{columns}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & \cellg & \\ \hline
+							\cellg & \cellg $\bullet$ & \\ \hline
+							\cellg & \cellg $\bullet$ & \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & \cellg & \cellg \\ \hline
+							\cellg & \cellg $\bullet$ & \cellg \\ \hline
+							\cellg & \cellg $\bullet$ & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cred{I}} \\ \hline
+							\cellg $\bullet$ & \cellg & \\ \hline
+							\cellg & \cellg $\bullet$ & \\ \hline
+							 & \textcolor{red}{$\bullet$} & \\ \hline
+						\end{tabular}
+						\end{column}
+						\end{columns}
+						\end{tiny}
+								
+						\pause			
+						\item $(\bar{f},\bar{e})$ must contain at least one alignment point\\
+						\pause
+						\begin{tiny}
+						\begin{columns}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & \cellg & \cellg \\ \hline
+							\cellg  &\cellg $\bullet$ & \cellg \\ \hline
+							\cellg  & \cellg & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cblue{C}} \\ \hline
+							\cellg $\bullet$ & & \\ \hline
+							  & \cellg $\bullet$ & \cellg \\ \hline
+							 & \cellg & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\begin{column}{1cm}
+						\begin{tabular}{|p{0.1cm}|p{0.1cm}|p{0.1cm}|}
+							\multicolumn{3}{c}{\cred{I}} \\ \hline
+							$\bullet$ &  & \\ \hline
+							 & $\bullet$ & \\ \hline
+							 &  & \cellg \\ \hline
+						\end{tabular}
+						\end{column}
+						\end{columns}
+						\end{tiny}						
+						
+					\end{itemize}
+				\end{block}
+	
+}
+
+\frame{
+    \frametitle{Phrase extraction}
+	
+	%\citet{Koehn+2003:PBSMT}
+	\only<1>{
+		\includegraphics[scale=0.5]{"img/PB extraction 0"}
+	}
+	\only<2>{
+		\includegraphics[scale=0.5]{"img/PB extraction 1"}
+	}
+	\only<3>{
+		\includegraphics[scale=0.5]{"img/PB extraction 1b"}
+	}
+	\only<4>{
+		\includegraphics[scale=0.5]{"img/PB extraction 2"}
+	}
+	\only<5>{
+		\includegraphics[scale=0.5]{"img/PB extraction 2b"}
+	}
+	\only<6>{
+		\includegraphics[scale=0.5]{"img/PB extraction 3"}
+	}
+	\only<7>{
+		\includegraphics[scale=0.5]{"img/PB extraction 4"}
+	}
+	\only<8>{
+		\includegraphics[scale=0.5]{"img/PB extraction 5"}
+	}
+	\only<9>{
+		\includegraphics[scale=0.5]{"img/PB extraction all"}
+	}
+	
+	
+	\begin{itemize}
+		\item<2-> multiple derivations can explain an ``observed'' phrase pair \\
+		\item<9> we extract all of them once, irrespective of derivation
+	\end{itemize}
+
+}
+
+\frame{
+    \frametitle{Translation estimates}
+
+	Number of times a (consistent) phrase pair is ``observed''
+	$$c(\bar{f}, \bar{e})$$
+	
+	Relative frequency counting
+	$$\phi(\bar{f}|\bar{e}) = \frac{c(\bar{f}, \bar{e})}{\sum_{\bar{f}'} c(\bar{f}', \bar{e})}$$
+}
+
+\frame{
+    \frametitle{Features}
+
+	\begin{itemize}
+		\item language model
+		\item forward translation probability $P(F|E)$
+		\item backward translation probability $P(E|F)$
+		\item forward and backward lexical smoothing
+		\item word penalty 
+		\item phrase penalty
+		\item distance-based reordering model
+		\item lexical reordering model
+	\end{itemize}
+	
+}
+
+
+\frame{
+	\frametitle{Distance-based reordering}
+	\begin{itemize}	
+	\item exponential $\delta(d_k) = \alpha^{d_k}, \alpha < 1$
+	\item $d_k=|\textrm{start}_k - \textrm{end}_{k-1} -1|$ 
+	\end{itemize}
+	~
+	\pause
+	
+	\begin{center}
+	\begin{tabular}{| l | l | p{1cm} | p{1cm} | p{1cm} | p{1cm} |}
+	\hline
+	& & \textcolor{red}{I} & \textcolor{red}{have} & \textcolor{red}{black} & \textcolor{red}{eyes} \\ \hline
+	\textcolor{gray}{1}& \textcolor{blue}{J'} & \multicolumn{2}{c|}{\multirow{2}{*}{1}}  & & \\ \cline{1-2}\cline{5-6}
+	\textcolor{gray}{2}& \textcolor{blue}{ai} & \multicolumn{2}{c|}{} & & \\ \hline
+	\textcolor{gray}{3}& \textcolor{blue}{les} & & & & \multicolumn{1}{c|}{\multirow{2}{*}{3}} \\ \cline{1-5}
+	\textcolor{gray}{4}& \textcolor{blue}{yeux} & & & &  \\ \hline
+	\textcolor{gray}{5}& \textcolor{blue}{noirs} & & & \multicolumn{1}{c|}{2} & \\ \hline
+	\end{tabular}
+	\end{center}
+		
+	\begin{columns}
+	
+	\begin{column}{0.3\textwidth}
+	\begin{itemize}
+		\item $\bar{f}_1 = \textcolor{blue}{\text{J' ai}}$
+		\item $\bar{e}_1 = \textcolor{red}{\text{I have}}$
+		\item $\text{start}_1 = 1$
+		\item $\text{end}_1 = 2$
+	\end{itemize}
+	\end{column}
+	\begin{column}{0.3\textwidth}
+	\begin{itemize}
+		\item $\bar{f}_2 = \textcolor{blue}{\text{noirs}}$
+		\item $\bar{e}_2 = \textcolor{red}{\text{black}}$
+		\item $\text{start}_2 = 5$
+		\item $\text{end}_2 = 5$
+	\end{itemize}
+	\end{column}
+	\begin{column}{0.3\textwidth}
+	\begin{itemize}
+		\item $\bar{f}_3 = \textcolor{blue}{\text{les yeux}}$
+		\item $\bar{e}_3 = \textcolor{red}{\text{eyes}}$
+		\item $\text{start}_3 = 3$
+		\item $\text{end}_3 = 4$
+	\end{itemize}
+	\end{column}
+	
+	\end{columns}
+}
+
+\frame{
+	\frametitle{Conclusion}
+
+	\begin{itemize}
+	\item generative modelling requires approximations
+	\item overfitting in fragment models (DOP)
+	\item \citep{Koehn+2003:pbsmt} ignore segmentation:\\
+		good feature choice in discriminative model
+	\item reordering remains an issue 
+	\end{itemize}
+}
