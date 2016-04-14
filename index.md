@@ -12,17 +12,23 @@ We will start with word-level models of MT for inducing alignments; Only touch u
 
 # Format
 
-This is a research-oriented course. A  number of lectures is given by the lecturers and invited speakers. Depending on number of students, the aim is to have students work in pairs on presenting an article indicated by the course organisers:
+This is a research-oriented course. A  number of lectures is given by the lecturers and invited speakers. Depending on number of students, we will have discussion sessions where students present selected articles to the class.
 
-* prepare a 30min presentation of the article
-* present the article to fellow students; lead a discussion on the article
-* all students contribute to the discussion about the article for 10-15mins after presentation
-
-# Homework
+## Homework
 
 Read and prepare the articles before the session. 
 You are expected to participate in the discussions during the session and prepare questions about the articles. 
 You could be questioned about the articles or possibly even asked to sketch some technical aspects of the article on the board, should the need arise.
+
+## Discussion sessions
+
+A group (no more than 3 students) selects a paper to be discussed. Then
+
+1. Everyone reads the chosen paper before the session
+2. The selected group gives a talk (up to 30 minutes) presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
+3. Everyone participates in a discussion
+4. Everyone (including the team members) submit a short piece of writing (typically a page) about the paper/talk. In this "report" you should summarise the paper (e.g. challenge, technical contributions) and you can also be critical (e.g. about assumptions, experimental setup, conclusions). Ideally, you wil prepare this report before the actual discussion, but obviously the discussion itself might contribute to your understanding of the paper. Thus, you can submit your report until midnight after the discussion.
+
 
 # Projects
 
