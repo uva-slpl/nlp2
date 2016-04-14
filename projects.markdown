@@ -17,6 +17,7 @@ Resources:
 * [project description](resources/project1/project1.pdf)
 * [training data](resources/project1/training.tar.gz)
 * [test data](resources/project1/testing.tar.gz)
+* [development data](resources/project1/dev-data.tar.gz)
 
 # Project 2: translation (06 May)
 
