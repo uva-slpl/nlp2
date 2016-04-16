@@ -98,7 +98,7 @@ IBM models 1 and 2 are asymmetric models, \citep{Liang+2006:ABA} introduce a sim
 \subsection*{Over-parameterisation}
 IBM model 2 is simple and inference is efficient, which is particularly important given that parallel corpora might contain millions of sentences. 
 However, estimation for IBM model 2 is somewhat crude due its over-parameterisation. 
-The model explicitly conditions on sentence length (source and target) and on alignment point amounting to $O(n^4)$ parameters.
+The model explicitly conditions on sentence length (source and target) and on alignment point amounting to $O(n^2)$ parameters.
 \cite{Dyer+2013:IBM2} use a parametric alignment distribution which reduces the number of parameters to $2$ (a null alignment probability and a precision parameter).
 
 \subsection*{Non-convexity}
