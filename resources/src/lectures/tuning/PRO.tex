@@ -1,0 +1,46 @@
+
+\frame{\frametitle{PRO\cite{pro}}
+
+PRO is a simple alternative that can allow training lots of features.
+
+\pause First sample from n-best list many hypotheses pairs\\
+$(t_{better}, t_{worse})$ where $eval(t_{better},r) > eval(t_{worse},r)$
+
+\pause For each pair
+
+\begin{align}
+\visible<3->{score(s,t_{better}) & > score(s,t_{worse}) \nonumber }
+\visible<4->{\\ \mathbf{\lambda}^T \mathbf{h}(s,t_{better}) & > \mathbf{\lambda}^T \mathbf{h}(s,t_{worse})  \nonumber}
+\visible<5->{ \\ \mathbf{\lambda}^T (\mathbf{h}(s,t_{better})-\mathbf{h}(s,t_{worse})) & > 0 \nonumber}
+\visible<6->{ \\ \mathbf{\lambda}^T (\mathbf{h}(s,t_{worse})-\mathbf{h}(s,t_{better})) & < 0 \nonumber}
+\end{align}
+
+\vspace{55pt}
+
+}
+
+
+
+\frame{\frametitle{PRO\cite{pro}}
+
+PRO is a simple alternative that can allow training lots of features.
+
+First sample from n-best list many hypotheses pairs\\
+$(t_{better}, t_{worse})$ where $eval(t_{better},r) > eval(t_{worse},r)$
+
+For each pair
+
+
+\begin{align}
+score(s,t_{better}) & > score(s,t_{worse}) \nonumber \\
+\mathbf{\lambda}^T \mathbf{h}(s,t_{better}) & > \mathbf{\lambda}^T \mathbf{h}(s,t_{worse})  \nonumber \\
+\mathbf{\lambda}^T (\highlight{\mathbf{h}(s,t_{better})-\mathbf{h}(s,t_{worse})}) & > 0 \nonumber \\
+\mathbf{\lambda}^T (\highlight{\mathbf{h}(s,t_{worse})-\mathbf{h}(s,t_{better})}) & < 0 \nonumber
+\end{align}
+
+Train linear classifier with these as positive and negative training instance.
+
+\onslide<2->{Repeat this many times until convergence in n-best list}
+
+\onslide<3->{Repeat this with the loop trough the decoder}
+}

@@ -1,0 +1,71 @@
+\documentclass[table]{beamer}
+
+
+\usepackage{array}
+\usepackage{arydshln}
+\usepackage{latexsym}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{color}
+\usepackage{qtree}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{placeins}
+\usepackage{tabularx}
+\usepackage{fixltx2e}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{xcolor}
+
+% \input{Commands}
+
+\begin{document}
+%\title{BEER}   
+\title{Discriminative Training}
+\subtitle{MT Marathon lecture}
+\author{Milo\v{s} Stanojevi\'{c}}
+%\author{Milo\v{s} Stanojevi\'{c}\inst{1} \and Amir Kamran\inst{1} \and Ond\v{r}ej Bojar\inst{2}}
+%\setbeamerfont{institute}{size=\large}
+\institute{ILLC, University of Amsterdam}
+%\institute[shortinst]{\inst{1} ILLC, University of Amsterdam \and %
+%                      \inst{2} MFF \'UFAL, Charles University in Prague}
+\date{\today} 
+
+
+\frame{\titlepage} 
+
+% \frame{\frametitle{Table of contents}\tableofcontents} 
+
+\input{GenerativeToDiscriminative}
+
+%\input{Features}
+
+\input{MERT}
+
+\input{PRO}
+
+\input{MIRA}
+
+\input{Problems}
+
+\input{TuningTask}
+
+\section{Conclusion}
+
+\input{Conclusion}
+
+%\input{ViolatedPerceptron}
+
+\section{Bibliography}
+\begin{frame}[allowframebreaks]
+\tiny
+\frametitle{Bibliography}
+\bibliographystyle{apalike}
+\bibliography{BIB}
+\end{frame}
+
+\end{document}
+

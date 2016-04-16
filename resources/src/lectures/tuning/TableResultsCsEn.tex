@@ -1,0 +1,40 @@
+
+\begin{table}
+\begin{center}
+\small
+\begin{tabular}{rrr|r}
+\textbf{System Name}   & \multicolumn{2}{c|}{\textbf{TrueSkill Score}} & \textbf{BLEU}\\
+                       & \llap{Tun}ing-Only & All & \\
+\hline
+% \system{bleu-MIRA-dense	} & 0.3869 \\ \hline
+% \system{AFRL		        } & 0.3824 \\ \hline
+% \system{ILLC-UvA		} & 0.3740 \\ \hline
+% \system{USAAR-Tuna	} & 0.3699 \\ \hline
+% \system{bleu-MERT-dense		} & 0.3654 \\ \hline
+% \system{DCU		        } & 0.3600 \\ \hline
+% \system{METEOR-CMU		} & 0.3304 \\ \hline
+% \system{bleu-MIRA-sparse	} & 0.3198 \\ \hline
+% \system{HKUST			} & 0.3113 \\ \hline
+
+\system{bleu-MIRA-dense		} & 0.153   & -0.182 & 12.28 \\
+\system{ILLC-UvA		} & 0.108       & -0.189 & 12.05 \\
+\system{bleu-MERT-dense		} & 0.087   & -0.196 & 12.11 \\
+\system{AFRL		        } & 0.070   & -0.210 & 12.20 \\
+% cluster border in tuning-only
+\cline{2-2}
+\system{USAAR-Tuna	} & 0.011       & -0.220 & 12.16 \\
+\cline{3-3} % cluster border in all
+\system{DCU		        } & -0.027  & -0.263 & 11.44 \\
+% cluster border                           & \\
+\cline{2-2} % \specialrule{.3em}{.2em}{.2em}
+\system{METEOR-CMU		} & -0.101     & -0.297 & 10.88 \\
+\system{bleu-MIRA-sparse	} & -0.150 & -0.320 & 10.84 \\
+\system{HKUST			} & -0.150     & -0.320 & 10.99 \\ 
+\hline
+% \cline{1-2} % \specialrule{.3em}{.2em}{.2em}
+\system{HKUST-LATE		} & --- & --- & 12.20 \\
+\end{tabular}
+\caption{Results on Czech-English tuning}
+\label{table:results-csen}
+\end{center}
+\end{table}

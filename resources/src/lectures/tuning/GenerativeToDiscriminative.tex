@@ -1,0 +1,50 @@
+
+\newcommand{\argmax}[1]{\underset{#1}{\mathrm{argmax}}\ }
+
+\newcommand{\highlight}[1]{%
+  \colorbox{red!50}{$\displaystyle#1$}}
+
+\newlength{\overwritelength}
+\newlength{\minimumoverwritelength}
+\setlength{\minimumoverwritelength}{1cm}
+\newcommand{\overwrite}[3][red]{%
+  \settowidth{\overwritelength}{$#2$}%
+  \ifdim\overwritelength<\minimumoverwritelength%
+    \setlength{\overwritelength}{\minimumoverwritelength}\fi%
+  \stackrel
+    {%
+      \begin{minipage}{\overwritelength}%
+        \color{#1}\centering\small #3\\%
+        \rule{1pt}{9pt}%
+      \end{minipage}}
+    {\colorbox{#1!50}{\color{black}$\displaystyle#2$}}}
+
+
+
+\frame{\frametitle{Going from Generative to Discriminative models}
+Start with generative noisy channel model:
+\begin{align}
+t^* & = \argmax{t \in T(s)} p(t|s) 
+\onslide<2->{ = \argmax{t \in T(s)}  \frac{p(s|t)p(t)}{p(s)}}
+\onslide<3->{ = \argmax{t \in T(s)}  p(s|t)p(t)  \nonumber \\}
+\onslide<4->{& = \argmax{t \in T(s)}  \log p(s|t) + \log p(t)  \nonumber \\}
+\onslide<5->{& = \argmax{t \in T(s)}  \begin{bmatrix} 1 & 1 \end{bmatrix} \begin{bmatrix}\log p(s|t) \\ \log p(t)\end{bmatrix} \nonumber \\}
+\onslide<6->{& = \highlight{\argmax{t \in T(s)}  \mathbf{\lambda}^T \mathbf{h}(s,t)} \text{\ \ \ \ \ \ end with linear discriminative model} \nonumber}
+\end{align}
+% \onslide<6->{End with linear discriminative model}
+\onslide<7->{
+Why would we want to do this?
+\onslide<8->{
+\begin{itemize}
+\item We can add more indicators (features) of good translation
+\onslide<9->{\item We can give different weight to different features
+\onslide<10->{\item And all this done in a way to directly optimize desired metric}
+\end{itemize}
+}
+}
+}
+\onslide<11->{
+Disadvantage? Losing probabilistic interpretation
+}
+
+}

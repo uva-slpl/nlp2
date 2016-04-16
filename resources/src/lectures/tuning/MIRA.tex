@@ -1,0 +1,35 @@
+
+\frame{\frametitle{MIRA}
+
+\begin{itemize}
+\item MIRA is a \textbf{large-margin} online learning algorithm similar to perceptron \cite{watanabe}.
+\item Large margin is enforced between between hope and fear translations \cite{chiang2008online}
+\begin{align}
+t_{hope}= \argmax{t} score(s,t)+eval(t,r) \nonumber \\
+t_{fear}= \argmax{t} score(s,t)-eval(t,r) \nonumber 
+\end{align}
+\item Batch version \cite{kbmira} present in Moses.
+\end{itemize}
+
+
+}
+
+\frame{\frametitle{MIRA}
+
+\begin{align}
+t_{hope}= \argmax{t} score(s,t)+eval(t,r) \nonumber \\
+t_{fear}= \argmax{t} score(s,t)-eval(t,r) \nonumber
+\onslide<2->{\\ margin = score(s, t_{fear}) - score(s, t_{hope})  \nonumber}
+\onslide<3->{\\ cost = BLEU(t_{hope}, r) - BLEU(t_{fear}, r) \nonumber}
+\onslide<4->{\\ \mathbf{\lambda} \leftarrow \mathbf{\lambda}+\delta(\mathbf{h}(s,t_{hope})-\mathbf{h}(s,t_{fear})) \nonumber}
+\onslide<5->{\\ \delta = min\left(C, \frac{margin+cost}{||h(s,t_{hope})-h(s,t_{fear})||^2}\right) \nonumber}
+\end{align}
+
+\onslide<5->{$\delta$ changes (unlike in Perceptron) to increase the margin}
+
+\onslide<6->{Repeat this many times until convergence in n-best list}
+
+\onslide<7->{Repeat this with the loop trough the decoder}
+
+
+}
