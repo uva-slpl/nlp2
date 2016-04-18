@@ -19,13 +19,16 @@ Resources:
 * [test data](resources/project1/testing.tar.gz)
 * [development data](resources/project1/dev-data.tar.gz)
 
-# Project 2: translation (06 May)
+# Project 2: translation (09 May)
 
-You will then generate translations from a set of candidate permutations of the input. This is an application of formal tools such as transducers and synchronous grammars.
+You will generate candidate translations in two settings: monotone translation and translation of a set of candidate permutations of the input. 
+In this project, you will apply formal tools such as weighted transducers using the OpenFST library.
 
-1. Dictionary of phrases
-2. Set of permutations
-3. Translation options
+Resources:
+
+* [project description](resources/project2/project2.pdf)
+* [data](resources/project2/data/pbsmt.tgz)
+
 
 # Project 3: reranking (27 May)
 

@@ -1,0 +1,17 @@
+---
+layout: post
+title:  Project 2
+date:   2016-04-18
+author: Wilker
+categories: lectures
+---
+
+It is a sunny day outside, project 1 is over, and here I am announcing project 2!
+
+In [project 2](../../../../{{ site.projects }}) you will implement a complete translation system, very close to the standard phrase-based SMT approach.
+The description is now online, I suggest you read it through carefully a couple of times, than go play with OpenFST, install it, run some examples, and maybe check some of the tutorials.
+Finally, try and get to work before the next lab, so that you can bug Philip, Sophie and Milos with all sorts of questions.
+
+See you tomorrow for a lecture on decoding and decision rules.
+
+ 
