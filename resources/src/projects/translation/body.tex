@@ -1,0 +1,58 @@
+
+In this project you will implement a phrase-based translation system.
+You will experiment with monotone translation and lattice translation.
+Importantly, you will learn about formal tools such as finite-state transducers and the underlying complexity of the translation problem.
+
+In summary, you will experiment with
+
+\begin{itemize}
+	\item monotone translation
+	\item decision rules
+	\item preordering and lattice translation
+\end{itemize}
+
+You will not implement finite-state transducers (and their operations) yourselves, instead you are expected to use \texttt{OpenFST}.\footnote{\url{http://www.openfst.org}}.
+We advise you to use the command line tools provided with the library for they are {\bf much simpler to use} than the \texttt{C++} API.
+The illustrations in this document were all produced by \texttt{OpenFST} and that is what you should use in your report.
+
+We are providing data for a development set of English-Japanese sentence pairs.\footnote{\url{https://wilkeraziz.github.io/uva-nlp2/resources/project2/data/pbsmt.tgz}} The data amounts to 1416 sentence pairs, and even though you may experiment with as many sentences as you like, you are expected to submit results only for the first 100 sentence pairs. 
+The data folder contains \textsc{Readme} files with additional information, but in sum you will find:
+\begin{itemize}
+	\item Source, reference and permutations
+	\item Phrase tables
+	\item Examples of packed permutations
+	\item Examples of translations
+	\item Model parameters
+\end{itemize}
+
+
+\section{Phrase-based MT}
+
+
+In phrase-based MT \citep{Koehn+2003:pbsmt}, we do not have a proper generative model from where we can infer latent derivations and thus generate translations of an input sentence.
+Instead, we create a large repository of rules (phrase pairs) from some large word-aligned training data.
+Rules consist of phrase pairs extracted by enumeration of connected subsets of word alignments -- check \citep{Koehn+2003:pbsmt} for a more precise definition.
+Then, for a given input, we instantiate the space of possible translations by concatenating known phrase pairs in target word order such that they cover some permutation of the input sentence.\footnote{This is reminiscent of data-oriented parsing \citep{Bod:1992:DOP}.}
+To keep the solution tractable, we impose some form of limit to reordering (typically by means of a distortion limit).
+Once the space of translations is defined, we score each and every hypothesis using a linear model.
+Because the features of this linear model are rather local (e.g. at the level of phrases or short target $n$-grams), this scoring can be done quite efficiently in a packed representation of the complete set of translation derivations (that is, there is no need for enumeration as in a list).
+In this project, you will assume the parameters of the linear model are known, and you will explicitly instantiate the weighted set of translation derivations of a given input.
+You will also experiment with different decision rules, i.e., ways in which to select one translation as output.\footnote{In project 3, you will fit the parameters of the linear model to data using discriminative learning algorithms.}
+
+\section{Tasks}
+
+You will implement phrase-based MT using finite-state transducers. 
+Some of the constructs are similar to those presented by \citet{Knight+1998:WBFST} for word-based models based on IBM$_{\ge 3}$ and by \citet{Kumar+2003:WFST} for the alignment template model.
+For example, check Figure 1 in \citep{Kumar+2003:WFST} for a general architecture. 
+Keep in mind that phrase-based MT does not offer explicit models for segmentation and permutation. Segmentation is basically guided by the known source phrases and permutation is arbitrary within a distortion limit. 
+A few features are designed in an attempt to capture segmentation and permutation preferences, such as phrase-penalty and distortion cost.
+
+\input{sentence}
+\input{phrasetable}
+\input{monotone}
+\input{decisionrule}
+\input{lattice}
+\input{preordered}
+
+
+

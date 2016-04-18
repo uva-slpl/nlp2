@@ -1,0 +1,25 @@
+\subsection{Task 6: lattice translation}
+
+A simple (though inefficient) way to translate a source sentence in non-monotone order would be to enumerate a alternative permutations and translate them individually.
+Then, with some appropriate decision rule, we select the final translation.
+Besides inefficient, some decision rules can only be defined in the combined space of translations (e.g. MBR).
+
+Now that the permutations have been efficiently represented using transducers, translating these permutations is no different from translating a trivial linear finite-state transducer.
+That is right, all it takes is a composition between the input lattice and the phrase-table transducer.
+However, do notice that the parameters of the linear model have changed! This means you will have to recompile your phrase tables so that they are weighted by the correct linear model.
+Table \ref{tab:task6} summarises the task. 
+
+\begin{table}[h]\centering
+\begin{tabular}{l p{12cm}}
+\textsc{Task}   &  translate permutation lattices\\
+\textsc{Input}  &  one permutation lattice per sentence and a recompiled wighted transducer per phrase table\\
+\textsc{Output} &  a weighted set of translation derivations per sentence\\
+                &  100-best paths from each transducer \\
+                & \emph{best-derivation} and \emph{best-translation} decision rules\\
+\textsc{Submit} & \texttt{lattice.100best.}$n$: 100-best derivations from each transducer in text format with alignments\\
+                & \texttt{lattice.der} and \texttt{lattice.trans} \\  
+\textsc{Report} & BLEU score for each decision rule using references in \texttt{dev.ja}\\
+\end{tabular}
+\caption{\label{tab:task6}Task 6 summarised}
+\end{table}
+

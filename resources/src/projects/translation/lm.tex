@@ -1,0 +1,44 @@
+
+\section{Language model}
+
+The local components in the model mostly score translation rules.
+It turns out they know very little about what good translations look like.
+A target language model is a probability distribution over target strings: do you remember the term $P(E)$ in the noisy channel formulation of word-based translation models?
+
+
+An $n$-gram LM is a distribution $P(E)$ over the set of target-language sentences, where a sentence is a sequence of target-language words.
+Under this distribution,  $P(E=e_1^m) = \prod_{i=1}^m P(e_i|e_1^{i-1})$  by application of the chain rule of probabilities. 
+In an $n$-gram LM, we make the assumption that a word is generated independently of all but its $n-1$ preceding words, that is, $P(E=e_1^m) \approx P_n(E=e_1^m) \triangleq \prod_{i=1}^m P(e_i|e_{i-n+1}^{i-1})$.
+Typically, an $n$-gram LM is parametrised with a categorical distribution per conditioning context.
+And these parameters are typically estimated by MLE on some large monolingual data. Do you remember the MLE solution of the categorical distribution? Can you see how simple (in principle) it is to estimate an $n$-gram LM?
+
+The obvious problem with $n$-gram LMs as such is that they have one parameter per $n$-gram in the language.
+If $\Delta$ denotes the vocabulary of the target language, an $n$-gram LM has up to $|\Delta|^n$ parameters.
+With such a parametrisation, unless we are willing to prune rare $n$-grams there is not much we can do to address the problem.
+A less obvious problem is that these models assign 0 probability to non-observed data, thus maximum likelihood estimation is typically combined with smoothing techniques.\footnote{Smoothing an LM consists in reserving probability mass for unseen events.}
+
+An $n$-gram language model is essentially a finite-state acceptor that weights strings by viewing them as overlapping blocks of $n$ tokens. 
+Each state in this acceptor represents a unique conditioning context, the outgoing arcs from this state encode the categorical distribution associated with the context.
+There are many excellent tools for $n$-gram language modelling, you will be experimenting with one which makes the connection between LMs and weighted acceptors particularly obvious, namely, \textsc{Opengrm}.\footnote{\url{http://www.openfst.org/twiki/bin/view/GRM/NGramLibrary}}.
+
+Consider the corpus in Figure \ref{fig:corpus}.
+\begin{enumerate}
+	\item estimate the parameters of an unpruned $2$-gram LM without smoothing
+	\item draw the finite-state acceptor that represents the distribution $P_2(E)$
+\end{enumerate}
+
+\begin{figure}[h]\centering
+\begin{tabular}{l}
+\texttt{le chien noir}\\
+\texttt{un chien noir}\\
+\texttt{le chien}\\
+\texttt{le noir}\\
+\texttt{un chien}\\
+\end{tabular}
+\caption{\label{fig:corpus}Corpus of target language sentences.}
+\end{figure}
+
+
+
+\subsection{Rescoring with a target language model}
+

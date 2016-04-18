@@ -1,5 +1,5 @@
 # Site settings
-exclude: [README.md, resources/tex]
+exclude: [README.md, resources/src]
 title: Natural Language Processing II
 email: wilker.aziz@gmail.com
 description: > # this means to ignore newlines until "baseurl:"

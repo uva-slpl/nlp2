@@ -1,0 +1,25 @@
+\subsection{Task 4: decision rules}
+
+Ultimately, we need to select one translation out of the space of all possible translation derivations.
+The most typical \emph{decision rule} is to compute the model's best derivation, that is, the derivation that has maximum score (or minimum cost) under the model (this rule is also known as \textsc{Viterbi} or \emph{best-derivation}).\footnote{The linear models in this project were trained with a ``cost'' semantics so that they are compatible with \texttt{OpenFST}.}
+Given translation derivations are sensitive to latent variables such as segmentation and alignment, multiple derivations may yield the same translation. 
+A perhaps more principled decision rule would sum over the space of latent assignments.
+This disambiguation (sometimes referred to as \textsc{MAP} or \emph{best-translation}) is known to be NP-complete \citep{Simaan:1996:complexity}.
+A tractable alternative is to approximate the complete space of translation derivations by a list containing the $n$-best scoring derivations and perform the summation in this set.
+
+You should experiment with both decision rules, where in the case of \emph{best-translation} you should use $k$-best lists produced in the previous task.
+Table \ref{tab:task4} summarises the task. 
+
+\begin{table}\centering
+\begin{tabular}{l p{12cm}}
+\textsc{Task}   &  produce translation decisions \\
+\textsc{Input}  &  $k$-best lists from previous task \\
+\textsc{Output} &  a file containing the best translation derivations of each sentence in \texttt{dev.en}: \texttt{monotone.der}\\
+    			&  a file containing the best translation string (in the $k$-best list) of each sentence in \texttt{dev.en}: \texttt{monotone.trans}\\
+\textsc{Submit} &  \texttt{monotone.der} and \texttt{monotone.trans}\\
+                &  use text format and do not report alignments\\  
+\textsc{Report} & BLEU scores for each decision rule using references in \texttt{dev.ja} \\             
+\end{tabular}
+\caption{\label{tab:task4}Task 4 summarised}
+\end{table}
+
