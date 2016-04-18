@@ -6,6 +6,20 @@ Besides inefficient, some decision rules can only be defined in the combined spa
 
 Now that the permutations have been efficiently represented using transducers, translating these permutations is no different from translating a trivial linear finite-state transducer.
 That is right, all it takes is a composition between the input lattice and the phrase-table transducer.
+Figure \ref{fig:non-mono} illustrates the composition between the permutation lattice in Figure \ref{fig:permutations} and the phrase table in Figure \ref{fig:rules}.
+
+\begin{figure}[h]\centering
+\includegraphics[scale=0.5]{lattice-nonmonotone.pdf}
+\caption{\label{fig:non-mono}Translation derivations for permutations of the input.}
+\end{figure}
+
+
+Because we have changed the space of translations of our model (by including translations of permutations of the input), and because we have added a new feature to the linear combination (i.e. \texttt{LatticeCost}), it makes sense to re-estimate the parameters of the linear model.
+You will not need to do it yourself,\footnote{But wait for project 3 ;)} as I have already provided you with \texttt{weights.lattice}.
+You will need, however, to recompile your phrase tables so that they are weighted by the correct linear model.
+Table \ref{tab:task6} summarises the task. 
+
+
 
 
 \begin{table}[h]\centering
@@ -21,10 +35,3 @@ That is right, all it takes is a composition between the input lattice and the p
 \end{tabular}
 \caption{\label{tab:task6}Task 6 summarised}
 \end{table}
-
-
-Because we have change the space of translations of our model (by including translations of permutations of the input), and because we have added a new feature to the linear combination (i.e. \texttt{LatticeCost}), it makes sense to re-estimate the parameters of the linear model.
-You will not need to do it yourself,\footnote{But wait for project 3 ;)} as I have already provided you with \texttt{weights.lattice}.
-Crucially, this means you will have to recompile your phrase tables so that they are weighted by the correct linear model.
-Table \ref{tab:task6} summarises the task. 
-
