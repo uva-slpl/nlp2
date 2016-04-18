@@ -2,7 +2,7 @@
 
 Ultimately, we need to select one translation out of the space of all possible translation derivations.
 The most typical \emph{decision rule} is to compute the model's best derivation, that is, the derivation that has maximum score (or minimum cost) under the model (this rule is also known as \textsc{Viterbi} or \emph{best-derivation}).\footnote{The linear models in this project were trained with a ``cost'' semantics so that they are compatible with \texttt{OpenFST}.}
-Given translation derivations are sensitive to latent variables such as segmentation and alignment, multiple derivations may yield the same translation. 
+Given that translation derivations are sensitive to unobservable variables such as segmentation and alignment, multiple derivations may yield the same translation. 
 A perhaps more principled decision rule would sum over the space of latent assignments.
 This disambiguation (sometimes referred to as \textsc{MAP} or \emph{best-translation}) is known to be NP-complete \citep{Simaan:1996:complexity}.
 A tractable alternative is to approximate the complete space of translation derivations by a list containing the $n$-best scoring derivations and perform the summation in this set.

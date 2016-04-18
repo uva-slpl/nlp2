@@ -2,7 +2,7 @@
 
 \subsection{Task 1: source sentence}
 
-A source sentence can be seen as a trivial linear finite-state acceptor whose arcs are labelled with the words in original order. Consider the example \texttt{the black dog}, Figure \ref{fig:src} illustrates one way to encode it as a transducer.
+A source sentence can be seen as a trivial linear finite-state acceptor whose arcs are labelled with the words in original order. Consider the example \texttt{the black dog}, Figure \ref{fig:src} illustrates one way to encode it as a transducer.\footnote{Obviously, there are different ways to do so. I chose to encode it as a transducer from 0-based input positions to source words because the positions will turn out to be useful when we are interested in retrieving the alignment between source and target after translation.}
 
 \begin{figure}[h]\centering
 \includegraphics[scale=0.5]{src.pdf}

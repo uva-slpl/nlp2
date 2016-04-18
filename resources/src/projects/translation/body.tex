@@ -11,9 +11,11 @@ In summary, you will experiment with
 	\item preordering and lattice translation
 \end{itemize}
 
-You will not implement finite-state transducers (and their operations) yourselves, instead you are expected to use \texttt{OpenFST}.\footnote{\url{http://www.openfst.org}}.
+You will not implement finite-state transducers (and their operations) yourselves, instead you are expected to use \texttt{OpenFST} \citep{Allauzen+2007:OpenFST}.\footnote{\url{http://www.openfst.org}}
 We advise you to use the command line tools provided with the library for they are {\bf much simpler to use} than the \texttt{C++} API.
 The illustrations in this document were all produced by \texttt{OpenFST} and that is what you should use in your report.
+There is a tutorial on design and operations\footnote{\url{http://www.openfst.org/twiki/bin/view/FST/FstHltTutorial}} and another on applications\footnote{\url{http://www.openfst.org/twiki/bin/view/FST/FstSltTutorial}}.
+For a very comprehensive survey on weighted automata algorithms refer to \citep{Mohri:2009:WAA}. 
 
 We are providing data for a development set of English-Japanese sentence pairs.\footnote{\url{https://wilkeraziz.github.io/uva-nlp2/resources/project2/data/pbsmt.tgz}} The data amounts to 1416 sentence pairs, and even though you may experiment with as many sentences as you like, you are expected to submit results only for the first 100 sentence pairs. 
 The data folder contains \textsc{Readme} files with additional information, but in sum you will find:
@@ -24,6 +26,7 @@ The data folder contains \textsc{Readme} files with additional information, but 
 	\item Examples of translations
 	\item Model parameters
 \end{itemize}
+
 
 
 \section{Phrase-based MT}

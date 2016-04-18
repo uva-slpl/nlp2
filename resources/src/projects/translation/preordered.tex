@@ -1,18 +1,17 @@
 \subsection{Task 6: lattice translation}
 
-A simple (though inefficient) way to translate a source sentence in non-monotone order would be to enumerate a alternative permutations and translate them individually.
+A simple (though inefficient) way to translate a source sentence in non-monotone order would be to enumerate all alternative permutations and translate them individually.
 Then, with some appropriate decision rule, we select the final translation.
-Besides inefficient, some decision rules can only be defined in the combined space of translations (e.g. MBR).
+Besides inefficient, some decision rules can only be defined in the combined space of translations.
 
 Now that the permutations have been efficiently represented using transducers, translating these permutations is no different from translating a trivial linear finite-state transducer.
 That is right, all it takes is a composition between the input lattice and the phrase-table transducer.
-However, do notice that the parameters of the linear model have changed! This means you will have to recompile your phrase tables so that they are weighted by the correct linear model.
-Table \ref{tab:task6} summarises the task. 
+
 
 \begin{table}[h]\centering
 \begin{tabular}{l p{12cm}}
 \textsc{Task}   &  translate permutation lattices\\
-\textsc{Input}  &  one permutation lattice per sentence and a recompiled wighted transducer per phrase table\\
+\textsc{Input}  &  one permutation lattice per sentence and a recompiled weighted transducer per phrase table\\
 \textsc{Output} &  a weighted set of translation derivations per sentence\\
                 &  100-best paths from each transducer \\
                 & \emph{best-derivation} and \emph{best-translation} decision rules\\
@@ -22,4 +21,10 @@ Table \ref{tab:task6} summarises the task.
 \end{tabular}
 \caption{\label{tab:task6}Task 6 summarised}
 \end{table}
+
+
+Because we have change the space of translations of our model (by including translations of permutations of the input), and because we have added a new feature to the linear combination (i.e. \texttt{LatticeCost}), it makes sense to re-estimate the parameters of the linear model.
+You will not need to do it yourself,\footnote{But wait for project 3 ;)} as I have already provided you with \texttt{weights.lattice}.
+Crucially, this means you will have to recompile your phrase tables so that they are weighted by the correct linear model.
+Table \ref{tab:task6} summarises the task. 
 

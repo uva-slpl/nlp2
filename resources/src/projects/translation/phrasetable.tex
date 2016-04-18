@@ -2,8 +2,16 @@
 
 
 A phrase-table can be seen as recursive finite-state transducer that maps contiguous sequences of source words onto contiguous sequences of target words. 
-Consider the rules in Figure \ref{fig:table}, Figure \ref{fig:rules} shows the resulting transducer: its initial state is also final, other states are introduced in order to memorise phrase pairs (we first read a source phrase outputting empty strings, then we produce a target phrase consuming empty strings).
+Consider the rules in Figure \ref{fig:table}, the resulting transducer is shown in Figure \ref{fig:rules}. 
 Note that the phrase table transducer defines an infinite set of binary relations over $\Sigma^* \times \Delta^*$ (where $\Sigma$ is the source language vocabulary and $\Delta$ is the target language vocabulary).
+
+There are different possible designs and there is not one that is per se a standard.
+The one I chose is similar to the one presented in \citep[Figure 6]{Kumar+2003:WFST} and \citep[Figure 1]{Knight+2009:WANLP}.
+In my design, there is one initial state which is also final, every translation rule starts and ends in this state.
+If a translation rule maps a single source word to a single target word, then this rule can be compactly represented by one arc (see \texttt{black:noir} in Figure \ref{fig:rules}).
+Otherwise, when a rule maps $m$ source words to $n$ target words (where $m\neq n$), I decided to first recognise all source words, without producing any target words, and only then to generate target words one by one making sure the last arc of the rule returns to the initial/final state.
+Observe that the internal states associated with a certain rule (for example 1, 2 and 3 in Figure \ref{fig:rules}) are there to memorise how much of the rule we have already matched. 
+Even though there are more compact ways to represent translation rules, this seems rather clean and easy to turn into an algorithm.
 
 
 \begin{figure}[h]\centering
@@ -49,7 +57,7 @@ In a grammar file, each rule is represented by 5 fields separated by 3 vertical 
 
 In a phrase-based system, translation rules are parametrised by a linear model.
 Let $(f, e)$ be a phrase pair and $\phi: \Sigma^+ \times \Delta^+ \to$ a mapping between phrase pairs and a $d$-dimensional feature vector.
-Then each phrase pair $(f,e)$ is associated with a parameter $\theta_{(f,e)} = w^\top \phi(f,e)$ where $w$ is a vector of model parameters.
+Then each phrase pair $(f,e)$ is associated with a parameter $\theta_{(f,e)} = w^\top \phi(f,e)$ where $w$ is a vector of model parameters.\footnote{In the transducer, you can weight translation rules by weighting one of its arcs, typically the first or the last.}
 You will note that rules are annotated with features, those are components in the linear model. You will need those, and the model parameters in \texttt{weights.monotone}, in order to score phrase pairs. 
 Besides the features in the phrase table, you need to consider 3 other features which also decompose at the phrase level, but aim mostly at scoring segmentations, namely:
 \begin{itemize}
@@ -63,12 +71,11 @@ A passthrough rule is a trivial rule that copies a symbol from the input stream 
 %Another way to translate source words which are unknown to the phrase table is to replace them with a special symbol, such as \texttt{Unk}, and add a transition that translates this symbol to itself.
 %Whatever strategy you choose, make sure you account for the \texttt{PassThrough} feature when computing the weight of each phrase pair. 
 If you watch carefully, you will see that we provided a model parameter for the feature \texttt{PassThrough}.
-This feature simply counts the number of passthrough rules used in a derivation, in other words, it captures how many source words were unknown. 
+This feature simply counts the number of passthrough rule applications used in a derivation, in other words, it captures how many source words were unknown. 
 Note that as defined, each ``passthrough phrase pair'' contributes to this feature with a count of $1$.
 In most cases, this feature is meaningless as the number of unknown source words is constant for each source sentence. 
 In practice, for reasons beyond the scope of this section, translation systems might estimate a parameter for this features nevertheless.
 
-Table \ref{tab:task2} summarises the task. 
 
 \begin{table}[h]\centering
 \begin{tabular}{l p{12cm}}
@@ -80,4 +87,16 @@ Table \ref{tab:task2} summarises the task.
 \end{tabular}
 \caption{\label{tab:task2}Task 2 summarised}
 \end{table}
+
+There are at least two ways do implement passthrough rules:
+\begin{enumerate}
+	\item  You can add to your phrase table a single translation rule \texttt{OOV:OOV} whose weight is $1\times w_{\texttt{PassThrough}}$, where \texttt{OOV} is a symbol reserved for out-of-vocabulary (OOV) source words. 
+Then, you will need to pre-process the source sentence so that every OOV word is replaced by \texttt{OOV}.
+For example, if the source sentence is \texttt{the black cat}, then \texttt{cat} is OOV with respect to the phrase table in Figure \ref{fig:table}, we would then pre-process the sentence so that its corresponding transducer recognises/produces \texttt{0:the 1:black 2:OOV}.
+\item An alternative method is to pre-process the phrase table as to include rules for each OOV word type essentially making them in-vocabulary. In this case, we would add to our phrase table a rule \texttt{cat:cat} and its score would be $1 \times w_{\texttt{PassThrough}}$. 
+\end{enumerate}
+
+
+Table \ref{tab:task2} summarises the task. 
+
 

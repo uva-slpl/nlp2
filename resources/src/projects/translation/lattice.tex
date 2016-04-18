@@ -31,7 +31,7 @@ There is a trivial way to represent a list using automata/transducers which are 
 
 
 The downside is that there is no packing and the representation is rather inefficient.
-Consider finite-state operations that may alleviate that problem (e.g. determinisation and  minimisation). Figure \ref{fig:pi-det-min} illustrates a much more efficient representation: observe that even though the topology of the automaton changed, the paths are exactly the same and so are their negative log-probabilities.\footnote{You will note that the weights of the paths have been somehow distributed along the arcs towards the initial node. This is the result of a standard operation called \emph{push}. Pushing weights towards the initial node is usually a good idea because one can reason about the total weight of a path earlier on. This is particularly useful when decoding with A$^*$ or beam search.}
+Consider finite-state operations that may alleviate that problem, such as determinisation and  minimisation \citep{Mohri:2009:WAA}.\footnote{Roughly, a deterministic automaton is such that, given an origin state and label, there is only one possible transition. An automaton is said minimal if it has no more states than the minimum necessary to recognise/accept a given language.} Figure \ref{fig:pi-det-min} illustrates a much more efficient representation: observe that even though the topology of the automaton changed, the paths are exactly the same and so are their negative log-probabilities.\footnote{You will note that the weights of the paths have been somehow distributed along the arcs towards the initial node. This is the result of a standard operation called \emph{push} \citep{Mohri:2009:WAA}. Pushing weights towards the initial node is usually a good idea because one can reason about the total weight of a path earlier on. This is particularly useful when decoding with A$^*$ or beam search.}
 
 \begin{figure}[h]\centering
 \includegraphics[scale=0.5]{permutations-list.pdf}
@@ -40,7 +40,7 @@ Consider finite-state operations that may alleviate that problem (e.g. determini
 
 
 In order to discriminate alternative permutations, we will add a feature to our linear model. 
-This feature is the negative log-probability of the permutation and the model parameter associated with it is called \texttt{LatticeCost}.
+This feature is the negative log-probability of the permutation and the model parameter associated with it is called \texttt{LatticeCost} (in \texttt{weights.lattice}).
 Table \ref{tab:task5} summarises the task. 
 
 \begin{figure}[h]\centering
