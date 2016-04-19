@@ -47,7 +47,7 @@
   img: biparsing
   title: Bitext Parsing
   instructor: Wilker Aziz
-  note: This lecture substituted the one on ITG (see below).
+  note: 
   abstract: In this lecture we will review PCFG parsing as weighted deduction. We will then extend the idea to parsing with synchronous grammars. This lecture can be seen as background for parameter estimation and decoding/generation with CFG-structured models.
   background:
     - "I will discuss bitext parsing using deductive systems, if you are not familiar with that you might want to read a good [tutorial](http://arxiv.org/abs/cmp-lg/9404008)."  
@@ -115,7 +115,7 @@
   img: itg
   title: Inversion Transduction Grammars
   instructor: Wilker Aziz
-  note: This lecture will be merged with the next one on hierarchical models.
+  note: 
   abstract: In this lecture we will present alignments models that impose explicit reordering constraints through a grammar. We will cover bitext parsing, inference and parameter estimation.
   background:
     - "ITG is a form of context-free transducer. Thus the more you know about context-free grammars (CFGs) and their probabilistic extensions (PCFGs), the better. You can start with M Collins's [lecture notes](http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/pcfgs.pdf) on PCFGs. In estimating parameters for a PCFG with EM we need expectations (as always), there is an efficient algorithm to compute those from parse forests. Again, M Collins's has nice [lecture notes](http://www.cs.columbia.edu/~mcollins/io.pdf) on this algorithm (the Inside-Outside algorithm) as well as EM for PCFGs."
