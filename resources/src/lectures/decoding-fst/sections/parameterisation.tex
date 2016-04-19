@@ -1,0 +1,430 @@
+\section{Parameterisation}
+
+\frame{
+	\frametitle{What are we missing?}
+	
+	We have characterised the set of solutions ``backed'' by our transfer model\\ \pause
+	\begin{itemize}
+		\item these solutions are unweighted \pause
+		\item there is no obvious way to discriminate between them \pause
+		\item we cannot make decisions like that
+	\end{itemize}
+	
+	\pause
+	
+	We are missing a parameterisation of the model
+	\begin{itemize}
+		\item the scoring function which will guide the decision making process
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Linear models}
+	
+	Let's call {\bf derivation}  \pause
+	\begin{itemize}
+		\item a translation string \pause
+		\item along with any latent structure assumed by the transfer model \\
+		e.g. phrase segmentation, alignment
+	\end{itemize}
+	\pause
+	
+	A linear parameterisation of the model is a function
+	$$f(\mdd) = \sum_k \lambda_k H_k(\mdd)$$
+	where \mdd is the derivation, and $H_k$ is one of $m$ feature functions\\
+	
+	~ \pause
+	
+	It assigns a real-valued score to each and every derivation \\
+	
+	~ \pause
+	
+	Think of it as a surrogate for translation quality at decoding time
+}
+
+\frame{
+	\frametitle{Feature functions}
+	
+	Independently capture different aspects of the translation, such as
+	\begin{itemize}
+		\item adequacy
+		\begin{itemize}
+			\item translation probabilities
+			\item confidence on lexical choices
+		\end{itemize}
+		\item fluency
+		\begin{itemize}
+			\item LM probabilities
+			\item confidence on reodering
+		\end{itemize}
+	\end{itemize}
+	
+	
+}
+
+\frame{
+	\frametitle{Independence assumptions}
+	
+	Our transfer model makes independence assumptions
+	\begin{itemize}
+		\item ``translation happens by concatenating isolated rules''
+		e.g. flat mappings, hierarchical mappings
+	\end{itemize}
+	\pause
+	
+	~
+	
+	Certain aspects of translation quality comply with such assumptions\looseness=-1
+	\begin{itemize}
+		\item how likely a certain translation rule is \\
+		e.g. relative frequency in a bilingual corpus
+	\end{itemize}
+	\pause
+	
+	~
+	
+	Certain aspects do not comply with such assumptions
+	\begin{itemize}
+		\item fluency as captured by an $n$-gram LM
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Structural independence}
+
+\begin{textblock*}{110mm}(0.1\textwidth,0.30\textheight)
+
+Suppose a set of derivations (e.g. monotone word mappings)\looseness=-1 \\
+
+	
+\scalebox{0.6}{
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state] (D) [right of=C] {$3$};
+\node[state] (E) [right of=D] {$4$};
+\node[state,accepting] [right of=E] (F) {$5$};
+
+\only<1>{\path[color=red] (A) edge node {\ftext{um}} (B);}
+\only<1-2>{\path[color=red] (B) edge node {\ftext{conto}} (C);}
+\only<1-3>{\path[color=red] (C) edge node {\ftext{de}} (D);}
+\only<1-4>{\path[color=red] (D) edge node {\ftext{duas}} (E);}
+\only<1-5>{\path[color=red] (E) edge node {\ftext{cidades}} (F);}
+	
+\only<2->{
+	\path[color=blue] 
+		(A) edge node {\etext{a}} (B)
+			edge [bend right] node {\etext{some}} (B)
+			edge [bend left] node {\etext{one}} (B);
+}
+\only<3->{
+	\path[color=blue] 
+		(B) edge node {\etext{narrative}} (C)
+			edge [bend right] node {\etext{tale}} (C)
+			edge [bend left] node {\etext{story}} (C)
+			edge [bend right=60] node [below] {novella} (C);
+}
+\only<4->{
+	\path[color=blue] 
+		(C) edge node {\etext{of}} (D)
+			edge [bend right] node {\etext{from}} (D)
+			edge [bend left] node {\etext{'s}} (D);
+}
+\only<5->{
+	\path[color=blue] 
+		(D) edge [bend left] node {\etext{two}} (E)
+			edge [bend right] node {\etext{couple}} (E);
+}
+\only<6->{
+	\path[color=blue] 
+		(E) edge node {\etext{cities}} (F)
+			edge [bend right] node {\etext{towns}} (F)
+			edge [bend left] node {\etext{villages}} (F);
+}			
+\end{tikzpicture} 
+
+}
+
+\only<7->{
+When scoring complies with such ``structural independence''\\
+}
+\only<8->{\hfill \alert{we work with packed representations \\ \hfill(polynomial in input length)}}
+
+\end{textblock*}
+	
+}
+
+
+\frame{
+	\frametitle{Structural independence: one extreme}
+
+	If our features are fully compliant with structural independence \\
+	~
+	
+\begin{center}
+\begin{math}
+\begin{array}{l r}
+\only<2->{\mdd = \angbrack{e_1, \ldots, e_l} & \text{sequence of independent steps}\\}
+\only<2-5>{& \\}
+\only<3->{f(\mdd) = \sum_k \lambda_k H_k(\mdd) & \text{model factorises over features}\\}
+\only<2-5>{& \\}
+\only<4->{H_k(\mdd) = \sum_{e\in \mdd} h_k(e) & \text{features factorises over steps}\\}
+\only<2-5>{& \\}
+\only<5->{w(e) = \sum_k \lambda_k h_k(e) & \text{ergo, model factorises over steps}\\}
+\end{array}
+\end{math}
+\end{center}
+
+\only<6->{
+\scalebox{0.6}{
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+\small
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state] (D) [right of=C] {$3$};
+\node[state] (E) [right of=D] {$4$};
+\node[state,accepting] [right of=E] (F) {$5$};
+
+	\path[color=blue] 
+		(A) edge node {\etext{a}\only<7->{/$w_2$}} (B)
+			edge [bend right] node {\etext{some}\only<7->{/$w_3$}} (B)
+			edge [bend left] node {\etext{one}\only<7->{/$w_1$}} (B);
+
+
+	\path[color=blue] 
+		(B) edge node {\etext{narrative}\only<7->{/$w_5$}} (C)
+			edge [bend right] node {\etext{tale}\only<7->{/$w_6$}} (C)
+			edge [bend left] node {\etext{story}\only<7->{/$w_4$}} (C)
+			edge [bend right=60] node [below] {\etext{novella}\only<7->{/$w_7$}} (C);
+	\path[color=blue] 
+		(C) edge node {\etext{of}\only<7->{/$w_9$}} (D)
+			edge [bend right] node {\etext{from}\only<7->{/$w_{10}$}} (D)
+			edge [bend left] node {\etext{'s}\only<7->{/$w_8$}} (D);
+	\path[color=blue] 
+		(D) edge [bend left] node {\etext{two}\only<7->{/$w_{11}$}} (E)
+			edge [bend right] node {\etext{couple}\only<7->{/$w_{12}$}} (E);
+	\path[color=blue] 
+		(E) edge node {\etext{cities}\only<7->{/$w_{14}$}} (F)
+			edge [bend right] node {\etext{towns}\only<7->{/$w_{15}$}} (F)
+			edge [bend left] node {\etext{villages}\only<7->{/$w_{13}$}} (F);
+			
+\end{tikzpicture} 
+}}
+
+\only<8->{
+Efficiently packing $\Rightarrow$ efficient DP-based inference \\
+\hfill \alert{(linear with the number of edges)}
+}
+
+}
+
+\frame{
+	\frametitle{Structural independence: the other extreme}
+
+	Imagine a feature function that requires a complete translation
+	\pause
+	\begin{itemize}		
+		\item unbounded LM \\
+		e.g. via suffix arrays or distributed representations
+		\item estimated overall translation quality (QE models?)
+	\end{itemize}
+	\pause
+	Steps can no longer be weighted in isolation \pause
+	\begin{itemize}
+		\item it requires unpacking the representation \pause
+		\item making dependencies explicit through the graphical structure
+	\end{itemize}
+	
+	
+}
+
+\frame{
+
+	\frametitle{An DP fails...}
+
+\scalebox{0.6}{
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+  	\tikzstyle{every path}=[draw=blue,text=blue]	
+
+\node[initial,state,style={initial text=}] (q0) {$0$};
+\node[state] (q1) [above right of=q0] {$1$};
+\node[state] (q2) [right of=q1] {$2$};
+\node[state] (q3) [right of=q2] {$3$};
+\node[state] (q4) [right of=q3] {$4$};
+\node[state,accepting] [right of=q4] (q5) {$5$};
+
+\node[state] (q6) [right of=q0] {$6$};
+\node[state] (q7) [right of=q6] {$7$};
+\node[state] (q8) [right of=q7] {$8$};
+\node[state] (q9) [right of=q8] {$9$};
+\node[state,accepting] [right of=q9] (q10) {$10$};
+
+\node[state] (q11) [below right of=q0] {$11$};
+\node[state] (q12) [right of=q11] {$12$};
+\node[state] (q13) [right of=q12] {$13$};
+\node[state] (q14) [right of=q13] {$14$};
+\node[state,accepting] [right of=q14] (q15) {$15$};
+
+\node[state] (q16) [below of=q11] {$16$};
+\node[state] (q17) [right of=q16] {$17$};
+
+\path
+(q0) edge node {\etext{one}} (q1)
+(q1) edge node {\etext{story}} (q2)
+(q2) edge node {\etext{'s}} (q3)
+(q3) edge node {\etext{two}} (q4)
+(q4) edge node {\etext{villages}/$w_1$} (q5);
+
+\path
+(q0) edge node {\etext{one}} (q6)
+(q6) edge node {\etext{story}} (q7)
+(q7) edge node {\etext{'s}} (q8)
+(q8) edge node {\etext{two}} (q9)
+(q9) edge node {\etext{cities}/$w_2$} (q10);
+
+\path
+(q0) edge node {\etext{one}} (q11)
+(q11) edge node {\etext{story}} (q12)
+(q12) edge node {\etext{'s}} (q13)
+(q13) edge node {\etext{two}} (q14)
+(q14) edge node {\etext{towns}/$w_3$} (q15);
+
+\path
+(q0) edge node {\etext{...}} (q16)
+(q16) edge node {\etext{...}} (q17);
+			
+\end{tikzpicture} 
+}
+
+~
+
+	Exhaustive enumeration 
+	\begin{itemize}
+		\item number of edges exponential with input length
+		\item \alert{intractable}
+	\end{itemize}
+
+}
+
+\frame{
+	\frametitle{Not all is lost}
+	
+	Most features we can reliably estimate \pause
+	\begin{itemize}
+		\item are rarely sensitive to global context \pause
+		\item are quite incremental \pause
+		\item compromise between these extreme cases 
+	\end{itemize}
+	\pause
+	
+	$n$-gram LMs are good examples
+	
+	\begin{itemize}
+		\item there are up to $|\Delta|^{n-1}$ contexts that must be made explicit \pause
+		\item nodes must group derivations sharing the same context \pause
+		\item polynomial, though often prohibitive
+
+	\end{itemize}
+
+}
+
+\frame{
+	\frametitle{Making context explicit (intuition)}
+
+\scalebox{0.6}{
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+  	\tikzstyle{every path}=[draw=blue,text=blue]	
+
+\node[initial,state,style={initial text=}] (q0) {$0$};
+\only<2>{\node[state] (q1) [right of=q0] {$i$};}
+\only<2>{\node[state] (q2) [right of=q1] {$ii$};}
+\only<3->{
+\node[state] (qOne) [above right of=q0] {$1$};
+\node[state] (qA) [right of=q0] {$2$};
+\node[state] (qSome) [below right of=q0] {$3$};
+}
+\only<4->{\node[state] (qTale) at (7,3) {$4$};}
+%\node[state] (qTale) [above of=qNarra] {$4$};
+%\node[state] (qNovel) [below of=qNarra] {$6$};
+%\node[state] (qStory) [below of=qNovel] {$7$};
+
+\only<5->{
+\node[state] (qStory) at (12,-2) {$5$};
+}
+
+%\node[state,accepting] [right of=q4] (q5) {$5$};
+
+\only<2>{
+\path
+(q0) edge node {\etext{a}} (q1)
+	edge [bend right] node {\etext{some}} (q1)
+	edge [bend left] node {\etext{one}} (q1);
+
+\path
+(q1) edge node {\etext{narrative}} (q2)
+	edge [bend right] node {\etext{tale}} (q2)
+	edge [bend left] node {\etext{story}} (q2)
+	edge [bend right=60] node [below] {novella} (q2);	
+	
+}
+\only<3->{
+\path
+(q0) edge node {\etext{a}/$w(\text{a})$} (qA)
+	edge [bend right] node {\etext{some}/$w(\text{some})$} (qSome)
+	edge [bend left] node {\etext{one}/$w(\text{one})$} (qOne);
+}
+\only<4->{
+\path
+(qOne) edge [bend left] node {\etext{tale}/$w(\text{one tale})$} (qTale)
+(qA) edge node {\etext{tale}/$w(\text{a tale})$} (qTale)
+(qSome) edge [bend right] node [below] {\etext{tale}/$w(\text{some tale})$} (qTale);
+}
+
+\only<5->{
+\path
+(qOne) edge [bend left] node {\etext{story}/$w(\text{one story})$} (qStory)
+(qA) edge node {\etext{story}/$w(\text{a story})$} (qStory)
+(qSome) edge [bend right] node [below] {\etext{story}/$w(\text{some story})$} (qStory);
+}
+
+			
+\end{tikzpicture} 
+}	
+	
+}
+
+\frame{
+	\frametitle{Recap 4}
+	
+	\begin{enumerate}
+		\item a characterisation the space of solutions \pause
+		\item a linear parameterisation of the model \pause
+		\item impact of parameterisation on packed representations
+	\end{enumerate}
+	\pause
+	
+	What's left? \pause
+	\begin{itemize}
+		\item more examples of models and impact on representation
+		\begin{itemize}
+			\item distance-based reordering
+			\item lexicalised models
+			\item a global feature function
+		\end{itemize}
+		\item inference algorithms \pause
+		\item techniques to make inference feasible for interesting models	
+	\end{itemize}
+}
+

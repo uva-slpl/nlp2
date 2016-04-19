@@ -1,0 +1,189 @@
+\subsection{Distortion limit}
+
+\frame{
+	\frametitle{Ad-hoc distortion limit}
+	
+	Several flavours of distortion limit \citep{Lopez:2009:TWD}
+	\pause
+	\begin{itemize}
+		\item limit reordering as a function of the number of skipped words
+	\end{itemize}
+	\pause
+	Moses allows reordering within a window of length $d$
+	\begin{itemize}
+		\item starting from the leftmost uncovered word
+	\end{itemize}
+	
+}
+
+\begin{comment}
+\frame{
+	\frametitle{WL$d$ (intuition)}
+	Suppose a sentence with $I=6$ words and $d=3$\\
+	
+	~
+	
+	\textcolor{gray}{
+	\begin{tabular}{|c | c | c | c | c | c |}
+	\hline
+	\textcolor{black}{1} & \textcolor{black}{2} & \textcolor{black}{3} & \textcolor{black}{4} & \textcolor{black}{5} & \textcolor{black}{6} \\ \hline
+	\textcolor{red}{0} & \textcolor{blue}{\only<2-3>{0}\only<4-5>{1}} & \textcolor{blue}{\only<2,5>{0}\only<3-4>{1}}  & 0 & 0 & 0 \\
+	1 & \textcolor{red}{0} & \textcolor{blue}{\only<6-7>{0}\only<8-9>{1}}  & \textcolor{blue}{\only<6,9>{0}\only<7-8>{1}} & 0 & 0 \\
+	1 & 1 & \textcolor{red}{0} & \textcolor{blue}{\only<10-11>{0}\only<12-13>{1}} & \textcolor{blue}{\only<10,13>{0}\only<11-12>{1}} & 0 \\
+	1 & 1 & 1 & \textcolor{red}{0} & \textcolor{blue}{\only<14-15>{0}\only<16-17>{1}} & \textcolor{blue}{\only<14,17>{0}\only<15-16>{1}} \\
+	1 & 1 & 1 & 1 & \textcolor{red}{0} & \textcolor{blue}{\only<18>{0}\only<19>{1}} \\
+	1 & 1 & 1 & 1 & 1 & \textcolor{red}{0} \\	
+	1 & 1 & 1 & 1 & 1 & 1 \\		
+	\hline
+	\end{tabular}
+	}
+	
+	~
+	
+	
+	\only<20>{
+	Largely reduced set of permutations
+	\begin{itemize}
+		\item $(I-1)2^{d-1}$ configurations
+	\end{itemize}
+	}
+}
+\end{comment}
+
+
+\frame{
+	\frametitle{WL$d$ (example)}
+	
+	Suppose $d=2$ and $I=3$ 
+	\only<10>{(e.g. \ftext{nosso amigo comum})} \\
+
+~
+
+
+\scalebox{0.8}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=red,text=red]
+
+\only<2->{\node[initial,state,style={initial text=}] (q10) {$[1,2]$};}
+\only<3->{\node[state] (q20) [above right of=q10] {$[2,3]$};}
+\only<4->{\node[state] (q11) [below right of=q10] {$[1,\not2]$};}
+\only<5->{\node[state] (q3) [right of=q11] {$[3 ]$};}
+\only<7->{\node[state] (q21) [right of=q20] {$[2,\not3]$};}
+\only<8->{\node[state,accepting] (q4) [below right of=q21] {$\varnothing$};}
+
+
+
+\only<3-9>{\path (q10) edge node {\ftext{1}} (q20);}
+\only<4-9>{\path (q10) edge node {\ftext{2}} (q11);}
+\only<5-9>{\path (q11) edge node {\ftext{1}} (q3);}
+\only<6-9>{\path (q20) edge node {\ftext{2}} (q3);}
+\only<7-9>{\path (q20) edge node {\ftext{3}} (q21);}
+\only<8-9>{\path (q21) edge node {\ftext{2}} (q4);}
+\only<9>{\path (q3) edge node {\ftext{3}} (q4);}
+
+\only<10>{
+\path (q10) edge node {\ftext{nosso}} (q20);
+\path (q10) edge node {\ftext{amigo}} (q11);
+\path (q20) edge node {\ftext{comum}} (q21);
+\path (q20) edge node {\ftext{amigo}} (q3);
+\path (q11) edge node {\ftext{nosso}} (q3);
+\path (q3) edge node {\ftext{comum}} (q4);
+\path (q21) edge node {\ftext{amigo}} (q4);
+}
+
+
+
+\end{tikzpicture} 
+}
+
+
+	
+}
+
+
+
+\frame{
+	\frametitle{WL$d$ (logic)}
+	
+	
+	\begin{columns}
+	\begin{column}{0.4\linewidth}
+	\input{logics/logic_mono_wld.tex}
+	\end{column}
+	\begin{column}{0.6\linewidth}
+		
+	\begin{itemize}
+		\item $O(Id2^{d-1})$ states
+		\item $O(Id2^{d-1})$ transitions
+	\end{itemize}
+
+	\end{column}
+	\end{columns}
+}
+
+
+
+\frame{
+	\frametitle{Word replacement with reordering constrained by WL$2$}
+	
+	\only<1>{Complexity: $O(I2^{d-1})$ states\\}
+	\only<2>{Complexity: $O(tI2^{d-1})$ transitions\\}	
+
+~
+
+\scalebox{0.8}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+
+\node[initial,state,style={initial text=}] (q10) {$[1,2]$};
+\node[state] (q20) [above right of=q10] {$[2,3]$};
+\node[state] (q11) [below right of=q10] {$[1,\not2]$};
+\node[state] (q3) [right of=q11] {$[3 ]$};
+\node[state] (q21) [right of=q20] {$[2,\not3]$};
+\node[state,accepting] (q4) [below right of=q21] {$\varnothing$};
+
+\only<1>{
+\path[draw=red] (q10) edge node {\ftext{nosso}} (q20)
+	(q10) edge node {\ftext{amigo}} (q11)
+	(q20) edge node {\ftext{comum}} (q21)
+	(q20) edge node {\ftext{amigo}} (q3)
+	(q11) edge node {\ftext{nosso}} (q3)
+	(q3) edge node {\ftext{comum}} (q4)
+	(q21) edge node {\ftext{amigo}} (q4);
+}
+
+\only<2>{
+\path[draw=blue] (q10) edge [bend left=15] node [above] {\etext{our}} (q20)
+	(q10) edge  node [below] {\etext{ours}} (q20)
+
+	(q10) edge node [above] {\etext{friend}} (q11)
+	(q10) edge [bend right=15] node [below] {\etext{mate}} (q11)
+
+	(q20) edge [bend left=45] node [above] {\etext{ordinary}} (q21)
+	(q20) edge [bend left=30] node {\etext{mutual}} (q21)
+	(q20) edge node {\etext{common}} (q21)
+	(q20) edge [bend right=15] node {\etext{usual}} (q21)			
+
+	(q20) edge [bend left=15] node {\etext{friend}} (q3)
+	(q20) edge [bend right=15] node {\etext{mate}} (q3)
+
+	(q11) edge node {\etext{our}} (q3)
+	(q11) edge [bend right=15] node [below] {\etext{ours}} (q3)
+
+	(q3) edge node {\etext{usual}} (q4)
+	(q3) edge [bend right=15] node {\etext{mutual}} (q4)
+	(q3) edge [bend right=30] node [below] {\etext{common}} (q4)
+	(q3) edge [bend right=45] node [below] {\etext{ordinary}} (q4)			
+
+	(q21) edge [bend left=30] node [above] {\etext{friend}} (q4)
+	(q21) edge node {\etext{mate}} (q4);
+
+}
+
+\end{tikzpicture} 
+}
+
+	
+}
+

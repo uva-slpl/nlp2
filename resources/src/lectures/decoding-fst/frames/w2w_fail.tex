@@ -1,0 +1,56 @@
+	
+\begin{textblock*}{63mm}(0.1\textwidth,0.25\textheight)
+\begin{small}
+\begin{tabular}{l l}
+\ftext{nosso} & \{\etext{our}, \etext{ours}\} \\
+\ftext{amigo} & \{\etext{friend}, \etext{mate}\}\\
+\ftext{comum} & \{\etext{ordinary}, \etext{common}, \etext{usual}, \etext{mutual}\} \\
+\end{tabular}
+\end{small}
+\end{textblock*}
+
+\begin{textblock*}{90mm}(0.1\textwidth,0.50\textheight)
+\scalebox{0.7}{
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state,accepting] (D) [right of=C] {$3$};
+
+\only<1>{\path[color=red] (A) edge node {\ftext{nosso}} (B);}
+\only<1-2>{\path[color=red] (B) edge node {\ftext{amigo}} (C);}
+\only<1-3>{\path[color=red] (C) edge node {\ftext{comum}} (D);}
+	
+\only<2->{
+	\path[color=blue] 
+		(A) edge [bend right] node {\etext{our}} (B)
+			edge [bend left] node {\etext{ours}} (B);
+}
+\only<3->{
+	\path[color=blue] 
+		(B) edge [bend right] node {\etext{mate}} (C)
+			edge [bend left] node {\etext{friend}} (C);
+}
+\only<4->{
+	\path[color=blue] 
+		(C) edge node {\etext{common}} (D)
+			edge [bend right] node {\etext{usual}} (D)
+			edge [bend left] node {\etext{ordinary}} (D)
+			edge [bend right=60] node [below] {mutual} (D);
+}
+\end{tikzpicture} 
+}
+
+
+\only<5->{
+	\vspace{5pt}
+	We simply cannot obtain a correct translation \\
+	\begin{center}\color{OliveGreen}
+	our mutual friend
+	\end{center}
+}
+
+\end{textblock*}

@@ -1,0 +1,59 @@
+
+\newcommand{\wldadjside}{
+\begin{array}{l }
+i = l \\
+\bigoplus_{k=i-l}^{i'-l} c_k = \bzero \\
+\end{array}
+}
+
+\newcommand{\wldadjcons}{
+\begin{array}{l l }
+%\\
+\text{where} & l' = l + \alpha_1(C) + 1 \\
+& C' \ll \alpha_1(C) + 1
+\end{array}
+}
+\newcommand{\wldnadjside}{
+\begin{array}{l }
+i > l \\
+\bigoplus_{k=i-l}^{i'-l} c_k = \bzero \\
+|r-i+1| \leq d \\
+|i'-l+1| \leq d\\
+\end{array}
+}
+\newcommand{\wldnadjcons}{
+\begin{array}{l l }
+%\\
+\text{where} & c_k' = c_k \text{ if } k < i-l \text{ or } k > i'-l \text{ else } \bone 
+\end{array}
+}
+
+\begin{figure}[t]
+\small
+\begin{center}
+\[ \left. 
+  \begin{array}{l}
+    \textsc{Item} ~~~~ {\itembrack{[1, I+1], \{0, 1\}^{d-1}, [0, I+1]}} \\
+    %\\
+    \textsc{Goal} ~~~~ {\itembrack{I,\emptyset, I+1}} \\
+    %\\  
+    \textsc{Axioms} \\ 
+	\drule{\rulebrack{\bos \rightarrow \bos}}{\itembrack{1, 0^{d-1}, 0}:\omega(\bos)}{} \\
+    %\\
+    \textsc{Adjacent} \\
+	\drule{\itembrack{l, C, r} ~ \rulebrack{\mx_i^{i'} \ara{\phi_r} \my_j^{j'}}}{\itembrack{l',C', i'}:\phi_r\otimes\delta(r, i')\otimes \omega(\my_j^{j'})}{\wldadjside} \\ 
+    ~~~~~ \wldadjcons \\
+	%\\    
+    \textsc{Non-adjacent} \\
+	\drule{\itembrack{l, C, r} ~ \rulebrack{\mx_i^{i'} \ara{\phi_r} \my_j^{j'}}}{\itembrack{l,C',i'}:\phi_r\otimes\delta(r, i')\otimes \omega(\my_j^{j'})}{\wldnadjside} \\ 
+    ~~~~~ \wldnadjcons \\
+	%\\    
+    \textsc{Accept} \\
+	\drule{\itembrack{I+1, C, r}}{\itembrack{I+1,\emptyset,I+1}:\delta(r, I+1)\otimes \omega(\eos)}{r \leq I} \\ 
+	%\\    
+
+  \end{array} 
+\right.\]
+\end{center}
+\caption{Specification of the initial proposal hypergraph. This program allows the same reorderings as \cite{Lopez:2009:TWD} (see logic WL$d$), however, it does not store \acs{LM} state information and it uses the upperbound LM distribution $\omega(\cdot)$.}\label{fig:q0}
+\end{figure}

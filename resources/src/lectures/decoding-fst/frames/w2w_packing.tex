@@ -1,0 +1,78 @@
+\begin{textblock*}{63mm}(0.6\textwidth,0.15\textheight)
+
+\begin{footnotesize}
+\begin{tabular}{l l}
+\ftext{um} & \{\etext{a}, \etext{some}, \etext{one}\} \\
+\ftext{conto} & \{\etext{tale}, \etext{story}, \etext{narrative}, \etext{novella}\} \\
+\ftext{de} & \{\etext{of}, \etext{from}, \etext{'s}\} \\
+\ftext{duas} & \{\etext{two}, \etext{couple}\} \\
+\ftext{cidades} & \{\etext{cities}, \etext{towns}, \etext{villages}\} \\
+\end{tabular}
+\end{footnotesize}
+
+\end{textblock*}
+
+\begin{textblock*}{63mm}(0.1\textwidth,0.50\textheight)
+\scalebox{0.6}{
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state] (D) [right of=C] {$3$};
+\node[state] (E) [right of=D] {$4$};
+\node[state,accepting] [right of=E] (F) {$5$};
+
+\only<1>{\path[color=red] (A) edge node {\ftext{um}} (B);}
+\only<1-2>{\path[color=red] (B) edge node {\ftext{conto}} (C);}
+\only<1-3>{\path[color=red] (C) edge node {\ftext{de}} (D);}
+\only<1-4>{\path[color=red] (D) edge node {\ftext{duas}} (E);}
+\only<1-5>{\path[color=red] (E) edge node {\ftext{cidades}} (F);}
+	
+\only<2->{
+	\path[color=blue] 
+		(A) edge node {\etext{a}} (B)
+			edge [bend right] node {\etext{some}} (B)
+			edge [bend left] node {\etext{one}} (B);
+}
+\only<3->{
+	\path[color=blue] 
+		(B) edge node {\etext{narrative}} (C)
+			edge [bend right] node {\etext{tale}} (C)
+			edge [bend left] node {\etext{story}} (C)
+			edge [bend right=60] node [below] {novella} (C);
+}
+\only<4->{
+	\path[color=blue] 
+		(C) edge node {\etext{of}} (D)
+			edge [bend right] node {\etext{from}} (D)
+			edge [bend left] node {\etext{'s}} (D);
+}
+\only<5->{
+	\path[color=blue] 
+		(D) edge [bend left] node {\etext{two}} (E)
+			edge [bend right] node {\etext{couple}} (E);
+}
+\only<6->{
+	\path[color=blue] 
+		(E) edge node {\etext{cities}} (F)
+			edge [bend right] node {\etext{towns}} (F)
+			edge [bend left] node {\etext{villages}} (F);
+}			
+\end{tikzpicture} 
+
+}
+\end{textblock*}
+
+
+\only<7>{
+	\begin{textblock*}{63mm}(0.2\textwidth,0.7\textheight)
+	$3 \times 4 \times 3 \times 2 \times 3 = 216$ solutions
+	\begin{itemize}
+		\item $6$ states
+		\item $3 + 4 + 3 + 2 + 3 = 15$ transitions
+	\end{itemize}
+	\end{textblock*}
+}

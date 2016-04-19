@@ -1,0 +1,88 @@
+
+\usepackage{xspace}
+
+\newcommand{\precite}[1]{{(#1)}}
+
+\newcommand{\ftext}[1]{{\color{red}\it \text{#1}}}
+\newcommand{\etext}[1]{{\color{blue} \text{#1}}}
+\newcommand{\gist}[1]{\texttt{#1}}
+
+\newcommand{\lefttik}[2]{\only<#1>{$\leftarrow$}\only<#2->{$\checkmark$}}
+
+\newcommand{\cmark}{{\color{ForestGreen}\ding{51}}}
+\newcommand{\xmark}{{\color{BurntOrange}\ding{55}}}
+
+\newcommand{\angbrack}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\nobrack}[1]{\ensuremath{#1}}
+\newcommand{\itembrack}[1]{\ensuremath{\left[ #1 \right]}}
+\newcommand{\rulebrack}[1]{\ensuremath{\angbrack{#1}}}
+\newcommand{\ustar}{\ensuremath{^{*}}\xspace}
+\newcommand{\upplus}{\ensuremath{^{+}}\xspace}
+\newcommand{\Astar}{A\ensuremath{^{*}}\xspace}
+\newcommand{\OSstar}{OS\ensuremath{^{*}}\xspace}
+
+
+\newcommand{\mx}{\ensuremath{x}\xspace}
+\newcommand{\mxx}{\ensuremath{\mathbf{\mx}}\xspace}
+\newcommand{\my}{\ensuremath{y}\xspace}
+\newcommand{\myy}{\ensuremath{\mathbf{\my}}\xspace}
+\newcommand{\me}{\ensuremath{e}\xspace}
+\newcommand{\mdd}{\ensuremath{\mathbf{d}}\xspace}
+\newcommand{\badmdd}{\ensuremath{\tilde{\mdd}}\xspace}
+\newcommand{\mDD}{\ensuremath{\mathcal{D}}\xspace}
+\newcommand{\mD}{\ensuremath{D}\xspace}
+\newcommand{\mh}{\ensuremath{h}\xspace}
+\newcommand{\mhh}{\ensuremath{\mathbf{\mh}}\xspace}
+\newcommand{\mH}{\ensuremath{H}\xspace}
+\newcommand{\mHH}{\ensuremath{\mathbf{\mH}}\xspace}
+
+\newcommand{\opa}{\ensuremath{\text{a}}}
+\newcommand{\opb}{\ensuremath{\text{b}}}
+\newcommand{\opbi}{\ensuremath{\text{b}_x}}
+\newcommand{\opbo}{\ensuremath{\text{b}_y}}
+\newcommand{\opc}{\ensuremath{\text{c}}}
+\newcommand{\opd}{\ensuremath{\text{d}}}
+\newcommand{\oph}{\ensuremath{\text{h}}}
+\newcommand{\opl}{\ensuremath{\text{l}}}
+\newcommand{\ops}{\ensuremath{\text{s}}}
+\newcommand{\opn}{\ensuremath{\text{n}}}
+\newcommand{\opi}{\ensuremath{\text{i}}}
+\newcommand{\opo}{\ensuremath{\text{o}}}
+\newcommand{\opt}{\ensuremath{\text{t}}}
+\newcommand{\opx}{\ensuremath{\text{x}}}
+\newcommand{\opy}{\ensuremath{\text{y}}}
+\newcommand{\opv}{\ensuremath{\text{v}}}
+
+\newcommand{\boldu}{\ensuremath{\mathbf{u}}}
+\newcommand{\boldv}{\ensuremath{\mathbf{v}}}
+
+\newcommand{\bzero}{\ensuremath{\bar{0}}\xspace}
+\newcommand{\bone}{\ensuremath{\bar{1}}\xspace}
+\newcommand{\bos}{\text{\scriptsize BOS}\xspace}
+\newcommand{\eos}{\text{\scriptsize EOS}\xspace}
+
+\newcommand{\la}{\ensuremath{\leftarrow}\xspace}
+\newcommand{\ra}{\ensuremath{\rightarrow}\xspace}
+\newcommand{\ara}[1]{\ensuremath{\xrightarrow[]{#1}}\xspace}
+\newcommand{\xra}[1]{\ensuremath{\xrightarrow[#1]{ }}\xspace}
+\newcommand{\nura}[1]{\ensuremath{\xrightarrow[\nu_{#1}]{ }}\xspace}
+\newcommand{\drule}[3]{\dfrac{#1}{#2} ~~ #3}
+\newcommand{\bul}{{\,\bullet\,}}
+
+
+\DeclareMathOperator*{\argmax}{\arg\!\max}
+%\newcommand{\argmin}{\arg\min}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+\DeclareMathOperator{\ltrim}{ltrim}
+\DeclareMathOperator{\loss}{loss}
+\DeclareMathOperator{\gain}{gain}
+\DeclareMathOperator{\BLEU}{BLEU}
+\DeclareMathOperator{\rtrim}{rtrim}
+\DeclareMathOperator{\tail}{tail}
+\DeclareMathOperator{\search}{search}
+\DeclareMathOperator{\refine}{refine}
+\DeclareMathOperator{\replace}{replace}
+\DeclareMathOperator{\set}{set}
+
+\newcommand{\ibr}[1]{\ensuremath{\textcolor{red}{\left\langle\text{#1}\right\rangle}}}
+\newcommand{\dbr}[1]{\ensuremath{\textcolor{blue}{\left(\text{#1}\right)}}}

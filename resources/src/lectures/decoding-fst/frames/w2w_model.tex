@@ -1,0 +1,53 @@
+\only<1-2>{Call $R$ the set of rules \\}
+\only<2>{
+	\begin{center}
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+	  	\tikzstyle{every state}=[draw=black,text=black]
+
+  		\node[initial,accepting,state,style={initial text=}] (A)                    {$a$};
+	
+		\path (A) edge [loop above] node {$r_i \in R$} (A);
+
+	\end{tikzpicture}
+	\end{center}
+}
+\only<3>{
+	Example \\
+	\begin{center}
+	\scalebox{0.8}{
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+	  	\tikzstyle{every state}=[draw=black,text=black]
+
+  		\node[initial,accepting,state,style={initial text=}] (A)                    {$a$};
+	
+		\path (A) edge [loop above] node {%
+			\pbox{4cm}{\scriptsize
+				\ftext{um}:\etext{a} \\
+				\ftext{um}:\etext{some} \\
+				\ftext{um}:\etext{one} \\
+				\ftext{conto}:\etext{tale} \\
+				\ftext{conto}:\etext{story} \\
+				\ftext{conto}:\etext{narrative} \\
+				\ftext{conto}:\etext{novella} \\
+				\ftext{de}:\etext{of} \\
+				\ftext{de}:\etext{from} \\
+				\ftext{de}:\etext{'s} \\
+				\ftext{duas}:\etext{two} \\
+				\ftext{duas}:\etext{couple} \\
+				\ftext{cidades}:\etext{cities} \\
+				\ftext{cidades}:\etext{towns} \\
+				\ftext{cidades}:\etext{villages} \\
+				\ftext{nosso}:\etext{our} \\
+				\ftext{nosso}:\etext{ours} \\
+				\ftext{amigo}:\etext{friend} \\
+				\ftext{amigo}:\etext{mate} \\
+				\ftext{comum}:\etext{ordinary} \\
+				\ftext{comum}:\etext{common} \\
+				\ftext{comum}:\etext{usual} \\
+				\ftext{comum}:\etext{mutual}
+			}						
+		} (A);
+
+	\end{tikzpicture}}
+	\end{center}
+}

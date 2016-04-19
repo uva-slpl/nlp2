@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage[x11names, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usepackage{amsmath}
+%
+%
+
+%
+
+%
+
+\begin{document}
+\pagestyle{empty}
+%
+%
+%
+
+\enlargethispage{100cm}
+% Start of code
+% \begin{tikzpicture}[anchor=mid,>=latex',line join=bevel,]
+\begin{tikzpicture}[>=latex',line join=bevel,]
+  \pgfsetlinewidth{1bp}
+%%
+\pgfsetcolor{black}
+  % Edge: q2 -> X2
+  \draw [->] (1.0942bp,22.0bp) .. controls (3.7464bp,22.0bp) and (61.79bp,22.0bp)  .. (109.85bp,22.0bp);
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (55.0bp,29.5bp) node {speech};
+  % Edge: q1 -> X1
+  \draw [->] (1.0942bp,90.0bp) .. controls (3.7464bp,90.0bp) and (61.79bp,90.0bp)  .. (109.85bp,90.0bp);
+  \draw (55.0bp,97.5bp) node {the president};
+  % Edge: q4 -> S1
+  \draw [->] (193.12bp,37.002bp) .. controls (195.56bp,37.037bp) and (235.06bp,37.704bp)  .. (266.0bp,44.0bp) .. controls (269.09bp,44.628bp) and (272.28bp,45.412bp)  .. (285.26bp,49.223bp);
+  \draw (238.0bp,51.5bp) node {the 2 of 1};
+  % Edge: X2 -> q4
+  \draw [] (153.61bp,27.331bp) .. controls (169.76bp,31.507bp) and (189.71bp,36.666bp)  .. (190.94bp,36.984bp);
+  \draw (157.61bp,19.831bp) node {2};
+  % Edge: q3 -> S1
+  \draw [->] (193.08bp,74.986bp) .. controls (195.28bp,74.61bp) and (242.12bp,66.592bp)  .. (284.45bp,59.346bp);
+  \draw (238.0bp,79.5bp) node {1 's 2};
+  % Edge: S1 -> T0
+  \draw [->] (325.85bp,56.0bp) .. controls (334.27bp,56.0bp) and (344.34bp,56.0bp)  .. (363.95bp,56.0bp);
+  \draw (329.85bp,48.5bp) node {1};
+  \draw (359.95bp,48.5bp) node {1};
+  % Edge: X2 -> q3
+  \draw [] (148.85bp,36.482bp) .. controls (165.48bp,51.684bp) and (189.45bp,73.58bp)  .. (190.93bp,74.934bp);
+  \draw (152.85bp,43.982bp) node {2};
+  % Edge: X1 -> q4
+  \draw [dashed] (148.85bp,75.518bp) .. controls (165.48bp,60.316bp) and (189.45bp,38.42bp)  .. (190.93bp,37.066bp);
+  \draw (144.85bp,68.018bp) node {1};
+  % Edge: X1 -> q3
+  \draw [] (153.91bp,85.101bp) .. controls (160.36bp,83.534bp) and (167.49bp,81.75bp)  .. (174.0bp,80.0bp) .. controls (181.13bp,78.083bp) and (189.83bp,75.366bp)  .. (190.89bp,75.034bp);
+  \draw (157.91bp,77.601bp) node {1};
+  % Node: q1
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{0.0,0.0,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [opacity=1] (0.0bp,90.0bp) ellipse (0.0bp and 0.0bp);
+\end{scope}
+  % Node: q3
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{0.0,0.0,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [opacity=1] (192.0bp,75.0bp) ellipse (0.0bp and 0.0bp);
+\end{scope}
+  % Node: q2
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{0.0,0.0,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [opacity=1] (0.0bp,22.0bp) ellipse (0.0bp and 0.0bp);
+\end{scope}
+  % Node: q4
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \definecolor{fillcol}{rgb}{0.0,0.0,0.0};
+  \pgfsetfillcolor{fillcol}
+  \filldraw [opacity=1] (192.0bp,37.0bp) ellipse (0.0bp and 0.0bp);
+\end{scope}
+  % Node: S1
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (305.0bp,56.0bp) node {S1};
+\end{scope}
+  % Node: T0
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (389.0bp,56.0bp) node {T0};
+\end{scope}
+  % Node: X2
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (132.0bp,22.0bp) node {X2};
+\end{scope}
+  % Node: X1
+\begin{scope}
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (132.0bp,90.0bp) node {X1};
+\end{scope}
+%
+\end{tikzpicture}
+% End of code
+
+%
+\end{document}
+%
+
+
+

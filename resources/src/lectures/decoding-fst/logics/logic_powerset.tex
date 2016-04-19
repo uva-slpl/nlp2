@@ -1,0 +1,28 @@
+
+\newcommand{\powersetcond}{
+\begin{array}{l }
+\textcolor<4>{ForestGreen}{1 \leq i \leq I} \\
+\textcolor<4>{Red}{c_i = \bzero}
+\end{array}
+}
+
+
+
+\begin{math} %\small
+ \left. 
+  \begin{array}{l}
+    \alert<2>{\textsc{Item}} ~~~~ {\itembrack{\textcolor<2>{blue}{\{0,1\}^I}}} \\
+    %\\
+    \alert<5>{\textsc{Goal}} ~~~~ {\textcolor<5>{blue}{\itembrack{1^I}}} \\
+    %\\  
+    \alert<3>{\textsc{Axiom}} \\ 
+	\drule{}{\itembrack{\textcolor<3>{blue}{0^I}}}{} \\
+    %\\  
+    \alert<4>{\textsc{Expand}} \\ 
+	\drule{\textcolor<4>{blue}{\itembrack{C}}}{\textcolor<4>{Fuchsia}{\itembrack{\alpha_i(C)}}}{\powersetcond} \\ 
+	~~ \text{\small where $\alpha_i(C)$ is a copy of $C$ with $c_i = \bone$}
+
+  \end{array} 
+\right.
+\end{math}
+

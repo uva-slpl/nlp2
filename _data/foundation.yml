@@ -150,25 +150,6 @@
   data: 
 -
   layout: lecture
-  selected: n
-  date: 2016-04-12
-  img: decoding
-  title: Decoding
-  instructor: Wilker Aziz
-  note: 
-  abstract: In this lecture we will present hypergraphs, translation as deduction, discuss decision rules, integration of nonlocal features (as weighted CFG-FSA intersection), and finally beam search and cube pruning.
-  background:
-    - "[Lopez (2009)](http://www.aclweb.org/anthology/E/E09/E09-1061.pdf) formalises translation as weighted deduction."
-    - "[Chiang (2007)](http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201) introduces cube pruning."
-  further:
-    - "[Huang and Chiang (2007)](http://www.aclweb.org/anthology/P/P07/P07-1019.pdf) introduce algorithms for approximate forest rescoring (i.e. cube pruning and cube growing)."
-    - "[Watanabe et al. (2006)](http://www.aclweb.org/anthology/P06-1098) introduce an interesting left-to-right hierarchical decoder based on a synchronous grammar constrained to a GNF target side (a regular grammar on the target side)."
-  discussion:
-  slides: resources/slides/decoding.pdf
-  code: 
-  data: 
--
-  layout: lecture
   selected: y
   date: 2016-04-14
   img: tuning
@@ -193,5 +174,27 @@
       - "For MIRA with batched updates in MT refer to [(Cherry and Forster, 2012)](http://www.aclweb.org/anthology/N12-1047)"
   discussion:
   slides: resources/slides/eval-tuning.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2016-04-19
+  img: decoding
+  title: Decoding
+  instructor: Wilker Aziz
+  note: 
+  abstract: In this lecture we will talk about translation using FSTs, hypergraphs, translation as deduction, discuss decision rules, integration of nonlocal features (as weighted CFG-FSA intersection), and finally beam search and cube pruning.
+  background:
+    - "[Mohri (2009)](https://www.cs.nyu.edu/~mohri/pub/hwa.pdf) surveys weighted automata algorithms."
+    - "[Lopez (2009)](http://www.aclweb.org/anthology/E/E09/E09-1061.pdf) formalises translation as weighted deduction."
+    - "[Chiang (2007)](http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201) introduces cube pruning."
+  further:
+    - "[Huang and Chiang (2007)](http://www.aclweb.org/anthology/P/P07/P07-1019.pdf) introduce algorithms for approximate forest rescoring (i.e. cube pruning and cube growing)."
+    - "[Watanabe et al. (2006)](http://www.aclweb.org/anthology/P06-1098) introduce an interesting left-to-right hierarchical decoder based on a synchronous grammar constrained to a GNF target side (a regular grammar on the target side)."
+  discussion:
+  classmaterial: 
+    - "Part 1: [FST decoding and decision rules](resources/slides/decoding-fst.pdf)"
+    - "Part 2: [SCFG decoding and cube pruning](resources/slides/decoding-scfg.pdf)"
   code: 
   data: 

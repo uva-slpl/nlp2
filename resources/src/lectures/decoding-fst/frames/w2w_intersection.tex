@@ -1,0 +1,101 @@
+%
+% TRANSLATION RULES
+%
+\begin{textblock*}{63mm}(0.99\textwidth,0.1\textheight)
+\scalebox{0.75}{
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+
+  		\node[initial,accepting,state,style={initial text=}] (A)                    {$a$};
+
+	\path (A) edge [loop above] node {%
+		\pbox{4cm}{\scriptsize
+			\ftext{um}:\etext{a} \lefttik{3}{4} \\
+			\ftext{um}:\etext{some} \lefttik{4}{5} \\
+			\ftext{um}:\etext{one} \lefttik{5}{6} \\
+			\ftext{conto}:\etext{tale} \lefttik{6}{7} \\
+			\ftext{conto}:\etext{story} \lefttik{7}{8}\\
+			\ftext{conto}:\etext{narrative} \lefttik{8}{9}\\
+			\ftext{conto}:\etext{novella}\lefttik{9}{10}\\
+			\ftext{de}:\etext{of} \lefttik{10}{11}\\
+			\ftext{de}:\etext{from} \lefttik{11}{12}\\
+			\ftext{de}:\etext{'s} \lefttik{12}{13}\\
+			\ftext{duas}:\etext{two} \lefttik{13}{14}\\
+			\ftext{duas}:\etext{couple} \lefttik{14}{15}\\
+			\ftext{cidades}:\etext{cities} \lefttik{15}{16}\\
+			\ftext{cidades}:\etext{towns} \lefttik{16}{17}\\
+			\ftext{cidades}:\etext{villages} \lefttik{17}{18}
+		}						
+	} (A);
+
+\end{tikzpicture}
+} % scale-box
+\end{textblock*}
+
+%
+% INPUT
+%
+\begin{textblock*}{63mm}(0.01\textwidth,0.2\textheight)
+\scalebox{0.6}{	
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+  	\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state] (D) [right of=C] {$3$};
+\node[state] (E) [right of=D] {$4$};
+\node[state,accepting] [right of=E] (F) {$5$};
+\path[color=red] 
+	(A) edge node {\ftext{um}\only<3-5>{$^\star$}} (B)
+	(B) edge node {\ftext{conto}\only<6-9>{$^\star$}} (C)
+	(C) edge node {\ftext{de}\only<10-12>{$^\star$}} (D)
+	(D) edge node {\ftext{duas}\only<13-14>{$^\star$}} (E)
+	(E) edge node {\ftext{cidades}\only<15-17>{$^\star$}} (F);
+\end{tikzpicture} 
+}
+\end{textblock*}
+
+%
+% INTERSECTION
+%
+\begin{textblock*}{63mm}(0.01\textwidth,0.45\textheight)
+\scalebox{0.65}{
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=blue,text=blue]
+
+\only<2->{
+\node[initial,state,style={initial text=}] (A) {$0,a$};
+\node[state] (B) [right of=A] {$1,a$};
+\node[state] (C) [right of=B] {$2,a$};
+\node[state] (D) [right of=C] {$3,a$};
+\node[state] (E) [right of=D] {$4,a$};
+\node[state,accepting] [right of=E] (F) {$5,a$};
+}
+
+	
+\only<3->{\path (A) edge [bend left] node {\etext{a}} (B);}
+\only<4->{\path (A) edge node {\etext{some}} (B);}
+\only<5->{\path (A) edge [bend right] node {\etext{one}} (B);}
+
+\only<6->{\path (B) edge [bend left] node {\etext{tale}} (C);}
+\only<7->{\path (B) edge node {\etext{story}} (C);}
+\only<8->{\path (B) edge [bend right] node {\etext{narrative}} (C);}
+\only<9->{\path (B) edge [bend right=60] node [below] {novella} (C);}
+
+\only<10->{\path (C) edge [bend left] node {\etext{of}} (D);}
+\only<11->{\path (C) edge node {\etext{from}} (D);}
+\only<12->{\path (C) edge [bend right] node {\etext{'s}} (D);}
+
+\only<13->{\path (D) edge [bend left] node {\etext{two}} (E);}
+\only<14->{\path (D) edge [bend right] node {\etext{couple}} (E);}
+
+\only<15->{\path(E) edge [bend left] node {\etext{cities}} (F);}
+\only<16->{\path(E) edge node {\etext{towns}} (F);}
+\only<17->{\path(E) edge [bend right] node {\etext{villages}} (F);}			
+\end{tikzpicture} 
+
+}
+\end{textblock*}

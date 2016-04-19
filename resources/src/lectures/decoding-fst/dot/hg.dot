@@ -1,0 +1,20 @@
+digraph G {
+    rankdir=LR;
+    size="10"
+    node [shape = doublecircle]; T0;
+    node [shape = circle,draw="black"]; S1;
+    node [shape = circle]; X1;
+    node [shape = circle]; X2;
+    node [shape = point,fillcolor="#000000",width=.0]; 
+
+    q1 -> X1 [ label = "the president" ];
+    q2 -> X2 [ label = "speech" ];
+    X1 -> q3 [ taillabel = "1",arrowhead="none" ];
+    X2 -> q3 [ taillabel = "2",arrowhead="none" ];
+    q3 -> S1 [ label = "1 's 2" ];
+    X1 -> q4 [ taillabel = "1",arrowhead="none",style="dashed" ];
+    X2 -> q4 [ taillabel = "2",arrowhead="none" ];
+    q4 -> S1 [ label = "the 2 of 1" ];
+    S1 -> T0 [ headlabel = "1",taillabel="1" ];
+
+}

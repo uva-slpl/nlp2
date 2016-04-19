@@ -1,0 +1,161 @@
+\section{Decision rules}
+
+\frame{
+	\frametitle{Picking one solution}
+	
+	What do we pick out of the (whole) weighted space of solutions? \\
+	
+	\begin{itemize}
+		\item best translation
+		\item ``minimum-loss'' translation
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Best translation}
+	MAP \\
+	
+	$$\myy\ustar = \argmax_\myy \sum_{\opy[\mdd] = \myy} f(\mdd|\mxx)$$
+	
+	\pause 
+	\begin{itemize}
+		\item summing alternative derivations of the same string \\
+		NP-complete: related to determinisation \citep{Simaan:1996:complexity} \\ 
+	\end{itemize}
+	
+	\pause
+	
+	Viterbi (approximation to MAP)\\ 
+	
+	$$\mdd\ustar = \argmax_\mdd f(\mdd|\mxx)$$
+	
+	\begin{itemize}
+		\item assumes the most likely derivation is enough
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Minimum Bayes Risk translation}
+	
+	MBR \\
+	\begin{itemize}
+		\item<2-> incorporates a loss (or gain) function 
+	\end{itemize}
+	
+	\only<3>{
+	$$\myy = \argmin_\myy \angbrack{\loss(\myy, \myy')}_{p(\myy'|\mxx)}$$}
+	\only<4>{
+	$$\myy = \argmax_\myy \angbrack{\gain(\myy, \myy')}_{p(\myy'|\mxx)}$$}
+	\only<5-6>{
+	$$\myy = \argmax_\myy \angbrack{\BLEU(\myy, \myy')}_{p(\myy'|\mxx)}$$}
+	\only<7-8>{
+	$$\myy = \argmax_\myy \sum_{\myy'} \BLEU(\myy, \myy') \alert<8>{p(\myy'|\mxx)}$$}
+	\only<9>{
+	$$\myy = \argmax_\myy \sum_{\alert<9>{\myy' \sim p(\myy'|\mxx)}} \BLEU(\myy, \myy')$$}
+	\only<10->{
+	$$\myy = \argmax_\myy \sum_{\myy'} \sum_{\alert<10>{\mdd' \sim p(\mdd'|\mxx)}} \BLEU(\myy, \opy[\mdd'])$$}
+	
+	\begin{itemize}
+		\item<6-> assesses the risk associated with choosing any one translation
+		\item<7-> requires the computation of expectations 
+		\item<8-> which requires a \alert<8>{probability}
+		$$p(\mdd|\mxx) = \frac{f(\mdd|\mxx)}{\sum_{\mdd'} f(\mdd'|\mxx)}$$
+		\item<9-> can be estimated by \alert<9>{sampling translations}
+		\item<10-> can be estimated from \alert<10>{samples of derivations}
+		%\item<11-> \alert{have a look at project 14 ;)}\\
+		
+	\end{itemize}
+}
+
+
+\section{Decoding algorithms}
+
+\frame{
+	\frametitle{DP-based Viterbi}
+	
+	Explore a truncated version of the full space \pause
+	\begin{itemize}
+		\item only a budgeted set of outgoing edges form each node \\ \pause
+		\begin{itemize}
+			\item beam search: exhaustively enumerates outgoing edges, ranks them, prunes all but $k$-best \pause
+			\item cube pruning: enumerates $k$ edges in near best-first order \pause
+%			\item incremental search: enumerates the $k$-best edges \pause
+		\end{itemize}
+	\end{itemize}
+	
+	In order to compare hypotheses more fairly \pause
+	\begin{itemize}
+		\item future cost estimates \pause
+		\item heuristic view of outside weights \pause
+		\item cheap dynamic program that estimates the best possible way to complete any translation prefix \pause
+	\end{itemize}
+	
+	\hfill \citep{Koehn+2003:pbsmt} \\
+	\hfill \citep{Chiang:2007}
+}
+
+\frame{
+	\frametitle{DP-based MBR}
+	
+	Uses derivations in an $n$-best list as samples \pause
+	\begin{itemize}
+		\item arguably poor proxy to samples \pause
+		\item arbitrarily biased (due to pruning) \pause
+		\item centred around the Viterbi solution by design (due to beam search)
+	\end{itemize}
+	\pause
+	\hfill \citep{Kumar+2004:MBR}\\
+	\hfill \citep{Tromble+2008:LMBR}
+
+}
+
+\frame{
+	\frametitle{Sampling}
+	
+	Gibbs sampling \pause
+	\begin{enumerate}
+		\item start with a draft translation \pause
+		\item resample from posterior (not all simultaneously): \\ segmentation, phrase order, phrase selection \pause
+		\item repeat 2 
+	\end{enumerate}
+
+	\pause
+	Adaptive rejection sampling \pause
+	\begin{enumerate}
+		\item design a simpler upperbound (e.g. unigram LM) \pause
+		\item sample from it \pause
+		\item assess or reject at the complex distribution (e.g. $5$-gram LM) \pause
+		\item rejected samples motivate refinements of the upperbound \pause
+		\item repeat 2-3 until acceptance rate is reasonable (e.g. 5-10\%) 
+	\end{enumerate}
+	
+	\pause
+	
+	Importance sampling \pause
+	\begin{itemize}
+		\item you will hear from us (project 14) ;)
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Sampling}
+
+	Disadvantages \pause
+	\begin{itemize}
+		\item hard to do it without introducing bias \pause
+		\item might require large number of samples
+	\end{itemize}
+	\pause
+	
+	Advantages \pause
+	\begin{enumerate}
+		\item broad view of distribution \pause
+		\item potential to incorporate arbitrarily complex features \\ 
+		(at the sentence level at least) \pause
+		\item sometimes unbiased \pause
+		\item ideal for MBR and tuning \pause
+		\item typically stupid simple to parallelise
+	\end{enumerate}
+	
+
+}

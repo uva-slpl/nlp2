@@ -1,0 +1,365 @@
+
+\frame{
+	\frametitle{Reordering}
+	
+	\only<1>{
+	Our model of translational equivalences assumes monotonicity 
+	\begin{itemize}
+		\item a word replacement model 	
+		\item {\color{red}operates in {\bf monotone} left-to-right order}		
+		\item with no insertions or deletions
+		\item constrained to known word-to-word bilingual mappings \\
+	(rule set)
+	\end{itemize}
+	}
+	\only<2->{
+	Not anymore!
+	\begin{itemize}
+		\item a word replacement model	
+		\item {\color{blue}operates in {\bf arbitrary} order}
+		\item with no insertions or deletions
+		\item constrained to known word-to-word bilingual mappings \\
+	(rule set)
+	\end{itemize}
+	}
+}
+
+\frame{
+	\frametitle{Translating arbitrary permutations}
+	\input{frames/w2w_permutations.tex}
+}
+
+
+\frame{
+	\frametitle{Packing permutations}
+	
+	\input{frames/w2w_powerset.tex}	
+}
+
+\frame{
+	\frametitle{Packing permutations}
+
+	\begin{textblock*}{80mm}(0.5\textwidth,0.5\textheight)
+	\input{frames/w2w_final_powerset.tex}
+	\end{textblock*}
+	
+
+%	Each state represents a set in the powerset of $\{1,2,\ldots, I\}$\\
+	Powerset (\emph{all subsets}) of $\{1, 2, \ldots, I\}$
+	\begin{itemize}
+		\item $2^I$ subsets \\
+		think of a vector of $I$ bits ;)
+	\end{itemize}
+	Intersection with translation rules
+	\begin{itemize}
+		\item $O(2^I)$ states
+		\item $O(t \times I\times 2^I)$ transitions
+		\item $O(t^I \times I!)$ paths
+	\end{itemize}	
+	
+	
+}
+
+\frame{
+	\frametitle{Deductive logic}
+	
+	
+	\begin{columns}
+	\begin{column}{0.4\linewidth}
+	\input{logics/logic_powerset.tex}
+	\end{column}
+	\begin{column}{0.6\linewidth}
+		\only<1>{
+		Template
+		\begin{itemize}
+			\item items \ra states
+			\item deduction rules \ra transitions
+		\end{itemize}
+		}
+		\only<2>{
+		\begin{itemize}
+			\item a subset of $\{1, \ldots, I\}$\\
+			encoded as a \textcolor{blue}{bit vector of length $I$}
+			
+		\end{itemize}
+		}
+		\only<3>{
+		\begin{itemize}
+			\item we start with an empty sentence \\
+			e.g. $I=3 \ra 0^3 = \textcolor{blue}{000}$ 
+		\end{itemize}
+		}
+		\only<4>{
+		\begin{itemize}
+			\item and continue one word at a time\\
+			e.g. $\textcolor{blue}{\itembrack{\textcolor{Red}{0}00}} \textcolor{ForestGreen}{(i=1)} \ra \textcolor{Fuchsia}{\itembrack{100}}$ \\
+		\end{itemize}
+		}
+		\only<5>{
+		\begin{itemize}
+			\item until we have a complete sentence\\
+			e.g. \textcolor<5>{blue}{$\itembrack{111}$}
+		\end{itemize}
+		}
+
+	\end{column}
+	\end{columns}
+}
+
+
+\frame{
+	\frametitle{Instantiated deductive logic program}
+	
+	\begin{textblock*}{80mm}(0.7\textwidth,0.15\textheight)
+	\scalebox{0.8}{\input{logics/logic_powerset2.tex}}
+	\end{textblock*}
+	
+	\begin{small}
+		\input{frames/all_permutations_items.tex}
+	\end{small}
+	
+	\begin{textblock*}{80mm}(0.45\textwidth,0.5\textheight)
+		\scalebox{0.6}{\input{frames/all_permutations_lattice.tex}}
+	\end{textblock*}
+
+}
+
+\frame{
+	\frametitle{Word replacement with unconstrained reordering}
+	
+	
+	
+	\only<2>{
+	\begin{textblock*}{100mm}(0.1\textwidth,0.2\textheight)
+	\scalebox{1.2}{
+	\input{frames/w2w_final_powerset.tex}
+	}
+	\end{textblock*}
+	}
+	
+	\only<3>{
+	\begin{textblock*}{100mm}(0.1\textwidth,0.1\textheight)
+	\scalebox{0.9}{
+	\input{frames/translated_powerset.tex}
+	}
+	\end{textblock*}
+	}
+
+	\begin{textblock*}{100mm}(0.1\textwidth,0.8\textheight)	
+	\small
+	Source: \ftext{nosso amigo comum} 
+	\begin{enumerate}
+		\item<2-> arbitrary permutations $O(I2^I)$
+		\item<3-> intersection with the rule set  $O(tI2^I)$
+	\end{enumerate}
+	\end{textblock*}
+}
+
+
+\frame{
+	\frametitle{Problem!}
+	
+	Before we even discuss a parameterisation of the model we already ran into a tractability issue!
+	\pause
+	\begin{itemize}
+		\item NP-complete \precite{Knight, 1999}
+		\item generalised TSP
+	\end{itemize}
+	\pause
+	Direction
+	\begin{itemize}
+		\item is it sensible to consider the space of {\bf all permutations}?
+	\end{itemize}
+	\pause
+	Solution
+	\pause
+	\begin{itemize}
+		\item constrain reordering {\bf :D}
+		\pause
+		\item {\bf 0.o} but how?
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Ad-hoc distortion limit}
+	
+	Several flavours of distortion limit \precite{Lopez, 2009}
+	\pause
+	\begin{itemize}
+		\item limit reordering as a function of the number of skipped words
+	\end{itemize}
+	\pause
+	Moses allows reordering within a window of length $d$
+	\begin{itemize}
+		\item starting from the leftmost uncovered word
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{WL$d$ (intuition)}
+	Suppose a sentence with $I=6$ words and $d=3$\\
+	
+	~
+	
+	\textcolor{gray}{
+	\begin{tabular}{|c | c | c | c | c | c |}
+	\hline
+	\textcolor{black}{1} & \textcolor{black}{2} & \textcolor{black}{3} & \textcolor{black}{4} & \textcolor{black}{5} & \textcolor{black}{6} \\ \hline
+	\textcolor{red}{0} & \textcolor{blue}{\only<2-3>{0}\only<4-5>{1}} & \textcolor{blue}{\only<2,5>{0}\only<3-4>{1}}  & 0 & 0 & 0 \\
+	1 & \textcolor{red}{0} & \textcolor{blue}{\only<6-7>{0}\only<8-9>{1}}  & \textcolor{blue}{\only<6,9>{0}\only<7-8>{1}} & 0 & 0 \\
+	1 & 1 & \textcolor{red}{0} & \textcolor{blue}{\only<10-11>{0}\only<12-13>{1}} & \textcolor{blue}{\only<10,13>{0}\only<11-12>{1}} & 0 \\
+	1 & 1 & 1 & \textcolor{red}{0} & \textcolor{blue}{\only<14-15>{0}\only<16-17>{1}} & \textcolor{blue}{\only<14,17>{0}\only<15-16>{1}} \\
+	1 & 1 & 1 & 1 & \textcolor{red}{0} & \textcolor{blue}{\only<18>{0}\only<19>{1}} \\
+	1 & 1 & 1 & 1 & 1 & \textcolor{red}{0} \\	
+	1 & 1 & 1 & 1 & 1 & 1 \\		
+	\hline
+	\end{tabular}
+	}
+	
+	~
+	
+	
+	\only<20>{
+	Largely reduced set of permutations
+	\begin{itemize}
+		\item $(I-1)2^{d-1}$ configurations
+	\end{itemize}
+	}
+}
+
+
+\frame{
+	\frametitle{WL$d$ (example)}
+	
+	Suppose $d=2$ and $I=3$ 
+	\only<10>{(e.g. \ftext{nosso amigo comum})} \\
+
+~
+
+
+\scalebox{0.8}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=red,text=red]
+
+\only<2->{\node[initial,state,style={initial text=}] (q10) {$\{1,2\}$};}
+\only<3->{\node[state] (q20) [above right of=q10] {$\{2,3\}$};}
+\only<4->{\node[state] (q11) [below right of=q10] {$\{1,\not2\}$};}
+\only<5->{\node[state] (q3) [right of=q11] {$\{3 \}$};}
+\only<7->{\node[state] (q21) [right of=q20] {$\{2,\not3\}$};}
+\only<8->{\node[state,accepting] (q4) [below right of=q21] {$\varnothing$};}
+
+
+
+\only<3-9>{\path (q10) edge node {\ftext{1}} (q20);}
+\only<4-9>{\path (q10) edge node {\ftext{2}} (q11);}
+\only<5-9>{\path (q11) edge node {\ftext{1}} (q3);}
+\only<6-9>{\path (q20) edge node {\ftext{2}} (q3);}
+\only<7-9>{\path (q20) edge node {\ftext{3}} (q21);}
+\only<8-9>{\path (q21) edge node {\ftext{2}} (q4);}
+\only<9>{\path (q3) edge node {\ftext{3}} (q4);}
+
+\only<10>{
+\path (q10) edge node {\ftext{nosso}} (q20);
+\path (q10) edge node {\ftext{amigo}} (q11);
+\path (q20) edge node {\ftext{comum}} (q21);
+\path (q20) edge node {\ftext{amigo}} (q3);
+\path (q11) edge node {\ftext{nosso}} (q3);
+\path (q3) edge node {\ftext{comum}} (q4);
+\path (q21) edge node {\ftext{amigo}} (q4);
+}
+
+
+
+\end{tikzpicture} 
+}
+
+
+	
+}
+
+
+\frame{
+	\frametitle{WL$d$ (logic)}
+	
+	
+	\begin{columns}
+	\begin{column}{0.4\linewidth}
+	\input{logics/logic_mono_wld.tex}
+	\end{column}
+	\begin{column}{0.6\linewidth}
+		
+	\begin{itemize}
+		\item $O(Id2^{d-1})$ states
+		\item $O(Id2^{d-1})$ transitions
+	\end{itemize}
+
+	\end{column}
+	\end{columns}
+}
+
+
+\frame{
+	\frametitle{Word replacement with reordering constrained by WL$2$}
+	
+	\only<1>{Complexity: $O(I2^{d-1})$ \\}
+	\only<2>{Complexity: $O(tI2^{d-1})$ \\}	
+
+~
+
+\scalebox{0.8}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+
+\node[initial,state,style={initial text=}] (q10) {$\{1,2\}$};
+\node[state] (q20) [above right of=q10] {$\{2,3\}$};
+\node[state] (q11) [below right of=q10] {$\{1,\not2\}$};
+\node[state] (q3) [right of=q11] {$\{3 \}$};
+\node[state] (q21) [right of=q20] {$\{2,\not3\}$};
+\node[state,accepting] (q4) [below right of=q21] {$\varnothing$};
+
+\only<1>{
+\path[draw=red] (q10) edge node {\ftext{nosso}} (q20)
+	(q10) edge node {\ftext{amigo}} (q11)
+	(q20) edge node {\ftext{comum}} (q21)
+	(q20) edge node {\ftext{amigo}} (q3)
+	(q11) edge node {\ftext{nosso}} (q3)
+	(q3) edge node {\ftext{comum}} (q4)
+	(q21) edge node {\ftext{amigo}} (q4);
+}
+
+\only<2>{
+\path[draw=blue] (q10) edge [bend left=15] node [above] {\etext{our}} (q20)
+	(q10) edge  node [below] {\etext{ours}} (q20)
+
+	(q10) edge node [above] {\etext{friend}} (q11)
+	(q10) edge [bend right=15] node [below] {\etext{mate}} (q11)
+
+	(q20) edge [bend left=45] node [above] {\etext{ordinary}} (q21)
+	(q20) edge [bend left=30] node {\etext{mutual}} (q21)
+	(q20) edge node {\etext{common}} (q21)
+	(q20) edge [bend right=15] node {\etext{usual}} (q21)			
+
+	(q20) edge [bend left=15] node {\etext{friend}} (q3)
+	(q20) edge [bend right=15] node {\etext{mate}} (q3)
+
+	(q11) edge node {\etext{our}} (q3)
+	(q11) edge [bend right=15] node [below] {\etext{ours}} (q3)
+
+	(q3) edge node {\etext{usual}} (q4)
+	(q3) edge [bend right=15] node {\etext{mutual}} (q4)
+	(q3) edge [bend right=30] node [below] {\etext{common}} (q4)
+	(q3) edge [bend right=45] node [below] {\etext{ordinary}} (q4)			
+
+	(q21) edge [bend left=30] node [above] {\etext{friend}} (q4)
+	(q21) edge node {\etext{mate}} (q4);
+
+}
+
+\end{tikzpicture} 
+}
+
+	
+}
+

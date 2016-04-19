@@ -35,6 +35,27 @@
       <a href="{{ include.lecture.slides }}" class="label label-info">Slides</a>
     {% endif %}
 
+    {% if include.lecture.classmaterial %}
+      <a data-toggle="modal" href="#classmaterial{{ include.lecture.img }}" class="label label-info">Class material</a>
+      <!-- Modal -->
+      <div class="modal fade" id="classmaterial{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">{{ include.lecture.title }} | Class material</h4>
+            </div>
+            <div class="modal-body">
+                <ul>
+                {% for material in include.lecture.classmaterial %}
+                    <li>{{ material | markdownify }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    {% endif %}
+
     <!-- code and data -->
     {% if include.lecture.code %}
       <a href="{{ include.lecture.code }}" class="label label-info">Code</a>

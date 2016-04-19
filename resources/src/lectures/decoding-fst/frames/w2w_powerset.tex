@@ -1,0 +1,97 @@
+%\scalebox{0.7}{%
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\node[initial,state,style={initial text=}] (q000) {\only<1-4>{$0$}\only<5->{$000$}};
+\only<1-5>{\node[state] (q1) [right of=q000] {$1$};}
+\only<1-7>{\node[state] (q2) [right of=q1] {$2$};}
+\only<1-7>{\node[state,accepting] (q3) [right of=q2] {$3$};}
+\only<5->{\node[state] (q100) [above right of=q000] {$100$};}
+\only<6->{
+\node[state] (q010) [right of=q000] {$010$};
+\node[state] (q001) [below right of=q000] {$001$};
+}
+\only<7->{\node[state] (q110) [above of=q2] {$110$};}
+\only<8->{
+\node[state] (q101) [right of=q010] {$101$};
+\node[state] (q011) [below of=q2] {$011$};
+\node[state,accepting] (q111) [right of=q101] {$111$};
+}
+
+\only<1>{\path[color=gray,text=gray] 
+(q000) edge node {nosso} (q1);}
+\only<1-2>{\path[color=gray,text=gray] 
+(q1) edge node {amigo} (q2);}
+\only<1-3>{\path[color=gray,text=gray] 
+(q2) edge node {comum} (q3);}
+
+\only<2-4>{\path[color=red,text=red] 
+(q000) edge [bend left] node {nosso} (q1);}
+\only<2-5>{\path[color=red,text=red] 
+(q000) edge node {amigo} (q1);}
+\only<2-5>{\path[color=red,text=red] 
+(q000) edge [bend right] node {comum} (q1);}
+
+
+\only<3-6>{
+\path[color=red,text=red] 
+	(q1) edge [bend left] node {nosso} (q2);}
+\only<3-5>{
+\path[color=red,text=red] 
+	(q1) edge node {amigo} (q2);}
+\only<3-7>{
+\path[color=red,text=red] 
+	(q1) edge [bend right ]node {comum} (q2);}
+		
+\only<4-7>{
+\path[color=red,text=red] 
+	(q2) edge [bend left] node {nosso} (q3);}
+\only<4-7>{
+\path[color=red,text=red] 
+	(q2) edge node {amigo} (q3);}
+\only<4-6>{
+\path[color=red,text=red] 
+	(q2) edge [bend right ]node {comum} (q3);}
+		
+\only<5->{\path[color=red,text=red] 
+(q000) edge [bend left] node {nosso} (q100);}
+
+\only<5-6>{
+\path[color=red,text=red] 
+	(q100) edge [bend left=90] node {amigo} (q2);
+}
+\only<5-7>{
+\path[color=red,text=red] 
+	(q100) edge [bend left=30] node {comum} (q2);
+}
+\only<6->{\path[color=red,text=red] 
+(q000) edge [bend right] node {\ftext{comum}} (q001);}
+\only<6->{\path[color=red,text=red] 
+(q000) edge node {amigo} (q010);}
+
+
+\only<6-7>{
+\path[color=red,text=red] 
+(q001) edge [bend right=30] node {\ftext{nosso}} (q2);
+}
+\only<6-7>{
+\path[color=red,text=red] 
+(q001) edge [bend right=90] node [below] {\ftext{amigo}} (q2);
+}
+\only<7->{
+\path[color=red,text=red] 
+(q100) edge [bend left] node {\ftext{amigo}} (q110)
+(q010) edge [bend right] node [below] {\ftext{nosso}} (q110)
+(q110) edge [bend left] node {\ftext{comum}} (q3);
+}
+\only<8->{
+\path[color=red,text=red] 
+(q100) edge [bend left] node [above] {\ftext{comum}} (q101)
+(q010) edge node {\ftext{comum}} (q011)
+(q001) edge [bend right] node {\ftext{nosso}} (q101)
+(q001) edge [bend right] node [below] {\ftext{amigo}} (q011)
+(q101) edge node {\ftext{amigo}} (q111)
+(q011) edge [bend right] node [below] {\ftext{nosso}} (q111);
+}
+\end{tikzpicture}
+%}
+

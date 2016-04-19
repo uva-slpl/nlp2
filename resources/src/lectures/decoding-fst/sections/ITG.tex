@@ -1,0 +1,382 @@
+\frame{
+	\frametitle{Ad-hoc distortion limit: expressiveness}
+	
+	Arbitrarily limit reordering to a fixed-length window \pause
+	\begin{itemize}
+		\item conveniently (linear complexity), but \pause
+		\item what about languages with very different syntax? \\
+		e.g. OV vs VO, head-initial vs head-final \pause
+		\item can we do better?
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Binary permutations}
+	
+	Consider a sentence such that $I=4$ \\
+	~ let's look at binary trees bracketing this sentence\\ \pause
+
+\scalebox{0.9}{
+\textcolor<3-10>{ForestGreen}{
+\begin{tikzpicture}[level distance=5pt]
+\tikzset{frontier/.style={distance from root=30pt}}
+\Tree 
+[
+	[ 
+		[ 1 2 ]
+		3
+	]
+	4
+]
+\end{tikzpicture}
+}
+~
+\textcolor<11>{ForestGreen}{
+\begin{tikzpicture}[level distance=5pt]
+\tikzset{frontier/.style={distance from root=30pt}}
+\Tree 
+[
+	[ 
+		1
+		[ 2 3 ]
+	]
+	4
+]
+\end{tikzpicture}
+}
+~ 
+\textcolor<12>{ForestGreen}{
+\begin{tikzpicture}[level distance=5pt]
+\tikzset{frontier/.style={distance from root=30pt}}
+\Tree 
+[
+	[ 1 2 ]
+	[ 3 4 ]
+]
+\end{tikzpicture}
+}
+~
+\textcolor<13>{ForestGreen}{
+\begin{tikzpicture}[level distance=5pt]
+\tikzset{frontier/.style={distance from root=30pt}}
+\Tree 
+[
+	1
+	[ 
+		[ 2 3 ]
+		4
+	]
+]
+\end{tikzpicture}
+}
+~
+\textcolor<14>{ForestGreen}{
+\begin{tikzpicture}[level distance=5pt]
+\tikzset{frontier/.style={distance from root=30pt}}
+\Tree 
+[
+	1
+	[ 
+		2
+		[ 3 4 ]
+	]
+]
+\end{tikzpicture}
+}
+}
+
+	\only<3->{Binary permutations\\} 
+\only<3-10>{
+\begin{tabular}{l l}
+\only<3-10>{\dbr{\dbr{\dbr{1 2}3}4} & 1 2 3 4 }\\
+\only<4-10>{\dbr{\dbr{\ibr{1 2}3}4} & 2 1 3 4 }\\
+\only<5-10>{\dbr{\ibr{\dbr{1 2}3}4} & 3 1 2 4 }\\
+\only<6-10>{\dbr{\ibr{\ibr{1 2}3}4} & 3 2 1 4 }\\
+\only<7-10>{\ibr{\dbr{\dbr{1 2}3}4} & 4 1 2 3 }\\
+\only<8-10>{\ibr{\dbr{\ibr{1 2}3}4} & 4 2 1 3 }\\
+\only<9-10>{\ibr{\ibr{\dbr{1 2}3}4} & 4 3 1 2 }\\
+\only<10-10>{\ibr{\ibr{\ibr{1 2}3}4} & 4 3 2 1 }\\ 
+\end{tabular}
+}
+
+\only<11>{
+\begin{tabular}{l l}
+\dbr{\dbr{1\dbr{2 3}}4} & 1 2 3 4 \\
+\dbr{\dbr{1\ibr{2 3}}4} & 1 3 2 4 \\
+\dbr{\ibr{1\dbr{2 3}}4} & 2 3 1 4 \\
+\dbr{\ibr{1\ibr{2 3}}4} & 3 2 1 4 \\
+\ibr{\dbr{1\dbr{2 3}}4} & 4 1 2 3 \\
+\ibr{\dbr{1\ibr{2 3}}4} & 4 1 3 2 \\
+\ibr{\ibr{1\dbr{2 3}}4} & 4 2 3 1 \\
+\ibr{\ibr{1\ibr{2 3}}4} & 4 3 2 1 \\ 
+\end{tabular}
+}
+
+\only<12>{
+\begin{tabular}{l l}
+\dbr{\dbr{1 2}\dbr{3 4}} & 1 2 3 4\\
+\dbr{\ibr{1 2}\dbr{3 4}} & 2 1 3 4\\
+\dbr{\ibr{1 2}\ibr{3 4}} & 2 1 4 3 \\
+\dbr{\dbr{1 2}\ibr{3 4}} & 1 2 4 3 \\
+\ibr{\dbr{1 2}\dbr{3 4}} & 3 4 1 2 \\
+\ibr{\ibr{1 2}\dbr{3 4}} & 3 4 2 1 \\
+\ibr{\ibr{1 2}\ibr{3 4}} & 4 3 2 1 \\
+\ibr{\dbr{1 2}\ibr{3 4}} & 4 3 1 2 \\
+\end{tabular}
+}
+
+\only<13>{
+\begin{tabular}{l l}
+\dbr{1\dbr{\dbr{2 3}4}} & 1 2 3 4 \\
+\dbr{1\dbr{\ibr{2 3}4}} & 1 3 2 4 \\
+\dbr{1\ibr{\dbr{2 3}4}} & 1 4 2 3 \\
+\dbr{1\ibr{\ibr{2 3}4}} & 1 4 3 2 \\
+\ibr{1\dbr{\dbr{2 3}4}} & 2 3 4 1 \\
+\ibr{1\dbr{\ibr{2 3}4}} & 3 2 4 1 \\
+\ibr{1\ibr{\dbr{2 3}4}} & 4 2 3 1 \\
+\ibr{1\ibr{\ibr{2 3}4}} & 4 3 2 1 \\
+\end{tabular}
+}
+
+\only<14>{
+\begin{tabular}{l l}
+\dbr{1\dbr{2\dbr{3 4}}} & 1 2 3 4 \\
+\dbr{1\dbr{2\ibr{3 4}}} & 1 2 4 3 \\
+\dbr{1\ibr{2\dbr{3 4}}} & 1 3 4 2 \\
+\dbr{1\ibr{2\ibr{3 4}}} & 1 4 3 2 \\
+\ibr{1\dbr{2\dbr{3 4}}} & 2 3 4 1 \\
+\ibr{1\dbr{2\ibr{3 4}}} & 2 4 3 1 \\
+\ibr{1\ibr{2\dbr{3 4}}} & 3 4 2 1 \\
+\ibr{1\ibr{2\ibr{3 4}}} & 4 3 2 1 \\
+\end{tabular}
+}
+
+\only<15->{
+	\begin{itemize}
+		\item<14-> constrains the space of permutations
+		\item<15-> crossing constraint (shares a linguistic intuition)\\
+		~ 3 1 4 2 \\
+		~ 2 4 1 3 \\
+	\end{itemize}
+}
+}
+
+
+\frame{
+	\frametitle{ITGs}
+	
+	Inversion Transduction Grammars (ITGs) \precite{Wu, 1997} \\
+	\pause
+	\begin{itemize}
+		\item $X \ra X X$ \\
+		\textcolor{blue}{direct order} \pause
+		\item $X \ra \angbrack{X X}$\\
+		\textcolor{red}{inverted order} \pause
+		\item $X \ra f/e$, where $(f,e) \in R$\\
+		\textcolor{ForestGreen}{bilingual mappings}
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Parsing, intersection and hypergraphs}
+
+\only<1->{	
+\begin{textblock*}{80mm}(0.1\textwidth,0.15\textheight)
+Source\\
+\scalebox{0.6}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+%\tikzstyle{every state}=[draw=black,text=black]
+%\tikzstyle{every path}=[draw=red,text=red]
+
+\node[initial,state,style={initial text=}] (q0) {$0$};
+\node[state] (q1) [right of=q0] {$1$};
+\node[state] (q2) [right of=q1] {$2$};
+\node[state,accepting] (q3) [right of=q2] {$3$};
+
+\path (q0) edge node {\textit{nosso}} (q1);
+\path (q1) edge node {\textit{amigo}} (q2);
+\path (q2) edge node {\textit{comum}} (q3);
+\end{tikzpicture}
+}
+\end{textblock*}
+}
+
+\only<2->{
+\begin{textblock*}{80mm}(0.7\textwidth,0.15\textheight)
+\footnotesize
+Grammar\\
+\begin{tabular}{l l}
+$X \ra X X$ & \only<7-10>{\textcolor{blue}{$\Longleftarrow$}}\\
+$X \ra \angbrack{X X}$ & \only<11-14>{\textcolor{red}{$\Longleftarrow$}}\\
+$X \ra \textit{nosso}$ & \only<4>{\textcolor{ForestGreen}{$\Longleftarrow$}} \\ % /\{\etext{our}, \etext{ours}\}$ \\
+$X \ra \textit{amigo}$ & \only<5>{\textcolor{ForestGreen}{$\Longleftarrow$}} \\ % /\{\etext{friend}, \etext{mate}\}$ \\
+$X \ra \textit{comum}$ & \only<6>{\textcolor{ForestGreen}{$\Longleftarrow$}}\\ % /\{\etext{ordinary}, \etext{common}, \etext{usual}\}$ \\
+\end{tabular}
+\end{textblock*}
+}
+
+\only<3->{
+\begin{textblock*}{80mm}(0.1\textwidth,0.3\textheight)
+Intersection \\
+\begin{itemize}
+	\item \textcolor<4->{ForestGreen}{$_iX_j \ra f$} \\
+	{\small s.t. $\angbrack{i,f,j} \in E$}
+	\item \textcolor<7->{blue}{$_iX_k \ra {}_iX_j ~ {}_jX_k$} \\
+	{\small s.t. $(i,j,k) \in Q^3$}
+	\item \textcolor<11->{red}{$_iX_k \ra {}_jX_k ~ {}_iX_j$} \\
+	{\small s.t. $(i,j,k) \in Q^3$}
+\end{itemize}
+\end{textblock*}
+}
+
+\begin{textblock*}{80mm}(0.45\textwidth,0.45\textheight)
+\scalebox{0.8}{
+\begin{tikzpicture}[->,>=stealth',thick]
+
+\coordinate (c01) at (-1,0);
+\only<4->{\node[state] (X01) at (1,0) {$_0X_1$};}
+\coordinate (c02) at (2,0);
+\coordinate (i02) at (2.2,-0.15);
+\only<7->{\node[state] (X02) at (4,0) {$_0X_2$};}
+\coordinate (c12) at (-1,-2);
+\only<5->{\node[state] (X12) at (1,-2) {$_1X_2$};}
+\coordinate (c23) at (-1,-4);
+\only<6->{\node[state] (X23) at (1,-4) {$_2X_3$};}
+\coordinate (c13) at (2,-3);
+\coordinate (i13) at (1.95,-3.25);
+\only<8->{\node[state] (X13) at (3,-3) {$_1X_3$};}
+\coordinate (c03) at (5,0);
+\coordinate (i03) at (4.9,-0.2);
+\only<9->{\node[state,accepting] (X03) at (7,0) {$_0X_3$};}
+\coordinate (c03b) at (4,-1);
+\coordinate (i03b) at (4.2,-1.2);
+
+
+\only<4->{\path[->,color=ForestGreen] (c01) edge node [above] {\textit{nosso}} (X01);}
+
+\only<5->{\path[->,color=ForestGreen] (c12) edge node [above] {\textit{amigo}} (X12);}
+
+\only<6->{\path[->,color=ForestGreen] (c23) edge node [above] {\textit{comum}} (X23);}
+
+
+\only<7->{
+\path[-,color=blue] (X01) edge node {} (c02);
+\path[-,color=blue] (X12) edge node {} (c02);
+\path[->,color=blue] (c02) edge node {} (X02);
+}
+
+\only<8->{
+\path[-,color=blue] (X12) edge node {} (c13);
+\path[-,color=blue] (X23) edge node {} (c13);
+\path[->,color=blue] (c13) edge node {} (X13);
+}
+
+\only<9->{
+\path[-,color=blue] (X02) edge node {} (c03);
+\path[-,color=blue] [bend right=60,looseness=1.6] (X23) edge node {} (c03);
+\path[->,color=blue] (c03) edge node {} (X03);
+}
+
+\only<10->{
+\path[-,color=blue] (X01) edge node {} (c03b);
+\path[-,color=blue] (X13) edge node {} (c03b);
+\path[->,color=blue] (c03b) edge node {} (X03);
+}
+
+
+\only<11->{
+\path[-,color=red] (X01) edge node {} (i02);
+\path[-,color=red] (X12) edge node {} (i02);
+\path[->,color=red] (i02) edge node {} (X02);
+}
+\only<12->{
+\path[-,color=red] (X12) edge node {} (i13);
+\path[-,color=red] (X23) edge node {} (i13);
+\path[->,color=red] (i13) edge node {} (X13);
+}
+
+\only<13->{
+\path[-,color=red] (X02) edge node {} (i03);
+\path[-,color=red] [bend right=60,looseness=1.5] (X23) edge node {} (i03);
+\path[->,color=red] (i03) edge node {} (X03);
+}
+\only<14->{
+\path[-,color=red] (X01) edge node {} (i03b);
+\path[-,color=red] (X13) edge node {} (i03b);
+\path[->,color=red] (i03b) edge node {} (X03);
+}
+
+
+
+\end{tikzpicture}
+}
+\end{textblock*}
+
+}
+
+\frame{
+
+	\frametitle{ITG solutions}
+
+	\input{frames/itg_solutions}
+
+	\begin{textblock*}{80mm}(0.7\textwidth,0.4\textheight)
+	\only<2>{\dbr{~\,...~ 3} \ra \,... 3\\} 
+	\only<3->{\dbr{\dbr{1 2}3} \ra 1 2 3\\} 
+	\only<4->{\dbr{\ibr{1 2}3} \ra 2 1 3\\} 
+	\only<5>{\ibr{~\,...~ 3} \ra 3 \,...\\} 
+	\only<6->{\ibr{\dbr{1 2}3} \ra 3 1 2\\} 
+	\only<7->{\ibr{\ibr{1 2}3} \ra 3 2 1\\} 
+	\only<8>{\dbr{1 ~...~\,} \ra 1 \,...\\}
+	\only<9->{\dbr{1\dbr{2 3}} \ra 1 2 3\\}
+	\only<10->{\dbr{1\ibr{2 3}} \ra 1 3 2\\}
+	\only<11>{\ibr{1 ~...~\,} \ra \,... 1\\}
+	\only<12->{\ibr{1\dbr{2 3}} \ra 2 3 1\\}
+	\only<13->{\ibr{1\ibr{2 3}} \ra 3 2 1\\}
+	\end{textblock*}
+
+}
+
+\frame{
+	\frametitle{ITG complexity}
+	
+	Intersection \\
+\begin{itemize}
+	\item \textcolor{ForestGreen}{$_iX_j \ra f$} \\
+	\item \textcolor{blue}{$_iX_k \ra {}_iX_j ~ {}_jX_k$} \\
+	\item \textcolor{red}{$_iX_k \ra {}_jX_k ~ {}_iX_j$} \\
+\end{itemize}
+
+	Where
+	\begin{itemize}
+		\item $(i, j, k) \in \{0, 1, \ldots, I\}^3$
+		\item there is a path from $q_i$ to $q_j$ and from $q_j$ to $q_k$ in the input
+	\end{itemize}
+
+	Therefore
+	\begin{itemize}
+		\item $O(I^3)$ nodes
+		\item $O(tI^3)$ edges
+	\end{itemize}
+	
+}
+
+\begin{comment}
+\frame{
+	\frametitle{Lexical evidence}
+	
+	Hiero style
+}
+
+\frame{
+	\frametitle{Alternatives}
+	
+	Syntax augmented \\
+	Soft constraints \\
+	Latent grammar \\
+	
+}
+\end{comment}
+

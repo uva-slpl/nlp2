@@ -1,0 +1,60 @@
+\section{Introduction}
+
+\begin{comment}
+\frame{
+	\frametitle{About this talk}
+
+	This talk is not
+	\begin{itemize}
+		\item a review of beam search, cube pruning or any specific decoding algorithm
+	\end{itemize}
+	\pause
+
+	This talk is about
+	\begin{itemize}
+		\item understanding what makes decoding difficult 
+	\end{itemize}
+		
+}
+
+\frame{
+	\frametitle{For starters}
+	
+	Let's think of decoding as referring to an inference task 
+	\begin{itemize}
+		\item making predictions
+		\begin{itemize}
+			\item decisions in a highly combinatorial space of possibilities
+		\end{itemize}
+	\end{itemize}
+	
+	\pause
+	
+	Goals \pause
+	\begin{enumerate}
+		\item characterise the space of solutions \\
+		(discuss tractability issues) \pause
+		\item understand the impact of parameterisation \pause
+		\item survey decoding techniques
+	\end{enumerate}
+	
+	%Finding a maximum is one such task, but there are others
+	
+}
+\end{comment}
+
+\frame{
+	\frametitle{Task}
+	
+	Translate a source text (e.g. sentence)
+
+	Examples: \\
+	\begin{center}
+	\begin{tabular}{c c c}
+		\ftext{um conto de duas cidades} & $\rightarrow$ & \etext{a tale of two cities} \\
+		\ftext{nosso amigo comum} & $\rightarrow$ & \etext{our mutual friend} \\ 
+		\ftext{a loja de antiguidades} & $\rightarrow$ & \etext{the old curiosity shop} \\		
+		\ftext{o grill da lareira} & \ra & \etext{the cricket on the hearth} \\
+	\end{tabular}
+	\end{center}
+}

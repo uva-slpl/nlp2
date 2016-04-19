@@ -1,0 +1,37 @@
+
+\newcommand{\wldadjcond}{
+\begin{array}{l }
+i = l\\
+\end{array}
+}
+
+\newcommand{\wldnonadjcond}{
+\begin{array}{l }
+l < i \leq I \\
+\delta(i, l) \leq d \\
+c_{i-l} = \bzero \\
+\end{array}
+}
+
+
+\begin{math} %\small
+ \left. 
+  \begin{array}{l}
+    \textsc{Item} ~~~~ {\itembrack{[1 .. I +1], \{0,1\}^{d-1}}} \\
+    %\\
+    \textsc{Goal} ~~~~ {\itembrack{I+1, C}} \\
+    %\\  
+    \textsc{Axiom} \\ 
+	\drule{}{\itembrack{1, 0^{d-1}}}{} \\
+    %\\  
+    \textsc{Adjacent} \\ 
+	\drule{\itembrack{l, C}}{\itembrack{l + n, C \ll n}}{\wldadjcond} \\ 
+	~~ \text{\small where $n = \#_1(C) + 1$} \\
+%	~~ \text{\small and $\#_1(C)$ is the number of leading ones in $C$} \\
+    \textsc{Non-Adjacent} \\ 
+	\drule{\itembrack{l, C}}{\itembrack{l, \alpha_l^{i}(C)}}{\wldnonadjcond} \\ 
+	
+  \end{array} 
+\right.
+\end{math}
+

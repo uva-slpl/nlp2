@@ -1,0 +1,34 @@
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black]
+\tikzstyle{every path}=[draw=red,text=red]
+
+\only<2->{\node[initial,state,style={initial text=},text=blue] (q000) {$000$};}
+\only<3->{\node[state] (q100) [above right of=q000,text=Fuchsia] {$100$};}
+\only<4->{\node[state] (q010) [right of=q000,text=ProcessBlue] {$010$};}
+\only<5->{\node[state] (q001) [below right of=q000,text=ForestGreen] {$001$};}
+\only<7->{\node[state] (q110) [above right of=q010,text=Goldenrod] {$110$};}
+\only<8->{\node[state] (q101) [right of=q010,text=Orange] {$101$};}
+\only<11->{\node[state] (q011) [below right of=q010,text=Magenta] {$011$};}
+\only<16->{\node[state,accepting] (q111) [right of=q101,text=red] {$111$};}
+
+\only<3->{\path (q000) edge node {\ftext{nosso}} (q100);}
+\only<4->{\path (q000) edge node {\ftext{amigo}} (q010);}
+\only<5->{\path (q000) edge node {\ftext{comum}} (q001);}
+%
+\only<7->{\path (q100) edge [bend left] node {\ftext{amigo}} (q110);}
+\only<8->{\path (q100) edge [bend left] node [below] {\ftext{comum}} (q101);}
+%
+%
+\only<9->{\path (q010) edge [bend right] node [below] {\ftext{nosso}} (q110);}
+\only<11->{\path (q010) edge node {\ftext{comum}} (q011);}
+%
+\only<12->{\path (q001) edge [bend right] node {\ftext{nosso}} (q101);}
+\only<13->{\path (q001) edge [bend right] node [below] {\ftext{amigo}} (q011);}
+%
+\only<16->{\path (q110) edge [bend left] node {\ftext{comum}} (q111);}
+%
+\only<17->{\path (q101) edge node {\ftext{amigo}} (q111);}
+%
+\only<18->{\path (q011) edge [bend right] node [below] {\ftext{nosso}} (q111);}
+
+\end{tikzpicture} 

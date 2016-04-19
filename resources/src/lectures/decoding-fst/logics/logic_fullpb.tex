@@ -1,0 +1,32 @@
+
+\newcommand{\fullpbwhere}{
+\begin{array}{l l }
+\text{where} & c_k' = c_k \text{ if } k < i \text{ or } k > i' \text{ else } \bone \\
+& w = \phi_r\otimes\delta(r, i)\otimes\psi(\my_j^{j'}|\my_{j-n+1}^{j-1}) \\
+\end{array}
+}
+
+\begin{figure}[t] \small \centering
+\begin{math} %\small
+ \left. 
+  \begin{array}{l}
+    \textsc{Item} ~~~~ {\itembrack{\{0,1\}^I,[0, I+1],\Delta^{n-1}}} \\
+    %\\
+    \textsc{Goal} ~~~~ {\itembrack{1^I,I+1,\eos}} \\
+    %\\  
+    \textsc{Axiom} \\ %~~~~~~ {\itembrack{0, 0^I, \bos}:\psi(\bos)} \\
+	\drule{\rulebrack{\bos \rightarrow \bos}}{\itembrack{0^I, 0, \bos}:\psi(\bos)}{} \\
+    %\\  
+    \textsc{Expand} \\ %V \vee 0^i1^{i'-i}0^{I-i'}
+	\drule{\itembrack{C, r, \my_{j-n+1}^{j-1}} ~ \rulebrack{\mx_i^{i'} \ara{\phi_r} \my_j^{j'}}}{\itembrack{C', i', \my_{j'-n+2}^{j'}}:w}{\bigoplus_{k=i}^{i'} c_k = \bzero} \\ 
+	~~~ \fullpbwhere \\
+    %\\
+    \textsc{Accept} \\
+	\drule{\itembrack{1^I, r, \gamma}}{\itembrack{1^I, I+1, \eos}:\delta(r, I+1)\otimes\psi(\eos|\gamma)}{r \leq I} \\ 	
+  \end{array} 
+\right.
+\end{math}
+\caption{Specification for the weighted set of translation derivations in phrase-based \acs{SMT} with unconstrained reordering.}\label{fig:fullpb}
+\end{figure}
+%An item $[C,r,\gamma]$ groups partial derivations such that the positions flagged in $C$ have been covered, $r$ is the rightmost input position most recently translated, and whose yields end in $\gamma$.
+

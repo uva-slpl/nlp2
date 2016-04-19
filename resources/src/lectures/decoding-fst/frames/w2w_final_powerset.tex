@@ -1,0 +1,37 @@
+
+\scalebox{0.6}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=red,text=red]
+
+\node[initial,state,style={initial text=}] (q000) {$000$};
+\node[state] (q100) [above right of=q000] {$100$};
+\node[state] (q010) [right of=q000] {$010$};
+\node[state] (q001) [below right of=q000] {$001$};
+\node[state] (q110) [above right of=q010] {$110$};
+\node[state] (q101) [right of=q010] {$101$};
+\node[state] (q011) [below right of=q010] {$011$};
+\node[state,accepting] (q111) [right of=q101] {$111$};
+
+\path 
+(q000) edge node {\ftext{nosso}} (q100)
+(q000) edge node {\ftext{amigo}} (q010)
+(q000) edge node {\ftext{comum}} (q001)
+%
+(q100) edge [bend left] node {\ftext{amigo}} (q110)
+(q100) edge [bend left] node [below] {\ftext{comum}} (q101)
+%
+(q110) edge [bend left] node {\ftext{comum}} (q111)
+%
+(q010) edge [bend right] node [below] {\ftext{nosso}} (q110)
+(q010) edge node {\ftext{comum}} (q011)
+%
+(q001) edge [bend right] node {\ftext{nosso}} (q101)
+(q001) edge [bend right] node [below] {\ftext{amigo}} (q011)
+%
+(q101) edge node {\ftext{amigo}} (q111)
+%
+(q011) edge [bend right] node [below] {\ftext{nosso}} (q111);
+
+\end{tikzpicture} 
+}

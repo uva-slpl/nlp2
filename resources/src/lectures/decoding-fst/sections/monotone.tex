@@ -1,0 +1,141 @@
+\section{Monotone word replacement models}
+
+\frame{
+	\frametitle{Model of translational equivalences}
+
+	Defines the space of possible translations \\
+	\begin{itemize}
+		\item think of it as a recipe to generate translations
+	\end{itemize}
+	
+	\pause
+	\pause
+	Example:	\\
+
+	\begin{itemize}
+		\item a word replacement model \\ \pause
+		\item operates in monotone left-to-right order \pause
+		\item with no insertions or deletions \pause
+		\item constrained to known word-to-word bilingual mappings \\
+		(rule set)
+	\end{itemize}
+}
+
+
+\frame{
+	\frametitle{Monotone word-by-word translation: solutions}
+	\input{frames/w2w_enumerate_solutions.tex}
+
+}
+
+
+\frame{
+	\frametitle{Monotone word-by-word translation: complexity}
+	
+	Say
+	\begin{itemize}
+		\item the input has $I$ words \\
+		\item we know at most $t$ translation options per source word
+	\end{itemize}
+	
+	\pause
+	This makes $O(t^I)$ solutions\\
+	
+	\pause
+	Note
+	\begin{itemize}
+		\item WMT14's shared task: $I=40$ on average
+		\item last I checked Moses default was $t = 100$ \\
+		\hfill (for a more complex model)
+		\item silly monotone word replacement model: $10^{80}$ solutions
+	\end{itemize}
+	
+}
+
+
+\frame{
+	\frametitle{Representing discrete sets efficiently}
+	\input{frames/w2w_packing.tex}
+}
+
+\frame{
+	\frametitle{Packing solutions with finite-state automata}
+	Same $O(t^I)$ solutions using
+	\begin{itemize}
+		\item $O(I)$ states
+		\item $O(tI)$ transitions
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Monotone word-by-word translation: expressiveness}
+	
+	
+	Given the ``recipe'' and the set of known mappings \pause
+	\begin{enumerate}	
+		\item what sentences can we translate? \pause
+		\item what translations do we produce? \pause
+	\end{enumerate}
+
+
+	What is the set of sentence pairs defined by this model?
+}
+
+
+\frame{
+	\frametitle{Monotone word-by-word translation: expressiveness}
+
+	\input{frames/w2w_expressiveness.tex}	
+}
+
+\frame{
+	\frametitle{Compact representation}
+
+	\input{frames/w2w_model.tex}
+
+}
+
+
+\frame{
+	\frametitle{Space of solutions as intersection}
+	
+	\begin{center}
+	``From the set of sentence pairs compatible with the model, \\
+	retain those matching this input''
+	\end{center}
+	
+}
+
+\frame{
+	\frametitle{Space of solutions as intersection/composition}
+	
+	\input{frames/w2w_intersection.tex}	
+
+}
+
+\frame{
+	\frametitle{Recap 1}
+	
+	\pause
+	Model of translational equivalences 
+	\begin{itemize}
+		\item defines the space of possible sentence pairs
+		\item conveniently decomposes into smaller bilingual mappings
+	\end{itemize}
+	\pause
+	Monotone word replacement model
+	\begin{itemize}
+		\item easy to represent using finite-state transducers \pause
+		\item set of translations given by intersection \pause
+		\item exponential number of solutions in linear space \pause
+		\item translates infinitely many sentences \\
+		\pause {\bf {\color{red}but not nearly enough interesting cases!}}
+	\end{itemize}
+}
+
+
+\frame{
+	\frametitle{Monotone word-by-word translation: fail!}
+	
+	\input{frames/w2w_fail.tex}
+}

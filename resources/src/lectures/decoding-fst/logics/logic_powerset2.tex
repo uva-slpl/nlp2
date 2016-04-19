@@ -1,0 +1,53 @@
+
+\newcommand{\powersetbcond}{
+\begin{array}{l }
+1 \leq i \leq I \\
+\textcolor<6,10,14>{BurntOrange}{
+	c_i = \bzero
+}
+\end{array}
+}
+
+
+
+\begin{math} %\small
+ \left. 
+  \begin{array}{l}
+    \textsc{Item} ~~~~ {\itembrack{\{0,1\}^I}} \\
+    %\\
+    \alert<19>{\textsc{Goal}} ~~~~ {\textcolor<19>{red}{\itembrack{1^I}}} \\
+    %\\  
+    \alert<2>{\textsc{Axiom}} \\ 
+	\drule{}{\itembrack{\textcolor<2>{blue}{0^I}}}{} \\
+    %\\  
+    \alert<3-18>{\textsc{Expand}} \\ 
+	\drule{%
+		\textcolor<18>{Magenta}{
+		\textcolor<17>{Orange}{
+		\textcolor<16>{Goldenrod}{
+		\textcolor<12-14>{ForestGreen}{
+		\textcolor<9-11>{ProcessBlue}{
+		\textcolor<6-8>{Fuchsia}{
+		\textcolor<3-5>{blue}{
+			\itembrack{C}
+		}}}}}}}
+	}%
+	{%
+		\textcolor<16-18>{red}{
+		\textcolor<11,13>{Magenta}{
+		\textcolor<9>{Goldenrod}{
+		\textcolor<8,12>{Orange}{
+		\textcolor<7>{Goldenrod}{
+		\textcolor<5>{ForestGreen}{
+		\textcolor<4>{ProcessBlue}{
+		\textcolor<3>{Fuchsia}{
+			\itembrack{\alpha_i(C)}
+		}}}}}}}}
+	}%
+	{\powersetbcond} \\ 
+	%~~ \text{\small where $\alpha_i(C)$ is a copy of $C$ with $c_i = \bone$}
+
+  \end{array} 
+\right.
+\end{math}
+

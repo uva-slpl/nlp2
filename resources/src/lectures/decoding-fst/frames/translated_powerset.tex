@@ -1,0 +1,64 @@
+
+\scalebox{0.6}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=blue,text=blue]
+
+\node[initial,state,style={initial text=}] (q000) at (0,-3) {$000$};
+\node[state] (q100) at (5,0) {$100$};
+\node[state] (q010) at (5,-3) {$010$};
+\node[state] (q001) at (5,-6) {$001$};
+\node[state] (q110) at (10,2) {$110$};
+\node[state] (q101) at (12,-1) {$101$};
+\node[state] (q011) at (10,-6) {$011$};
+\node[state,accepting] (q111) at (15,-3) {$111$};
+
+\path 
+(q000) edge [bend left=15] node {\etext{our}} (q100)
+(q000) edge [bend left=30] node {\etext{ours}} (q100)
+
+(q000) edge [bend left=15] node {\etext{mate}} (q010)
+(q000) edge [bend right=15] node {\etext{friend}} (q010)
+
+(q000) edge  node {\etext{usual}} (q001)
+(q000) edge [bend right=15] node {\etext{mutual}} (q001)
+(q000) edge [bend right=30] node {\etext{ordinary}} (q001)
+(q000) edge [bend right=45] node {\etext{common}} (q001)
+
+%
+(q100) edge [bend left=15] node {\etext{friend}} (q110)
+(q100) edge [bend left=30] node {\etext{mate}} (q110)
+
+(q100) edge node [below] {\etext{usual}} (q101)
+(q100) edge [bend right=15] node [below] {\etext{mutual}} (q101)
+(q100) edge [bend right=30] node [below] {\etext{ordinary}} (q101)
+(q100) edge [bend right=45] node [below] {\etext{common}} (q101)
+
+%
+(q110) edge [bend left=75] node {\etext{usual}} (q111)
+(q110) edge [bend left=60] node {\etext{mutual}} (q111)
+(q110) edge [bend left=45] node {\etext{ordinary}} (q111)
+(q110) edge [bend left=30]node {\etext{common}} (q111)
+
+%
+(q010) edge [bend left=15] node [above] {\etext{our}} (q110)
+(q010) edge [bend right=15] node [above] {\etext{ours}} (q110)
+
+(q010) edge [bend left=15] node {\etext{usual}} (q011)
+(q010) edge [bend left=30] node {\etext{mutual}} (q011)
+(q010) edge [bend left=45] node {\etext{ordinary}} (q011)
+(q010) edge [bend left=60] node {\etext{common}} (q011)
+%
+(q001) edge [bend right=90,looseness=1.5] node [above] {\etext{our}} (q101)
+(q001) edge [bend right=100,looseness=1.5] node [below] {\etext{ours}} (q101)
+(q001) edge node [below] {\etext{friend}} (q011)
+(q001) edge [bend left=15] node [above] {\etext{mate}} (q011)
+%
+(q101) edge [bend left=15] node {\etext{friend}} (q111)
+(q101) edge [bend right] node [below] {\etext{mate}} (q111)
+%
+(q011) edge [bend left=15] node [above] {\etext{our}} (q111)
+(q011) edge node [below] {\etext{ours}} (q111);
+
+\end{tikzpicture} 
+}

@@ -1,0 +1,107 @@
+% Author: Wilker Aziz
+% Contact: wilker.aziz@gmail.com 
+% Documentation: http://en.wikibooks.org/wiki/LaTeX
+% Equation editor: http://www.codecogs.com/latex/eqneditor.php
+
+\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+\usefonttheme[onlymath]{serif}
+%\usepackage{bm}
+%\usepackage{beamerthemeshadow}
+\setbeamertemplate{footline}[frame number]
+
+%\usepackage{soul}
+\usepackage{lmodern}
+%\usetheme{Warsaw}
+%\usetheme{Dresden}
+%\usetheme{Amsterdam}
+
+% allow the use of utf8 encoding
+\usepackage{comment}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usetikzlibrary{arrows,automata}
+\usepackage{pbox}
+\usepackage{amssymb}
+\usepackage{ragged2e}
+\usepackage{pifont}
+
+\usepackage{commands}
+
+
+
+% declares a document
+\begin{document}
+
+
+	\title{Decoding for SMT}
+	\author{Wilker Aziz} 
+
+	\date{\today}
+	
+	{
+		\setbeamertemplate{footline}{}
+		\frame{\titlepage}
+	}
+
+	% Table of contents	
+	%\frame[allowframebreaks]
+	\frame{
+		\frametitle{Table of Contents}
+		% commands the rendering of a table of contents
+		\tableofcontents
+	}
+
+	% trick to start counting from the table of contents
+	\setcounter{framenumber}{0}
+	% trick to show the frame number and the total of frames at the bottom right corner
+	\expandafter\def\expandafter\insertshorttitle\expandafter{%
+		\insertshorttitle\hfill%
+		\insertframenumber\,/\,\inserttotalframenumber
+	}	
+	
+	\include{main/intro}
+	\include{main/monotone}
+	\include{main/reordering}
+	\include{main/WLd}
+	\include{main/ITG}
+	\include{main/phrasebased}	
+	\include{main/parameterisation}	
+	\include{main/algs}	
+
+    \frame{
+        \frametitle{Thanks!}
+        
+        Questions?
+
+    }
+
+	% Trick to discount the title page and the table of contents from the total number of frames
+	% and to discount any backup slides which should be place after these instructions
+	% All your regular slides come before this point	
+	\appendix
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+
+	%\input{background}
+	%\input{backup}
+
+	\frame[allowframebreaks]{ \frametitle{References}
+        \bibliographystyle{plainnat}
+        \bibliography{waziz}
+	}			
+
+	
+	
+	% Trick to discount regular frames from the total of backup frames
+	\setcounter{framenumber}{\value{finalframe}}
+	
+	
+\end{document}
+
+%\xrightarrow[below]{above}
+%\overset{x}{\rightarrow}
+%\underset{x}{\rightarrow} 

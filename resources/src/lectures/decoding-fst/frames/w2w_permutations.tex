@@ -1,0 +1,157 @@
+	
+\begin{columns}
+\begin{column}{0.5\linewidth}
+\only<1->{\ftext{nosso amigo comum} \\}
+\only<1->{
+\scalebox{0.5}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=blue,text=blue]	
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state,accepting] (D) [right of=C] {$3$};
+	\path
+		(A) edge [bend right] node {\etext{our}} (B)
+			edge [bend left] node {\etext{ours}} (B)
+		(B) edge [bend right] node {\etext{mate}} (C)
+			edge [bend left] node {\etext{friend}} (C)
+		(C) edge node {\etext{common}} (D)
+			edge [bend right] node {\etext{usual}} (D)
+			edge [bend left] node {\etext{ordinary}} (D)
+			edge [bend right=60] node [below] {mutual} (D);
+\end{tikzpicture} 
+}
+}
+
+\only<3->{\ftext{nosso comum amigo} \\}
+\only<3->{
+\scalebox{0.5}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=blue,text=blue]	
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state,accepting] (D) [right of=C] {$3$};
+	\path
+		(A) edge [bend right] node {\etext{our}} (B)
+			edge [bend left] node {\etext{ours}} (B)
+		(B) edge node {\etext{common}} (C)
+			edge [bend right] node {\etext{usual}} (C)
+			edge [bend left] node {\etext{ordinary}} (C)
+			edge [bend right=60] node [below] {mutual} (C)
+		(C) edge [bend right] node {\etext{mate}} (D)
+			edge [bend left] node {\etext{friend}} (D);
+	
+\end{tikzpicture} 
+}
+}
+
+\only<5->{\ftext{amigo comum nosso} \\}
+\only<5->{
+\scalebox{0.5}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=blue,text=blue]	
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state,accepting] (D) [right of=C] {$3$};
+	\path
+		(A) edge [bend right] node {\etext{mate}} (B)
+			edge [bend left] node {\etext{friend}} (B)
+		(B) edge node {\etext{common}} (C)
+			edge [bend right] node {\etext{usual}} (C)
+			edge [bend left] node {\etext{ordinary}} (C)
+			edge [bend right=60] node [below] {mutual} (C)
+		(C) edge [bend right] node {\etext{our}} (D)
+			edge [bend left] node {\etext{ours}} (D);
+\end{tikzpicture} 
+}
+}
+\end{column}
+\begin{column}{0.5\linewidth}
+\only<2->{\ftext{amigo nosso comum} \\}
+\only<2->{
+\scalebox{0.5}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=blue,text=blue]	
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state,accepting] (D) [right of=C] {$3$};
+	\path
+		(A) edge [bend right] node {\etext{mate}} (B)
+			edge [bend left] node {\etext{friend}} (B)
+		(B) edge [bend right] node {\etext{our}} (C)
+			edge [bend left] node {\etext{ours}} (C)
+		(C) edge node {\etext{common}} (D)
+			edge [bend right] node {\etext{usual}} (D)
+			edge [bend left] node {\etext{ordinary}} (D)
+			edge [bend right=60] node [below] {mutual} (D);			
+\end{tikzpicture} 
+}
+}
+\only<4->{\ftext{comum nosso amigo} \\}
+\only<4->{
+\scalebox{0.5}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=blue,text=blue]	
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state,accepting] (D) [right of=C] {$3$};
+	\path
+		(A) edge node {\etext{common}} (B)
+			edge [bend right] node {\etext{usual}} (B)
+			edge [bend left] node {\etext{ordinary}} (B)
+			edge [bend right=60] node [below] {mutual} (B)
+		(B) edge [bend right] node {\etext{our}} (C)
+			edge [bend left] node {\etext{ours}} (C)				
+		(C) edge [bend right] node {\etext{mate}} (D)
+			edge [bend left] node {\etext{friend}} (D);
+
+\end{tikzpicture} 
+}
+}
+
+\only<6->{\ftext{comum amigo nosso} \\}	
+\only<6->{
+\scalebox{0.5}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+\tikzstyle{every state}=[draw=black,text=black]
+\tikzstyle{every path}=[draw=blue,text=blue]	
+
+\node[initial,state,style={initial text=}] (A) {$0$};
+\node[state] (B) [right of=A] {$1$};
+\node[state] (C) [right of=B] {$2$};
+\node[state,accepting] (D) [right of=C] {$3$};
+	\path
+		(A) edge node {\etext{common}} (B)
+			edge [bend right] node {\etext{usual}} (B)
+			edge [bend left] node {\etext{ordinary}} (B)
+			edge [bend right=60] node [below] {mutual} (B)
+		(B) edge [bend right] node {\etext{mate}} (C)
+			edge [bend left] node {\etext{friend}} (C)
+		(C) edge [bend right] node {\etext{our}} (D)
+			edge [bend left] node {\etext{ours}} (D);
+\end{tikzpicture} 
+}
+}
+
+\end{column}
+\end{columns}
+	
+\only<7>{$3! = 3 \times 2 \times 1 = 6$ permutations}
+\only<8>{each has $2 \times 2 \times 4 = 16$ translations \\}
+\only<9>{amounting to $6 \times 16 = 96$ solutions}
+\only<10>{$I!$ permutations $\times$ $t^I$ translations}
+

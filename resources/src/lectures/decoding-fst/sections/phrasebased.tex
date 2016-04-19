@@ -1,0 +1,273 @@
+\frame{
+	\frametitle{Recap 2}
+
+
+%		\pause {\bf {\color{red}but not nearly enough interesting cases!}}
+	\begin{enumerate}
+		\item 	our first model of translational equivalences assumed {\bf monotonicity} \pause
+		\item 	then we incorporated {\bf unconstrained permutations} of the input \pause
+		\item 	to avoid NP-completeness, we constrained permutations using a {\bf distortion limit} \pause
+		\item 	we can instead constrain permutations using an {\bf ITG} \pause
+	\end{enumerate}
+	
+	\alert{But we still perform translation word-by-word with no insertion or deletion!}
+
+}
+
+\frame{
+	\frametitle{1-1 mappings: fail!}
+	
+	Source: o$_1$ grilo$_2$ \ftext{da}$_3$ lareira$_4$ \\
+	Target: the$_1$ cricket$_2$ \itembrack{\etext{\text{on the}}}$_3$ hearth$_4$ \\
+
+}
+
+\frame{
+	\frametitle{Insertion and deletion}
+	
+	Implicitly modelled by moving from words to phrases	 \pause
+	\begin{itemize}
+		\item a phrase replacement model \pause
+		\item operating with an ITG (or with a distortion limit) \pause
+		\item with no phrase-insertion or phrase-deletion \pause
+		\item constrained to known phrase-to-phrase bilingual mappings \\
+	(rule set)
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Phrase mappings}
+
+	
+	Mappings of contiguous sequences of words
+	\pause
+	\begin{itemize}
+		\item learnt directly (e.g. stochastic ITGs) \pause
+		\item heuristically extracted from word-aligned data \pause
+		\item they might contain unaligned source words (deletions) \pause
+		\item they might contain unaligned target words (insertions) \pause
+		\item their words need not align monotonically\\
+		which gives us a bit of reordering power as well ;) \pause \\
+		e.g. \ftext{a loja de antiguidades}/\etext{old curiosity shop}
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Generalising the rule set (FST)}
+	
+	
+	Rules \\
+	\begin{tabular}{l l}
+	\ftext{o} & \{\etext{the}, \etext{a}\} \\
+	\ftext{grilo} & \{\etext{cricket}, \etext{annoyance}\} \\
+	\ftext{da} & \{\etext{on the}, \etext{of}, \etext{from}\} \\
+	\ftext{hearth} & \{\etext{lareira}\} \\
+	\end{tabular}
+
+	~
+	
+	\pause
+	Using FST
+	\begin{itemize}
+		\item<2-> each rule can be seen as a transducer
+		\item<11-> the union represents the rule set
+		\item<13-> standard intersection mechanisms do the rest\\
+		\item<14> alternatively, one can perform permutation and translation jointly using a logic program
+				
+	\end{itemize}
+	
+\only<3-10>{
+\begin{textblock*}{63mm}(0.65\textwidth,0.10\textheight)
+\scalebox{1}{	
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+  	\node[initial,accepting,state,style={initial text=}] (A) {$0$};
+  	\only<7>{\node[state] (B) [right of=A] {$1$};}
+%  	\only<8>{\node[state] (C) [below of=B] {$2$};}	
+%\node[state] (B) [right of=A] {$1$};
+%\node[state] (C) [right of=B] {$2$};
+%\node[state] (D) [right of=C] {$3$};
+%\node[state] (E) [right of=D] {$4$};
+%\node[state,accepting] [right of=E] (F) {$5$};
+\only<3>{\path (A) edge [loop above] node {\ftext{o}:\etext{the}} (A);}
+\only<4>{\path (A) edge [loop above] node {\ftext{o}:\etext{a}} (A);}
+\only<5>{\path (A) edge [loop above] node {\ftext{grilo}:\etext{cricket}} (A);}
+\only<6>{\path (A) edge [loop above] node {\ftext{grilo}:\etext{annoyance}} (A);}
+\only<7>{
+\path (A) edge [bend left] node {\ftext{da}:\etext{on}} (B);
+\path (B) edge [bend left] node {$\epsilon$:\etext{the}} (A);
+}
+%\only<8>{
+%\path (A) edge [bend left] node {\ftext{da}:$\epsilon$} (B);
+%\path (B) edge [bend left] node {$\epsilon$:\etext{on}} (C);
+%\path (C) edge [bend left] node {$\epsilon$:\etext{the}} (A);
+%}
+\only<8>{\path (A) edge [loop above] node {\ftext{da}:\etext{of}} (A);}
+\only<9>{\path (A) edge [loop above] node {\ftext{da}:\etext{from}} (A);}
+\only<10>{\path (A) edge [loop above] node {\ftext{lareira}:\etext{hearth}} (A);}
+
+\end{tikzpicture} 
+}
+\end{textblock*}
+}
+
+\only<12>{
+\begin{textblock*}{63mm}(0.05\textwidth,0.70\textheight)
+\scalebox{0.55}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  	\tikzstyle{every state}=[draw=black,text=black]
+  	\node[initial,accepting,state,style={initial text=}] (A) {$0$};
+  	\node[state] (B) [right of=A] {$1$};
+	\node[state] (C) [right of=B] {$2$};
+	\node[state] (D) [right of=C] {$3$};
+	\node[state] (E) [right of=D] {$4$};
+	\node[state] (F) [above of=E] {$5$};
+	\node[state] (G) [right of=E] {$6$};
+	\node[state] (H) [right of=G] {$7$};
+	\node[state,accepting] (I) [right of=H] {$8$};
+	
+\path (A) edge [loop above] node {\ftext{o}:\etext{the}} (A);
+\path (B) edge [loop above] node {\ftext{o}:\etext{a}} (B);
+\path (C) edge [loop above] node {\ftext{grilo}:\etext{cricket}} (C);
+\path (D) edge [loop above] node {\ftext{grill}:\etext{annoyance}} (D);
+\path (E) edge node {\ftext{da}:\etext{on}} (F);
+\path (F) edge [bend left] node {$\epsilon$:\etext{the}} (E);
+\path (G) edge [loop above] node {\ftext{da}:\etext{of}} (G);
+\path (H) edge [loop above] node {\ftext{da}:\etext{from}} (H);
+\path (I) edge [loop above] node {\ftext{lareira}:\etext{hearth}} (I);
+
+\path (A) edge node {$\epsilon$:$\epsilon$} (B);
+\path (B) edge node {$\epsilon$:$\epsilon$} (C);
+\path (C) edge node {$\epsilon$:$\epsilon$} (D);
+\path (D) edge node {$\epsilon$:$\epsilon$} (E);
+\path (E) edge node {$\epsilon$:$\epsilon$} (G);
+\path (G) edge node {$\epsilon$:$\epsilon$} (H);
+\path (H) edge node {$\epsilon$:$\epsilon$} (I);
+\end{tikzpicture}
+}
+\end{textblock*}
+}
+
+	
+}
+
+\frame{
+	\frametitle{Phrase permutations' translations with WL$d$}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+	\input{logics/logic_wld}
+\end{column}
+\begin{column}{0.5\textwidth}
+	\only<1>{\alert<1>{Permutation window}}
+	\only<2>{\textcolor{blue}{Adjacent} \alert{phrase pair}}
+	\only<3>{\alert<3>{No overlaps}}
+	\only<4>{\alert<4>{update} and \textcolor{blue}{shift}}
+	\only<5>{\textcolor{blue}{Non-adjacent} \alert{phrase pair}}
+	\only<6>{\alert{distortion limit}}
+	\only<7>{
+	\begin{itemize}
+		\item $O(Id^22^{d-1})$ states \\
+		(phrases are limited in length)
+		\item $O(tId^22^{d-1})$ transitions
+	\end{itemize}
+	}
+\end{column}
+\end{columns}
+
+
+}
+
+\frame{
+	\frametitle{Generalising the rule set (ITG)}
+	Simply extend the terminal rules
+	\pause
+	\begin{itemize}
+		\item $X \ra X X$ \\
+		direct order \pause
+		\item $X \ra \angbrack{X X}$\\
+		inverted order \pause
+		\item $X \ra r_i$, where $r_i \in R$\\
+		\textcolor{ForestGreen}{bilingual mappings}
+	\end{itemize}
+	\pause
+	
+	Examples \\
+	
+	\begin{tabular}{l}
+	$X \ra \ftext{o}/\etext{the}$\\
+	$X \ra \ftext{grilo}/\etext{cricket}$\\
+	$X \ra \ftext{da}/\etext{on the}$\\
+	\end{tabular}
+	
+	\pause
+	
+	The intersection mechanisms do the rest\\
+	\begin{itemize}
+		\item $O(I^3)$ nodes (phrases are limited in length)
+		\item $O(tI^3)$ edges
+	\end{itemize}
+
+}
+
+\frame{
+	\frametitle{Recap 3}
+	
+	We have \pause
+	\begin{enumerate}
+		\item defined different models of translational equivalence
+		\pause
+		\begin{itemize}
+			\item by translating words or phrases
+			\pause
+			\item in arbitrary order
+			\pause
+			\item or according to an ITG
+		\end{itemize}
+		\pause
+		\item efficiently represented the set of translations supported by these models for a given input sentence \pause
+		\begin{itemize}
+			\item trivially expressed in terms of intersection/composition \pause
+			\item a logic program can do the same \\
+			(sometimes more convenient, e.g. WL$d$ constraints) 
+		\end{itemize}
+	\end{enumerate}
+}
+
+
+\frame{
+	\frametitle{Remarks}
+	
+	Phrase-based SMT \precite{Koehn et al, 2003} \pause
+	\begin{itemize}
+		\item the space of solutions grows linearly with input length and exponentially with the distortion limit
+	\end{itemize}
+	\pause
+	ITG \precite{Wu, 1997} \pause
+	\begin{itemize}
+		\item the space of solutions is cubic in length \pause
+		\item however less efficiently packed, better motivated constraints on reordering
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Remarks (hiero)}	
+	
+	Hierarchical phrase-based models \precite{Chiang, 2005}
+	\pause
+	\begin{itemize}
+		\item more general SCFG rules (typically up to 2 nonterminals)\\ \pause
+		\item weakly equivalent to an ITG\\ 
+		(same set of pairs of strings) \pause 
+		\item purely lexicalised rules \\ 
+		e.g. $X \ra \ftext{loja de antiguidades} / \etext{old curiosity shop}$ \pause
+		\item as well as lexicalised recursive rules \\ 
+		e.g. $X \ra X_1 \ftext{ de } X_2 \text{ / } X_2 \etext{ 's } X_1$ \pause
+		\item no purely unlexicalised rules\footnote{Other than monotone translation with \emph{glue rules}} \\ \pause
+		\item same cubic dependency on input length (as ITGs)
+		%\item typically estimated heuristically from word-alignment\\
+		%(lexical evidence helps here)
+	\end{itemize}
+	
+}
+	

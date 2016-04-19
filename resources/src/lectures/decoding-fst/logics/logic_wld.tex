@@ -1,0 +1,41 @@
+
+\newcommand{\biwldadjcond}{
+\begin{array}{l }
+\textcolor<2>{blue}{i = l}\\
+\alert<3>{\oplus_k c_k = \bzero}
+\end{array}
+}
+
+\newcommand{\biwldnonadjcond}{
+\begin{array}{l }
+\textcolor<5>{blue}{l < i \leq I} \\
+\alert<6>{\delta(i', l) \leq d} \\
+\oplus_k c_k = \bzero
+\end{array}
+}
+
+
+\begin{math} %\small
+ \left. 
+  \begin{array}{l}
+    \textsc{Item} ~~~~ {\itembrack{[1 .. I +1], \{0,1\}^{d-1}}} \\
+    %\\
+    \textsc{Goal} ~~~~ {\itembrack{I+1, C}} \\
+    %\\  
+    \textsc{Axiom} \\ 
+	\drule{}{\itembrack{1, 0^{d-1}}}{} \\
+    %\\  
+    \textsc{Adjacent} \\ 
+	\drule{\alert<1>{\itembrack{l, C}} \alert<2>{\angbrack{x_i^{i'} \ra y_j^{j'}}}}{\textcolor<4>{blue}{\itembrack{l + n, C' \ll n}}}{\biwldadjcond} \\ 
+	~~ \text{where} \\
+	~~~ \alert<4>{C' = \alpha_l^{i+1..i'}(C)} \\
+	~~~ \text{$n = \#_1(C') + 1$} \\
+%	~~ \alert<4>{\text{\small where $n = \#_1(C') + 1$}} \\
+%	~~ \text{\small and $\#_1(C)$ is the number of leading ones in $C$} \\
+    \textsc{Non-Adjacent} \\ 
+	\drule{\itembrack{l, C} \alert<5>{\angbrack{x_i^{i'} \ra y_j^{j'}}}}{\itembrack{l, \alpha_l^{i..i'}(C)}}{\biwldnonadjcond} \\ 
+	
+  \end{array} 
+\right.
+\end{math}
+
