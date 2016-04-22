@@ -1,0 +1,16 @@
+
+% Example: first for fields are the worth, then achieved
+% \begin{report}{4}{4}{2}{1}{2}{2}{1}{0}
+\newenvironment{project1report}[6]{%
+\subsection{Reviewer: #1}%
+\begin{table}[h]\centering%
+\begin{tabular}{|c|c|c|}\hline %
+\bf Scoring Criterion & \bf Max Points & \bf Points Scored \\ \hline %
+Theoretical Description &  4 & #2 \\ \hline %
+Empirical Evaluation    &  4 & #3 \\ \hline %
+Writing Style           &  2 & #4 \\ \hline %
+Extra                   &  1 & #5 \\ \hline\hline %
+\bf Total Points            & 11 & #6 \\ \hline %
+\end{tabular}%
+\caption{Reviewer: #1}%
+\end{table}}{}

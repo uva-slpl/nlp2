@@ -18,6 +18,7 @@ Resources:
 * [training data](resources/project1/training.tar.gz)
 * [test data](resources/project1/testing.tar.gz)
 * [development data](resources/project1/dev-data.tar.gz)
+* Assessment sheet (for instructors): [pdf](resources/project1/assessment-sheet.pdf), [odt](resources/project1/assessment-sheet.odt)
 
 # Project 2: translation (09 May)
 
