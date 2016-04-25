@@ -30,6 +30,7 @@ categories: info
 1. Introduction to the course
 2. Schedule
 
+
 # Word alignment models (31 March)
 
 1. Aligning by learning a translation lexicon
