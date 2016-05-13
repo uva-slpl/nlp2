@@ -3,14 +3,17 @@ layout: default
 title: Projects
 ---
 
+
 We want you to get your hands dirty with most of the core topics covered in the course. 
 To that end, we are preparing an interesting project with three milestones. 
 See below for description and deadlines.
 
 
+
 # Project 1: word alignment (15 April)
 
 First of all, you will implement word alignment models. These models typically produce the alignments used in later stages to extract longer translation units (e.g. phrases, rules).
+
 
 Resources:
 
