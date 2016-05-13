@@ -31,10 +31,20 @@ Resources:
 * [data](resources/project2/data/pbsmt.tgz)
 
 
-# Project 3: reranking (27 May)
+# Project 3: reranking (5 June)
 
 Finally, you will learn the contribution of several rich features in ranking translations according to an external view of translation quality.
 This is an application of machine learning methods (e.g. linear models, learning to rank).
 
+Topics:
+
 1. Rich features
 2. Tuning
+3. Evaluation
+
+Resources:
+
+* [project description](resources/project3/project3.pdf)
+* [data](https://www.adrive.com/public/Kyuzep/nlp2)
+
+
