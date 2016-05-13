@@ -1,0 +1,14 @@
+\section{Final Evaluation}
+
+After the learning phase is finished you will have your reranking model that you should apply on the test data. After reranking the test set you will take the top scored translations in nbest lists as your final translations. When this corpora of translations is constructed you will evaluate it with several evaluation metrics.
+
+For that you can use a very useful toolkit called MultEval \url{https://github.com/jhclark/multeval}. It will produce BLEU, METEOR and TER scores. Very nice thing about MultEval is that it can compute statistical significance scores for the metrics scores so you would know if the improvement that you got is significantly better than some baseline. As a baseline you will you the weight that you will get from us. 
+
+In your report you will show results for:
+\begin{itemize}
+\item baseline -- just standard weights without your training
+\item basic -- system tuned with basic features and your impelemntation of PRO
+\item anything else that you impelemnt
+\end{itemize}
+
+In your results you should report ablation experiments -- for everything you add to your model you should show how much it added (or decreased) the scores.

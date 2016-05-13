@@ -1,0 +1,33 @@
+
+\section{Features}
+
+Some of the potential features are listed bellow. Note that the choices of features you are using might influence the learning algorithm implementation (for example sparse vs. dense vectors) and it also might require extra tools (in case of syntactic trees it would require a parser).
+
+You should use/implement at least one feature from each of the following subsections: \ref{sec:core}, \ref{sec:comb}, \ref{sec:ling} and \ref{sec:sparse}.
+
+
+\subsection{\label{sec:core}Core Features}
+
+Some standard features (language model, translation model, inverse translation model) are already precomputed for you and available in your n-best list file. You should probably use those since they are very informative.
+
+\subsection{\label{sec:comb}Feature Combinations}
+
+You can get additional features by combining core features with some non-linear function. For example, if you have two core features $x_1$ and $x_2$ you can create new features that are computed as $x_1^2$, $x_1*x_2$, $x_2^2$, $sigmoid(x_1)$... or anything you think would be useful.
+
+\subsection{\label{sec:ling}Linguistically Inspired Features}
+
+You can use some of your linguistic knowledge in designing features. For example, most of the sentences have a verb, so you might like to have a binary feature that says if there is a verb in a sentence. Naturally for this you need some parser.
+
+\subsection{\label{sec:sparse}Sparse Features of Bigrams}
+
+As you know, bigrams are two consecutive words in some sentence. Here we will generalize this concept and say that bigrams can be two consecutive POS tags or two consecutive cluster IDs. Why would we want to do that? Sometimes our training data is too small and we will not observe majority of potential word bigrams. Because of that we need to abstract to some more general category than words such as POS tags. So instead of collecting statistics about bigrams like "bird spoke", "cow sang"... we would collect statistics about POS bigram "Noun Verb".
+
+If you use bigram features, each bigram will be one indicator feature. So if you had observed in the candidate sentence a bigram "Preposition Verb" then that feature would have value 1 otherwise it will be 0. You can already imagine that majority of these features will be 0 and for that you will want to encode them as \textit{sparse features}. That may influence the way you implement the tuning algorithm.
+
+These sparse features of bigram POS tags don't have to be extracted from the linear order of words in the sentence. You can use a dependency parse tree, for example, and there bigram would be POS tags connected by a dependency arc.
+
+If you use the syntacic trees then for German you can consider using this parser \url{https://code.google.com/archive/p/mate-tools/wikis/ParserAndModels.wiki} (with it you will also get POS tags for free).
+
+If you want to use word clusters then this word clustering toolkit might help out \url{http://nlp.stanford.edu/software/tagger.shtml}.
+
+\input{featureInduction}

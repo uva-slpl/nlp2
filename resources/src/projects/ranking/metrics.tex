@@ -1,0 +1,16 @@
+\section{Evaluation Metrics }
+
+In the explanation of this project we usually mention BLEU evaluation metric, but you do not have to use BLEU. Some other metrics might give better result in tuning.
+
+The tuning algorithm that you are implementing PRO does evaluation on the sentence level and BLEU is very often unreliable on the sentence level. You can guess that the reason for that is because high order n-grams (4-gram for example) often don't match and they cause the whole sentence to have score $0$. To avoid that you can do some smoothing of the BLEU score by adding a fake count 1 to each n-gram order. So basically instead of computing precision with 
+\begin{equation}
+    \frac{\#matching\_ngrams}{\#total\_ngrams}
+\end{equation}
+you will compute it with
+\begin{equation}
+    \frac{1+\#matching\_ngrams}{1+\#total\_ngrams}
+\end{equation}
+
+In that way BLEU will never be 0.
+
+Alternatively, you can try some completely different metric. For example, you can try METEOR \url{http://www.cs.cmu.edu/~alavie/METEOR/}. You should know that METEOR usually gives much more importance to recall than precision so after tuning your parameters might prefer too long translations. To avoid that with METEOR you need to set equal weight for precision and recall.

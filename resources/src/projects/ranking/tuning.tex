@@ -1,0 +1,94 @@
+
+\section{Implementing the Tuning Algorithm}
+
+After you decide on your feature sets you will need a learning algorithm that would learn weights for these features. 
+In this project, it is obligatory to implement the learning algorithm PRO for linear models. After describing a bit of PRO that you need I will mention some extra things you might want to play with such as different learning algorithm for a linear model or even having a non-linear model.
+
+\subsection{PRO}
+
+PRO is probably the most simple algorithm that could be used for tuning. The main idea of it is to transform tuning task into a binary classification task. That is done by: 1) selecting pairs of candidate translations from n-best lists, 2) transforming pairs of training translations into training instances for a linear classifier, 3) train any off-the-shelf linear classifier, 4) return the weights learned from the classifier.
+
+The number of pairs of translations that need to be extracted depends on you. Usually, the more the better, but you can't have all the pairs because there is huge number of them. That's why you will need to randomly pick them.
+
+Transforming those pairs into training instances is trivial. For positive training instance you subtract features of better translation and worse translation in each pair of translations. For negative training instance you do it in the opposite direction (subtract features of worse and better).
+
+
+You do not have to implement a classifier yourself (unless you really want to, but then be careful not to lose track of the project's timeline).
+There are many linear classifiers that you can use for training your model.
+The fastest and maybe the simplest in my experience is LibLinear \url{https://www.csie.ntu.edu.tw/~cjlin/liblinear/}, but you can really use anything. For example, for python you can use ScikitLearn \url{http://scikit-learn.org/stable/} (scipy also offers a few optimisation algorithms that may be useful).
+
+
+
+The pseudo code of this algorithm is presented in Algorithm~\ref{PROalgorithm}. This is a simplified version of PRO. The original version was published in \cite{Hopkins:2011:TR:2145432.2145575}, but that one had a bit more hacks to it that you don't need to implement (mostly about techniques for sampling).
+
+\begin{algorithm}
+\caption{PRO pseudo code}
+\label{PROalgorithm}
+\begin{algorithmic}
+
+ \STATE \textbf{Input1: } nbests -- n-best for each sentence \\
+ \STATE \textbf{Input2: } sampleSize \\
+ 
+ \STATE \textbf{Output: } \textbf{w} -- weight vector \\
+ 
+ \STATE classifierTrainingInstances $\leftarrow \{\}$
+ 
+ \FORALL{nbest in nbests}
+
+  \FOR{i $\leftarrow$ 1 \TO sampleSize }
+   \STATE candidate1 $\leftarrow$ randomly pick from nbest
+   \STATE candidate2 $\leftarrow$ randomly pick from nbest
+   \STATE winner $\leftarrow$ better from candidate1 and candidate2 as judged by BLEU
+   \STATE loser $\leftarrow$ worse from candidate1 and candidate2 as judged by BLEU
+   \STATE \textbf{winFeatures} $\leftarrow$ featureExtraction(winner)
+   \STATE \textbf{losFeatures} $\leftarrow$ featureExtraction(loser)
+   \STATE posInstance $\leftarrow$ $<$features = \textbf{winFeatures}--\textbf{losFeatures}, label=1$>$
+   \STATE negInstance $\leftarrow$ $<$features = \textbf{losFeatures}--\textbf{winFeatures}, label=-1$>$
+   \STATE classifierTrainingInstances.add(posInstance)
+   \STATE classifierTrainingInstances.add(negInstance)
+  \ENDFOR
+  
+ \ENDFOR
+ 
+ \STATE train off the shelf linear classifier with classifierTrainingInstances
+ \STATE return weights learned by the classifier
+  
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{Extra}
+
+\subsubsection{MIRA}
+
+You might want to implement MIRA learning algorithm. Just like PRO it produces a linear model, but unlike PRO it is an online training algorithm and you can't use arbitrary classifier to learn the weights. You would need to do several iterations in which you would find the \textit{hope} and \textit{fear} translations in nbest lists and use MIRA update rule to find the new weights. In Algorithm~\ref{MIRAalgorithm} you can find a very rough idea of how it works. More precise description (particularily for $updateParameters$) can be found here  \cite{Eidelman:2012:OSO:2393015.2393082}.
+
+\begin{algorithm}
+\caption{MIRA pseudo code}
+\label{MIRAalgorithm}
+\begin{algorithmic}
+
+ \STATE \textbf{Input1: } nbests -- n-best for each sentence \\
+ \STATE \textbf{Input2: } numberOfIterations \\
+ 
+ \STATE \textbf{Output: } \textbf{w} -- weight vector \\
+ 
+ \STATE $\boldsymbol{w}\leftarrow zero vector$
+ 
+ \FOR{iteration $\leftarrow$ 1 \TO numberOfIterations }
+  \FORALL{nbest in nbests}
+
+   \STATE $hope \leftarrow$ $argmax_{t \in nbest} \boldsymbol{w}*features(t) + BLEU(hopeTranslation)$
+   \STATE $fear \leftarrow$ $argmax_{t \in nbest} \boldsymbol{w}*features(t) - BLEU(hopeTranslation)$
+   
+   \STATE $updateParameters(\textbf{w}, hope, fear)$
+  \ENDFOR
+  
+ \ENDFOR
+ 
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Non-linear reranking}
+
+The main reason why we use linear models very often in machine translation is that they decompose well while we do decoding. Since you are not learning these weights for decoding but for reranking n-best lists you don't have to stay with linear models. There are many learning algorithms that can train non-linear models for better ranking. However, very often they are difficult to implement and they are very slow. If you want, you can give a try to some algorithms that are already implemented in some learning-to-rank toolkit such as RankLib \url{https://people.cs.umass.edu/~vdang/ranklib.html}. If you know any other library that you like more or know how to do anything that would make reranking approach be better feel free to do it.

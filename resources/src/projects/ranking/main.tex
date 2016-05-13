@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+%\usepackage[]{algorithm2e}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+
+\title{NLP2 Project 3 description}
+\author{Milo\v{s} Stanojevi\'{c}, Philip Sch\"ulz and Wilker Aziz}
+
+\begin{document}
+
+\maketitle
+
+This time your task is to make the best possible prediction (a translation) from a list of candidate derivations ($n$-best derivations from a phrase-based model).
+
+A common approach is to learn a ranking model that tries (explicitly or not) to correlate model score to some form of oracle score. In this case, the oracle is an automatic evaluation metric (e.g. BLEU, METEOR, BEER).
+Your supervision is the set of reference translations and your space of translation options is constrained to what is available in $1000$-best lists.
+
+In general terms you will work with
+
+\begin{itemize}
+    \item design/induction of rich features that describe the translation derivations
+    \item learning to rank
+    \item automatic evaluation
+\end{itemize}
+
+\input{features}
+\input{tuning}
+\input{metrics}
+\input{data}
+\input{finalEvaluation}
+\input{report}
+
+\bibliographystyle{unsrt}
+\bibliography{bib}
+
+\end{document}

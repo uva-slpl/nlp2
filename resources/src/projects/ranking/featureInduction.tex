@@ -1,0 +1,13 @@
+\subsection{Extra: Feature Induction}
+
+Instead of designing by hand it is often more efficient to induce them from data. This has two main advantages. First, there is no need to determine the usefulness of 
+features through trial and error (assuming that your feature induction mechanism works well). Second, induced features tend to be dense and thus are much easier to
+use for down-stream purposes than sparse features. 
+
+We ask you to induce word representations. These may be combined into phrase representations by simple addition or any other procedure that you can come up with.
+Standard software like \texttt{Word2Vec} induces features monolingually. Here, you will have to induce features for target words using conditional on the source sentence.
+To this end you will use restricted Boltzmann Machines (see \cite{HintonEtAl:2006}. A RBM is a generative neural network with binary hidden states. Each hidden state is 
+fully connected with each data point (target word). The weights that are learned by the RBM can be used as representations. How RBMs can be learned efficiently on word
+observation is described in \cite{DahlEtAl:2012}. Using the RBM, you will train target word representations that are influence by the source sentence. This can, for 
+example, be achieved by additionally connecting the hidden units to all words in the source sentence or by learning a representation for the source sentence and connecting 
+the hidden units to this representation. The concrete architecture is up to your imagination but please make sure to consult us before you actually start implementing it.\footnote{If you are interested in RBMs, Philip volunteered to discuss these ideas further.}

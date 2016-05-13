@@ -1,0 +1,54 @@
+\section{Data}
+
+You will be working with English-German translations.
+We are providing $1000$-best lists already ranked from best to worst by a phrase-based decoder (Moses) using the standard translation features and a $5$-gram language model.
+The baseline system translates lattices containing up to 100 permutations of English sentences using the preordering method of \cite{Stanojevic+2015:RG}.
+The baseline features are:
+
+\begin{itemize}
+    \item a German $5$-gram language model trained on monolingual news-2015 data (from WMT -- see below)
+    \item permutation distortion features  -- this feature captures the quality of the input permutations
+    \item a preordered-English $5$-gram language model trained on the (preordered) English side of the English-German europarl (from WMT)
+    \item expected Kendall Tau score under the reordering grammar of \cite{Stanojevic+2015:RG} -- this feature captures the quality of the input permutations
+    \item unknown word penalty
+    \item word penalty
+    \item phrase penalty
+    \item translation probabilities (phrase and lexical in both directions)
+    \item something called \texttt{InputFeature} which is a dummy feature that can be ignored (it is 0 everywhere, so it does not affect the model)
+\end{itemize}
+
+
+In case you need training data for additional features/models, you can find it (both parallel and monolingual) in the website of the WMT annual shared task: \url{http://www.statmt.org/wmt16/}.
+
+\subsection{Files}
+
+You can download the data from:
+
+\begin{center}
+\url{https://www.adrive.com/public/Kyuzep/nlp2}
+\end{center}
+
+You will find the following files:
+
+\begin{itemize}
+    \item \texttt{nlp2-dev.1000best.gz}: $1000$-best lists for 2937 dev sentences.
+    \item \texttt{nlp2-test.1000best.gz}: $1000$-best lists for 2107 test sentences.
+    \item \texttt{baseline.weights}: weights used in producing the $n$-best lists
+    \item \texttt{nlp2-dev.en.pw.plf-100.gz}: input lattice for the dev set
+    \item \texttt{nlp2-test.en.pw.plf-100.gz}: input lattice for test set.\\
+    You are unlikely to need the input lattices, but we attach them just in case.\footnote{You can find a python script for parsing such PLF files at \url{https://github.com/wilkeraziz/grasp/blob/master/grasp/io/plf_parser.py}. You don't need to download the whole toolkit, just the standalone file\texttt{plf\_parser.py}. PLF format is described in \url{http://www.statmt.org/moses/?n=Moses.WordLattices}.}
+    \item \texttt{nlp2-dev.de.gz} and \texttt{nlp2-test.de.gz}: reference translations
+    \item \texttt{nlp2-dev.en.s.gz} and \texttt{nlp2-test.en.s.gz}: input sentences (in original word order).
+\end{itemize}
+
+
+The $n$-best lists provided are formatted as columns separated by 3 vertical bars. The columns contain the following information:\footnote{For more information you can check Moses's documentation: \url{http://www.statmt.org/moses}}
+
+\begin{enumerate}
+    \item $0$-based sentence id
+    \item translation segmented into phrases: phrase boundaries are denoted with $|a-b|$ where $a$ and $b$ are states in the input lattice
+    \item core feature vector: baseline features used to produced the $n$-best lists
+    \item system score: dot product between core features and baseline weight vector
+    \item alignment: $i-j$ pairs, where $i$ represents a state in the input lattice and $j$ represents a target word position ($0$-based)
+    \item source sentence: the source words along the exact path in the input lattice that got translated.
+\end{enumerate}
