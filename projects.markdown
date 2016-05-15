@@ -32,6 +32,7 @@ Resources:
 
 * [project description](resources/project2/project2.pdf)
 * [data](resources/project2/data/pbsmt.tgz)
+* Assessment sheet (for instructors): [pdf](resources/project2/assessment-sheet.pdf), [odt](resources/project2/assessment-sheet.odt)
 
 
 # Project 3: reranking (5 June)
