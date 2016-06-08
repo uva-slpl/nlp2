@@ -50,5 +50,6 @@ Resources:
 
 * [project description](resources/project3/project3.pdf)
 * [data](https://www.adrive.com/public/Kyuzep/nlp2)
+* Assessment sheet (for instructors): [pdf](resources/project3/assessment-sheet.pdf), [odt](resources/project3/assessment-sheet.odt)
 
 
