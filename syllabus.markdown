@@ -1,6 +1,6 @@
 ---
 layout: photolist
-title: Syllabus
+title: 2016
 ---
 
 # Preliminaries 
