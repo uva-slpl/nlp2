@@ -1,0 +1,41 @@
+---
+layout: photolist
+title: Syllabus
+---
+
+# Preliminaries 
+
+In NLP2, we focus on tasks that benefit from multilingual data. We start by presenting all the opportunities that this special type of data presents us with. We then go on to discuss a lot of core machine learning techniques in the context of various exciting structure prediction problems.
+We cover both unsupervised and supervised learning as well as both locally and globally normalised models.
+We start with lexical alignment because these models typically do not require too complex inference algorithms.
+In this context we cover essential concepts such as maximum likelihood estimation from incomplete data, Bayesian inference, and integration of supervised techniques into unsupervised models.
+We then move on to consider more structure and discuss models for synchronous parsing.
+We then cover statistical machine translation from two perspectives: linear classifiers and probabilistic graphical models.
+Next in the line are the end-to-end neural models. Here we start with fully supervised tasks (e.g. language modelling and sequence-to-sequence MT) and move on to unsupervised (or at most semi-supervised) tasks with variational auto-encoders.
+Finally, we discuss paraphrasing as another task that benefits greatly from multilingual data, here we survey models that employ several of the techniques presented along the course (e.g. MLE, Bayesian inference, and deep generative models)
+
+# Tentative syllabus 
+
+* Introduction: parallel data and opportunities
+* Unsupervised learning of lexical alignment
+    * Directed models: MLE by EM for categorical distributions
+    * Undirected models: MLE by gradient-based optimisation
+    * Bayesian inference: Dirichlet priors and collapsed inference
+    * Feature-rich parameterisation and feature induction with neural networks
+* Unsupervised learning of bitext parsing
+    * Bitext parsing by weighted deduction
+    * Directed graphical models for bitext parsing
+* Statistical machine translation
+    * From word to phrases and hierarchical rules
+    * Evaluation
+    * Fitting linear classifiers (tuning)
+    * Latent-variable conditional random fields
+* Fully supervised neural models
+    * Language modelling without Markov assumptions
+    * Conditional language modelling (sequence to sequence) and attention mechanism
+* Deep generative models for translation and alignment
+    * Variational auto-encoder
+* Paraphrasing
+
+
+
