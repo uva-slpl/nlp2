@@ -2,6 +2,9 @@
 layout: photolist
 ---
 
+Spring 2016
+
+
 # Preliminaries 
 
 Here is how you should read the information below:

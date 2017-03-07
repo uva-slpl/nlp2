@@ -2,6 +2,8 @@
 layout: default
 ---
 
+Spring 2017
+
 # Lectures
 
 * Introduction: parallel data and opportunities
