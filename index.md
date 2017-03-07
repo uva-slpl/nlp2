@@ -4,11 +4,10 @@ layout: main
 
 This is the main page of the NLP2 course offered at the [University of Amsterdam][UvA].
 
-# Content and other Courses
+# Content 
 
-This course, which builds on NLP I, is about statistical language processing with graphical representations (like trees) as hidden structures underlying the data. 
+This course, which builds on NLP I, is about structured prediction. 
 We will concentrate on Machine Translation as a good example of an application field for a wide set of computational linguistic tasks such as parsing, morphology and semantics. 
-We will start with word-level models of MT for inducing alignments; Only touch upon phrase-based models and their techniques, which we completely leave for Applied Language Technology (ALP); Directly move towards hierarchical models with trees, syntax and with modelling word order differences (reordering) between languages as the central challenge. We will also look at inducing semantic representations from multilingual data.
 
 # Format
 

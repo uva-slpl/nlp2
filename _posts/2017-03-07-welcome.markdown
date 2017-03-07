@@ -1,0 +1,13 @@
+---
+layout: post
+title:  Welcome!
+date:   2017-03-07
+author: Wilker
+categories: lectures
+---
+
+Honestly, we got bored of using Blackboard and decided to host our course page on github (yay!).
+Stay tuned for announcements, resources and slides.
+Very soon we will update the *reading* and *discussion* sections in the syllabus.
+
+

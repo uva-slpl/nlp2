@@ -19,7 +19,7 @@ Hence, we ask you not to use those during our meetings.
 
 # Foundation
 
-{% assign lectures = (site.data.foundation | where: "selected", "y") %}
+{% assign lectures = (site.data.2016.foundation | where: "selected", "y") %}
 {% for lecture in lectures %}
 {% include lecture.html lecture=lecture %}
 {% endfor %}
@@ -27,7 +27,7 @@ Hence, we ask you not to use those during our meetings.
 
 # Recent advances
 
-{% assign lectures = (site.data.advances | where: "selected", "y") %}
+{% assign lectures = (site.data.2016.advances | where: "selected", "y") %}
 {% for lecture in lectures %}
 {% include lecture.html lecture=lecture %}
 {% endfor %}

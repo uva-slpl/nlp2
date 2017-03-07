@@ -2,28 +2,40 @@
 layout: default
 ---
 
-# Tentative syllabus for 2017
+# Lectures
 
 * Introduction: parallel data and opportunities
-* Unsupervised learning of lexical alignment
-    * Directed models: MLE by EM for categorical distributions
-    * Undirected models: MLE by gradient-based optimisation
-    * Bayesian inference: Dirichlet priors and collapsed inference
-    * Feature-rich parameterisation and feature induction with neural networks
-* Unsupervised learning of bitext parsing
-    * Bitext parsing by weighted deduction
-    * Directed graphical models for bitext parsing
+
+* Lexical alignment: mixture models (IBM1-2/HMM)
+    * MLE via EM with categorical distributions
+    * EM with logistic CPDs
+    * Dirichlet priors and posterior inference
+
 * Statistical machine translation
-    * From word to phrases and hierarchical rules
-    * Evaluation
-    * Fitting linear classifiers (tuning)
-    * Latent-variable conditional random fields
-* Fully supervised neural models
-    * Language modelling without Markov assumptions
-    * Conditional language modelling (sequence to sequence) and attention mechanism
-* Deep generative models for translation and alignment
-    * Variational auto-encoder
-* Paraphrasing
+    * Linear models: phrase-based and hierarchical phrase-based SMT
+    * MT evaluation and tuning
+    * Permutation trees and reordering grammar
+    * Probabilistic models: ITG and LVM-CRF
+
+* Neural machine translation
+    * Language model: RNN 
+    * Conditional language model: encoder-decoder
+    * Other architectures
+    * Variational auto-encoder 
+
+# Labs
+
+* Project 1
+    * EM for categorical distributions 
+    * Forward-Backward
+
+* Project 2
+    * Bitext parsing
+    * Inside-Outside
+
+* Project 3
+    * FFNN 
+    * backpropagation
 
 
 
