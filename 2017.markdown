@@ -1,43 +1,59 @@
 ---
-layout: default
+layout: photolist
 ---
 
-Spring 2017
+*Spring 2017*
+
+In this course you will apply several machine learning techniques to deal with structure predictions problems related to translation.
+Our course is composed of 3 blocks of lectures: lexical alignment (3 lectures), statistical machine translation (4 lectures), and neural machine translation (4 lectures).
+We will also have lab sessions related to project assignments.
+
 
 # Lectures
 
-* Introduction: parallel data and opportunities
+{% assign lectures = (site.data.2017.intro | where: "selected", "y") %}
+{% for lecture in lectures %}
+{% include lecture.html lecture=lecture %}
+{% endfor %}
 
-* Lexical alignment: mixture models (IBM1-2/HMM)
-    * MLE via EM with categorical distributions
-    * EM with logistic CPDs
-    * Dirichlet priors and posterior inference
+## Lexical alignment
 
-* Statistical machine translation
-    * Linear models: phrase-based and hierarchical phrase-based SMT
-    * MT evaluation and tuning
-    * Permutation trees and reordering grammar
-    * Probabilistic models: ITG and LVM-CRF
+{% assign lectures = (site.data.2017.alignment | where: "selected", "y") %}
+{% for lecture in lectures %}
+{% include lecture.html lecture=lecture %}
+{% endfor %}
 
-* Neural machine translation
-    * Language model: RNN 
-    * Conditional language model: encoder-decoder
-    * Other architectures
-    * Variational auto-encoder 
+## Statistical machine translation
+
+{% assign lectures = (site.data.2017.smt | where: "selected", "y") %}
+{% for lecture in lectures %}
+{% include lecture.html lecture=lecture %}
+{% endfor %}
+
+## Neural machine translation
+
+{% assign lectures = (site.data.2017.nmt | where: "selected", "y") %}
+{% for lecture in lectures %}
+{% include lecture.html lecture=lecture %}
+{% endfor %}
+
 
 # Labs
 
-* Project 1
+* Recap (1 session)
+    * Calculus: log identities and basic derivatives
+    * Probability theory: random variables, rules of probability, basic distributions
+    * Probabilistic graphical models: factorisation and representation
+
+* Project 1 (2 sessions)
     * EM for categorical distributions 
     * Forward-Backward
 
-* Project 2
+* Project 2 (2 sessions)
     * Bitext parsing
     * Inside-Outside
 
-* Project 3
+* Project 3 (3 sessions)
     * FFNN 
     * backpropagation
-
-
 

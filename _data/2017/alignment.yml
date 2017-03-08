@@ -1,0 +1,54 @@
+-
+  layout: lecture
+  selected: y
+  date: 2017-04-07
+  img: alignments
+  title: "IBM1-2: MLE via EM for categorical distributions"
+  instructor: Wilker Aziz
+  note: 
+  abstract: >
+    In this session we will discuss the IBM word alignment models 1 and 2. 
+    We will view them as constrained mixture models. After motivating the models intuitively, we will develop them formally and devise an EM parameter estimation algorithm for them. 
+    We will also try to understand why the resulting optimisation problem contains multiple optima. 
+  background:
+    - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf) which is the basis for his lecture."
+    - "In order to get a more concrete view of implementation, including pseudo-codes for the EM procedure, read M. Collins's [lecture notes](resources/papers/CollinsIBM.pdf)."
+  further: 
+    - "[R. Moore (2004)](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf) discusses a number of problems with IBM model 1 involving 1) null words, 2) rare words, and 3) initialisation for EM. If you can understand the problems he raises and the solutions he proposes, you are really getting it about IBM1. Also, implementing some of his improvements will be worth some extra points in project 1."
+    - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
+    - "The original [IBM paper](http://www.aclweb.org/anthology/J93-2003) is very dense, but if you want to go around teaching IBM models you should probably read it a few times."
+    - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
+    - "[Dyer et al. 2013](http://www.aclweb.org/anthology/N13-1073.pdf) revisit the parameterisation of IBM model 2. Their model, called 'fast_align' achieves state-of-the-art performance and a robust and efficient [implementation](https://github.com/clab/fast_align) is available."
+  discussion:
+  slides:
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-04-12
+  img: alignments
+  title: "Feature-rich IBM1: EM for logistic CPDs"
+  instructor: Wilker Aziz
+  note: 
+  abstract:
+  background:
+  further:
+  discussion:
+  slides: 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-04-19
+  img: alignments
+  title: "Bayesian IBM1: Dirichlet priors and posterior inference"
+  instructor: Philip Schulz
+  note: 
+  abstract: 
+  background:
+  further:
+  slides: 
+  code: 
+  data: 

@@ -3,6 +3,8 @@ layout: photolist
 title: Instructors
 ---
 
+*Spring 2017*
+
 [Statistical Language Processing and Learning Lab][SLPLL] (minus just a few).
 
 {% assign instructors = (site.data.2017.instructors | where: "selected", "y") %}
