@@ -6,8 +6,7 @@ title: Projects
 *Spring 2017*
 
 We want you to get your hands dirty with most of the core topics covered in the course. 
-To that end, we are preparing an interesting project with three milestones. 
-See below for description and deadlines.
+To that end, we prepared three projects.
 
 # Project 1: word alignment 
 
@@ -34,6 +33,12 @@ Undirected graphical models are much harder to learn, thus we will focus on a su
 *From May 17 to June 7*
 
 In this project you will learn about maximum likelihood estimation for graphical models parameterised by neural networks.
+You will investigate an unsupervised problem for which a tractable solutions exists (an IBM1-type model) and an unsupervised problems for which approximate inference is necessary (an embed-and-align type of model).
 
-Details to be announced.
+* IBM1 with NNs: a NN predicts the parameters of the lexical categorical distributions (note that this requires to explicitly marginalise over alignments);
+* IBM1 without null words: this model adds a latent variable that can propose segmentations trading between translation and monolingual insertion (again this requires explicit marginalisation of translation/insertion decisions);
+* Jointly learn how to embed and align: along with alignment and segmentation, learn latent random embeddings (where marginalisation of latent embeddings is intractable in general).
+
+In this project you will employ techniques like explicit marginalisation of latent alignments and variational inference to circumvent the explicit marginalisation of latent embeddings.
+
 
