@@ -6,12 +6,13 @@ This is the main page of the NLP2 course offered at the [University of Amsterdam
 
 # Content 
 
-This course, which builds on NLP I, is about structured prediction. 
-We will concentrate on Machine Translation as a good example of an application field for a wide set of computational linguistic tasks such as parsing, morphology and semantics. 
+This course, which builds on NLP I, is about statistical learning for structure prediction problems. 
+We will concentrate on *machine translation* as a good example of an NLP problem that encompasses a wide set of computational linguistic tasks such as parsing, morphology and semantics. 
 
 # Format
 
-This is a research-oriented course. A  number of lectures is given by the lecturers and invited speakers. Depending on number of students, we will have discussion sessions where students present selected articles to the class.
+This is a research-oriented course where we have lectures, discussion sessions led by students, labs, and project assignments.
+We supply reading material (either research papers or tutorials) for lectures as well as a list of pointers for further reading.
 
 ## Homework
 
@@ -21,17 +22,15 @@ You could be questioned about the articles or possibly even asked to sketch some
 
 ## Discussion sessions
 
-A group (no more than 3 students) selects a paper to be discussed. Then
+A group (typically about 2-3 students) selects a paper to be discussed. Then
 
 1. Everyone reads the chosen paper before the session
-2. The selected group gives a talk (up to 30 minutes) presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
-3. Everyone participates in a discussion
-4. Everyone (including the team members) submit a short piece of writing (typically a page) about the paper/talk. In this "report" you should summarise the paper (e.g. challenge, technical contributions) and you can also be critical (e.g. about assumptions, experimental setup, conclusions). Ideally, you wil prepare this report before the actual discussion, but obviously the discussion itself might contribute to your understanding of the paper. Thus, you can submit your report until midnight after the discussion.
-
+2. The selected group gives a 20 minutes talk presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
+3. Everyone participates in an open discussion for about 10-15 minutes
 
 # Projects
 
-There will be a large project with three milestones: students work in groups (2 to 3 members).
+We will have 3 project assignments: students work in groups (2 to 4 members). Projects will be assessed on the basis of technical reports and ipython notebooks.
 
 # Grades 
 
