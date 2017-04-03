@@ -14,12 +14,6 @@ We will concentrate on *machine translation* as a good example of an NLP problem
 This is a research-oriented course where we have lectures, discussion sessions led by students, labs, and project assignments.
 We supply reading material (either research papers or tutorials) for lectures as well as a list of pointers for further reading.
 
-## Homework
-
-Read and prepare the articles before the session. 
-You are expected to participate in the discussions during the session and prepare questions about the articles. 
-You could be questioned about the articles or possibly even asked to sketch some technical aspects of the article on the board, should the need arise.
-
 ## Discussion sessions
 
 A group (typically about 2-3 students) selects a paper to be discussed. Then
