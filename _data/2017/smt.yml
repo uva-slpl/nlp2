@@ -105,7 +105,6 @@
     - "ITGs have a very generic vocabulary of nonterminals leading to very flat distributions. One can use the idea of state splitting to refine the vocabulary of a vanilla ITG. This is very difficul to do in terms of MLE. [Blunsom et al. (2008)](http://papers.nips.cc/paper/3453-bayesian-synchronous-grammar-induction) develop a non-parametric Bayesian model which learns how far to refine the vocabulary of a vanilla ITG. [Blunsom and Cohn (2010)](http://www.aclweb.org/anthology/N10-1028) build on that work and propose a more efficient inference technique based on slice sampling."
     - "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
     - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
-    - "[Neubig et al. (2011)](http://www.aclweb.org/anthology/P11-1064) apply non-parametric Bayesian methods to avoid degenerate maximum likelihood estimates for phrase-based ITGs."
     - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
   discussion:
   slides: resources/slides/itg.pdf
