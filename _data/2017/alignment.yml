@@ -31,7 +31,8 @@
   title: "Feature-rich IBM1: EM for logistic CPDs"
   instructor: Wilker Aziz
   note: 
-  abstract:
+  abstract: >
+    In this lecture, we will show a different parameterisation of categorical distributions in terms of logistic distributions. This neat trick helps decouple the number of model parameters from the size of the data.
   background:
   further:
   discussion:
