@@ -46,10 +46,17 @@
   img: alignments
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
   instructor: Philip Schulz
-  note: 
-  abstract: 
+  note:
+  abstract: >
+    We present a Bayesian version of IBM1 which has a conjugate Dirichlet prior on the translation parameters. We exploit the conjugacy of the resulting model to develop an efficient variational inference
+    algorithm. During the lecture we will explicitly introduce the logic of variational inference. Studens acquaint themselves with basic properties of exponential families beforehand.
   background:
+    - "The lecture will very closely follow [this script (currently missing but will be uploaded soon)](). Students should read it *before* the lecture. We may decide to skip some details from the script in the lecture."
+    - "The same model but with a Gibbs sampler for inference is presented in [Mermer and Saraclar (2011)](http://www.aclweb.org/website/old_anthology/P/P11/P11-2.pdf#page=222)."
   further:
+    - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
+    - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
+    - "Shorter presentations of the same techniques can be found in [Attias (1999)](https://papers.nips.cc/paper/1726-a-variational-baysian-framework-for-graphical-models.pdf) and [Beal and Ghahramani (2000)](http://www.cse.buffalo.edu/faculty/mbeal/papers/nips00beal.pdf). Be aware, though, that these papers are quite dense."
   slides: 
   code: 
   data: 
