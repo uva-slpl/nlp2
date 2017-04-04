@@ -8,7 +8,7 @@ title: Projects
 We want you to get your hands dirty with most of the core topics covered in the course. 
 To that end, we prepared three projects.
 
-# Project 1: word alignment 
+# Project 1 
 
 *From March 12 to March 26*
 
@@ -19,7 +19,7 @@ You will experiment with maximum likelihood estimation and Bayesian modelling wi
 * Maximum likelihood estimation for IBM1: EM algorithm
 * Bayesian estimation for IBM1: variational Bayes
 
-# Project 2: reordering model 
+# Project 2 
 
 *From March 26 to May 17*
 
@@ -28,7 +28,7 @@ Undirected graphical models are much harder to learn, thus we will focus on a su
 
 * Maximum likelihood estimation for a CRF parser: CKY algorithm, inside-outside algorithm, and gradient-based optimisation
 
-# Project 3:  
+# Project 3
 
 *From May 17 to June 7*
 

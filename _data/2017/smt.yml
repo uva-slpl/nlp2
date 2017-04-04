@@ -6,30 +6,7 @@
   title: "Linear models: phrase-based and hierarchical phrase-based SMT"
   instructor: Miguel Rios
   note: 
-  abstract: |
-    In this lecture we will introduce a phrase-based model and its hierarchical extension. 
-    We will motivate the need for larger translation units than word pairs, and show how their modelling introduces a new issue: phrase segmentation. 
-    We will see how standard (hierarchical) phrase-based SMT deals with this issue, and the model's parameterisation.
-  background:
-    - "Koehn et al. 2003. [Statistial Phrase-Based Translation](http://www.aclweb.org/anthology/N/N03/N03-1017.pdf)"
-    - "[Kumar and Byrne (2003)](http://www.aclweb.org/anthology/N03-1019) present a derivation and implementation of the [alignment template model](http://www.aclweb.org/anthology/W99-0604) using FSTs."
-    - "David Chiang. [An introduction to synchronous grammars](resources/papers/ChiangSCFG.pdf)"
-    - "Chiang. 2007. [Hierarchical Phrase-Based Translation](http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201)"
-    - "Chiang. 2005. [A Hierarchical Phrase-Based Model for Statistical Machine Translation](http://www.aclweb.org/anthology/P05-1033)" 
-  further:
-    - "On estimation:"
-    - "[Marcu and Wong (2002)](http://www.aclweb.org/anthology/W02-1018) proposed a model that is conceptually very similar to the IBM models 1 and 2, but applied to phrases instead of words. Estimation in that model is intractable, requiring initial approximations and hard EM."
-    - "[DeNero et al. (2006)](http://www.aclweb.org/anthology/W06-3105) inferred phrase translation estimates in a (uniform) segmentation space constrained by word alignments trained with the IBM models. This leads to degenerate estimates."
-    - "[Mylonakis and Sima'an (2008)](http://www.aclweb.org/anthology/D08-1066) used word alignments and the phrase-extraction method of [Koehn et al. (2003)](http://www.aclweb.org/anthology/N/N03/N03-1017.pdf), but infer phrase-translation estimates with EM. They restrict the segmentation space to ITG derivations, and use cross-validation techniques to avoid overfitting."
-    - "[DeNero and Klein (2008)](http://www.aclweb.org/anthology/P08-2007) showed that estimation for phrase-based models is NP-complete." 
-    - "On inference:"
-    - "[Sima'an (2002)](https://staff.fnwi.uva.nl/k.simaan/D-Papers/Grammars01.pdf) proved that disambiguation of formal grammars (Stochastic Context-Free and Tree-Substitution Grammars) is NP-complete. The result carries over to any problem where one needs to sum over derivations (or segmentations in the case of this lecture)."  
-    - "[Knight (1999)](http://www.aclweb.org/anthology/J/J99/J99-4005.pdf) proved that decoding (for word-based models) is NP-complete, and laid out the analogy between decoding and the Travelling Salesman Problem (TSP)."
-    - "[Zaslavskiy et al. (2009)](http://www.aclweb.org/anthology/P/P09/P09-1038.pdf) proposed to apply TSP solvers for decoding instead of beam-search decoding."
-    - "[Aziz et al. (2014)](http://www.aclweb.org/anthology/D14-1131) replace beam-search decoding by an exact coarse-to-fine search inspired by rejection sampling."
-  classmaterial: 
-    - "Part 1: [PBSMT](resources/slides/pbsmt.pdf)"
-    - "Part 2: [HPBSMT](resources/slides/hpbsmt.pdf)"
+  abstract: 
   code: 
   data: 
 -
@@ -107,6 +84,6 @@
     - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
     - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
   discussion:
-  slides: resources/slides/itg.pdf
+  slides: 
   code: 
   data: 
