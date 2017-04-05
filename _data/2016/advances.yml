@@ -3,6 +3,7 @@
   selected: y
   date: 2016-04-21
   img: rg
+  uid: rg
   title: Word-order and reordering grammar
   instructor: "Miloš Stanojević"
   note: 
@@ -19,6 +20,7 @@
   selected: y
   date: 2016-04-26
   img: labelling
+  uid: labelling
   title: Labelling Hiero
   instructor: Gideon Wenniger
   note: 
@@ -71,6 +73,7 @@
   selected: y
   date: 2016-04-28
   img: morpho
+  uid: morpho
   title: Morphology in machine translation
   instructor: Joachim Daiber
   note: 
@@ -92,6 +95,7 @@
   selected: y
   date: 2016-05-03
   img: nmt
+  uid: nmt
   title: Neural models for translation
   instructor: Joost Bastings
   note: 
@@ -116,6 +120,7 @@
   selected: y
   date: 2016-05-10
   img: multi
+  uid: multimt
   title: Multimodal MT
   instructor: Desmond Elliot
   note: 
@@ -134,6 +139,7 @@
   selected: y
   date: 2016-05-12
   img: transfer
+  uid: transfer
   title: Parallel texts as a linguistic resource
   instructor: Stella Frank
   note: 

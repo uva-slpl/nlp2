@@ -3,6 +3,7 @@
   selected: y
   date: 2017-05-12
   img: nmt
+  uid: nlm
   title: Language models
   instructor: Joost Bastings
   note: 
@@ -18,6 +19,7 @@
   selected: y
   date: 2017-05-17
   img: nmt
+  uid: seq2seq
   title: "Conditional language models: encoder-decoder"
   instructor: Wilker Aziz
   note: 
@@ -30,6 +32,7 @@
   selected: y
   date: 2017-05-19
   img: nmt
+  uid: convenc
   title: Convolutional encoders
   instructor: Joost Bastings
   note: 
@@ -44,6 +47,7 @@
   selected: y
   date: 2017-05-24
   img: nmt
+  uid: vae
   title: "Align-Embed: variational auto-encoders"
   instructor: Wilker Aziz
   note: 

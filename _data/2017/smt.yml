@@ -3,6 +3,7 @@
   selected: y
   date: 2017-04-21
   img: pbsmt
+  uid: pbsmt
   title: "Linear models: phrase-based and hierarchical phrase-based SMT"
   instructor: Miguel Rios
   note: 
@@ -14,6 +15,7 @@
   selected: y
   date: 2017-04-26
   img: tuning
+  uid: tuning
   title: Evaluation and Tuning
   instructor: "Miloš Stanojević"
   note: 
@@ -54,6 +56,7 @@
   selected: y
   date: 2017-05-03
   img: rg
+  uid: rg
   title: Factorisation of permutations and reordering grammar
   instructor: "Miloš Stanojević"
   note: 
@@ -70,6 +73,7 @@
   selected: y
   date: 2017-05-10
   img: itg
+  uid: crf
   title: "Probablistic models: ITG and LVM-CRF"
   instructor: Wilker Aziz
   note: 

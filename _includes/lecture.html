@@ -12,9 +12,9 @@
 
     <!-- abstract -->
     {% if include.lecture.abstract %}
-      <a data-toggle="modal" href="#abstract{{ include.lecture.img }}" class="label label-default">Abstract</a>
+      <a data-toggle="modal" href="#abstract{{ include.lecture.uid }}" class="label label-default">Abstract</a>
       <!-- Modal -->
-      <div class="modal fade" id="abstract{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+      <div class="modal fade" id="abstract{{ include.lecture.uid }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -36,9 +36,9 @@
     {% endif %}
 
     {% if include.lecture.classmaterial %}
-      <a data-toggle="modal" href="#classmaterial{{ include.lecture.img }}" class="label label-info">Class material</a>
+      <a data-toggle="modal" href="#classmaterial{{ include.lecture.uid }}" class="label label-info">Class material</a>
       <!-- Modal -->
-      <div class="modal fade" id="classmaterial{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+      <div class="modal fade" id="classmaterial{{ include.lecture.uid }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -66,9 +66,9 @@
     {% endif %}
     
     {% if include.lecture.background or include.lecture.backgroundwarn %}
-      <a data-toggle="modal" href="#background{{ include.lecture.img }}" class="label label-success">Background reading</a>
+      <a data-toggle="modal" href="#background{{ include.lecture.uid }}" class="label label-success">Background reading</a>
       <!-- Modal -->
-      <div class="modal fade" id="background{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+      <div class="modal fade" id="background{{ include.lecture.uid }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -90,9 +90,9 @@
     {% endif %}
     
     {% if include.lecture.further or include.lecture.furtherwarn %}
-      <a data-toggle="modal" href="#further{{ include.lecture.img }}" class="label label-warning">Further reading</a>
+      <a data-toggle="modal" href="#further{{ include.lecture.uid }}" class="label label-warning">Further reading</a>
       <!-- Modal -->
-      <div class="modal fade" id="further{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+      <div class="modal fade" id="further{{ include.lecture.uid }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -114,9 +114,9 @@
     {% endif %}
     
     {% if include.lecture.discussion or include.lecture.discussionwarn %}
-      <a data-toggle="modal" href="#discussion{{ include.lecture.img }}" class="label label-danger">Discussion</a>
+      <a data-toggle="modal" href="#discussion{{ include.lecture.uid }}" class="label label-danger">Discussion</a>
       <!-- Modal -->
-      <div class="modal fade" id="discussion{{ include.lecture.img }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
+      <div class="modal fade" id="discussion{{ include.lecture.uid }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

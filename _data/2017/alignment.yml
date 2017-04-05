@@ -3,6 +3,7 @@
   selected: y
   date: 2017-04-07
   img: alignments
+  uid: ibm_em
   title: "IBM1-2: MLE via EM for categorical distributions"
   instructor: Wilker Aziz
   note: 
@@ -28,6 +29,7 @@
   selected: y
   date: 2017-04-12
   img: alignments
+  uid: ibm_logistic
   title: "Feature-rich IBM1: EM for logistic CPDs"
   instructor: Wilker Aziz
   note: 
@@ -44,6 +46,7 @@
   selected: y
   date: 2017-04-19
   img: alignments
+  uid: ibm_vb
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
   instructor: Philip Schulz
   note:

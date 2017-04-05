@@ -3,6 +3,7 @@
   selected: y
   date: 2016-03-29
   img: introduction
+  uid: intro
   title: Introduction
   instructor: "Khalil Sima'an"
   note: 
@@ -20,6 +21,7 @@
   selected: y
   date: 2016-03-31
   img: alignments
+  uid: ibm
   title: Word alignment models
   instructor: Philip Schulz
   note: 
@@ -45,6 +47,7 @@
   selected: y
   date: 2016-04-05
   img: biparsing
+  uid: biparsing
   title: Bitext Parsing
   instructor: Wilker Aziz
   note: 
@@ -64,6 +67,7 @@
   selected: n
   date: 2016-04-07
   img: wbsmt
+  uid: wbsmt
   title: Word-based models
   instructor: Wilker Aziz
   note: 
@@ -84,6 +88,7 @@
   selected: y
   date: 2016-04-07
   img: pbsmt
+  uid: pbsmt
   title: Phrase-based models
   instructor: Sophie Arnoult
   note: 
@@ -113,6 +118,7 @@
   selected: y
   date: 2016-04-12
   img: itg
+  uid: itg
   title: Inversion Transduction Grammars
   instructor: Wilker Aziz
   note: 
@@ -136,6 +142,7 @@
   selected: y
   date: 2016-04-12
   img: hpbsmt
+  uid: hpbsmt
   title: Hierarchical models
   instructor: Wilker Aziz
   note: 
@@ -153,6 +160,7 @@
   selected: y
   date: 2016-04-14
   img: mteval
+  uid: mteval
   title: Evaluation
   instructor: "Miloš Stanojević"
   note: 
@@ -179,6 +187,7 @@
   selected: y
   date: 2016-04-14
   img: tuning
+  uid: tuning
   title: Tuning
   instructor: "Miloš Stanojević"
   note: 
@@ -200,6 +209,7 @@
   selected: y
   date: 2016-04-19
   img: decoding
+  uid: decoding
   title: Decoding
   instructor: Wilker Aziz
   note: 
