@@ -54,7 +54,7 @@
     We present a Bayesian version of IBM1 which has a conjugate Dirichlet prior on the translation parameters. We exploit the conjugacy of the resulting model to develop an efficient variational inference
     algorithm. During the lecture we will explicitly introduce the logic of variational inference. Students should acquaint themselves with basic properties of exponential families beforehand.
   background:
-    - "The lecture will very closely follow [this script (currently missing but will be uploaded soon)](). Students should read it *before* the lecture. We may decide to skip some details from the script in the lecture."
+    - "The lecture will very closely follow [this script](resources/papers/Schulz-BayesIBM1-tutorial.pdf). Students should read it *before* the lecture. We may decide to skip some details from the script in the lecture."
     - "The same model but with a Gibbs sampler for inference is presented in [Mermer and Saraclar (2011)](http://www.aclweb.org/website/old_anthology/P/P11/P11-2.pdf#page=222)."
   further:
     - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
