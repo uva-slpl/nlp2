@@ -13,14 +13,13 @@
     We will also try to understand why the resulting optimisation problem contains multiple optima. 
   background:
     - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf) which is the basis for his lecture."
+    - "Wilker Aziz has made available some notes on the derivation of the [M-step for IBM1-2](resources/papers/Aziz-IBM12-EM.pdf)."
     - "In order to get a more concrete view of implementation, including pseudo-codes for the EM procedure, read M. Collins's [lecture notes](resources/papers/CollinsIBM.pdf)."
   further: 
+    - "The original [IBM paper](http://www.aclweb.org/anthology/J93-2003) is very dense, but if you want to go around teaching IBM models you should probably read it a few times."
     - "[R. Moore (2004)](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf) discusses a number of problems with IBM model 1 involving 1) null words, 2) rare words, and 3) initialisation for EM. If you can understand the problems he raises and the solutions he proposes, you are really getting it about IBM1. Also, implementing some of his improvements will be worth some extra points in project 1."
     - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
-    - "The original [IBM paper](http://www.aclweb.org/anthology/J93-2003) is very dense, but if you want to go around teaching IBM models you should probably read it a few times."
     - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
-    - "[Dyer et al. 2013](http://www.aclweb.org/anthology/N13-1073.pdf) revisit the parameterisation of IBM model 2. Their model, called 'fast_align' achieves state-of-the-art performance and a robust and efficient [implementation](https://github.com/clab/fast_align) is available."
-  discussion:
   slides:
   code: 
   data: 
@@ -60,6 +59,7 @@
     - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
     - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
     - "Shorter presentations of the same techniques can be found in [Attias (1999)](https://papers.nips.cc/paper/1726-a-variational-baysian-framework-for-graphical-models.pdf) and [Beal and Ghahramani (2000)](http://www.cse.buffalo.edu/faculty/mbeal/papers/nips00beal.pdf). Be aware, though, that these papers are quite dense."
+    - "[Dyer et al. 2013](http://www.aclweb.org/anthology/N13-1073.pdf) revisit the parameterisation of IBM model 2. Their model, called 'fast_align' achieves state-of-the-art performance and a robust and efficient [implementation](https://github.com/clab/fast_align) is available."
   slides: 
   code: 
   data: 
