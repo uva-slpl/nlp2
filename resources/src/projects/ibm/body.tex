@@ -20,8 +20,14 @@ In summary, your task is to
 \section{IBM model 1}
 
 \begin{enumerate}
-	\item Implement IBM model 1 and its EM training \citep{Brown+1993:smt};
-	\item Plot the evolution of the log likelihood function as a function of the iteration;
+	\item 
+	\begin{enumerate}[a)]
+		\item Implement EM training \citep{Brown+1993:smt} for IBM model 1;
+		\item Implement variational inference for Bayesian IBM model 1;
+		\item All of the tasks below should be performed for both models.
+	\end{enumerate}
+	\item Plot the evolution of the log likelihood function (or ELBO) as a function of the iteration. How to compute the Dirichlet par of the ELBO
+	is described \href{}{here (I'll add the link tonight when I come home)};
 	\item Plot the evolution of alignment error rate (AER) on validation data as a function of the iteration;
 	\item Experiment with two criteria for model selection (i.e. deciding on number of training iterations): 1) convergence in terms of log likelihood; 2) best AER on validation data;
 	\item For the selected modes, obtain Viterbi alignments for every sentence pair in a test corpus and compute AER using a gold-standard provided by the assistant;
