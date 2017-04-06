@@ -4,7 +4,6 @@ models.  Word-based models remain at the core of today's SMT systems
 in the form of alignment models.
 You will implement the simplest (though still widely used) word-based
 models, namely, IBM model 1, a lexical translation model, and IBM model 2, which models an impoverished form of word alignments.
-% VB for Bayesian IBM1, cite Mermer+2011:BWA and Philip's notes?
 
 In summary, your task is to
 
@@ -30,7 +29,7 @@ In summary, your task is to
 	is described \href{}{here (I'll add the link tonight when I come home)};
 	\item Plot the evolution of alignment error rate (AER) on validation data as a function of the iteration;
 	\item Experiment with two criteria for model selection (i.e. deciding on number of training iterations): 1) convergence in terms of log likelihood; 2) best AER on validation data;
-	\item For the selected modes, obtain Viterbi alignments for every sentence pair in a test corpus and compute AER using a gold-standard provided by the assistant;
+	\item For the selected models, obtain Viterbi alignments for every sentence pair in a test corpus and compute AER using a gold-standard provided by the assistant;
 \end{enumerate}
 
 %In your report, you should also consider the limitations of Model 1
@@ -55,23 +54,72 @@ In summary, your task is to
   \item Compare the selected models to IBM model 1 in terms of AER in the test set.
 \end{enumerate}
 
+{\bf Extra (optional)} variational Bayes for IBM model 2 (at least for the lexical model).
+
 \section{Data}
-You will be provided with parallel data taken from the Canadian Hansards (parliament proceedings). 
+
+All relevant data (including details about file formats) are available from \url{https://uva-slpl.github.io/nlp2/projects.html}.
+
+In this project, you will work with a parallel corpus taken from the Canadian Hansards (parliament proceedings). 
 The data consists
 of preprocessed sentence pairs (please do not further pre-process the data). There are two files, one for the
 English and one for the French sentences. Sentences with the same line number are translations of each other.
 
+We are making available \emph{training} data (which you can use to perform parameter estimation), \emph{validation} data (which you can use to debug your implementation as well as to perform model selection), and finally in due time \emph{test} data (which you will use to conduct your final empirical comparison).
+
+You can use the results in Table \ref{tab:validation} to sanity check your own implementation.
+
+\begin{table}\centering
+\begin{tabular}{l | c | p{10cm}}
+\bf Model & \bf AER & \bf Training regime \\ \hline
+IBM 1 & 0.3378 & 10 iterations \\
+IBM 2 & 0.2428 & 10 iterations (lexical component), then 5 additional iterations (lexical and jump components) \\ \hline
+\end{tabular}
+\caption{\label{tab:validation}Validation results for IBM model 1 and 2 trained for maximum likelihood via EM.}
+\end{table}
 
 \section{Report}
 
-You should use latex for your report, here you will find a template: \url{http://acl2017.org/downloads/acl17-latex.zip} (unlike the template suggests, your submission should not be anonymous). 
+You should use latex for your report, and you should use the ACL template available from \url{http://acl2017.org/downloads/acl17-latex.zip} (unlike the template suggests, your submission should not be anonymous). 
 
-We expect short reports (4 pages plus references) written in English covering at least the following:
+We expect short reports (4 pages plus references) written in English. The typical submission is organised as follows: 
 \begin{itemize}
-	\item abstract;
-	\item introduction: discuss the problem and some background where relevant;
+	\item abstract: conveys scope and contributions;
+	\item introduction: present the problem and relevant background;
 	\item model: technical description of models;
 	\item experiments: details about the data, experimental setup and findings;
-	\item conclusion.
+	\item conclusion: a critical take on contributions and limitations.
 \end{itemize}
+
+
+\section{Submission}
+
+You should submit a tgz file containing a folder (folder name {\tt lastname1.lastname2}) with the following content: 
+\begin{itemize}
+	\item Test predictions (in naacl format) using your best run for each of the following models
+	\begin{itemize}
+		\item IBM1 MLE (filename: {\tt ibm1.mle.naacl})
+		\item IBM1 VB (filename: {\tt ibm1.vb.naacl})
+		\item IBM2 MLE (filename: {\tt ibm2.mle.naacl})
+		\item If you opted for the extra exercise, then also include IBM2 VB (filename: {\tt ibm2.vb.naacl})
+	\end{itemize}
+	\item Report as a single pdf file (filename: {\tt report.pdf})
+\end{itemize}
+
+Your report may contain a link to an open-source repository (such as github), but please do not attach code or additional data to your tgz submission.
+
+You should email your tgz file to \url{J.C.P.Bastings@uva.nl} no later than 23:59 GMT-8 on March 26. If you do not get a confirmation email within 24h after submission, please make sure to contact one of us.
+
+\section{Assessment}
+
+Your report will be assessed by two independent reviewers according to the following evaluation criteria:
+\begin{enumerate}
+	\item Scope (max 2 points): Is the problem well presented? Do students understand the challenges/contributions?
+	\item Theoretical description (max 3 points): Are the models presented clearly and correctly?
+	\item Empirical evaluation (max 3 points): Is the experimental setup sound/convincing? Are experimental findings presented in an organised and effective manner? 
+	\item Writing style (max 2 points): use of latex, structure of report, use of tables/figures/plots, command of English.	
+	\item Extra (max 1 point).
+\end{enumerate}
+
+
 
