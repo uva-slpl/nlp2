@@ -21,8 +21,6 @@
     - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
     - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
   slides: resources/slides/ibm.pdf
-  classmaterial: 
-    - "Directed graphical models [recap](resources/slides/dgm-recap.pdf)"
   code: 
   data: 
 -
