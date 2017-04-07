@@ -1,0 +1,12 @@
+---
+layout: post
+title:  Welcome!
+date:   2017-04-07
+author: Wilker
+categories: lectures
+---
+
+The project 1 description is available at:
+https://uva-slpl.github.io/nlp2/projects.html
+From March 12 to March 26.
+
