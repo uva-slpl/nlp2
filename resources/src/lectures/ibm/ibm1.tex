@@ -1,0 +1,487 @@
+\frame{
+	\frametitle{Translation data}
+	
+	Let's assume we are confronted with a new language\\
+	and luckily we managed to obtain some sentence-aligned data
+	
+	~ 
+	
+	\begin{center}
+    \begin{tabular}{c|c}
+    the black dog & $\square$ $\circledast$ \\
+    the nice dog & $\square$ $\cup$ \\
+    the black cat & $\boxdot$ $\circledast$  \\
+    a dog chasing a cat& $\boxdot$ $\triangleleft$ $\square$  \\
+    \end{tabular}
+    \end{center}
+    
+    
+    ~
+    
+    \pause
+    
+    \alert{Is there anything we could say about this language?}
+	
+}
+
+
+\frame{
+	\frametitle{Translation by analogy}
+		
+	\begin{center}
+    \begin{tabular}{c|c}
+    the black dog & $\square$ $\circledast$ \\
+    the nice dog & $\square$ $\cup$ \\
+    the black cat & $\boxdot$ $\circledast$  \\
+    a dog chasing a cat& $\boxdot$ $\triangleleft$ $\square$  \\
+    \end{tabular}
+    \end{center}
+    
+    A few hypotheses: \pause
+    
+    \begin{itemize}
+    	\item $\square \iff \text{dog}$ \pause
+		\item $\boxdot \iff \text{cat}$ \pause
+		\item $\circledast \iff \text{black}$ \pause
+		\item nouns seem to preceed adjectives \pause
+		\item determines are probably not expressed \pause		
+		\item \emph{chasing} may be expressed by $\triangleleft$\\
+		and perhaps this language is OVS \pause
+		\item or perhaps \emph{chasing} is realised by a verb with swapped arguments\\
+    \end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Probabilistic lexical alignment models}
+	
+	This lecture is about operationalising this intuition
+	\begin{itemize}
+		\item through a probabilistic learning algorithm
+		\item for a non-probabilistic approach see for example \\
+		\citep{Lardilleux+2009:Anyalign}
+	\end{itemize}
+	
+}
+
+
+\section{Lexical alignment}
+
+
+
+\frame{
+	\frametitle{Word-to-word alignments}
+	
+	\only<1>{Imagine you are given a text
+	\begin{center}
+    \begin{tabular}{c|c}
+    the black dog & o c\~{a}o preto \\
+    the nice dog & o c\~{a}o amigo \\
+    the black cat & o gato preto \\
+    a dog chasing a cat & um c\~{a}o perseguindo um gato\\
+    \end{tabular}
+    \end{center}}
+    \only<2->{Now imagine the French words were replaced by placeholders
+    \begin{center}
+    \begin{tabular}{c|c}
+    the black dog & $F_1$ $F_2$ $F_3$ \\
+    the nice dog & $F_1$ $F_2$ $F_3$ \\
+    the black cat & $F_1$ $F_2$ $F_3$ \\
+    a dog chasing a cat & $F_1$ $F_2$ $F_3$ $F_4$ $F_5$ \\
+    \end{tabular}
+    \end{center}
+    }
+    
+    \only<3->{and suppose our task is to have a model explain the original data \\}
+    \only<4>{\emph{\textcolor{blue}{by generating each French word from exactly one English word}}
+    }
+}
+
+\frame{
+	\frametitle{Generative story}
+	For each sentence pair independently,
+	\begin{enumerate}
+	\item observe an English sentence $e_1, \cdots, e_m$ \\
+	and a French sentence length $n$
+	\item for each French word position $j$ from 1 to $n$
+	\begin{enumerate}
+		\item select an English position $a_j$
+		\item conditioned on the English word $e_{a_j}$, generate $f_j$ 
+	\end{enumerate}	
+	\end{enumerate}
+	
+	\pause
+	
+	~
+	
+	We have introduced an \alert{alignment}\\
+	which is not directly visible in the data
+}
+
+
+\frame{
+	\frametitle{Data augmentation}
+		
+	Observations:
+	\begin{center}
+    \begin{tabular}{c|c}
+    the black dog & o c\~{a}o preto \\
+    \end{tabular}
+    \end{center}
+    
+    ~
+
+	Imagine data is made of pairs: $(a_j, f_j)$ and $e_{a_j} \rightarrow f_j$
+
+    \only<2->{
+    \begin{center}
+    \begin{tabular}{c|c}
+    the black dog & \only<2>{$(A_1, E_{A_1} \rightarrow F_1)$}\only<3>{$(1, E_{A_1} \rightarrow F_1)$}\only<4->{$(1, \text{the}\rightarrow\text{o})$} 
+    \only<2-4>{$(A_2, E_{A_2} \rightarrow F_2)$}\only<5>{$(3, E_{A_2} \rightarrow F_2)$}\only<6->{$(3, \text{dog}\rightarrow\text{c\~{a}o})$} 
+    \only<2-6>{$(A_3, E_{A_3} \rightarrow F_3)$}\only<7>{$(2, E_{A_3} \rightarrow  F_3)$}\only<8->{$(2, \text{black}\rightarrow\text{preto})$} \\
+    \end{tabular}
+    \end{center}
+    }
+    \only<9->{
+    \begin{center}
+    \begin{tabular}{c|c}
+    the black dog & 
+     $(1, \text{the}\rightarrow\text{o})$ 
+     $(1, \text{the}\rightarrow\text{c\~{a}o})$ 
+     $(1, \text{the}\rightarrow\text{preto})$ 
+    \end{tabular}
+    \end{center}
+    }
+    \only<10->{
+    \begin{center}
+    \begin{tabular}{c|c}
+    the black dog & 
+     $(a_1, e_{a_1}\rightarrow f_1)$ 
+     $(a_2, e_{a_2}\rightarrow f_2)$ 
+     $(a_3, e_{a_3}\rightarrow f_3)$ 
+	\end{tabular}
+    \end{center}
+    }
+    
+    
+}
+
+\section{Mixture models}
+
+\frame{
+	\frametitle{Mixture models}
+	
+	\begin{center}
+    \scalebox{1}{
+    \begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(x)		{$ x $};
+    \node[latent, left = of x]		(z)		{$ z $};
+    
+    % Connect nodes
+    \edge{z}{x};
+    
+    % add plates
+    \plate {source-sentence} {(z)(x)} {$ m $};
+    \end{tikzpicture}
+    }
+    \end{center}
+    
+    \begin{itemize}
+    	\item $c$ mixture components 
+		\item each defines a distribution over the same data space $\mathcal X$
+		\item plus a distribution over components themselves
+    \end{itemize}
+    
+    \only<2>{
+    Generative story
+    \begin{enumerate}
+    	\item select a mixture component $z \sim P(Z)$
+		\item generate an observation from it $x \sim P(X|Z=z)$
+    \end{enumerate}
+    }
+    \only<3>{
+    Marginal likelihood
+    \begin{align}
+    	P(x_1^m) &= \prod_{i=1}^m \sum_{z=1}^c P(X=x_i, Z=z) \\
+			&= \prod_{i=1}^m \sum_{k=z}^c P(Z=z)P(X=x_i| Z=z)
+	\end{align}
+	}
+	
+}
+
+\frame{
+	\frametitle{Interpretation}
+	
+	Missing data
+	\begin{itemize}
+		\item Let $Z$ take one of $c$ mixture components
+		\item Assume data consists of pairs $(x, z)$
+		\item $x$ is always observed
+		\item $y$ is always missing		
+	\end{itemize}
+	
+	\pause
+	
+	~
+	
+	Inference: posterior distribution over possible $Z$ for each $x$
+	
+	\begin{align}
+		P(Z=z|X=x) &= \frac{P(Z=z, X=x)}{\sum_{k=1}^c P(Z=k, X=x)} \\
+			&= \frac{P(Z=z)P(X=x|Z=z)}{\sum_{k=1}^c P(Z=k)P(X=x|Z=k)}
+	\end{align}
+	
+}
+
+\frame{
+	\frametitle{Non-identifiability}
+	
+	Different parameter settings, same distribution
+	
+	~
+	
+	Suppose $\mathcal X = \{a, b\}$ and $c=2$ \\
+	~ ~ and let $P(Z=1) = P(Z=2) = 0.5$ \\
+	
+	~
+	
+	\begin{columns}
+	\begin{column}{0.3\textwidth}
+	\begin{tabular}{c | c  c}
+		$Z$ & $X=a$ & $X=b$ \\ \hline
+		1   & 0.2   & 0.8 \\ \hline
+ 		2   & 0.7   & 0.3 \\ \hline
+	  $P(X)$& 0.45  & 0.55 \\
+	\end{tabular}
+	% P(X=a) = P(Z=1)P(a|1) + P(Z=2)P(a|2)
+	% 0.5 * (0.2 + 0.7) = 0.45
+	% P(X=b) = P(Z=1)P(b|1) + P(Z=2)P(b|2)
+	% 0.5 * (0.8 + 0.3) = 0.55
+	\end{column}
+	\begin{column}{0.3\textwidth}
+	\begin{tabular}{c | c c}
+		$Z$ & $X=a$ & $X=b$ \\ \hline
+		1   & 0.7   & 0.3 \\ \hline
+		2   & 0.2   & 0.8 \\ \hline		
+	  $P(X)$& 0.45  & 0.55 \\	
+	\end{tabular}
+	\end{column}
+	% P(X=a) = P(Z=1)P(a|1) + P(Z=2)P(a|2)
+	% 0.5 * (0.7 + 0.2) = 0.45
+	% P(X=b) = P(Z=1)P(b|1) + P(Z=2)P(b|2)
+	% 0.5 * (0.3 + 0.8) = 0.55
+	\end{columns}
+	
+	\pause
+	
+	~
+	
+	\alert{Problem for parameter estimation by hillclimbing}
+	
+}
+
+
+\frame{
+	\frametitle{Maximum likelihood estimation}
+	
+	{\bf Expectation-Maximisation algorithm}
+	
+	~
+	
+	E-step: 
+	\begin{itemize}
+		\item complete data using the posterior $P(Z_1^m|x_1^m)$
+	\end{itemize}
+	
+	~
+	
+	M-step: 
+	\begin{itemize}
+		\item climb the likelihood surface	
+		\item for categorical distributions $P(O=o|C=c) = \theta_{c, o}$ \\
+		~ $c$ and $o$ are categorical  \\
+		~ $0 \le \theta_{c,o} \le 1$ ~ and ~ $\sum_{o \in \mathcal O} \theta_{c, o} = 1$
+	\end{itemize}	
+	
+	\begin{align}
+		\theta_{c,o} &= \frac{\mathbb E[n(c \rightarrow o | Z_1^m)]}{\sum_{o'} \mathbb E[n(c \rightarrow o' | Z_1^m)]}
+	\end{align}
+}
+
+\section{IBM model 1}
+
+\frame{
+	\frametitle{IBM1: a constrained mixture model}
+	
+	\begin{columns}
+	\begin{column}{0.3\textwidth}
+	\begin{center}
+    \scalebox{1}{
+    \begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(f)		{$ f $};
+    \node[latent, above = of f]		(a)		{$ a $};
+    \node[obs, left = of f]		(e)		{$ e_0^{m} $};
+    
+    % Connect nodes
+    \edge{e,a}{f};
+    \edge{e}{a};
+    
+    % add plates
+    \plate {source-sentence} {(f)(a)} {$ n $};
+    \plate {corpus} {(source-sentence) (e)} {$ S $};
+    \end{tikzpicture}
+    }
+    \end{center}
+    \end{column}
+	\begin{column}{0.65\textwidth}
+		Constrained mixture model \pause
+		\begin{itemize}
+			\item mixture components are English words \pause
+			\item but only English words that appear in the English sentence 
+			can be assigned \pause
+			\item $a_j$ acts as an indicator for the mixture component that generates French word $f_j$ 
+			\item $e_0$ is occupied by a special \textsc{Null} component
+		\end{itemize}
+	\end{column}	
+	\end{columns}
+	
+}
+
+\frame{
+	\frametitle{IBM1: marginal likelihood}
+	
+	\begin{columns}
+	\begin{column}{0.2\textwidth}
+	\begin{center}
+    \scalebox{0.8}{
+    \begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(f)		{$ f $};
+    \node[latent, above = of f]		(a)		{$ a $};
+    \node[obs, left = of f]		(e)		{$ e_0^{m} $};
+    
+    % Connect nodes
+    \edge{e,a}{f};
+    \edge{e}{a};
+    
+    % add plates
+    \plate {source-sentence} {(f)(a)} {$ n $};
+    \plate {corpus} {(source-sentence) (e)} {$ S $};
+    \end{tikzpicture}
+    }
+    \end{center}
+    \end{column}
+	\begin{column}{0.85\textwidth}
+	
+    Marginal likelihood
+    \begin{align}
+    P(f_1^n|e_0^m) &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m P(f_1^n, a_1^n|e_{a_j}) \\
+     &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m \prod_{j=1}^n P(a_j|m, n) P(f_j|e_{a_j}) \\
+	 &= \prod_{j=1}^n \sum_{a_j=0}^m P(a_j|m, n) P(f_j|e_{a_j})
+    \end{align}
+
+	\end{column}	
+	\end{columns}
+	
+    
+}
+
+
+\frame{
+	\frametitle{IBM1: posterior}
+		
+	Posterior
+	\begin{align}
+	P(a_1^n|f_1^n, e_0^m) &= \frac{P(f_1^n, a_1^n|e_0^m)}{P(f_1^n|e_0^m)} 
+	\end{align}
+	
+	Factorised
+	\begin{align}\label{eq:paj}
+		P(a_j|f_1^n, e_0^m) &= \frac{P(a_j|m, n) P(f_j|e_{a_j})}{\sum_{i=0}^m P(i|m, n) P(f_j|e_i)} 
+	\end{align}
+}
+
+\frame{
+	\frametitle{Parameterisation}
+	
+	Alignment distribution: uniform
+	\begin{align}
+		P(A|M=m, N=n) = \frac{1}{m + 1}
+	\end{align}
+	
+	~
+	
+	Lexical distribution: categorical
+	\begin{align}
+		P(F|E=e) = \Cat(F|\theta_e)
+	\end{align}
+	\begin{itemize}
+		\item where $\theta_e \in \mathbb R^{v_F}$ 
+		\item $0 \le \theta_{e, f} \le 1$
+		\item $\sum_f \theta_{e, f} = 1$
+	\end{itemize}
+	
+}
+
+
+\frame{
+\begin{adjustwidth}{-1.5em}{-1em}
+	\frametitle{MLE via EM}
+	
+	E-step:
+	\begin{small}
+	\begin{align}
+		\mathbb E[n(\mathsf e \rightarrow \mathsf f | A_1^n)] &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m P(a_1^n|f_1^n,e_0^m) n(c \rightarrow d | A_1^n)  \\
+		&= \sum_{a_1=0}^m \dotsb \sum_{A_n=0}^m \prod_{j=1}^n P(a_j|f_1^n,e_0^m) \mathds 1_{\{\mathsf e\}}(e_{a_j}) \mathds 1_{\{\mathsf f\}}(f_j)  \\
+		&= \prod_{j=1}^n \sum_{i=0}^m P(A_j = i|f_1^n,e_0^m) \mathds 1_{\{\mathsf e\}}(e_i) \mathds 1_{\{\mathsf f\}}(f_j) 
+	\end{align}
+	\end{small}
+	
+	M-step:
+	\begin{align}
+		\theta_{e, f} = \frac{\mathbb E[n(e \rightarrow f | A_1^n)]}{\sum_{ f'} \mathbb E[n( e \rightarrow  f' | A_1^n)]}
+	\end{align}
+\end{adjustwidth}
+}
+
+\frame{
+	\frametitle{EM algorithm}
+	
+	Repeat until convergence to a local optimum
+	\begin{enumerate}
+	\item For each sentence pair
+	\begin{enumerate} 
+		\item compute posterior per alignment link
+		\item accumulate fractional counts
+	\end{enumerate}
+	\item Normalise counts for each English word
+	\end{enumerate}
+}
+
+\section{IBM model 2}
+
+\frame{
+	\frametitle{Alignment distribution}
+	
+	Positional distribution\\
+	~ $P(A_j|M=m, N=n) = \Cat(A|\lambda_{j, m, n})$
+	\begin{itemize}
+		\item one distribution for each tuple $(j, m, n)$
+		\item support must include length of longest English sentence
+		\item extremely over-parameterised!
+	\end{itemize}
+
+	\pause
+	
+	~
+		
+	Jump distribution \hfill \citep{Vogel+1996:HMMWA}
+	\begin{itemize}
+		\item define a jump function
+		$\delta(a_j, j, m, n) = a_j - \left \lfloor j \frac{m}{n} \right \rfloor$
+		\item $P(A_j|m, n) = \Cat(\Delta|\lambda)$
+		\item $\Delta$ takes values from $-\text{longest}$ to $+\text{longest}$
+	\end{itemize}
+}

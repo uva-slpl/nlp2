@@ -1,0 +1,127 @@
+
+%\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usetheme{Amsterdam}
+
+\usefonttheme[onlymath]{serif}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+%\usepackage{paralist}
+%\usepackage{enumerate}
+\usepackage{colortbl}
+%\usepackage{lmodern}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{pbox}
+\usepackage{pifont}
+\usepackage{alltt}
+\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage{xspace}
+\usepackage{cases}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{changepage}
+\usepackage{tikz}
+\usepackage{pgf}
+\usetikzlibrary{arrows,automata,positioning,calc}
+%\usepackage[absolute,overlay]{textpos}
+\usepackage[normalem]{ulem}
+\usepackage{tikz-qtree}
+\usepackage{pbox}
+\usetikzlibrary{bayesnet}
+\usepackage{dsfont}
+
+%\usepackage{ragged2e}
+%\usepackage{pifont}
+
+%\usepackage[all]{xy}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xfrac}
+%\usepackage{caption}
+%\captionsetup{labelformat=empty,labelsep=none}
+
+%\usepackage{xparse}
+%\usepackage{tikz}
+%\usetikzlibrary{calc}
+
+\newcounter{savedenum}
+\newcommand*{\saveenum}{\setcounter{savedenum}{\theenumi}}
+\newcommand*{\resume}{\setcounter{enumi}{\thesavedenum}}
+\DeclareMathOperator{\KL}{KL}
+\DeclareMathOperator{\Cat}{Cat}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\NonD}{NonDescendants}
+\DeclareMathOperator{\Pa}{Pa}
+
+% declares a document
+\begin{document}
+
+	\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+	\title{Lexical alignment: IBM models 1 and 2}
+	\subtitle{MLE via EM for categorical distributions}
+
+	\author{Wilker Aziz}
+
+	\date{\today}
+	
+	% Title page
+	{\setbeamertemplate{footline}{}
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+	}
+
+
+	% trick to start counting from the table of contents
+	\setcounter{framenumber}{0}
+
+
+	% SLIDES
+		
+	\AtBeginSection[]
+    {
+    \begin{frame}<beamer>{Content}
+    \tableofcontents[currentsection,currentsubsection, 
+        hideothersubsections, 
+        sectionstyle=show/shaded,
+    ]
+    \end{frame}
+    }
+
+	
+	%\input{basics}
+	%\input{dgm}
+	
+	\input{ibm1}
+	\input{remarks}
+	%\input{estimation}
+	
+	
+		
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+	
+	
+	
+	%\input{backup}
+
+
+	\frame[allowframebreaks]{ \frametitle{References}
+        \bibliographystyle{plainnat}
+        \bibliography{../../BIB}
+	}
+
+	
+
+	% Trick to discount regular frames from the total of backup frames
+	\setcounter{framenumber}{\value{finalframe}}
+	
+	
+\end{document}
