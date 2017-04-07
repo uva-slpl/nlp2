@@ -1,0 +1,14 @@
+---
+layout: post
+title:  Teams
+date:   2017-04-07
+author: Wilker
+categories: lectures
+---
+
+These are the teams I have so far:
+
+* Nuno Mota, Tom Pelsmaeker, Nedko Savov
+* Ruben Blom, Emile van Krieken, Loïs Mooiman
+
+
