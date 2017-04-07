@@ -2,7 +2,7 @@
   layout: lecture
   selected: y
   date: 2017-04-07
-  img: alignments
+  img: ibm
   uid: ibm_em
   title: "IBM1-2: MLE via EM for categorical distributions"
   instructor: Wilker Aziz
