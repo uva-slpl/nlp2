@@ -10,5 +10,7 @@ These are the teams I have so far:
 
 * Nuno Mota, Tom Pelsmaeker, Nedko Savov
 * Ruben Blom, Emile van Krieken, Loïs Mooiman
-
+* Ionna Sanida, Edwin Lima,  Janosch Haber
+* Daniel Staal, Robin Bakker, Roderick van der Weerdt
+* Fabián Guevara, Nicola De Cao and Luca Falorsi
 
