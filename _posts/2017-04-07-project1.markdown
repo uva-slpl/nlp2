@@ -7,6 +7,6 @@ categories: lectures
 ---
 
 The project 1 description is available at:
-https://uva-slpl.github.io/nlp2/projects.html
+[Projects](https://uva-slpl.github.io/nlp2/projects.html)
 
 
