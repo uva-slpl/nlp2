@@ -16,7 +16,7 @@ We supply reading material (either research papers or tutorials) for lectures as
 
 ## Discussion sessions
 
-A group (typically about 2-3 students) selects a paper to be discussed. Then
+A group (typically about **2-3 members**) selects a paper to be discussed. Then
 
 1. Everyone reads the chosen paper before the session
 2. The selected group gives a 20 minutes talk presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
@@ -24,7 +24,7 @@ A group (typically about 2-3 students) selects a paper to be discussed. Then
 
 # Projects
 
-We will have 3 project assignments: students work in groups (2 to 4 members). Projects will be assessed on the basis of technical reports and ipython notebooks.
+We will have 3 project assignments: students work in groups (**2 to 3 members**). Projects will be assessed on the basis of technical reports and ipython notebooks.
 
 # Grades 
 

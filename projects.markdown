@@ -6,7 +6,9 @@ title: Projects
 *Spring 2017*
 
 We want you to get your hands dirty with most of the core topics covered in the course. 
-To that end, we prepared three projects.
+To that end, we prepared three projects. 
+
+Deadlines: always at 23:59 (GMT-8).
 
 # Project 1 
 

@@ -6,9 +6,13 @@ author: Wilker
 categories: lectures
 ---
 
-The project 1 description is available at:
+Project 1 description is available at:
 [Projects](https://uva-slpl.github.io/nlp2/projects.html)
 
 Deadline: April 26 at 23:59 GMT-8.
 
+E-mail me with your groups or asking me to assemble a group for you!
 
+Cheers, 
+
+W.
