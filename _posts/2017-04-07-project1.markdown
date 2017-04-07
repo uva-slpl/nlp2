@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Welcome!
+title:  Project 1 description link 
 date:   2017-04-07
 author: Wilker
 categories: lectures
