@@ -20,6 +20,7 @@
     - "[R. Moore (2004)](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf) discusses a number of problems with IBM model 1 involving 1) null words, 2) rare words, and 3) initialisation for EM. If you can understand the problems he raises and the solutions he proposes, you are really getting it about IBM1. Also, implementing some of his improvements will be worth some extra points in project 1."
     - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
     - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
+    - "[Schulz et al, 2016](https://www.aclweb.org/anthology/P/P16/P16-2028.pdf) revisit NULL alignments in IBM1-2."
   slides: resources/slides/ibm.pdf
   code: 
   data: 
