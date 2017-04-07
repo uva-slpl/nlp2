@@ -8,6 +8,7 @@ categories: lectures
 
 These are the teams I have so far:
 
+* Kwesi Menyah, Rezka Aufar, Tim Baumgartner
 * Nuno Mota, Tom Pelsmaeker, Nedko Savov
 * Ruben Blom, Emile van Krieken, Loïs Mooiman
 * Ionna Sanida, Edwin Lima,  Janosch Haber
