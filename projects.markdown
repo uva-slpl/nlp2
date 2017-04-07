@@ -10,7 +10,7 @@ To that end, we prepared three projects.
 
 # Project 1 
 
-*From March 12 to March 26*
+*From April 12 to April 26*
 
 In this project you will learn about lexical alignment, the task of learning correspondences between words in different languages.
 You will apply latent variable modelling techniques, in particular, learning with directed graphical models (aka locally normalised models).
