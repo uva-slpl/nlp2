@@ -2,17 +2,17 @@
   layout: person
   selected: y
   institution: UvA
-  img: khalil
-  name: "Khalil Sima'an"
-  url: https://staff.fnwi.uva.nl/k.simaan/
--
-  layout: person
-  selected: y
-  institution: UvA
   img: wilker
   name: Wilker Aziz
   github: wilkeraziz
   url: http://wilkeraziz.github.io
+-
+  layout: person
+  selected: y
+  institution: UvA
+  img: khalil
+  name: "Khalil Sima'an"
+  url: https://staff.fnwi.uva.nl/k.simaan/
 -
   layout: person
   selected: y
