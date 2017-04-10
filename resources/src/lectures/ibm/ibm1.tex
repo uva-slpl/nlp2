@@ -204,7 +204,7 @@
     Marginal likelihood
     \begin{align}
     	P(x_1^m) &= \prod_{i=1}^m \sum_{z=1}^c P(X=x_i, Z=z) \\
-			&= \prod_{i=1}^m \sum_{k=z}^c P(Z=z)P(X=x_i| Z=z)
+			&= \prod_{i=1}^m \sum_{z=1}^c P(Z=z)P(X=x_i| Z=z)
 	\end{align}
 	}
 	
@@ -228,8 +228,8 @@
 	Inference: posterior distribution over possible $Z$ for each $x$
 	
 	\begin{align}
-		P(Z=z|X=x) &= \frac{P(Z=z, X=x)}{\sum_{k=1}^c P(Z=k, X=x)} \\
-			&= \frac{P(Z=z)P(X=x|Z=z)}{\sum_{k=1}^c P(Z=k)P(X=x|Z=k)}
+		P(Z=z|X=x) &= \frac{P(Z=z, X=x)}{\sum_{z'=1}^c P(Z=z', X=x)} \\
+			&= \frac{P(Z=z)P(X=x|Z=z)}{\sum_{z'=1}^c P(Z=z')P(X=x|Z=z')}
 	\end{align}
 	
 }
@@ -281,9 +281,56 @@
 	
 }
 
-
 \frame{
 	\frametitle{Maximum likelihood estimation}
+	
+	%A principle by which we select a model out of a family of models by picking the one that maximises the likelihood of the data
+	
+	Suppose a dataset
+	$\mathcal D = \{x^{(1)}, x^{(2)}, \cdots, x^{(m)}\}$
+	\pause
+	
+	Suppose $P(X)$ is one of a parametric family with parameters $\theta$
+	\pause
+	%then we choose $\theta$ as to maximise the likelihood of the observations
+	
+	Likelihood of iid observations
+	$$P(\mathcal D) = \prod_{i=1}^m P_\theta(X=x^{(i)})$$
+	\pause
+	the score function is
+	$$l(\theta) = \sum_{i=1}^m \log P_\theta(X=x^{(i)})$$
+	\pause
+	then we choose
+	$$\theta^\star = \argmax_\theta l(\theta)$$
+}
+
+
+\frame{
+	\frametitle{MLE for categorical: estimation from fully observed data}
+
+	Suppose we have {\bf complete data}
+	\begin{itemize}
+		\item $\textcolor{blue}{\mathcal D_{\text{complete}}} = \{ (x^{(1)}, z^{(1)}), \ldots, (x^{(m)}, z^{(m)}) \}$
+	\end{itemize}
+	
+	~ \pause
+	
+	Then, for a {\bf categorical distribution}
+		$$P(X=x|Z=z) = \theta_{z,x}$$
+	~and $n(z, x|\mathcal D_{\text{complete}}) =$ \textit{count of $(z, x)$ in} $\textcolor{blue}{\mathcal D_{\text{complete}}}$ \\
+	
+	~
+	
+	MLE solution:
+	$$P(X=x|Z=z) = \theta_{z,x} = \frac{n(z, x| \textcolor{blue}{\mathcal D_{\text{complete}}})}{\sum_{x'} n(z, x'|\textcolor{blue}{\mathcal D_{\text{complete}}})}$$
+	
+	
+}
+
+
+
+\frame{
+	\frametitle{MLE for categorical: estimation from incomplete data}
 	
 	{\bf Expectation-Maximisation algorithm}
 	
@@ -291,21 +338,32 @@
 	
 	E-step: 
 	\begin{itemize}
-		\item complete data using the posterior $P(Z_1^m|x_1^m)$
+		\item for every observation $x$, imagine that every possible latent assignment $z$ happened with probability $P_\theta(Z=z|X=x)$		
 	\end{itemize}
+	
+	$$\alert{\mathcal D_{\text{completed}}} = \{ (x, Z= 1), \ldots, (x, Z= c): x \in \mathcal D \}$$
+	
+}
+
+\frame{
+	\frametitle{MLE for categorical: estimation from incomplete data}
+	
+	{\bf Expectation-Maximisation algorithm}
 	
 	~
 	
 	M-step: 
 	\begin{itemize}
-		\item climb the likelihood surface	
-		\item for categorical distributions $P(O=o|C=c) = \theta_{c, o}$ \\
-		~ $c$ and $o$ are categorical  \\
-		~ $0 \le \theta_{c,o} \le 1$ ~ and ~ $\sum_{o \in \mathcal O} \theta_{c, o} = 1$
+		\item reestimate $\theta$ as to climb the likelihood surface	
+		\item for categorical distributions $P(X=x|Z=z) = \theta_{z, x}$ \\
+		~ $z$ and $x$ are categorical  \\
+		~ $0 \le \theta_{z,x} \le 1$ ~ and ~ $\sum_{x \in \mathcal \mathcal X} \theta_{z, x} = 1$
 	\end{itemize}	
 	
 	\begin{align}
-		\theta_{c,o} &= \frac{\mathbb E[n(c \rightarrow o | Z_1^m)]}{\sum_{o'} \mathbb E[n(c \rightarrow o' | Z_1^m)]}
+		\theta_{z,x} &= \frac{\mathbb E[n(z \rightarrow x | \alert{\mathcal D_{\text{completed}}})]}{\sum_{x'} \mathbb E[n(z \rightarrow x' |\alert{\mathcal D_{\text{completed}}})]} \\
+		&= \frac{\sum_{i=1}^m  \sum_{z'} P(z'|x^{(i)}) \mathds 1_{z}(z') \mathds 1_{x}(x^{(i)})} {\sum_{i=1}^m  \sum_{x'} \sum_{z'} P(z'|x^{(i)}) \mathds 1_{z}(z') \mathds 1_{x'}(x^{(i)})} \\
+		&= \frac{\sum_{i=1}^m  P(z|x^{(i)}) \mathds 1_{x}(x^{(i)})} {\sum_{i=1}^m  \sum_{x'}  P(z|x^{(i)}) \mathds 1_{x'}(x^{(i)})}
 	\end{align}
 }
 
@@ -322,15 +380,17 @@
     % Define nodes
     \node[obs]						(f)		{$ f $};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[obs, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of a]		(n)		{$ n $};
+    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of e]		(m)		{$ m $};
     
     % Connect nodes
     \edge{e,a}{f};
-    \edge{e}{a};
+    \edge{m,n}{a};
     
     % add plates
     \plate {source-sentence} {(f)(a)} {$ n $};
-    \plate {corpus} {(source-sentence) (e)} {$ S $};
+    \plate {corpus} {(source-sentence) (e) (m) (n)} {$ S $};
     \end{tikzpicture}
     }
     \end{center}
@@ -349,6 +409,30 @@
 	
 }
 
+
+\frame{
+	\frametitle{Parameterisation}
+	
+	Alignment distribution: uniform
+	\begin{align}
+		P(A|M=m, N=n) = \frac{1}{m + 1}
+	\end{align}
+	
+	~
+	
+	Lexical distribution: categorical
+	\begin{align}
+		P(F|E=e) = \Cat(F|\theta_e)
+	\end{align}
+	\begin{itemize}
+		\item where $\theta_e \in \mathbb R^{v_F}$ 
+		\item $0 \le \theta_{e, f} \le 1$
+		\item $\sum_f \theta_{e, f} = 1$
+	\end{itemize}
+	
+}
+
+
 \frame{
 	\frametitle{IBM1: marginal likelihood}
 	
@@ -360,15 +444,17 @@
     % Define nodes
     \node[obs]						(f)		{$ f $};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[obs, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of a]		(n)		{$ n $};
+    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of e]		(m)		{$ m $};
     
     % Connect nodes
     \edge{e,a}{f};
-    \edge{e}{a};
+    \edge{m,n}{a};
     
     % add plates
     \plate {source-sentence} {(f)(a)} {$ n $};
-    \plate {corpus} {(source-sentence) (e)} {$ S $};
+    \plate {corpus} {(source-sentence) (e) (m) (n)} {$ S $};
     \end{tikzpicture}
     }
     \end{center}
@@ -403,28 +489,6 @@
 	\end{align}
 }
 
-\frame{
-	\frametitle{Parameterisation}
-	
-	Alignment distribution: uniform
-	\begin{align}
-		P(A|M=m, N=n) = \frac{1}{m + 1}
-	\end{align}
-	
-	~
-	
-	Lexical distribution: categorical
-	\begin{align}
-		P(F|E=e) = \Cat(F|\theta_e)
-	\end{align}
-	\begin{itemize}
-		\item where $\theta_e \in \mathbb R^{v_F}$ 
-		\item $0 \le \theta_{e, f} \le 1$
-		\item $\sum_f \theta_{e, f} = 1$
-	\end{itemize}
-	
-}
-
 
 \frame{
 \begin{adjustwidth}{-1.5em}{-1em}
@@ -433,9 +497,9 @@
 	E-step:
 	\begin{small}
 	\begin{align}
-		\mathbb E[n(\mathsf e \rightarrow \mathsf f | A_1^n)] &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m P(a_1^n|f_1^n,e_0^m) n(c \rightarrow d | A_1^n)  \\
-		&= \sum_{a_1=0}^m \dotsb \sum_{A_n=0}^m \prod_{j=1}^n P(a_j|f_1^n,e_0^m) \mathds 1_{\{\mathsf e\}}(e_{a_j}) \mathds 1_{\{\mathsf f\}}(f_j)  \\
-		&= \prod_{j=1}^n \sum_{i=0}^m P(A_j = i|f_1^n,e_0^m) \mathds 1_{\{\mathsf e\}}(e_i) \mathds 1_{\{\mathsf f\}}(f_j) 
+		\mathbb E[n(\mathsf e \rightarrow \mathsf f | A_1^n)] &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m P(a_1^n|f_1^n,e_0^m) n(\mathsf e \rightarrow \mathsf f | A_1^n)  \\
+		&= \sum_{a_1=0}^m \dotsb \sum_{A_n=0}^m \prod_{j=1}^n P(a_j|f_1^n,e_0^m) \mathds 1_{\mathsf e}(e_{a_j}) \mathds 1_{\mathsf f}(f_j)  \\
+		&= \prod_{j=1}^n \sum_{i=0}^m P(A_j = i|f_1^n,e_0^m) \mathds 1_{\mathsf e}(e_i) \mathds 1_{\mathsf f}(f_j) 
 	\end{align}
 	\end{small}
 	
