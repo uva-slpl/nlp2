@@ -15,5 +15,5 @@ These are the teams I have so far:
 * Daniel Staal, Robin Bakker, Roderick van der Weerdt
 * *Fabián Guevara*, Nicola De Cao, Luca Falorsi
 * Bryan Eikema, Arthur Bražinskas
-* May Lee, Vladimir Isakov
+* May Lee, Vladimir Isakov, Athanasios Efthymiou
 * Daan van Stigt, Fije van Overeem, Tim van Elsloo
