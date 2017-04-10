@@ -2,12 +2,58 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for Wilker Aziz at 2017-04-07 00:09:23 +0200 
+%% Created for Wilker Aziz at 2017-04-10 22:42:21 +0200 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@inproceedings{Schulz+2016:BHMM,
+	Address = {Osaka, Japan},
+	Author = {Schulz, Philip and Aziz, Wilker},
+	Booktitle = {Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers},
+	Date-Added = {2017-04-10 20:42:10 +0000},
+	Date-Modified = {2017-04-10 20:42:19 +0000},
+	Month = {December},
+	Pages = {3146--3155},
+	Publisher = {The COLING 2016 Organizing Committee},
+	Title = {Fast Collocation-Based Bayesian HMM Word Alignment},
+	Url = {http://aclweb.org/anthology/C16-1296},
+	Year = {2016},
+	Abstract = {We present a new Bayesian HMM word alignment model for statistical machine
+	translation. 
+	The model is a mixture of an alignment model and a language model. 
+	The alignment component is a Bayesian extension of the standard HMM. 
+	The language model component is responsible for the generation of words needed
+	for source fluency reasons from source language context. 
+	This allows for untranslatable source words to remain unaligned and at the same
+	time avoids the introduction of artificial NULL words which introduces
+	unusually long alignment jumps. 
+	Existing Bayesian word alignment models are unpractically slow because they
+	consider each target position when resampling a given alignment link. 
+	The sampling complexity therefore grows linearly in the target sentence length.
+	In order to make our model useful in practice, we devise an auxiliary variable
+	Gibbs sampler that allows us to resample alignment links in constant time
+	independently of the target sentence length. 
+	This leads to considerable speed improvements. 
+	Experimental results show that our model performs as well as existing word
+	alignment toolkits in terms of resulting BLEU score.},
+	Bdsk-Url-1 = {http://aclweb.org/anthology/C16-1296}}
+
+@inproceedings{Schulz+2016:BIBM,
+	Address = {Berlin, Germany},
+	Author = {Schulz, Philip and Aziz, Wilker and Sima'an, Khalil},
+	Booktitle = {Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)},
+	Date-Added = {2017-04-10 20:38:14 +0000},
+	Date-Modified = {2017-04-10 20:38:26 +0000},
+	Month = {August},
+	Pages = {169--174},
+	Publisher = {Association for Computational Linguistics},
+	Title = {Word Alignment without NULL Words},
+	Url = {http://anthology.aclweb.org/P16-2028},
+	Year = {2016},
+	Bdsk-Url-1 = {http://anthology.aclweb.org/P16-2028}}
 
 @inproceedings{Lardilleux+2009:Anyalign,
 	Address = {Borovets, Bulgaria},
