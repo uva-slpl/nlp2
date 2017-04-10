@@ -36,7 +36,9 @@
   abstract: >
     In this lecture, we will show a different parameterisation of categorical distributions in terms of logistic distributions. This neat trick helps decouple the number of model parameters from the size of the data.
   background:
+    - "[EM with logistic CPDs for NLP](http://www.aclweb.org/anthology/N10-1083)"
   further:
+    - "[EM vs direct optimisation via gradient-based methods](http://www.cs.cmu.edu/~rsalakhu/papers/emecg.pdf)"
   discussion:
   slides: 
   code: 
