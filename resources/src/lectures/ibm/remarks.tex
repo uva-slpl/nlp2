@@ -1,6 +1,32 @@
 \section{Remarks}
 
 \frame{
+	\frametitle{Note on terminology}
+	
+	Source/Target vs English/French
+
+	~
+	
+	From an alignment model perspective all that matters is
+	\begin{itemize}
+		\item we condition on one language and generate the other
+		\item in IBM models terminology, we condition on \emph{English} and generate \emph{French} 
+	\end{itemize}
+
+
+	~
+	
+	From a noisy channel perspective, where we want to translate a \emph{source} sentence $f_1^n$  into some \emph{target} sentence $e_1^m$
+	\begin{itemize}
+		\item Bayes rule decomposes $p(e_1^m|f_1^n) \propto p(f_1^n|e_1^m)p(e_1^m)$
+		\item train $p(e_1^m)$ and $p(f_1^n|e_1^m)$ independently
+		\item {\bf language model:} $p(e_1^m)$ 
+		\item {\bf alignment model:} $p(f_1^n|e_1^m)$
+		\item note that the alignment model conditions on the target sentence (English) and generates the source sentence (French)
+	\end{itemize}
+}
+
+\frame{
 	\frametitle{Limitations of IBM1-2}
 	
 	
@@ -13,6 +39,11 @@
 
 \frame{
 	\frametitle{Extensions}
+	
+	Fertility, distortion, and concepts\\
+	\citep{Brown+1993:smt}
+	
+	~
 	
 	Dirichlet priors and posterior inference\\
 	\citep{Mermer+2011:BWA}
