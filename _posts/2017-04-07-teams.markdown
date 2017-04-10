@@ -13,7 +13,7 @@ These are the teams I have so far:
 * Ruben Blom, Emile van Krieken, Loïs Mooiman
 * Ionna Sanida, Edwin Lima, Janosch Haber
 * Daniel Staal, Robin Bakker, Roderick van der Weerdt
-* Fabián Guevara, Nicola De Cao, Luca Falorsi
+* *Fabián Guevara*, Nicola De Cao, Luca Falorsi
 * Bryan Eikema, Arthur Bražinskas
 * May Lee, Vladimir Isakov
 * Daan van Stigt, Fije van Overeem, Tim van Elsloo

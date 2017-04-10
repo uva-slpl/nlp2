@@ -1,0 +1,16 @@
+---
+layout: post
+title:  Labs
+date:   2017-04-10
+author: Wilker
+categories: labs
+---
+
+Hello everyone,
+
+our lab sessions are not strictly speaking "labs", they will serve different purposes throughout the course. 
+Whereas core material will always be covered in the main lectures, a notable amount of complementary material/discussion will be offered or take place in lab sessions. 
+Such sessions should help you progress with projects, prepare for certain lectures with more challenging technical content, etc.
+
+We will always announce the [content of lab sessions](/nlp2/labs.html), so that you know exactly what's going on.
+
