@@ -1,0 +1,27 @@
+\section{Remarks}
+
+\frame{
+	\frametitle{Limitations}
+	
+	Local normalisation may be expensive
+	\begin{itemize}
+		\item EM: required in E-step
+		\item ECG: require at beginning of every iteration
+	\end{itemize}
+	
+	but see \citep{Gutmann+2012:NCE}
+}
+
+\frame{
+	\frametitle{Nonlinear models}
+	
+	Nothing prevents us from using more expressive functions
+	\begin{itemize}		
+		\item $P(O|C=c) = \softmax(f_\theta(c))$
+		\item $P(O=o|C=c) = \frac{\exp(f_\theta(c, o)))}{\sum_{o'} \exp(f_\theta(c, o')))}$
+	\end{itemize}
+	
+	~ where $f_\theta(\cdot)$ is a neural network with parameters $\theta$ 
+	
+	
+}

@@ -1,0 +1,224 @@
+\section{Representation}
+
+\frame{
+	\frametitle{IBM 1-2: strong assumptions}
+	
+	Independence assumptions
+	\begin{itemize}
+		\item $P(A|M, N)$ does not depend on lexical choices\\
+		a$_1$ \textcolor{red}{cute}$_2$ house$_3$ $\leftrightarrow$ uma$_1$ \textcolor{red}{bela}$_2$ casa$_3$\\ \pause
+		a$_1$ \textcolor{blue}{cosy}$_2$ house$_3$ $\leftrightarrow$ uma$_1$ casa$_3$ \textcolor{blue}{aconchegante}$_2$ \\ \pause
+		\item $P(F|E)$ can only reasonably explain one-to-one alignments\\		
+		I \alert{will be leaving} \textcolor{blue}{soon} $\leftrightarrow$ \alert{vou embora} \textcolor{blue}{em breve} \pause
+	\end{itemize}
+	
+	~ 
+	
+	Parameterisation
+	\begin{itemize}
+		\item categorical events are unrelated \\
+		prefixes/suffixes: normal, normally, abnormally, $\ldots$\\
+		verb inflections: comer, comi, comia, comeu, $\ldots$ \\
+		gender/number: gato, gatos, gata, gatas, $\ldots$ 
+		%\item number of parameters grows with data\\
+		%$P(F|E)$ takes $O(v_F \times v_E)$ parameters
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{Conditional probability distributions}
+	
+	CPD: condition $c \in \mathcal C$, outcome $o \in \mathcal O$, and $\theta_{c} \in \mathbb R^{|\mathcal O|}$
+	\begin{center}
+	\begin{align}
+		P(O|C=c) &= \Cat(\theta_c)  
+	\end{align}
+	\end{center}
+	\begin{itemize}
+		\item $P(O=o|C=c) = \theta_{c, o}$
+		\item $0 \le \theta_{c, o} \le 1$
+		\item $\sum_o \theta_{c, o} = 1$
+		\item $O(|\mathcal C| \times |\mathcal O|)$ parameters
+	\end{itemize}
+	
+	~
+	
+	\hfill \alert{How bad is it for IBM model 1?}
+}
+
+\frame{
+	\frametitle{Probability tables}
+	
+	\begin{center}
+	$$P(F|E)$$
+	\begin{tabular}{| l | l | l | l | l |} \hline
+	\multirow{2}{*}{\sc English $\downarrow$} & \multicolumn{4}{c|}{\sc French $\rightarrow$} \\ \cline{2-5}
+	         & anormal & normal & normalmente & $\ldots$ \\ \hline
+	abnormal & 0.7     & 0.1    & 0.01        & $\ldots$ \\ \hline
+	normal   & 0.01    & 0.6    & 0.2         & $\ldots$ \\ \hline
+	normally & 0.001   & 0.25   & 0.65        & $\ldots$ \\ \hline	
+	\end{tabular}
+	\end{center}
+	
+	\begin{itemize}
+		\item grows with size of vocabularies
+		\item no parameter sharing
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Logistic CPDs}
+	
+	CPD: condition $c \in \mathcal C$ and outcome $o \in \mathcal O$
+	\begin{center}
+	\begin{align}
+		P(O=o|C=c) &= \frac{\exp(w^\top h(c, o))}{\sum_{o'} \exp(w^\top h(c, o'))} 
+	\end{align}
+	\end{center}
+	\begin{itemize}
+		\item $w \in \mathbb R^d$ is a weight vector
+		\item $h: \mathcal C \times \mathcal O \rightarrow R^d$ is a feature function
+		\item $d$ parameters
+		\item computing CPD requires $O(|\mathcal C| \times |\mathcal O| \times d)$ operations
+	\end{itemize}
+	
+	~
+	
+	\hfill \alert{How bad is it for IBM model 1?}
+}
+
+
+\frame{
+	\frametitle{CPDs as functions}
+	
+	\begin{center}
+	\begin{footnotesize}
+	$$h: \mathcal E \times \mathcal F \rightarrow R^d$$
+	\begin{tabular}{|l | l | l | l | l | l|l|} \hline
+	\multicolumn{2}{|c|}{\sc Events $\downarrow$} & 
+	\multicolumn{5}{c|}{\sc Features $\rightarrow$} \\ \hline
+	\multirow{2}{*}{\sc English} & 
+	\multirow{2}{*}{\sc French} & 
+		{\bf normal} & \emph{normal-} & \underline{-normal} & \alert{ab-} & \textcolor{blue}{-ly}  \\
+		& & {\bf normal} & \emph{normal-}& \underline{-normal} & \alert{a-} & \textcolor{blue}{-mente} \\ \hline \hline
+	% ABNORMAL
+	\multirow{3}{*}{abnormal} & \alert{a}\underline{normal} & 0 & 0 & 1 & 1 & 0 \\ \cline{2-7}
+	             & \underline{normal} & 0 & 0 & 1 & 0 & 0 \\ \cline{2-7}
+	             & \textit{normal}mente & 0 & 1 & 0 & 0 & 0 \\ \hline \hline
+	% NORMAL
+	\multirow{3}{*}{normal} 
+	             & a\underline{normal}       & 0 & 0 & 1 & 0 & 0 \\ \cline{2-7}
+	             & {\bf normal}  & 1 & 0 & 0 & 0 & 0 \\ \cline{2-7}
+	             & \emph{normal}mente   & 0 & 1 & 0 & 0 & 0 \\ \hline \hline	
+	% NORMALLY
+	\multirow{3}{*}{normally} 
+	             & a\underline{normal}       & 0 & 0 & 1 & 0 & 0 \\ \cline{2-7}
+	             & \textit{normal}  & 0 & 1 & 0 & 0 & 0 \\ \cline{2-7}
+	             & \emph{normal}\textcolor{blue}{mente}   & 0 & 1 & 0 & 0 & 1 \\ \hline \hline	
+	\multicolumn{2}{|c|}{\sc Weights $\rightarrow$} & 1.5 & 0.3 & 0.3 & 0.8 & 1.1 \\ \hline
+	\end{tabular}
+	\end{footnotesize}
+	\end{center}
+	
+	\begin{itemize}
+		\item computation still grows with size of vocabularies
+		\item but far less parameters to estimate
+	\end{itemize}
+}
+
+\section{EM}
+
+\frame{
+	\frametitle{Expectation Maximisation}
+	
+	Coordinate ascent in $F$ \hfill \citep{Neal1998+1998:EM}
+	\begin{align}
+		\log P(X|\theta) &\ge \mathbb E_{P(Z|X,\psi)} \left[ \log P(X, Z|\theta) \right] + H(\psi) \\
+		&\equiv F(\psi, \theta)
+	\end{align} \pause
+	
+	E-step: choose $\psi^{(t+1)}$ that maximises $F$ for fixed $\theta^{(t)}$
+	\begin{description}
+		\item[problem] $\psi^{(t+1)} = \argmax_\psi F(\psi, \theta^{(t)})$
+		\item[solution]	$P(Z|X, \psi^{(t+1)}) = P(Z|X, \theta^{(t)})$
+	\end{description}
+	
+	\pause
+	
+	M-step: choose $\theta^{(t+1)}$ that maximises $F$ for fixed $\psi^{(t+1)}$
+	\begin{description}
+		\item[problem] $\theta^{(t+1)} = \argmax_\theta F(\psi^{(t+1)}, \theta)$
+	\end{description}
+}
+
+\frame{
+	\frametitle{Gradient-based M-step for logistic CPDs}
+
+	For each distribution $t$, with context $c$ and outcome $o$
+	\begin{align}
+		\theta_{t, c, o}(w) = \frac{\exp(w^\top h(t, c, o))}{\sum_{o'} \exp(w^\top h(t, c, o'))}
+	\end{align} 
+	
+	\pause
+	
+	Expected counts
+	\begin{align}
+		\mu_{t, c, o} = \mathbb E \left[ n(t: c \rightarrow o|Z) \right]
+	\end{align}
+	
+	\pause
+	
+	Expected complete log likelihood
+	\begin{align}
+		l(w|\mu) = \sum_{t, c, o} \mu_{t, c, o} \log \theta_{t, c, o}(w)
+	\end{align}
+	
+	\pause
+	
+	Gradient wrt $w$ (for fixed $\mu$)
+	\begin{align}
+		\nabla_w l(w|\mu) &= \sum_{t, d, o} \mu_{t, d, o} \Delta_{t, c, o}(w)\\
+		\Delta_{t, c, o}(w) &= h(t, c, o) - \sum_{o'} \theta_{t, c, o'}(w)h(t, c, o')
+	\end{align}
+	
+}
+
+\section{ECG}
+
+\frame{
+	\frametitle{Expectation Conjugate Gradient (ECG)}
+	
+	Direct marginal likelihood optimisation \hfill \citep{Salakhutdinov+2003:ECG}
+	\begin{align}
+		\nabla_\theta \log P(X|\theta) &= \mathbb E_{P(Z|X, \theta)} \left[ \nabla_\theta \log P(X, Z|\theta) \right]
+	\end{align}
+
+}
+
+\frame{
+	\frametitle{Gradient ascent}
+	
+}
+
+\section{Feature-rich IBM 1-2}
+
+\frame{
+	\frametitle{\citet{Berg+2010:PU}}
+	
+	Lexical distribution in IBM model 1
+	\begin{align}
+		P(F=f|E=e) &= \frac{\exp(w_{\text{lex}}^\top h_{\text{lex}}(e, f))}{\sum_{f'} \exp(w_{\text{lex}}^\top h_{\text{lex}}(e, f'))} 
+	\end{align}
+	
+	\pause
+	
+	{\bf Extension:} lexicalised alignment distributions
+	\begin{align}
+		P(\Delta=\delta|E=e) &= \frac{\exp(w_{\text{dist}}^\top h_{\text{dist}}(e, \delta))}{\sum_{\delta'} \exp(w_{\text{dist}}^\top h_{\text{dist}}(e, \delta'))} 
+	\end{align}
+	
+}
+
+
+

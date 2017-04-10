@@ -28,7 +28,7 @@
   layout: lecture
   selected: y
   date: 2017-04-12
-  img: alignments
+  img: logistic
   uid: ibm_logistic
   title: "Feature-rich IBM1: EM for logistic CPDs"
   instructor: Wilker Aziz
@@ -36,11 +36,12 @@
   abstract: >
     In this lecture, we will show a different parameterisation of categorical distributions in terms of logistic distributions. This neat trick helps decouple the number of model parameters from the size of the data.
   background:
+    - "[A view of the EM algorithm that justifies incremental, sparse, and other variants](http://www.cs.toronto.edu/~fritz/absps/emk.pdf)"
     - "[EM with logistic CPDs for NLP](http://www.aclweb.org/anthology/N10-1083)"
   further:
     - "[EM vs direct optimisation via gradient-based methods](http://www.cs.cmu.edu/~rsalakhu/papers/emecg.pdf)"
   discussion:
-  slides: 
+  slides: resources/slides/logistic.pdf
   code: 
   data: 
 -
