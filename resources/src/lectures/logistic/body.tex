@@ -134,14 +134,14 @@
 	
 	Coordinate ascent in $F$ \hfill \citep{Neal1998+1998:EM}
 	\begin{align}
-		\log P(X|\theta) &\ge \mathbb E_{P(Z|X,\psi)} \left[ \log P(X, Z|\theta) \right] + H(\psi) \\
+		\mathcal L(\theta) \equiv \log P(X|\theta) &\ge \mathbb E_{P(Z|X,\psi)} \left[ \log P(X, Z|\theta) \right] + H(\psi) \\
 		&\equiv F(\psi, \theta)
 	\end{align} \pause
 	
 	E-step: choose $\psi^{(t+1)}$ that maximises $F$ for fixed $\theta^{(t)}$
 	\begin{description}
 		\item[problem] $\psi^{(t+1)} = \argmax_\psi F(\psi, \theta^{(t)})$
-		\item[solution]	$P(Z|X, \psi^{(t+1)}) = P(Z|X, \theta^{(t)})$
+		\item[solution]	$\psi^{(t+1)} = \theta^{(t)}$ which means using the \textcolor{blue}{exact posterior}
 	\end{description}
 	
 	\pause
@@ -171,14 +171,14 @@
 	
 	Expected complete log likelihood
 	\begin{align}
-		l(w|\mu) = \sum_{t, c, o} \mu_{t, c, o} \log \theta_{t, c, o}(w)
+		\ell(w|\mu) = \sum_{t, c, o} \mu_{t, c, o} \log \theta_{t, c, o}(w)
 	\end{align}
 	
 	\pause
 	
 	Gradient wrt $w$ (for fixed $\mu$)
 	\begin{align}
-		\nabla_w l(w|\mu) &= \sum_{t, d, o} \mu_{t, d, o} \Delta_{t, c, o}(w)\\
+		\nabla_w \ell(w|\mu) &= \sum_{t, d, o} \mu_{t, d, o} \Delta_{t, c, o}(w)\\
 		\Delta_{t, c, o}(w) &= h(t, c, o) - \sum_{o'} \theta_{t, c, o'}(w)h(t, c, o')
 	\end{align}
 	
@@ -193,13 +193,35 @@
 	\begin{align}
 		\nabla_\theta \log P(X|\theta) &= \mathbb E_{P(Z|X, \theta)} \left[ \nabla_\theta \log P(X, Z|\theta) \right]
 	\end{align}
-
-}
-
-\frame{
-	\frametitle{Gradient ascent}
 	
+	\begin{footnotesize}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			{\bf EM:} until convergence			
+			\begin{enumerate}\setlength{\itemindent}{-10pt}
+				\item compute expected counts $\mu$
+				\item repeat until convergence
+				\begin{itemize}\setlength{\itemindent}{-30pt}
+					\item compute $l(w|\mu)$
+					\item compute $\nabla \ell(w|\mu)$ 
+					\item $w \leftarrow \climb(w, \ell(w|\mu), \nabla \ell(w|\mu))$
+				\end{itemize}
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			{\bf ECG:} until convergence
+			\begin{enumerate}\setlength{\itemindent}{-10pt}
+				\item compute expected counts $\mu$
+				\item compute $\mathcal L(w)$
+				\item compute $\nabla \ell(w|\mu)$ 
+				\item $w \leftarrow \climb(w, \ell(w|\mu), \nabla \ell(w|\mu))$
+			\end{enumerate}
+		\end{column}
+	\end{columns}
+	\end{footnotesize}
+
 }
+
 
 \section{Feature-rich IBM 1-2}
 
@@ -211,12 +233,51 @@
 		P(F=f|E=e) &= \frac{\exp(w_{\text{lex}}^\top h_{\text{lex}}(e, f))}{\sum_{f'} \exp(w_{\text{lex}}^\top h_{\text{lex}}(e, f'))} 
 	\end{align}
 	
-	\pause
+	~
 	
-	{\bf Extension:} lexicalised alignment distributions
+	Features
+	\begin{itemize}
+		\item prefixes/suffixes
+		\item character $n$-grams
+		\item POS tags
+	\end{itemize}
+
+}
+
+\frame{
+	\frametitle{Extension: lexicalised jump distribution}
+
 	\begin{align}
 		P(\Delta=\delta|E=e) &= \frac{\exp(w_{\text{dist}}^\top h_{\text{dist}}(e, \delta))}{\sum_{\delta'} \exp(w_{\text{dist}}^\top h_{\text{dist}}(e, \delta'))} 
 	\end{align}
+	
+	~
+	
+	Features
+	\begin{itemize}
+		\item POS tags
+		\item suffixes/prefixes
+		\item lemma
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Extension: nonlinear models}
+	
+	Nothing prevents us from using more expressive functions \\
+	\hfill \citep{Kovcisky+2014:NIBM}
+	\begin{itemize}		
+		\item $P(O|C=c) = \softmax(f_\theta(c))$
+		\item $P(O=o|C=c) = \frac{\exp(f_\theta(c, o)))}{\sum_{o'} \exp(f_\theta(c, o')))}$
+	\end{itemize}
+	
+	~ where $f_\theta(\cdot)$ is a neural network with parameters $\theta$ 
+	
+	Features
+	\begin{itemize}
+		\item induce features (word-level, char-level, $n$-gram level)
+		\item pre-trained embeddings
+	\end{itemize}
 	
 }
 
