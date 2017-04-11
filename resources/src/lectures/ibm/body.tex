@@ -169,7 +169,7 @@
 \section{Mixture models}
 
 \frame{
-	\frametitle{Mixture models}
+	\frametitle{Mixture models: generative story}
 	
 	\begin{center}
     \scalebox{1}{
@@ -193,20 +193,44 @@
 		\item plus a distribution over components themselves
     \end{itemize}
     
-    \only<2>{
+    \pause
+    
     Generative story
     \begin{enumerate}
     	\item select a mixture component $z \sim P(Z)$
 		\item generate an observation from it $x \sim P(X|Z=z)$
-    \end{enumerate}
+    \end{enumerate} 
+	
+}
+
+
+\frame{
+	\frametitle{Mixture models: likelihood}
+	
+	\begin{center}
+    \scalebox{1}{
+    \begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(x)		{$ x $};
+    \node[latent, left = of x]		(z)		{$ z $};
+    
+    % Connect nodes
+    \edge{z}{x};
+    
+    % add plates
+    \plate {source-sentence} {(z)(x)} {$ m $};
+    \end{tikzpicture}
     }
-    \only<3>{
-    Marginal likelihood
+    \end{center}
+    
+	
+    Incomplete-data likelihood
     \begin{align}
-    	P(x_1^m) &= \prod_{i=1}^m \sum_{z=1}^c P(X=x_i, Z=z) \\
+    	P(x_1^m) &= \prod_{i=1}^m P(x_i) \\
+			&= \prod_{i=1}^m \sum_{z=1}^c \underbrace{P(X=x_i, Z=z)}_{\text{complete-data likelihood}} \\
 			&= \prod_{i=1}^m \sum_{z=1}^c P(Z=z)P(X=x_i| Z=z)
 	\end{align}
-	}
+	
 	
 }
 
@@ -322,7 +346,7 @@
 	~
 	
 	MLE solution:
-	$$P(X=x|Z=z) = \theta_{z,x} = \frac{n(z, x| \textcolor{blue}{\mathcal D_{\text{complete}}})}{\sum_{x'} n(z, x'|\textcolor{blue}{\mathcal D_{\text{complete}}})}$$
+	$$\theta_{z,x} = \frac{n(z, x| \textcolor{blue}{\mathcal D_{\text{complete}}})}{\sum_{x'} n(z, x'|\textcolor{blue}{\mathcal D_{\text{complete}}})}$$
 	
 	
 }
@@ -434,7 +458,7 @@
 
 
 \frame{
-	\frametitle{IBM1: marginal likelihood}
+	\frametitle{IBM1: incomplete-data likelihood}
 	
 	\begin{columns}
 	\begin{column}{0.2\textwidth}
@@ -461,7 +485,7 @@
     \end{column}
 	\begin{column}{0.85\textwidth}
 	
-    Marginal likelihood
+    Incomplete-data likelihood
     \begin{align}
     P(f_1^n|e_0^m) &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m P(f_1^n, a_1^n|e_{a_j}) \\
      &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m \prod_{j=1}^n P(a_j|m, n) P(f_j|e_{a_j}) \\
