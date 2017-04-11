@@ -74,7 +74,7 @@
   date: 2017-05-10
   img: itg
   uid: crf
-  title: "Probablistic models: ITG and LVM-CRF"
+  title: "Probablistic models: ITG, Max-Tree Theorem, Latent-variable CRF"
   instructor: Wilker Aziz
   note: 
   abstract: In this lecture we will present probabilistic models built on top of synchronous context-free grammars.
