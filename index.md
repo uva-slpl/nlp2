@@ -26,6 +26,7 @@ A group (typically about **2-3 members**) selects a paper to be discussed. Then
 
 We will have 3 project assignments: students work in groups (**2 to 3 members**). Projects will be assessed on the basis of technical reports and ipython notebooks.
 
+
 # Grades 
 
 [Weighted geometric mean](https://en.wikipedia.org/wiki/Weighted_geometric_mean) of the grades for presentation (10%) and project work (30%/30%/30%). 

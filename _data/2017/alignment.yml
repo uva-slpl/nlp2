@@ -36,9 +36,10 @@
   abstract: >
     In this lecture, we will show a different parameterisation of categorical distributions in terms of logistic distributions. This neat trick helps decouple the number of model parameters from the size of the data.
   background:
-    - "[A view of the EM algorithm that justifies incremental, sparse, and other variants](http://www.cs.toronto.edu/~fritz/absps/emk.pdf)"
+    - "Wilker Aziz has made available [notes on EM for categorical and logistic distributions](resources/papers/Aziz-EM.pdf)"
     - "[EM with logistic CPDs for NLP](http://www.aclweb.org/anthology/N10-1083)"
   further:
+    - "[A view of the EM algorithm that justifies incremental, sparse, and other variants](http://www.cs.toronto.edu/~fritz/absps/emk.pdf)"
     - "[EM vs direct optimisation via gradient-based methods](http://www.cs.cmu.edu/~rsalakhu/papers/emecg.pdf)"
   discussion:
   slides: resources/slides/logistic.pdf
