@@ -1,0 +1,38 @@
+---
+layout: post
+title:  MLE for IBM 1-2
+date:   2017-04-12
+author: Wilker
+categories: project1
+---
+
+Hello everyone,
+
+this is a trace of my own implementation of MLE for IBM models.
+
+    22:41:30 INFO Reading data
+    22:41:58 INFO Vocabulary size: English 36686 x French 46473
+    22:41:58 INFO Model ibm1 (iterations=10): lexical, udist
+    22:41:58 INFO Starting 10 iterations of ibm1
+    22:42:21 INFO I=0 H=214.110384
+    22:44:23 INFO I=1 H=99.692782
+    22:47:02 INFO I=2 H=86.798749
+    22:49:47 INFO I=3 H=82.864885
+    22:52:38 INFO I=4 H=81.520533
+    22:55:29 INFO I=5 H=80.919247
+    22:58:21 INFO I=6 H=80.601453
+    23:01:13 INFO I=7 H=80.414456
+    23:04:03 INFO I=8 H=80.295786
+    23:06:37 INFO I=9 H=80.215994
+    23:09:11 INFO I=10 H=80.159814
+    23:10:38 INFO ibm1 training set perplexity: 80.175559
+    23:11:54 INFO Model ibm2 (iterations=5): lexical, jump
+    23:11:54 INFO Starting 5 iterations of ibm2
+    23:12:50 INFO I=0 H=148.625455
+    23:16:07 INFO I=1 H=78.158324
+    23:19:31 INFO I=2 H=73.841759
+    23:23:04 INFO I=3 H=72.633293
+    23:26:33 INFO I=4 H=72.011860
+    23:30:09 INFO I=5 H=71.605362
+    23:31:54 INFO ibm2 training set perplexity: 71.614052
+

@@ -10,7 +10,7 @@ title: Labs
 ``Project 1`` 
 
 * from IBM1 to IBM2 (~ 20 minutes)
-* quiz on directed graphical models and plate notation (~ 20 minutes)
+* QA (~ 20 minutes)
 
 ``Maximum likelihood estimation``
 
