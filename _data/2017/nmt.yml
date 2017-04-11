@@ -29,12 +29,27 @@
   data: 
 -
   layout: lecture
-  selected: y
+  selected: n
   date: 2017-05-19
   img: nmt
   uid: convenc
   title: Convolutional encoders
   instructor: Joost Bastings
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-19
+  img: nmt
+  uid: mtt
+  title: CRFs via Max-Tree Theorem
+  instructor: Wilker Aziz
   note: 
   abstract:  
   background:
