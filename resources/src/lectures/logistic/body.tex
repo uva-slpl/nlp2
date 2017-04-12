@@ -179,7 +179,7 @@
 	
 	Gradient wrt $w$ (for fixed $\mu$)
 	\begin{align}
-		\nabla_w \ell(w|\mu) &= \sum_{t, d, o} \mu_{t, d, o} \Delta_{t, c, o}(w)\\
+		\nabla_w \ell(w|\mu) &= \sum_{t, c, o} \mu_{t, c, o} \Delta_{t, c, o}(w)\\
 		\Delta_{t, c, o}(w) &= h(t, c, o) - \sum_{o'} \theta_{t, c, o'}(w)h(t, c, o')
 	\end{align}
 	
