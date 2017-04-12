@@ -1,0 +1,15 @@
+---
+layout: post
+title:  Variational Bayes
+date:   2017-04-12
+author: Wilker
+categories: reading
+---
+
+Hello everyone, 
+
+if you want to read more on exact and approximate inference and understand many algorithms including EM, [Matthew Beal's thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) is an excellent text! [Variational inference](https://arxiv.org/pdf/1601.00670.pdf) is one of the most important advances in approximate inference for probabilistic models, one that we will make use rather often in this course. You will see more about it on Wednesday April 19 and again in the third block of the course.
+
+
+W. 
+

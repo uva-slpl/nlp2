@@ -132,23 +132,24 @@
 \frame{
 	\frametitle{Expectation Maximisation}
 	
-	Coordinate ascent in $F$ \hfill \citep{Neal1998+1998:EM}
+	Coordinate ascent in $\mathcal F$ \hfill \citep{Neal1998+1998:EM}
 	\begin{align}
-		\mathcal L(\theta) \equiv \log P(X|\theta) &\ge \mathbb E_{P(Z|X,\psi)} \left[ \log P(X, Z|\theta) \right] + H(\psi) \\
-		&\equiv F(\psi, \theta)
+		\mathcal L(\theta) \equiv \log P(X|\theta) &\ge \mathbb E_{Q(Z|X,\psi)} \left[ \log P(X, Z|\theta) \right] + H(Q) \\
+		&\equiv \mathcal F(Q, \theta)
 	\end{align} \pause
 	
-	E-step: choose $\psi^{(t+1)}$ that maximises $F$ for fixed $\theta^{(t)}$
+	E-step: choose $Q^{(t+1)}$ that maximises $\mathcal F$ for fixed $\theta^{(t)}$
 	\begin{description}
-		\item[problem] $\psi^{(t+1)} = \argmax_\psi F(\psi, \theta^{(t)})$
-		\item[solution]	$\psi^{(t+1)} = \theta^{(t)}$ which means using the \textcolor{blue}{exact posterior}
+		\item[problem] $Q^{(t+1)} = \argmax_Q F(Q, \theta^{(t)})$
+		\item[solution]	$Q^{(t+1)}(z|x, \psi) = P(z|x, \theta^{(t)})$ \\
+		which means using the \textcolor{blue}{exact posterior}
 	\end{description}
 	
 	\pause
 	
-	M-step: choose $\theta^{(t+1)}$ that maximises $F$ for fixed $\psi^{(t+1)}$
+	M-step: choose $\theta^{(t+1)}$ that maximises $\mathcal F$ for fixed $Q^{(t+1)}$
 	\begin{description}
-		\item[problem] $\theta^{(t+1)} = \argmax_\theta F(\psi^{(t+1)}, \theta)$
+		\item[problem] $\theta^{(t+1)} = \argmax_\theta \mathcal F(Q^{(t+1)}, \theta)$
 	\end{description}
 }
 
@@ -258,6 +259,8 @@
 		\item POS tags
 		\item suffixes/prefixes
 		\item lemma
+		\item jump values
+		\item $m, n, j, i$ (values used to compute jump)
 	\end{itemize}
 }
 
