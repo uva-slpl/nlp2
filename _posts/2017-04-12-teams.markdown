@@ -1,0 +1,40 @@
+---
+layout: post
+title:  Teams
+date:   2017-04-12
+author: Wilker
+categories: lectures
+---
+
+Hello everyone, 
+
+these are the teams on Blackboard
+
+* Group 1: Kwesi Menyah (11420308), Tim Baumgaertner (11403683), Rezka Aufar Leonandya (11390069)
+* Group 2: Nedko Savov (11404345), Nuno Neto De Carvalho Mota (11413344), Tom Pelsmaeker (10177590)
+* Group 3: Emile van Krieken (11282304), Ruben Blom (10684980), LoÃ¯s Mooiman (10318364)
+* Group 4: Ioanna Sanida (10876812), Janosch Haber (10400192), Edwin Lima Valladares (11146222)
+* Group 5: DaniÃ«l Staal (10277927), Roderick van der Weerdt (10680195), Robin Bakker (10548017)
+* Group 6: Luca Falorsi (11426322), Nicola De Cao (11286571), **Fabián Guevara** (I couldn't find you on Blackboard, can you contact me?)
+* Group 7: Bryan Eikema (10422803), Arthur BraÅ¾inskas (11138904)
+* Group 8: Vladimir Isakov (11189673), Athanasios Efthymiou (11426381), May Lee (11436581)
+* Group 9: Tim van Elsloo (10590315), Fije van Overeem (10373535), Daan van Stigt (10255141)
+
+
+and this is the random permutation we got from numpy this morning: 
+
+* Group 1
+* Group 9
+* Group 3
+* Group 4
+* Group 7
+* Group 8
+* Group 5
+* Group 2
+* Group 6
+
+This week, I will assign dates to the discussion sessions.
+
+Cheers, 
+
+W.
