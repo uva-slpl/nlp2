@@ -32,6 +32,10 @@ Resources:
 * [Helper functions for validation AER](resources/project_ibm/aer.py)
     * Note that I wrote this helper class using `python3`, if you are using `python2` you will need to import `from __future__ import division` to avoid the default integer division (whereby stuff like 1/2 evaluates to 0 instead of 1.5)
 
+Submission:
+
+* Upload tgz file on Blackboard before April 27, 10:00.
+
 
 # Project 2 
 
