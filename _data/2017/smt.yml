@@ -63,8 +63,6 @@
   abstract: In this lecture we will talk about preordering, factorization of permutations and reordering grammar.
   background:
     - "Stanojevic ́ and Sima'an. 2015. [Reordering Grammar Induction](http://www.aclweb.org/anthology/D15-1005)"
-  discussion:
-    - "Tromble and Eisner. 2009. [Learning Linear Ordering Problems for Better Translation](http://www.aclweb.org/anthology/D09-1105)"
   slides: resources/slides/rg.pdf
   code: 
   data: 
