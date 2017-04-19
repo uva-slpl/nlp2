@@ -8,8 +8,6 @@ title: Projects
 We want you to get your hands dirty with most of the core topics covered in the course. 
 To that end, we prepared three projects. 
 
-Deadlines: always at 23:59 (GMT-8).
-
 Groups: check Blackboard or our blog posts.
 
 # Project 1 

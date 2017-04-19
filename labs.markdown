@@ -28,3 +28,14 @@ title: Labs
 
 * EM (~ 40 minutes)
 
+# April 19
+
+* Project 1: QA (~ 45 minutes)
+
+* Exponential families
+
+# April 26
+
+* Recap VB for IBM 1 (~ 40 minutes)
+
+* Discussion session 1 (~ 50 minutes)
