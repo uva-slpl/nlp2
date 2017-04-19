@@ -19,8 +19,8 @@ We supply reading material (either research papers or tutorials) for lectures as
 A group (typically about **2-3 members**) selects a paper to be discussed. Then
 
 1. Everyone reads the chosen paper before the session
-2. The selected group gives a 20 minutes talk presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
-3. Everyone participates in an open discussion for about 10-15 minutes
+2. The selected group gives a talk presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
+3. Everyone participates in an open discussion 
 
 # Projects
 
