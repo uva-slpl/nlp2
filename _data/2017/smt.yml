@@ -9,7 +9,12 @@
   note: 
   abstract: 
   code: 
-  data: 
+  data:
+  slides: resources/slides/pbsmt.pdf
+  classmaterial: 
+    - "Part 1: [PBSMT](resources/slides/pbsmt.pdf)"
+    - "Part 2: [HPBSMT](resources/slides/hpbsmt.pdf)"
+  
 -
   layout: lecture
   selected: y
