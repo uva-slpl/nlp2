@@ -58,4 +58,3 @@ You will investigate an unsupervised problem for which a tractable solutions exi
 
 In this project you will employ techniques like explicit marginalisation of latent alignments and variational inference to circumvent the explicit marginalisation of latent embeddings.
 
-
