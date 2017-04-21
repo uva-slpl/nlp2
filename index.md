@@ -35,7 +35,6 @@ We will have 3 project assignments: students work in groups (**2 to 3 members**)
 
 You can contact [Wilker Aziz](mailto:w.aziz@uva.nl) by email or visiting his office at Science Park F2.11.
 
-
 [SLPLL]: {{ site.slpll_url }} "Statistical Language Processing and Learning Lab"
 [ILLC]: {{ site.illc_url }} "Institute for Logic, Language and Computation"
 [UvA]: {{ site.uva_url }} "Universiteit van Amsterdam"
