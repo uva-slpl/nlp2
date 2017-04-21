@@ -32,7 +32,7 @@ Resources:
 
 Submission:
 
-* Upload tgz file on Blackboard before April 27, 10:00.
+* Upload tgz file on Blackboard before *April 29*, 10:00. (Note: deadline extended!)
 
 
 # Project 2 
