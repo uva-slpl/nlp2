@@ -13,5 +13,4 @@ title: Instructors
 {% endfor %}
 
 
-
 [SLPLL]: {{ site.slpll_url }} "Statistical Language Processing and Learning Lab"
