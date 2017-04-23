@@ -10,11 +10,11 @@
   abstract: 
   code: 
   data:
-  slides: resources/slides/pbsmt.pdf
   classmaterial: 
     - "Part 1: [PBSMT](resources/slides/pbsmt.pdf)"
     - "Part 2: [HPBSMT](resources/slides/hpbsmt.pdf)"
-  
+  background:
+    - "Adam Lopez's [SMT survey](http://www.cs.jhu.edu/~alopez/papers/survey.pdf), in particular, sections 1 to 3."
 -
   layout: lecture
   selected: y
@@ -22,7 +22,7 @@
   img: tuning
   uid: tuning
   title: Evaluation and Tuning
-  instructor: "Miloš Stanojević"
+  instructor: "Wilker Aziz"
   note: 
   abstract: >
     In the first half of this lecture we will talk about automatic evaluation. 
@@ -38,9 +38,6 @@
     - "[BLEU](http://www.aclweb.org/anthology/P02-1040.pdf) is the most widely used automatic evaluation metric, it is mostly a precision metric."
     - "On tuning:"
     - "A [survey](http://www.phontron.com/paper/neubig16cl.pdf) of optimisation techniques for machine translation."
-    - "MERT is nicely explained in [Koehn's book](http://www.statmt.org/book/) (Chapter 9.3.2: Powell search algorithm)"
-    - "MT tuning can be seen as a learning to rank task. In learning to rank, a typical approach is to approximate a complex ranking task by a series of pairwise ranking decision. This idea has been popularised in MT by the algorithm [PRO](http://www.aclweb.org/anthology/D11-1125)."
-    - "For a nice overview of large margin discriminative learning in MT refer to [(Eidelman, 2012)](http://www.aclweb.org/anthology/W12-3160)"
   further:
     - "On evaluation:"
     - "[BEER](http://aclweb.org/anthology/D14-1025) is a trainable metric meant for approximating human ranking of translations."
@@ -48,9 +45,11 @@
     - "Read [(Lopez, 2012)](http://www.aclweb.org/anthology/W/W12/W12-3101.pdf) for a formal view of evaluation of automatic evaluation metrics (you read it right!)." 
     - "[Hypothesis testing for SMT](http://www.aclweb.org/anthology/P/P11/P11-2031.pdf) or whether two systems differ."
     - "On tuning:"
+    - "MT tuning can be seen as a learning to rank task. In learning to rank, a typical approach is to approximate a complex ranking task by a series of pairwise ranking decision. This idea has been popularised in MT by the algorithm [PRO](http://www.aclweb.org/anthology/D11-1125)."
+    - "For a nice overview of large margin discriminative learning in MT refer to [(Eidelman, 2012)](http://www.aclweb.org/anthology/W12-3160)"
     - "For MIRA with batched updates in MT refer to [(Cherry and Forster, 2012)](http://www.aclweb.org/anthology/N12-1047)"
   discussion:
-  slides: resources/slides/mteval.pdf
+  slides: 
   classmaterial: 
     - "Part 1: [Evaluation](resources/slides/mteval.pdf)"
     - "Part 2: [Tuning](resources/slides/tuning.pdf)"
