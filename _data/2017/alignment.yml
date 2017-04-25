@@ -65,6 +65,6 @@
     - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
     - "Shorter presentations of the same techniques can be found in [Attias (1999)](https://papers.nips.cc/paper/1726-a-variational-baysian-framework-for-graphical-models.pdf) and [Beal and Ghahramani (2000)](http://www.cse.buffalo.edu/faculty/mbeal/papers/nips00beal.pdf). Be aware, though, that these papers are quite dense."
     - "[Dyer et al. 2013](http://www.aclweb.org/anthology/N13-1073.pdf) revisit the parameterisation of IBM model 2. Their model, called 'fast_align' achieves state-of-the-art performance and a robust and efficient [implementation](https://github.com/clab/fast_align) is available."
-  slides: 
+  slides: resources/slides/ibm-vb.pdf
   code: 
   data: 

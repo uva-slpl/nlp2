@@ -1,0 +1,267 @@
+
+
+\section{IBM model 1}
+
+
+\frame{
+	\frametitle{Bayesian IBM 1}
+	
+	\begin{columns}
+	\begin{column}{0.3\textwidth}
+	\scalebox{0.8}{
+    \begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(f)		{$ f $};
+    \node[latent, right = of f]					(theta)		{\textcolor{blue}{$\theta$}};
+    \node[const, above = of theta]					(alpha)		{$\alpha$};
+    \node[latent, above = of f]		(a)		{$ a $};
+    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of e]		(m)		{$ m $};
+    
+    % Connect nodes
+    \edge{e,a}{f};
+    \edge{m}{a};
+    \edge{theta}{f};
+    \edge{alpha}{theta};
+    
+    % add plates
+    \plate {english-tables} {(theta)} {$ v_E $};
+    \plate {source-sentence} {(f)(a)} {$ n $};
+    \plate {corpus} {(source-sentence) (e) (m)} {$ S $};
+    \end{tikzpicture}
+    }
+    \end{column}
+    
+	\begin{column}{0.7\textwidth}
+	Global assignments
+    \begin{itemize}
+	    \item For each English type \me, \\
+	    sample categorical parameters 
+	    $$\theta_\me \sim \Dir(\alpha)$$
+    \end{itemize}
+    \pause
+    Local assignments
+    \begin{itemize}
+	    \item For each French word position $j$,
+	    $$a_j \sim \mathcal U(0 \ldots m)$$
+		$$f_j | e_{a_j} \sim \Cat(\theta_{e_{a_j}})$$
+    \end{itemize}
+	\end{column}	
+	\end{columns}
+	
+	
+}
+
+
+
+\frame{
+	\frametitle{MLE vs Bayesian IBM1}
+	
+	\begin{columns}
+	\begin{column}{0.5\textwidth}
+	\begin{center}
+    \scalebox{0.7}{
+    \begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(f)		{$ f $};
+    \node[const, right = of f]					(theta)		{\alert{$\theta$}};
+    \node[latent, above = of f]		(a)		{$ a $};
+    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of e]		(m)		{$ m $};
+    
+    % Connect nodes
+    \edge{e,a}{f};
+    \edge{m}{a};
+    \edge{theta}{f};
+    
+    % add plates
+    \plate {source-sentence} {(f)(a)} {$ n $};
+    \plate {corpus} {(source-sentence) (e) (m)} {$ S $};
+    \end{tikzpicture}
+    }
+    
+    \end{center}
+    \end{column}
+    
+	\begin{column}{0.5\textwidth}
+	\scalebox{0.7}{
+    \begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(f)		{$ f $};
+    \node[latent, right = of f]					(theta)		{\textcolor{blue}{$\theta$}};
+    \node[const, above = of theta]					(alpha)		{$\alpha$};
+    \node[latent, above = of f]		(a)		{$ a $};
+    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of e]		(m)		{$ m $};
+    
+    % Connect nodes
+    \edge{e,a}{f};
+    \edge{m}{a};
+    \edge{theta}{f};
+    \edge{alpha}{theta};
+    
+    % add plates
+    \plate {english-tables} {(theta)} {$v_E$}
+    \plate {source-sentence} {(f)(a)} {$ n $};
+    \plate {corpus} {(source-sentence) (e) (m)} {$ S $};
+    \end{tikzpicture}
+    }
+    
+	\end{column}	
+	\end{columns}
+	\begin{small}
+	
+	Incomplete data likelihood
+	\begin{equation}
+		P(f_1^n|e_1^m, \alert{\theta}) = \prod_{j=1}^n \sum_{a_j=0}^m P(a_j|m) P(f_j|e_{a_j}, \alert{\theta})
+	\end{equation}
+	
+	Marginal likelihood (evidence)
+    \begin{align}
+    	P(f_1^n|e_1^m) &= \int p(\textcolor{blue}{\theta}|\alpha) P(f_1^n|e_1^m, \textcolor{blue}{\theta}) \mathrm{d}\textcolor{blue}{\theta} \\
+			&= \int p(\textcolor{blue}{\theta}|\alpha) \prod_{j=1}^n \sum_{a_j=0}^m P(a_j|m) P(f_j|e_{a_j}, \textcolor{blue}{\theta}) \mathrm{d}\textcolor{blue}{\theta}
+	\end{align}
+	
+	\end{small}
+}
+
+
+\frame{
+	\frametitle{Bayesian IBM 1: Joint Distribution}
+	
+	Sentence pair: $(e_0^m, f_1^n)$
+	\begin{small}
+	\begin{align}
+		p(f_1^n, a_1^n, \theta|e_0^m, \alpha) &= P(a_1^n|m) \underbrace{\prod_\me}_{\text{English types}} p(\theta_\me|\alpha) \underbrace{\prod_\mf}_{\text{French types}} \theta_{\mf|\me}^{\overbrace{\#(\me \rightarrow \mf|a_1^n)}^{\text{count }\me \rightarrow \mf \text{ given } a_1^n}} \\
+		 &= P(a_1^n|m) \prod_\me \underbrace{\frac{\Gamma(\sum_\mf \alpha_\mf)}{\prod_\mf \Gamma(\alpha_\mf)} \prod_\mf \theta_{\mf|\me}^{\alpha_\mf - 1}}_{\text{Dirichlet}} \underbrace{\prod_\mf \theta_{\mf|\me}^{\#(\me \rightarrow \mf|a_1^n)}}_{\text{Categorical}} \\
+		&\propto P(a_1^n|m) \prod_\me \prod_\mf \theta_{\mf|\me}^{\#(\me \rightarrow \mf|a_1^n) + \alpha_\mf - 1 }
+		%&\quad{} \#(\me \rightarrow \mf|a_1^n) = \sum_{j=1}^n \mathds 1_\me(e_{a_j}) \times \mathds 1_\mf(f_j) \nonumber
+	\end{align}
+	\end{small}
+	
+}
+
+\frame{
+	\frametitle{Bayesian IBM 1: Joint Distribution (II)}
+	
+	Sentence pair: $(e_0^m, f_1^n)$
+	\begin{small}
+	\begin{align}
+		p(f_1^n, a_1^n, \theta|e_0^m, \alpha) &\propto P(a_1^n|m) \prod_\me \prod_\mf \theta_{\mf|\me}^{\#(\me \rightarrow \mf|a_1^n) + \alpha_\mf - 1 }
+	\end{align}
+	\end{small}
+	
+	Corpus: $(\mathbf e, \mathbf f)$
+	\begin{small}
+	\begin{align}
+		p(\mathbf f, \mathbf a, \theta|\mathbf e, \mathbf m, \alpha) 
+		&\propto \prod_{(e_0^m, f_1^n, a_1^n)} P(a_1^n|m) \prod_\me \prod_\mf \theta_{\mf|\me}^{\#(\me \rightarrow \mf|a_1^n) + \alpha_\mf - 1 } \\
+		&= P(\mathbf a|\mathbf m) \prod_\me \prod_\mf \theta_{\mf|\me}^{\#(\me \rightarrow \mf|\mathbf a) + \alpha_\mf - 1 }
+	\end{align}
+	\end{small}
+	
+}
+
+
+\frame{
+	\frametitle{Bayesian IBM 1: Posterior}
+	
+	Intractable marginalisation
+
+	\begin{align}
+		p(\mathbf a, \theta|\mathbf e, \mathbf m, \mathbf f, \alpha) 
+		&= \frac{p(\mathbf f, \mathbf a, \theta|\mathbf e, \mathbf m, \alpha)}{\int \sum_{\mathbf a'} p(\mathbf f, \mathbf a', \theta'|\mathbf e, \mathbf m, \alpha) \mathrm{d}\theta'}
+	\end{align}
+	
+	\begin{itemize}
+		\item $\theta$ is a global variable: posterior depends on the entire corpus
+	\end{itemize}
+
+}
+
+\frame{
+	\frametitle{Variational inference}
+	Optimise an approximation to true posterior $p(a_1^n, \theta|e_0^m, f_1^n)$
+	
+	Mean field
+	\begin{align}
+		q(a_1^n, \theta|\phi, \lambda) &= q(\theta|\lambda) \times Q(a_1^n|\phi) \\
+		&= \prod_\me q(\theta_\me|\lambda_\me) \times \prod_{j=1}^n Q(a_j|\phi_j)
+	\end{align}
+	\pause
+	
+	Maximise ELBO
+	\begin{align}
+		(\hat{\lambda}, \hat{\phi}) &= \argmax_{\lambda, \phi}  \mathbb E_q[\log p(f_1^n, a_1^n, \theta|e_0^m, \alpha)] + \mathbb H(q)\\
+		&= \argmax_{\lambda, \phi} \sum_{j=1}^m \mathbb E_q[\log P(a_j|m) P(f_j|e_{a_j}, \theta) - Q(a_j|\phi_j)] \\
+		& ~~~~~~~~~~~ +\sum_\me \mathbb E_q[\log p(\theta_e|\alpha) - q(\theta_e|\lambda_e)]
+	\end{align}
+
+}
+
+
+\frame{
+	\frametitle{Bayesian IBM 1: Posterior (II)}
+	
+	Local variables
+	\begin{align}
+		P(a_j|e_0^m, f_j, \theta, \alpha) &= \frac{\overbrace{P(a_j|m)}^{\text{constant}}\overbrace{P(f_j,|e_{a_j}, \theta, \alpha)}^{\theta_{f_j|e_{a_j}}}}{\sum_{i=0}^m P(i|m)P(f_j,|e_{i}, \theta, \alpha)} 
+	\end{align}
+	\pause ~ thus $Q(a_j|\phi_j) = \Cat(\phi_j)$
+	
+	~
+	
+	\pause
+	
+	Global variables
+	\begin{align}
+		p(\theta_\me|\mathbf e, \mathbf f, \mathbf a, \alpha) &\propto \prod_{(e_0^m, f_1^n, a_1^n)} p(f_1^n, a_1^n, \theta_\me |e_0^m, \alpha) \\
+		&= P(\mathbf a|\mathbf m) \prod_\me \prod_\mf \theta_{\mf|\me}^{\#(\me \rightarrow \mf|\mathbf a) + \alpha_\mf - 1 }
+	\end{align}
+	\pause ~ thus $q(\theta_e|\lambda_e) = \Dir(\lambda_e)$
+}
+
+
+
+\frame{
+	\frametitle{VB for IBM1}
+	
+	Optimal $q(a_j|\phi_j)$ 
+	\begin{align}
+		\phi_j &= \frac{\exp\left( \Psi\left(\lambda_{f_j|e_{a_j}}\right) - \Psi\left(\sum_\mf \lambda_{\mf|e_{a_j}}\right) \right)}{\sum_{i=0}^m \exp\left( \Psi\left(\lambda_{f_j|e_{i}}\right) - \Psi\left(\sum_\mf \lambda_{\mf|e_{i}}\right) \right)} 
+	\end{align}
+
+	\pause
+	
+	~
+	
+	Optimal $q(\theta_e|\lambda_e)$
+	\begin{align}
+		\lambda_{\mf|\me} = \alpha_\mf + \sum_{(e_0^m, f_1^n)} \sum_{j=1}^n \mathbb E_{Q(A_j|\phi_j)}[\#(\me \rightarrow \mf|A_j)]
+	\end{align}
+	
+}
+
+\frame{
+	\frametitle{Algorithmically}
+	
+	E-step as in MLE IBM1, \\
+	~however, using $Q(a_j|\phi_j)$ instead of $P(a_j|e_0^m, f_j, \theta)$ 
+	\begin{itemize}
+		\item equivalent to using $\theta \approx \hat{\theta}$ where
+		\item $\hat{\theta}_{\mf|\me} = \exp\left( \Psi\left(\lambda_{\mf|\me}\right) - \Psi\left(\sum_{\mf'} \lambda_{\mf'|\me}\right) \right)$
+	\end{itemize}
+	
+	\pause
+	~
+	
+	M-step
+	\begin{itemize}
+		\item $\lambda_{\mf|\me} = \alpha_\mf + \mathbb E[\#(\me \rightarrow \mf)]$ \\
+		where expected counts come from E-step
+	\end{itemize}
+}
+
+
+
+
