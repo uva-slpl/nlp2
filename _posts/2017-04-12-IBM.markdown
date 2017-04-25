@@ -43,7 +43,7 @@ Other tips:
 2. If the validation (or test) set contains words that were never seen at training time, there are two solutions:
     * You can map all words that occurred a single time at training time to a symbol, e.g. `-LOW-`, then whenever you encounter an unseen word in the future, replace it by that symbol (also note that if you employed strategy 1 above, you already have a solution to this problem, simply map it to `-UNK-`);
     * Alternatively, note that word alignment is a fully unsupervised problem, thus we typically do not make a distinction between training/validation/test sets, this time we are doing it, just so you can track AER scores. This amounts to saying that it is not cheating to concatenate the validation set and the training set when inducing your unsupervised alignments. If still that makes you uneasy, then go with the suggestion above.
-    * Leave out NULL-alignments from your output, since they are not included in the annotated (test) data. You will only get penalized for them.
-
+3. In IBM2, one can have a special jump event for alignments to NULL, this should lead to some small improvements (in log-likelihood and AER). The intuition is that alignments to NULL may imply very long jumps, collapsing all alignments to NULL reduce sparsity.
+4. Leave out NULL-alignments from your output, since they are not included in the annotated (test) data. You will only get penalized for them.
 
 
