@@ -4,7 +4,6 @@ layout: main
 
 This is the main page of the NLP2 course offered at the [University of Amsterdam][UvA].
 
-
 # Content 
 
 This course, which builds on NLP I, is about statistical learning for structure prediction problems. 
