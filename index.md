@@ -16,7 +16,7 @@ We supply reading material (either research papers or tutorials) for lectures as
 
 ## Discussion sessions
 
-A group (typically **2-3 members**) selects a paper to be discussed. Then
+A group (typically **3 members**) selects a paper to be discussed. Then
 
 1. Everyone reads the chosen paper before the session
 2. The selected group gives a talk presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)

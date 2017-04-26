@@ -1,0 +1,46 @@
+
+
+\frame{
+
+	\begin{scriptsize}
+
+	\begin{tabular}{|l l || p{2.7cm} | p{2.7cm}| p{2.7cm}| } \hline
+	              &   & le     & chien   & noir \\
+	              &   & 1      & 2       & 3 \\  \hline \hline
+	\textsc{Null} & 0 & \only<2->{$a_1 = 0$}& \only<3->{$a_2 = 0$}& \only<4->{$a_3 = 0$}\\ 
+				  &   & \only<14->{lex: NULL-le}& \only<15->{lex: NULL-chien}& \only<16->{lex: NULL-noir}\\
+				  &   & \only<26->{jump: $0 - \lfloor 1 \times \frac{3}{3}\rfloor$}& \only<27->{jump: $0 - \lfloor 2 \times \frac{3}{3}\rfloor$}& \only<28->{jump: $0 - \lfloor 3 \times \frac{3}{3}\rfloor$}\\
+				  &   & \only<38->{joint: $\theta_{\text{le}|\text{Null}} \times \delta_{-1}$}& \only<39->{joint: $\theta_{\text{chien}|\text{Null}} \times \delta_{-2}$}& \only<40->{joint: $\theta_{\text{noir}|\text{Null}} \times \delta_{-3}$}\\ 
+	              &   & \only<53->{post: $\frac{\text{joint}(a_1=0)}{\text{marginal}(\text{le})}$} & \only<54->{post: $\frac{\text{joint}(a_2=0)}{\text{marginal}(\text{chien})}$} & \only<55->{post: $\frac{\text{joint}(a_3=0)}{\text{marginal}(\text{noir})}$} \\ \hline	              
+	              
+    the           & 1 & \only<5->{$a_1 = 1$}& \only<6->{$a_2 = 1$}& \only<7->{$a_3 = 1$}\\
+				  &   & \only<17->{lex: the-le}& \only<18->{lex: the-chien}& \only<19->{lex: the-noir}\\
+				  &   & \only<29->{jump: $1 - \lfloor 1 \times \frac{3}{3}\rfloor$}& \only<30->{jump: $1 - \lfloor 2 \times \frac{3}{3}\rfloor$}& \only<31->{jump: $1 - \lfloor 3 \times \frac{3}{3}\rfloor$}\\
+				  &   & \only<41->{joint: $\theta_{\text{le}|\text{the}} \times \delta_{0}$}& \only<42->{joint: $\theta_{\text{chien}|\text{the}} \times \delta_{-1}$}& \only<43->{joint: $\theta_{\text{noir}|\text{the}} \times \delta_{-2}$}\\ 				  
+	              &   & \only<56->{post: $\frac{\text{joint}(a_1=1)}{\text{marginal}(\text{le})}$} & \only<57->{post: $\frac{\text{joint}(a_2=1)}{\text{marginal}(\text{chien})}$} & \only<58->{post: $\frac{\text{joint}(a_3=1)}{\text{marginal}(\text{noir})}$} \\ \hline
+
+	              
+	              
+	              
+	                
+    black         & 2 & \only<8->{$a_1 = 2$}& \only<9->{$a_2 = 2$}& \only<10->{$a_3 = 2$}\\ 
+				  &   & \only<20->{lex: black-le}& \only<21->{lex: black-chien}& \only<22->{lex: black-noir}\\	                  
+				  &   & \only<32->{jump: $2 - \lfloor 1 \times \frac{3}{3}\rfloor$}& \only<33->{jump: $2 - \lfloor 2 \times \frac{3}{3}\rfloor$}& \only<34->{jump: $2 - \lfloor 3 \times \frac{3}{3}\rfloor$}\\				  
+				  &   & \only<44->{joint: $\theta_{\text{le}|\text{black}} \times \delta_{1}$}& \only<45->{joint: $\theta_{\text{chien}|\text{black}} \times \delta_{0}$}& \only<46->{joint: $\theta_{\text{noir}|\text{black}} \times \delta_{-1}$}\\ 				  
+	              &   & \only<59->{post: $\frac{\text{joint}(a_1=2)}{\text{marginal}(\text{le})}$} & \only<60->{post: $\frac{\text{joint}(a_2=2)}{\text{marginal}(\text{chien})}$} & \only<61->{post: $\frac{\text{joint}(a_3=2)}{\text{marginal}(\text{noir})}$} \\ \hline  
+
+
+
+    dog           & 3 & \only<11->{$a_1 = 3$}& \only<12->{$a_2 = 3$}& \only<13->{$a_3 = 3$}\\ 
+				  &   & \only<23->{lex: dog-le}& \only<24->{lex: dog-chien}& \only<25->{lex: dog-noir}\\	                  
+				  &   & \only<35->{jump: $3 - \lfloor 1 \times \frac{3}{3}\rfloor$}& \only<36->{jump: $3 - \lfloor 2 \times \frac{3}{3}\rfloor$}& \only<37->{jump: $3 - \lfloor 3 \times \frac{3}{3}\rfloor$}\\				      
+				  &   & \only<47->{joint: $\theta_{\text{le}|\text{dog}} \times \delta_{2}$}& \only<48->{joint: $\theta_{\text{chien}|\text{dog}} \times \delta_{1}$}& \only<49->{joint: $\theta_{\text{noir}|\text{dog}} \times \delta_{0}$}\\ 				  
+	              &   & \only<62->{post: $\frac{\text{joint}(a_1=3)}{\text{marginal}(\text{le})}$} & \only<63->{post: $\frac{\text{joint}(a_2=3)}{\text{marginal}(\text{chien})}$} & \only<64->{post: $\frac{\text{joint}(a_3=3)}{\text{marginal}(\text{noir})}$} \\ \hline
+	              
+	\multicolumn{2}{|c||}{Marginal} & \only<50->{$\sum_{a_1=0}^m \text{joint}(a_1)$} & \only<51->{$\sum_{a_2=0}^m \text{joint}(a_2)$} & \only<52->{$\sum_{a_3=0}^m \text{joint}(a_3)$} \\ \hline
+    \end{tabular}
+
+
+    \end{scriptsize}
+    
+}

@@ -32,7 +32,6 @@
 \usepackage[normalem]{ulem}
 \usepackage{tikz-qtree}
 \usepackage{pbox}
-\usetikzlibrary{bayesnet}
 \usepackage{dsfont}
 
 %\usepackage{ragged2e}
@@ -68,7 +67,8 @@
 
 	\setbeamertemplate{caption}{\raggedright\insertcaption\par}
 
-	\title{Dirichlet priors for IBM model 1}
+	\title{IBM models 1-2}
+	\subtitle{Illustration}
 
 	\author{Wilker Aziz}
 
@@ -98,28 +98,15 @@
     \end{frame}
     }
 
-	
-	%\input{basics}
-	%\input{dgm}
-	
+
 	\input{body}
-	%\input{estimation}
+
 	
 	
 		
 	\newcounter{finalframe}
 	\setcounter{finalframe}{\value{framenumber}}
 	
-	
-	
-	%\input{backup}
-
-
-	\frame[allowframebreaks]{ \frametitle{References}
-        \bibliographystyle{plainnat}
-        \bibliography{../../BIB}
-	}
-
 	
 
 	% Trick to discount regular frames from the total of backup frames
