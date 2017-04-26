@@ -1,0 +1,14 @@
+---
+layout: post
+title:  Dirichlet priors
+date:   2017-04-26
+author: Wilker
+categories: notebooks
+---
+
+Hello everyone, 
+
+check our notebook on [Dirichlet distributions](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks) to get a sense of what `alpha` does and what a Dir prior is good for.
+
+
+

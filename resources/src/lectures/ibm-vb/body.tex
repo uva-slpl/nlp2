@@ -118,8 +118,8 @@
 	
 	Marginal likelihood (evidence)
     \begin{align}
-    	P(f_1^n|e_1^m) &= \int p(\textcolor{blue}{\theta}|\alpha) P(f_1^n|e_1^m, \textcolor{blue}{\theta}) \mathrm{d}\textcolor{blue}{\theta} \\
-			&= \int p(\textcolor{blue}{\theta}|\alpha) \prod_{j=1}^n \sum_{a_j=0}^m P(a_j|m) P(f_j|e_{a_j}, \textcolor{blue}{\theta}) \mathrm{d}\textcolor{blue}{\theta}
+    	P(f_1^n|e_1^m, \alpha) &= \int p(\textcolor{blue}{\theta}|\alpha) P(f_1^n|e_1^m, \textcolor{blue}{\theta}) \mathrm{d}\textcolor{blue}{\theta} \\
+			&= \int p(\textcolor{blue}{\theta}|\alpha) \prod_{j=1}^n \sum_{a_j=0}^m P(a_j|m) P(f_j|e_{a_j}, \textcolor{blue}{\theta}_{e_{a_j}}) \mathrm{d}\textcolor{blue}{\theta}
 	\end{align}
 	
 	\end{small}
@@ -193,8 +193,8 @@
 	Maximise ELBO
 	\begin{align}
 		(\hat{\lambda}, \hat{\phi}) &= \argmax_{\lambda, \phi}  \mathbb E_q[\log p(f_1^n, a_1^n, \theta|e_0^m, \alpha)] + \mathbb H(q)\\
-		&= \argmax_{\lambda, \phi} \sum_{j=1}^m \mathbb E_q[\log P(a_j|m) P(f_j|e_{a_j}, \theta) - Q(a_j|\phi_j)] \\
-		& ~~~~~~~~~~~ +\sum_\me \mathbb E_q[\log p(\theta_e|\alpha) - q(\theta_e|\lambda_e)]
+		&= \argmax_{\lambda, \phi} \sum_{j=1}^m \mathbb E_q[\log P(a_j|m) P(f_j|e_{a_j}, \theta) - \log Q(a_j|\phi_j)] \\
+		& ~~~~~~~~~~~ +\sum_\me \underbrace{\mathbb E_q[\log p(\theta_e|\alpha) - \log q(\theta_e|\lambda_e)]}_{\KL(p(\theta_e|\alpha)||q(\theta_e|\lambda_e))}
 	\end{align}
 
 }
@@ -242,6 +242,7 @@
 	
 }
 
+
 \frame{
 	\frametitle{Algorithmically}
 	
@@ -260,6 +261,7 @@
 		\item $\lambda_{\mf|\me} = \alpha_\mf + \mathbb E[\#(\me \rightarrow \mf)]$ \\
 		where expected counts come from E-step
 	\end{itemize}
+	
 }
 
 
