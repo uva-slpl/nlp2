@@ -1,0 +1,54 @@
+---
+layout: post
+title: Practical notes on computing the ELBO for Bayesian IBM1
+date:   2017-04-27
+author: Wilker
+categories: reading
+mathjax: true
+---
+
+Hello everyone, 
+
+first of all, throughout, I will be using the same notation as I [used in class](https://uva-slpl.github.io/nlp2/resources/slides/ibm-vb.pdf), thus if I do not define something here, please check the slides.
+
+The ELBO you use to track the performance of VB is computed at the end of an iteration (after the M-step ends). It contains two parts, namely
+
+1. \\(\sum_{(e_0^m, f_1^n) \in \mathcal D} \sum_{j=1}^n \mathbb E_{Q_j}[\log P(f_j \vert e_0^m, \theta)]\\)
+2. and \\( \sum_{e \in V_E} \mathbb E_{q_e}[\log p(\theta_e \vert \alpha) - \log q(\theta_e \vert \lambda_e)] \\) 
+
+where I used \\( \mathcal D \\) to represent the training set, and \\( V_E \\) to represent the entire vocabulary of English types.
+
+The **first part** is identical, in terms of computation, to the log-likelihood that you compute for MLE IBM1, the only difference is that you will be using \\( \hat{\theta} \\) instead of \\( \theta \\). That is, at the end of an iteration you compute 
+
+\begin{equation}
+\sum_{(e_0^m, f_1^n) \in \mathcal D} \sum_{j=0}^n \log \left( \sum_{a_j=0}^m P(a_j \vert m, n) P(f_j \vert e_{a_j}, \hat{\theta}) \right)
+\end{equation}
+
+where you should note that we take *all sentence pairs* (in either training or validation) into account.
+
+The **second part** is in fact the sum over *all English types* of the KL divergence between two Dirichlet distributions
+
+\begin{equation}
+\sum_{e \in V_E} \mathrm{KL}(p(\theta_e \vert \alpha) \vert\vert q(\theta_e \vert \lambda_e)
+\end{equation}
+
+namely, the prior and the approximate posterior for \\( \theta_e \\). This expression is known in closed-form and there's no need for approximations. Philip has made available some [notes](https://github.com/philschulz/PublicWriting/blob/master/DirichletElbo/DirichletELBO.pdf) (which are also linked from the project description). I am going to state the final result here using the notation we fixed in class (and where I use \\( V_F \\) to represent the entire vocabulary of French types).
+
+\begin{align}
+\mathrm{KL}(p(\theta_e \vert \alpha) \vert\vert q(\theta_e \vert \lambda_e)) &= \left( \sum_{f \in V_F} \mathbb E_{q_e}[\log \theta_{f \vert e}] (\alpha_f - \lambda_{f \vert e}) + \log \Gamma(\lambda_{f \vert e}) - \log \Gamma(\alpha_f) \right) \newline
+ &+ \log \Gamma\left(\sum_{f \in V_F} \alpha_f \right) - \log \Gamma\left(\sum_{f \in V_F} \lambda_{f \vert e} \right) 
+\end{align}
+
+Important things to note:
+
+* the very first element of the very first sum is just the expected value of the sufficient statistics (which we know is the first derivative of the log normaliser) and we know how to compute it exactly: \\( \mathbb E_{q_e}[\log \theta_{f \vert e}] = \Psi(\lambda_{f \vert e}) - \Psi(\sum_{f' \in V_F} \lambda_{f' \vert e}) \\)
+* I showed you above the KL for one English type, to get to total you need to repeat this computation for all English types and sum;
+* here we are really iterating over the vocabularies (not over the sentences!);
+* you may want to use optimised implementations of \\( \log \Gamma(x) \\), check [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.loggamma.html#scipy.special.loggamma).
+
+
+This is it, if you sum the total of the first part and the total of the second part, you will get the ELBO :)
+
+I hope this helps.
+
+W.
