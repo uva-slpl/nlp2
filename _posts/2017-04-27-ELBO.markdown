@@ -42,6 +42,7 @@ namely, the prior and the approximate posterior for \\( \theta_e \\). This expre
 Important things to note:
 
 * the very first element of the very first sum is just the expected value of the sufficient statistics (which we know is the first derivative of the log normaliser) and we know how to compute it exactly: \\( \mathbb E_{q_e}[\log \theta_{f \vert e}] = \Psi(\lambda_{f \vert e}) - \Psi(\sum_{f' \in V_F} \lambda_{f' \vert e}) \\)
+* I recommend you first compute the expected sufficient statistic for every pair of types \\( (e, f) \in V_E \times V_F \\) building a big table of \\( E_{q_e}[\log \theta_{f \vert e}] \\) values, then proceed by computing the KL shown above for each English type (where you will make table lookups to get the expected values needed in the formula);
 * I showed you above the KL for one English type, to get to total you need to repeat this computation for all English types and sum;
 * here we are really iterating over the vocabularies (not over the sentences!);
 * you may want to use optimised implementations of \\( \log \Gamma(x) \\), check [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.loggamma.html#scipy.special.loggamma).
