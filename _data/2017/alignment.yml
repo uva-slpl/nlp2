@@ -51,7 +51,7 @@
   layout: lecture
   selected: y
   date: 2017-04-19
-  img: alignments
+  img: bibm
   uid: ibm_vb
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
   instructor: Philip Schulz

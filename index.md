@@ -22,6 +22,7 @@ A group (typically **3 members**) selects a paper to be discussed. Then
 2. The selected group gives a talk presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
 3. Everyone participates in an open discussion 
 
+
 # Projects
 
 We will have 3 project assignments: students work in groups (**2 to 3 members**). Projects will be assessed on the basis of technical reports and ipython notebooks.
