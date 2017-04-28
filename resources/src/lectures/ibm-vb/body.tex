@@ -194,7 +194,7 @@
 	\begin{align}
 		(\hat{\lambda}, \hat{\phi}) &= \argmax_{\lambda, \phi}  \mathbb E_q[\log p(f_1^n, a_1^n, \theta|e_0^m, \alpha)] + \mathbb H(q)\\
 		&= \argmax_{\lambda, \phi} \sum_{j=1}^m \mathbb E_q[\log P(a_j|m) P(f_j|e_{a_j}, \theta) - \log Q(a_j|\phi_j)] \\
-		& ~~~~~~~~~~~ +\sum_\me \underbrace{\mathbb E_q[\log p(\theta_e|\alpha) - \log q(\theta_e|\lambda_e)]}_{\KL(p(\theta_e|\alpha)||q(\theta_e|\lambda_e))}
+		& ~~~~~~~~~~~ +\sum_\me \underbrace{\mathbb E_q[\log p(\theta_e|\alpha) - \log q(\theta_e|\lambda_e)]}_{-\KL(q(\theta_e|\lambda_e)||p(\theta_e|\alpha))}
 	\end{align}
 
 }
@@ -263,6 +263,8 @@
 	\end{itemize}
 	
 }
+
+
 
 
 
