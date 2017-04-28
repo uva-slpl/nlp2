@@ -1,7 +1,7 @@
 <div class="media">
-  <a class="pull-left thumbnail" {% if include.lecture.slides %} href="{{ include.lecture.slides }}" {% endif %}>
-    <img src="img/lectures/{{ include.lecture.img }}.png" alt=""/>
-  </a>
+    <a class="pull-left thumbnail" {% if include.lecture.slides %} href="{{ include.lecture.slides }}" {% endif %}>
+        <img src="img/lectures/{{ include.lecture.img }}.png" alt="" style="max-width:100px; height:auto;"/>
+    </a>
   <div class="media-body">
     <!-- citation -->
     <strong>{{ include.lecture.title }}</strong><br/>

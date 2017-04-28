@@ -2,7 +2,7 @@
 layout: main
 ---
 
-This is the main page of the NLP2 course offered at the [University of Amsterdam][UvA].
+This is the main page of the course *Natural Language Processing II* offered at the [University of Amsterdam][UvA].
 
 # Content 
 

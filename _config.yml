@@ -1,6 +1,6 @@
 # Site settings
 exclude: [README.md, resources/src]
-title: Natural Language Processing II
+title: NLP II
 email: wilker.aziz@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     Here you will the course material for NLP2 offered at UvA.

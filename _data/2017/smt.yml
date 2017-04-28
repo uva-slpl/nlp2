@@ -19,55 +19,47 @@
   layout: lecture
   selected: y
   date: 2017-04-26
-  img: tuning
-  uid: tuning
-  title: Evaluation and Tuning
+  img: mteval
+  uid: mteval
+  title: Evaluation
   instructor: "Miloš Stanojević"
   note: 
-  abstract: >
-    In the first half of this lecture we will talk about automatic evaluation. 
+  abstract: |
     Evaluation in Machine Translation is dealing with automatic assesment of the translation quality. 
     Unlike many machine learning tasks, here there is no unique gold truth to which we can compare the translation -- there are many equally good translations. 
     Also translations can be good or bad in many dimensions: morphology, syntax or semantics. 
     Evaluation is important not only for assesing the quality of the final system but also for automatic tuning of the systems. 
-
-    In the second half, we will cover a few algorithms that allow us to fine tune many parameters that our MT system can have (weights for language model, translation model, word penalty...).
   background:
-    - "On evaluation:"
     - "A good survey of evaluation methods can be found in Chapter 8 of [Koehn's book](http://www.statmt.org/book/). You can also refer to statmt's survey [page](http://www.statmt.org/survey/Topic/Evaluation)"
     - "[BLEU](http://www.aclweb.org/anthology/P02-1040.pdf) is the most widely used automatic evaluation metric, it is mostly a precision metric."
-    - "On tuning:"
-    - "A [survey](http://www.phontron.com/paper/neubig16cl.pdf) of optimisation techniques for machine translation."
   further:
-    - "On evaluation:"
     - "[BEER](http://aclweb.org/anthology/D14-1025) is a trainable metric meant for approximating human ranking of translations."
     - "[METEOR](http://www.aclweb.org/anthology/W/W05/W05-0909.pdf) tries to balance precision and recall."
     - "Read [(Lopez, 2012)](http://www.aclweb.org/anthology/W/W12/W12-3101.pdf) for a formal view of evaluation of automatic evaluation metrics (you read it right!)." 
     - "[Hypothesis testing for SMT](http://www.aclweb.org/anthology/P/P11/P11-2031.pdf) or whether two systems differ."
-    - "On tuning:"
-    - "MT tuning can be seen as a learning to rank task. In learning to rank, a typical approach is to approximate a complex ranking task by a series of pairwise ranking decision. This idea has been popularised in MT by the algorithm [PRO](http://www.aclweb.org/anthology/D11-1125)."
-    - "For a nice overview of large margin discriminative learning in MT refer to [(Eidelman, 2012)](http://www.aclweb.org/anthology/W12-3160)"
-    - "For MIRA with batched updates in MT refer to [(Cherry and Forster, 2012)](http://www.aclweb.org/anthology/N12-1047)"
   discussion:
-  slides: 
-  classmaterial: 
-    - "Part 1: [Evaluation](resources/slides/mteval.pdf)"
-    - "Part 2: [Tuning](resources/slides/tuning.pdf)"
+  slides: resources/slides/mteval.pdf
   code: 
   data: 
 -
   layout: lecture
   selected: y
   date: 2017-05-03
-  img: rg
-  uid: rg
-  title: Factorisation of permutations and reordering grammar
-  instructor: "Miloš Stanojević"
+  img: tuning
+  uid: tuning
+  title: Tuning
+  instructor: "Wilker Aziz"
   note: 
-  abstract: In this lecture we will talk about preordering, factorization of permutations and reordering grammar.
+  abstract: >
+    We will cover a few algorithms that allow us to fine tune many parameters that our MT system can have (weights for language model, translation model, word penalty...).
   background:
-    - "Stanojevic ́ and Sima'an. 2015. [Reordering Grammar Induction](http://www.aclweb.org/anthology/D15-1005)"
-  slides: resources/slides/rg.pdf
+    - "A [survey](http://www.phontron.com/paper/neubig16cl.pdf) of optimisation techniques for machine translation."
+  further:
+    - "MT tuning can be seen as a learning to rank task. In learning to rank, a typical approach is to approximate a complex ranking task by a series of pairwise ranking decision. This idea has been popularised in MT by the algorithm [PRO](http://www.aclweb.org/anthology/D11-1125)."
+    - "For a nice overview of large margin discriminative learning in MT refer to [(Eidelman, 2012)](http://www.aclweb.org/anthology/W12-3160)"
+    - "For MIRA with batched updates in MT refer to [(Cherry and Forster, 2012)](http://www.aclweb.org/anthology/N12-1047)"
+  discussion:
+  slides: resources/slides/tuning.pdf
   code: 
   data: 
 -
@@ -91,5 +83,20 @@
     - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
   discussion:
   slides: 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-10
+  img: rg
+  uid: rg
+  title: Factorisation of permutations and reordering grammar
+  instructor: "Miloš Stanojević"
+  note: 
+  abstract: In this lecture we will talk about preordering, factorization of permutations and reordering grammar.
+  background:
+    - "Stanojevic ́ and Sima'an. 2015. [Reordering Grammar Induction](http://www.aclweb.org/anthology/D15-1005)"
+  slides: resources/slides/rg.pdf
   code: 
   data: 

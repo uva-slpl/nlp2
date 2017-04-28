@@ -54,7 +54,7 @@
   img: bibm
   uid: ibm_vb
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
-  instructor: Philip Schulz
+  instructor: Philip Schulz and Wilker Aziz
   note:
   abstract: >
     We present a Bayesian version of IBM1 which has a conjugate Dirichlet prior on the translation parameters. We exploit the conjugacy of the resulting model to develop an efficient variational inference
@@ -65,7 +65,8 @@
   further:
     - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
     - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
-    - "Shorter presentations of the same techniques can be found in [Attias (1999)](https://papers.nips.cc/paper/1726-a-variational-baysian-framework-for-graphical-models.pdf) and [Beal and Ghahramani (2000)](http://www.cse.buffalo.edu/faculty/mbeal/papers/nips00beal.pdf). Be aware, though, that these papers are quite dense."
+    - "[Bayesian estimation for NLP](http://www.arbylon.net/publications/text-est.pdf)"
+    - "For Bayesian inference without VI, check this [MCMC tutorial](http://www-users.mat.umk.pl/~wniem/SemMgr/besag_MCMC.pdf)"
     - "[Dyer et al. 2013](http://www.aclweb.org/anthology/N13-1073.pdf) revisit the parameterisation of IBM model 2. Their model, called 'fast_align' achieves state-of-the-art performance and a robust and efficient [implementation](https://github.com/clab/fast_align) is available."
   slides: resources/slides/ibm-vb.pdf
   code: 
