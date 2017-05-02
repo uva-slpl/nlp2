@@ -35,7 +35,8 @@ All of you are expected to read the paper and prepare some questions, some of yo
 
 * Group: 3
 * When: May 10
-* What: [Structured Ramp Loss Minimization for Machine Translation](http://www.aclweb.org/anthology/N/N12/N12-1023.pdf)
+* What: [Structured Ramp Loss Minimization for Machine Translation](http://www.aclweb.org/anthology/N/N12/N12-1023.pdf) 
+* Additional material: [addendum](http://ttic.uchicago.edu/~kgimpel/papers/gimpel+smith.naacl12.addendum.pdf), [poster](http://ttic.uchicago.edu/~kgimpel/talks/gimpel+smith.naacl12.poster.pdf)
 * Topics
     * Phrase-based models
     * Structured discriminative classifiers
@@ -43,8 +44,11 @@ All of you are expected to read the paper and prepare some questions, some of yo
 
 * Group: 4
 * When: May 10 
-* What: 
+* What: [Max-Violation Perceptron and Forced Decoding for Scalable MT Training](http://www.aclweb.org/anthology/D13-1112) 
+* Additional material: [video](https://www.youtube.com/watch?v=tn7ljLXvMzg)
 * Topics
+    * Phrase-based models
+    * Structured perceptron
 
 
 # Session 3
