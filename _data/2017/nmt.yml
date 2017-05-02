@@ -2,7 +2,7 @@
   layout: lecture
   selected: y
   date: 2017-05-12
-  img: nmt
+  img: nnlm
   uid: nlm
   title: Neural language models
   instructor: Joost Bastings
@@ -18,7 +18,7 @@
   layout: lecture
   selected: y
   date: 2017-05-17
-  img: nmt
+  img: nmtatt
   uid: seq2seq
   title: "Conditional language models: encoder-decoder"
   instructor: Wilker Aziz
