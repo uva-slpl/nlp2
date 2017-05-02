@@ -48,7 +48,7 @@
   img: tuning
   uid: tuning
   title: Tuning
-  instructor: "Wilker Aziz"
+  instructor: "Miloš Stanojević"
   note: 
   abstract: >
     We will cover a few algorithms that allow us to fine tune many parameters that our MT system can have (weights for language model, translation model, word penalty...).

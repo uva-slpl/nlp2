@@ -34,7 +34,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
 # Session 2
 
 * Group: 3
-* When: May 3 
+* When: May 10
 * What: [Structured Ramp Loss Minimization for Machine Translation](http://www.aclweb.org/anthology/N/N12/N12-1023.pdf)
 * Topics
     * Phrase-based models
@@ -42,7 +42,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * Empirical loss minimisation
 
 * Group: 4
-* When: May 3 
+* When: May 10 
 * What: 
 * Topics
 
@@ -50,12 +50,12 @@ All of you are expected to read the paper and prepare some questions, some of yo
 # Session 3
 
 * Group: 7
-* When: May 10 
+* When: May 12 
 * What: 
 * Topics
 
 * Group: 8
-* When: May 10
+* When: May 12
 * What: 
 * Topics
 
