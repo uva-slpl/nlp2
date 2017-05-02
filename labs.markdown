@@ -3,15 +3,24 @@ layout: default
 title: Labs
 ---
 
+# Code
+
 Check our [notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks).
 
-# April 26
+# Sessions
+
+## May 3
+
+* Parsing as deduction (~ 45 minutes)
+* Bitext parsing (~ 45 minutes)
+
+## April 26
 
 * Recap VB for IBM 1 (~ 40 minutes)
 
 * Discussion session 1 (~ 50 minutes)
 
-# April 19
+## April 19
 
 *Location: SP G0.10-G0.12* &#124; *Time: 9:00 to 11:00*
 
@@ -23,7 +32,7 @@ Check our [notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/n
 
 * Exponential families (~ 40 minutes)
 
-# April 12 
+## April 12 
 
 *Location: SP G0.10-G0.12* &#124; *Time: 9:00 to 11:00*
 
