@@ -44,8 +44,17 @@ Submission:
 
 In this project, we will focus on the problem of learning how to permute a sequence of words into target language word order, we will frame this truly unsupervised learning problem as a supervised one by relying on word alignments as a source of observations. We will use pre-trained alignments to extract a cannonical tree-structured mapping between the source word order and the target word order. 
 By framing it as a supervised learning problem we can investigate a different class of probabilistic graphical models, namely, undirected models (aka globally normalised models). 
-
 * Maximum likelihood estimation for a CRF parser: CKY algorithm, inside-outside algorithm, and gradient-based optimisation
+
+Resources:
+
+* [Project description](resources/project_crf/project2.pdf)
+* [Data](resources/project_crf/data.tgz)
+* [Lexicon](resources/project_crf/lexicon.tgz)
+
+Submission:
+
+* Upload .tgz file on Blackboard before *May 19*, 23:59 (GMT-8)
 
 # Project 3
 
