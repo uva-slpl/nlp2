@@ -1,0 +1,216 @@
+
+In this project you will implement a probabilistic model for hierarchical machine translation somewhat based on the model of \citet{Blunsom+2008:LVMSMT}.
+
+In summary, your task will be to
+\begin{itemize}
+	\item implement a latent variable model of translation formulated as a conditional random field;
+	\item hypothesise a latent ITG tree (a synchronous binary tree) mapping between source and target;
+	\item you will experiment with maximum likelihood estimation via stochastic gradient-based optimisation.
+\end{itemize}
+
+This project will help you familiarise yourself with 
+\begin{multicols}{2}
+\begin{itemize}
+	\item bitext parsing
+	\item hypergraphs
+	\item inside-outside	
+	\item ancestral sampling
+	\item undirected graphical models
+	\item gradient-based optimisation
+\end{itemize}
+\end{multicols}
+
+
+\section{Bitext parsing\label{sec:ITG}}
+
+You will be provided with a constrained version of the following grammar, where $\Sigma$ is the source vocabulary and $\Delta$ is the target vocabulary.\footnote{We will constrain translation pairs to likely pairs under IBM model 1.}
+
+\begin{tabular}{l c l l}
+$\mS$ & $\rightarrow$ & $\mX$ & \\
+$\mX$ & $\rightarrow$ & $\left[\mX \mX\right]$ & \\
+$\mX$ & $\rightarrow$ & $\left\langle \mX \mX \right\rangle$ & \\
+$\mX$ & $\rightarrow$ & $x/y$ & where $x \in \Sigma$ and $y \in \Delta$ \\
+$\mX$ & $\rightarrow$ & $\epsilon/y$ & where $y \in \Delta$\\
+$\mX$ & $\rightarrow$ & $x/\epsilon$ & where $x \in \Sigma$\\
+\end{tabular}
+
+Your first task is to build a synchronous parser for such grammar (a variant of Earley parser), your parser should be general enough so that you can do the following
+\begin{itemize}
+	\item Instantiate $\mathcal D( x) = \{ d: \yield_\Sigma( d) =  x\}$, i.e., the set of derivations compatible with a source sentence $x$. Do you expect this to be a finite set? Why?
+	\item Instantiate $\mathcal D( x,  y) = \{ d: \yield_\Sigma( d) =  x \text{ and } \yield_\Delta( d) =  y\}$, i.e., the set of derivations compatible with a source sentence $ x$ and its translation $ y$. Do you expect this to be a finite set? Why?
+	\item Instantiate $\mathcal D_n( x) = \{ d: \yield_\Sigma( d) =  x \text{ and } |\yield_\Delta(d)| \le n\}$, i.e., the set of derivations that translates $x$ to a target sentence no longer than $n$ words. Do you expect this to be a finite set? Why?
+	 %instantiate $\mathcal D( x)$, the forest of 
+	 \item Compute the inside value of a node.
+	 \item Compute the outside value of a node.
+	 \item Find the best derivation and perform ancestral sampling.
+	 \item Optional (1 extra point): be able to instantiate $\mathcal D( x,  \mathbf y)$ where instead of a single reference $y$ you parse a set of references $\mathbf y$
+\end{itemize}
+for these sets and operations will be crucial in fitting the CRF.
+
+\section{CRF}
+
+\begin{center}
+\begin{figure}[h]\centering
+    \begin{tikzpicture}
+    % Define nodes
+    \node[cond]		(x)		{$ x $};
+    \node[latent, right = of x]		(d)		{$ d $};
+    \node[obs, below = of d]						(y)		{$ y $};
+    
+    \node[const, right = of d]					(w)		{$w$};
+    
+    
+    \node[cond, above = of d]		(n)		{$ n $};
+    
+    % Connect nodes
+    \edge[-]{d}{y};
+    \edge[-]{n,x}{d};
+    \edge{w}{d};
+    
+    % add plates
+    \plate {corpus} {(x) (n) (d) (y)} {$ S $};
+    \end{tikzpicture}
+\caption{Conditional random field for translation with latent ITG trees.}
+\end{figure}
+\end{center}
+
+
+
+\subsection{Model}
+
+You will be working with a globally normalised model
+\begin{equation}
+\begin{aligned}\label{eq:CRF}
+	P( y,  d| x, n, w) &=  \frac{\exp \left( w^\top \phi( x,  y,  d) \right)}{\displaystyle\sum_{y' \in \mathcal Y_n(x)} \displaystyle\sum_{ d' \in \mathcal D_n(x, y')} \exp \left( w^\top \phi( x,  y',  d') \right)} \\
+	 &= \frac{\exp \left( w^\top \phi( x,  y,  d) \right)}{\displaystyle\sum_{ d' \in \mathcal D_n(x)} \exp \left( w^\top \phi( x,  y',  d') \right)} ~~~ \text{ where } y' = \yield_\Delta(d') ~ .
+\end{aligned}
+\end{equation}
+$\mathcal D_n( x)$ is determined by the ITG of Section \ref{sec:ITG}, a derivation $d$ fully determines a string pair $( x,  y)$, $n$ is a length constraint, $w \in \mathbb R^d$ is a vector of parameters, and $\phi$ is a feature function mapping from $\mathcal D_n( x)$ to $\mathbb R^d$.\footnote{The length constraint $n$ is necessary in order to guarantee that the normaliser in Equation (\ref{eq:CRF}) is finite for an arbitrary choice of parameters $w$.}
+
+We are going to use an edge-factored model, that is, our features will score independent steps (edges in a hypergraph) in ITG derivations. 
+Because this is a conditional random field, we do not model the source sentence $x$, this means that global features of $x$ are always available when scoring edges.
+
+The minimum feature set is the following:
+\begin{itemize}
+	\item word pair (for translation/deletion/insertion rules);
+	\item rule indicator (e.g. translation, deletion, insertion, monotone, inverted);
+	\item source inside features (e.g. average embedding or bidirectional representation);
+	\item source outside features (e.g. average embedding or bidirectional representation);
+	\item source span features (e.g. length); 
+	\item target span features (e.g. length);
+	\item source skip-bigrams.
+\end{itemize}
+
+
+\subsection{Training}
+
+The likelihood of an observation $( x,  y)$ is given by marginalisation of latent derivations
+\begin{align}\label{eq:marginal}
+	P( y| x, n, w) &= \sum_{ d \in \mathcal D_n( x)} P( y,  d| x, n, w) ~ .
+\end{align}
+For a given length constraint $n$, the parameters of the model can be optimised for maximum likelihood via gradient-based optimisation
+\begin{align}\label{eq:gradient}
+\nabla_w \mathcal L(w| x,  y, n) &= \mathbb E_{P_{D|x,y,n,w}}[\phi(X, Y, D)] - \mathbb E_{P_{Y,D|x,n,w}}[\phi(X, Y, D)] ~,
+\end{align}
+where $\mathcal L(w| x,  y, n) = \log P( y| x, n, w)$ is the log-likelihood of the observations.
+
+In this part your first task is to prove Equation (\ref{eq:gradient}).
+Then, you will implement the CRF specified in (\ref{eq:CRF}) and optimise its parameters with stochastic optimisation
+\begin{align}
+	w^{(t+1)} &= w^{(t)} + \gamma^{(t)} \nabla_{w^{(t)}} \mathcal L(w^{(t)}|x, y, n) ~ .
+\end{align}
+
+You should experiment with and without an $L_2$ regulariser.\footnote{An $L_2$ regulariser is an approximation to a Gaussian prior on the parameter vector.}
+We will make available a validation set which you can use to tune the regulariser strength.
+Also note that evaluating the likelihood (\ref{eq:marginal}) for the complete training data at every epoch may be too expensive, thus you may perform model selection purely based on likelihood of validation data.\footnote{In principle, one could perform model selection using validation BLEU, but that would require a decision rule for prediction which will investigate in Section \ref{sec:prediction}.}
+
+\subsection{Prediction}\label{sec:prediction}
+
+You will experiment with $3$ decision rules.
+
+\paragraph{Viterbi decoding} ~ Finding the best translation 
+\begin{equation}\label{eq:besty}
+\begin{aligned}
+y^\star &= \argmax_{y \in \mathcal Y_n(x)} ~ P(y|x) \\
+ &= \argmax_{y \in \mathcal Y_n(x)} ~ \sum_{d \in \mathcal D_n(x, y)} P(y, d|x)
+\end{aligned}
+\end{equation}
+is intractable due to the marginalisation of latent derivations. A common approximation is to search for the highest scoring derivation instead.
+\begin{equation}
+y^\star = \yield_\Delta \left\{ \argmax_{d \in \mathcal D_n(x)} P(y, d|x) \right\}
+\end{equation}
+
+\paragraph{Marginal decoding}  ~ The marginal probabilities in (\ref{eq:besty}) can be approximated by ancestral sampling, where the $\argmax$ is taken with respect to a sample rather than the complete space. 
+
+\paragraph{Minimum Bayes risk decoding}  ~ We may introduce a loss $l(h, r)$ that compares a hypothesis $h$ and a reference $r$ (e.g. $1 - \BLEU(h, r)$) and make a decision based on minimum risk
+\begin{equation}
+\begin{aligned}
+y^\star &= \argmin_{y' \in \mathcal Y_n(x)} ~ \mathbb E_{P_{Y|x, n, w}}[l(y', y)]  \\
+ &\approx \argmin_{y' \in \bar{\mathcal Y}_n(x)} ~ \yield_\Delta \left\{ \sum_{i=1}^N  l(y', \yield_\Delta(d_i)) \right\} 
+\end{aligned}
+\end{equation}
+where $d_i \sim P(Y, D|x, n, w)$ is a sample and $\bar{\mathcal Y}_n(x)$ is the set of sampled candidates.
+
+~
+
+
+\noindent\textsc{Note on annealing} ~ Optimisation through sampling often requires annealing, where a positive real number $\alpha$ controls how flat or peaked a distribution is.
+\begin{equation}
+	P_\alpha(y, d|x, n, w) = P(y, d|x, n, w)^\alpha \propto \exp\left(\alpha \times w^\top \phi(x, y, d)\right)
+\end{equation}
+After training you can tune $\alpha$ for best validation $\BLEU$.
+
+\section{Data and code}
+
+Chinese-English (BTEC) data for training/validation/test \citep{Takezawa+2002:BTEC}.
+\begin{itemize}
+	\item sentences up to 30 words
+	\item multiple references for validation
+	\item translation lexicon from IBM model 1
+\end{itemize}
+
+We have prepared python classes that implement a basic ITG parser, check our course page.
+
+
+\section{Report}
+
+You should use latex for your report, and you should use the ACL template available from \url{http://acl2017.org/downloads/acl17-latex.zip} (unlike the template suggests, your submission should not be anonymous). 
+
+We expect short reports (4 pages plus references) written in English. The typical submission is organised as follows: 
+\begin{itemize}
+	\item abstract: conveys scope and contributions;
+	\item introduction: present the problem and relevant background;
+	\item model: technical description of models;
+	\item experiments: details about the data, experimental setup and findings;
+	\item conclusion: a critical take on contributions and limitations.
+\end{itemize}
+
+
+\section{Submission}
+
+You should submit a tgz file containing a folder (folder name {\tt lastname1.lastname2}) with the following content: 
+\begin{itemize}
+	\item Test predictions (one translation per line) using your best model
+	\item Report as a single pdf file (filename: {\tt report.pdf})
+\end{itemize}
+
+Your report may contain a link to an open-source repository (such as github), but please do not attach code or additional data to your tgz submission.
+
+You can complete your project submission on Blackboard no later than {\bf May 19, 23:59 GMT-8}.
+
+%You should email your tgz file to \url{J.C.P.Bastings@uva.nl} no later than {\bf 23:59 GMT-8 on April 26}. If you do not get a confirmation email within 24h after submission, please make sure to contact one of us.
+
+\section{Assessment}
+
+Your report will be assessed by two independent reviewers according to the following evaluation criteria:
+\begin{enumerate}
+	\item Scope (max 2 points): Is the problem well presented? Do students understand the challenges/contributions?
+	\item Theoretical description (max 3 points): Are the models presented clearly and correctly?
+	\item Empirical evaluation (max 3 points): Is the experimental setup sound/convincing? Are experimental findings presented in an organised and effective manner? 
+	\item Writing style (max 2 points): use of latex, structure of report, use of tables/figures/plots, command of English.	
+	\item Extra (max 1 point).
+\end{enumerate}
+
+
+
+

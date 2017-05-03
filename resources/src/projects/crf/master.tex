@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+\hypersetup{colorlinks = true, urlcolor = blue, citecolor =red}
+
+\DeclareMathOperator{\mS}{S}
+\DeclareMathOperator{\mX}{X}
+\DeclareMathOperator{\mT}{T}
+\DeclareMathOperator{\mD}{D}
+\DeclareMathOperator{\mI}{I}
+\DeclareMathOperator{\yield}{yield}
+\DeclareMathOperator{\BLEU}{BLEU}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{Project 2: Machine Translation with CRFs}
+
+\begin{document}
+\maketitle
+
+\input{body}
+
+
+\begin{comment}
+\section{Minimum risk training (extra)}
+
+This section is optional and it is worth 1 extra point.
+
+Suppose we have a loss function $l$ that can assess the quality of a hypothesised translation by comparing it to a reference (e.g. sentence-level BLEU, METEOR, BEER), then we can optimised our CRF as to minimise the expected loss (risk)
+\begin{align}
+	\mathcal R(w|x, y, n, w) &= \mathbb E_{P(Y|x,n,w)}[l(Y)] ~ .
+\end{align}
+The gradient of the risk is given by
+\begin{align}
+	\nabla_w \mathcal R(w|x, y, n, w) &= \mathbb E[l(Y)\phi(X,Y,D)] - \mathbb E[l(Y)] \mathbb E [\phi(X, Y, D)]
+\end{align}
+where all expectations are taken with respect to $P(Y,D|x, n, w)$.
+On the one hand, this objective does not require parsing the reference. On the other hand, assessing the gradient requires assessing the loss for every hypothesis, which is computationally challenging for most interesting losses.\footnote{MT evaluation metrics do not typically decompose conveniently along the steps of a derivation, in fact they are mostly agnostic to the notion of a derivation.}
+We can obtain a biased estimate by MC sampling, where the bias comes from the product of two estimates.
+\end{comment}
+
+\bibliographystyle{apalike}
+
+\bibliography{../../bib}
+
+\end{document}  
