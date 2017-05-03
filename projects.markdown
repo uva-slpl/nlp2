@@ -39,8 +39,6 @@ Submission:
 
 # Project 2 
 
-*From April 26 to May 17*
-
 
 In this project, we will focus on the problem of learning how to permute a sequence of words into target language word order, we will frame this truly unsupervised learning problem as a supervised one by relying on word alignments as a source of observations. We will use pre-trained alignments to extract a cannonical tree-structured mapping between the source word order and the target word order. 
 By framing it as a supervised learning problem we can investigate a different class of probabilistic graphical models, namely, undirected models (aka globally normalised models). 
