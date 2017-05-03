@@ -49,6 +49,7 @@ Resources:
 * [Project description](resources/project_crf/project2.pdf)
 * [Data](resources/project_crf/data.tgz)
 * [Lexicon](resources/project_crf/lexicon.tgz)
+* [Notebooks](resources/notebooks)
 
 Submission:
 
