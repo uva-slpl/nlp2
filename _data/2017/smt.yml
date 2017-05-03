@@ -89,7 +89,6 @@
   img: itg
   uid: crf
   title: "Probablistic models: ITG, Max-Tree Theorem, Latent-variable CRF"
-  slides: resources/slides/itg.pdf
   instructor: Wilker Aziz
   note: 
   abstract: In this lecture we will present probabilistic models built on top of synchronous context-free grammars.
@@ -103,7 +102,7 @@
     - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
     - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
   discussion:
-  slides: 
+  slides: resources/slides/itg.pdf
   code: 
   data: 
 -
