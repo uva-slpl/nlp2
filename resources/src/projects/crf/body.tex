@@ -64,7 +64,8 @@ for these sets and operations will be crucial in fitting the CRF.
     
     % Connect nodes
     \edge[-]{d}{y};
-    \edge[-]{n,x}{d};
+    \edge[-]{x}{d};
+    \edge[->]{n}{d};
     \edge{w}{d};
     
     % add plates
@@ -188,17 +189,15 @@ We expect short reports (4 pages plus references) written in English. The typica
 
 \section{Submission}
 
-You should submit a tgz file containing a folder (folder name {\tt lastname1.lastname2}) with the following content: 
+You should submit a \textbf{.tgz} file containing a folder (folder name {\tt lastname1.lastname2}) with the following content: 
 \begin{itemize}
 	\item Test predictions (one translation per line) using your best model
 	\item Report as a single pdf file (filename: {\tt report.pdf})
 \end{itemize}
 
-Your report may contain a link to an open-source repository (such as github), but please do not attach code or additional data to your tgz submission.
+Your report may contain a link to an open-source repository (such as Github), but please do not attach code or additional data to your tgz submission.
 
 You can complete your project submission on Blackboard no later than {\bf May 19, 23:59 GMT-8}.
-
-%You should email your tgz file to \url{J.C.P.Bastings@uva.nl} no later than {\bf 23:59 GMT-8 on April 26}. If you do not get a confirmation email within 24h after submission, please make sure to contact one of us.
 
 \section{Assessment}
 
