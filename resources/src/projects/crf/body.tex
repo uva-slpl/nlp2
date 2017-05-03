@@ -127,7 +127,7 @@ Also note that evaluating the likelihood (\ref{eq:marginal}) for the complete tr
 
 \subsection{Prediction}\label{sec:prediction}
 
-You will experiment with $3$ decision rules.
+You will experiment with the following decision rules.
 
 \paragraph{Viterbi decoding} ~ Finding the best translation 
 \begin{equation}\label{eq:besty}
@@ -141,7 +141,7 @@ is intractable due to the marginalisation of latent derivations. A common approx
 y^\star = \yield_\Delta \left\{ \argmax_{d \in \mathcal D_n(x)} P(y, d|x) \right\}
 \end{equation}
 
-\paragraph{Marginal decoding}  ~ The marginal probabilities in (\ref{eq:besty}) can be approximated by ancestral sampling, where the $\argmax$ is taken with respect to a sample rather than the complete space. 
+% \paragraph{Marginal decoding}  ~ The marginal probabilities in (\ref{eq:besty}) can be approximated by ancestral sampling, where the $\argmax$ is taken with respect to a sample rather than the complete space. 
 
 \paragraph{Minimum Bayes risk decoding}  ~ We may introduce a loss $l(h, r)$ that compares a hypothesis $h$ and a reference $r$ (e.g. $1 - \BLEU(h, r)$) and make a decision based on minimum risk
 \begin{equation}
@@ -153,7 +153,6 @@ y^\star &= \argmin_{y' \in \mathcal Y_n(x)} ~ \mathbb E_{P_{Y|x, n, w}}[l(y', y)
 where $d_i \sim P(Y, D|x, n, w)$ is a sample and $\bar{\mathcal Y}_n(x)$ is the set of sampled candidates.
 
 ~
-
 
 \noindent\textsc{Note on annealing} ~ Optimisation through sampling often requires annealing, where a positive real number $\alpha$ controls how flat or peaked a distribution is.
 \begin{equation}
