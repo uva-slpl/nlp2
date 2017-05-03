@@ -58,7 +58,9 @@
     - "[Dyer (2010)](http://www.aclweb.org/anthology/N10-1033) shows that a cascade of monolingual parsers is a very neat and general way to perform bitext parsing."
     - "Laura Kallmeyer's book (i.e. *Parsing Beyond Context-Free Grammars*) is a really good reference. Particularly, Chapter 3 on *parsing as deduction*."
   discussion:
-  slides: resources/slides/bitext-parsing.pdf
+  classmaterial:
+    - [Bitext parsing](resources/slides/bitext-parsing.pdf)
+    - [ITGs](resources/slides/itg.pdf)
   code: 
   data: 
 -
