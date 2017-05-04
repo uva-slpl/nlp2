@@ -44,16 +44,14 @@ We will employ ITGs to constrain the space of translation derivations and experi
 
 Topics:
 
-* Bitext parsing
-* Inside-Outside algorithm
-* Viterbi and ancestral sampling
-* Undirected graphical models
-* Gradient-based optimisation
+* Algorithms: Earley intersection, Topsort, Inside-Outside, Viterbi, and ancestral sampling
+* Undirected graphical models: CRF
+* MLE by gradient-based optimisation
 
 Resources:
 
 * [Project description](resources/project_crf/project2.pdf)
-* Notes on [Earley intersection](resources/papers/Aziz-Earley.pdf)
+* [Notes on Earley intersection](resources/papers/Aziz-Earley.pdf)
 * [Data](resources/project_crf/data.tgz)
 * [Lexicon](resources/project_crf/lexicon.tgz)
 * [Notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks)

@@ -33,11 +33,11 @@
 Earley parsers \citep{Earley:1970} can deal with arbitrary context-free grammars (CFGs), that is, they impose no constraints on:
 \begin{itemize}
 	\item left-recursion;
-	\item length of RHS sequence;
-	\item epsilon rulesl
+	\item length of right-hand side of rules;
+	\item epsilon rules
 \end{itemize}
 
-We will be working with a generalised view of parsing corresponding to intersection between discrete (potentially infinite) sets \cite{BarHillel+1961,Billott+1989}. One set is finite-state, another set is context-free, and the result (the intersection) is also context-free. 
+We will be working with a generalised view of parsing corresponding to intersection between discrete (potentially infinite) sets \citep{BarHillel+1961,Billott+1989}. One set is finite-state, another set is context-free, and the result (the intersection) is also context-free. 
 To draw a parallel with standard parsing, the FSA corresponds to the input sentence, the CFG corresponds to the grammar, the intersection corresponds to a parse forest (or chart).
 
 This generalisation is interesting because when dealing with probability distributions over complex discrete spaces (such as those in parsing and hierarchical MT), it is convenient to be able to parse finite-state automata that can represent more than single sentences.
@@ -54,9 +54,10 @@ An FSA is a $5$-tuple $A = \angbrack{\Sigma, Q, E, I, F}$ where
 \end{itemize}
 An arc is a tuple $\angbrack{q, x, s}$ with $(q, s) \in Q \times Q$ and $x \in \Sigma$.
 An FSA defines a \emph{language} $L(A)$ which correspond to the set of sentences that is accepted by $A$.
-A sentence $\mathbf x$ is accepted if there is a path from a state in $I$ (an initial state) to a state in $F$ (an accepting state) whose label sequence corresponds to $\mathbf x$. See Figures \ref{fig:s1}, \ref{fig:s2} and \ref{fig:sinf} for examples.
+A sentence $\mathbf x$ is accepted if there is a path from a state in $I$ (an initial state) to a state in $F$ (an accepting state) whose label sequence corresponds to $\mathbf x$. See Figure \ref{fig:fsa} for examples.
 
 \begin{figure}\centering
+\begin{subfigure}[t]{\textwidth}\centering
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
   %\tikzstyle{every state}=[fill=red,draw=none,text=white]
@@ -70,10 +71,8 @@ A sentence $\mathbf x$ is accepted if there is a path from a state in $I$ (an in
         (C) edge              node {dog} (D);
 \end{tikzpicture}
 \caption{\label{fig:s1}A \emph{linear-chain} FSA is convenient for representing single sentences. Accepting states are denoted by double circles. In this case $L(A) = \{\text{``a black dog''}\}$.}
-\end{figure}
-
-
-\begin{figure}\centering
+\end{subfigure}
+\begin{subfigure}[t]{\textwidth}\centering
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
   %\tikzstyle{every state}=[fill=red,draw=none,text=white]
@@ -88,9 +87,8 @@ A sentence $\mathbf x$ is accepted if there is a path from a state in $I$ (an in
         (C) edge              node {dog} (D);
 \end{tikzpicture}
 \caption{\label{fig:s2}An FSA can define larger sets, for example, in this case $L(A) = \{\text{``a black dog'', ``black dog''}\}$.}
-\end{figure}
-
-\begin{figure}\centering
+\end{subfigure}
+\begin{subfigure}[t]{\textwidth}\centering
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
   %\tikzstyle{every state}=[fill=red,draw=none,text=white]
@@ -107,7 +105,12 @@ A sentence $\mathbf x$ is accepted if there is a path from a state in $I$ (an in
         (E) edge [bend left] node {another} (B);
 \end{tikzpicture}
 \caption{\label{fig:sinf}An FSA can also definite infinitely large sets, for example, in this case $L(A)$ contains ``a black dog'' and infinitely many sentences made of ``a black dog'' concatenated with an arbitrary number of copies of ``and another black dog''.}
+\end{subfigure}
+\caption{\label{fig:fsa}Example of FSAs.}
 \end{figure}
+
+
+
 
 
 \section{CFG}
@@ -198,7 +201,9 @@ Can you extrapolate this to the case where between $0$ and $2$ we have multiple 
 Now we are ready to present a complete intersection algorithm
 
 \begin{align}
-\text{Item form} &\quad  \itembrack{q, X \rightarrow \alpha_\blacksquare \bullet \beta_\square, r} \\
+\text{Item form} &\quad  \itembrack{q, X \rightarrow \alpha_\blacksquare \bullet \beta_\square, r} & (q,r) \in Q\times Q \\
+ & & X \rightarrow \alpha \beta \in R \nonumber \\
+ & & \blacksquare \in Q^* \nonumber \\
 \text{Axioms} &\quad \frac{}{\itembrack{q, S' \rightarrow \bullet S_\square}, q} & q \in I\\
 \text{Goal} &\quad \itembrack{q, S' \rightarrow S_\blacksquare \bullet, r} & q \in I \text{ and } r \in F\\
 \text{Predict} &\quad \frac{\itembrack{q, X \rightarrow \alpha_\blacksquare \bullet Y_\square \beta_\square, r}}{\itembrack{r, Y \rightarrow \bullet \gamma_\square, r}} & Y \rightarrow \gamma \in R \\
