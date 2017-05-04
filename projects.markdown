@@ -53,6 +53,7 @@ Topics:
 Resources:
 
 * [Project description](resources/project_crf/project2.pdf)
+* Notes on [Earley intersection](resources/papers/Aziz-Earley.pdf)
 * [Data](resources/project_crf/data.tgz)
 * [Lexicon](resources/project_crf/lexicon.tgz)
 * [Notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks)
