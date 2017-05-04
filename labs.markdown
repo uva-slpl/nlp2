@@ -9,6 +9,11 @@ Check our [notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/n
 
 # Sessions
 
+## May 10
+
+* CRF MT (~45 minutes)
+* Overview of algorithms: Topsort, Inside, Outside, Viterbi, Ancestral Sampling (~45 minutes)
+
 ## May 3
 
 * Parsing as deduction (~ 45 minutes)
