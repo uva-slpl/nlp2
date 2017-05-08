@@ -65,13 +65,19 @@ All of you are expected to read the paper and prepare some questions, some of yo
 
 * Group: 8
 * When: May 17
-* What: 
+* What: [Character-Aware Neural Language Models](https://arxiv.org/pdf/1508.06615.pdf) 
 * Topics
+    * Language modelling
+    * Convolutional representations 
+    * Recurrent representations
 
 * Group: 5
 * When: May 17
-* What: 
+* What: [Frustratingly Short Attention Spans in Neural Language Modeling](https://arxiv.org/pdf/1702.04521.pdf)
 * Topics
+    * Language modelling
+    * Key-value memory networks
+    * Attention mechanism
 
 
 # Session 5
