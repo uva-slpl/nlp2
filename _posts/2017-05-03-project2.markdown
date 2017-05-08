@@ -11,3 +11,10 @@ Project 2 description is available at:
 
 Deadline: May 19 at 23:59 GMT-8.
 
+Tips:
+
+* To construct an ITG use the template in section 1 of the project description and the lexicon of translation pairs that we provided.
+* ITGs can be rather large and the resulting forests may be quite nasty to deal with, thus we recommend you constrain your ITG so that it contains only top-scoring translation pairs (you can use the IBM1 probabilities that we provided, you can choose one direction or interpolate both). For development we recommend you work with at most 5 translations per source word, once everything is working, you can investigate the impact of having more options.
+* Note that your ITG has to be able to insert and delete words, thus it has to have translation pairs involving the empty string, for that you can use alignments to NULL in the lexicon we provided.
+
+
