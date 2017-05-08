@@ -83,12 +83,17 @@ All of you are expected to read the paper and prepare some questions, some of yo
 # Session 5
 
 * Group: 2
-* When: May 17
-* What: 
+* When: May 19
+* What: [Learning to Parse and Translate Improves Neural Machine Translation](https://arxiv.org/pdf/1702.03525.pdf)
 * Topics
+    * Multitask learning
+    * Recurrent neural network grammars
+    * Sequence-to-sequence
 
 * Group: 6
-* When: May 19 or May 24
-* What: 
+* When: May 19
+* What: [The Neural Noisy Channel](https://arxiv.org/pdf/1611.02554.pdf)
 * Topics
+    * Latent variable modelling with directed models and neural networks
+
 
