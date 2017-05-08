@@ -55,29 +55,31 @@ All of you are expected to read the paper and prepare some questions, some of yo
 
 * Group: 7
 * When: May 12 
-* What: 
+* What: [Unsupervised Word Alignment with Arbitrary Features](http://www.aclweb.org/anthology/P11-1042)
 * Topics
-
-* Group: 8
-* When: May 12
-* What: 
-* Topics
+    * Undirected graphical models (conditional random fields)
+    * Unsupervised learning with feature-rich models
 
 
 # Session 4
+
+* Group: 8
+* When: May 17
+* What: 
+* Topics
 
 * Group: 5
 * When: May 17
 * What: 
 * Topics
 
+
+# Session 5
+
 * Group: 2
 * When: May 17
 * What: 
 * Topics
-
-
-# Session 5
 
 * Group: 6
 * When: May 19 or May 24
