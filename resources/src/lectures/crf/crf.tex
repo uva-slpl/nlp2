@@ -1,0 +1,229 @@
+
+\section{CRF}
+
+\frame{
+	\frametitle{Conditional random field}
+
+	\citet{Lafferty+2001:CRF}
+	\begin{equation}
+		P(y|x,w) = \frac{\exp(w^\top \phi(x, y))}{\sum_{y' \in \mathcal Y(x)} \exp(w^\top \phi(x, y'))}
+	\end{equation}
+	
+	\begin{itemize}
+		\item $\phi$ is a feature function mapping $(x, y)$ to $\mathbb R^d$
+		\item $w$ is a feature vector in $\mathbb R^d$
+		\item $Z(x|w) = \sum_{y \in \mathcal Y(x)} \exp(w^\top \phi(x, y))$ must be finite
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Flexible (overlapping) features}
+	
+	Examples
+	\begin{center}
+		{\bf As}$_1$ menin{\bf as}$_2$ for{\bf am}$_3$ pra$_4$ l\'a$_4$ $\leftrightarrow$ The$_1$ girls$_2$ went$_3$ over$_4$ there$_4$ 
+	\end{center}
+
+	~
+		
+	\begin{center}
+	Apague$_1$ a$_2$ luz$_3$ $\leftrightarrow$ Switch$_1$ the$_2$ light$_3$ off$_1$
+	\end{center}
+	
+	~
+	
+	Hard to account for with directed models \\
+	(due to causality assumptions)
+}
+
+\frame{
+	\frametitle{Global normalisation}
+	
+	Local models are trained with positive context only
+	\begin{itemize}
+		\item MLE: maximise the likelihood of observation $(c, o)$ under $P(O|C=c)$ \pause
+		\item Label bias \citep{Lafferty+2001:CRF}
+	\end{itemize}
+	
+	\pause
+	
+	~
+	
+	What happens when we query the model with predicted contexts? 
+	
+}
+
+\frame{
+	\frametitle{Maximum likelihood estimation}
+	
+	Likelihood of an observation $(x, y)$
+	\begin{align}
+		\mathcal L(w|x, y) &= \log P(y|x,w) \\
+		&= w^\top \phi(x, y) - \log Z(x|w)
+	\end{align}
+	
+	\pause
+	
+	Gradient-based optimisation
+	\begin{align}
+		\nabla_w \mathcal L(w|x, y) &= \phi(x, y) - \mathbb E_{P(Y|X=x, w)}[\phi(X, Y)]
+	\end{align}
+	
+	\pause
+	Expected features should match the features of the observation
+}
+
+\section{CRF with latent variables}
+
+\frame{
+	\frametitle{LV-CRF}
+
+	Model
+	\begin{equation}
+		P(y, d|x) = \frac{\exp(w^\top \phi(x, y, d))}{\sum_{y' \in \mathcal Y(x)} \sum_{d' \in \mathcal D(x, y')} \exp(w^\top \phi(x, y', d'))}
+	\end{equation}
+	
+	
+	\begin{itemize}
+		\item $d$ is latent
+		\item $Z(x, y|w) = \sum_{d \in \mathcal D(x, y)} \exp(w^\top \phi(x, y, d))$ must be finite
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{MLE for LV-CRF}
+	
+	Likelihood of an observation $(x, y)$
+	\begin{align}
+		\mathcal L(w|x, y) &= \log P(y|x,w) \\
+		&= \log \sum_{d \in \mathcal D(x, y)} P(y, d|x, w)
+	\end{align}
+	
+	~\pause
+	
+	Gradient-based optimisation \citep{Mann+2007:EG}
+	\begin{align}
+		\nabla_w \mathcal L(w|x, y) &= \mathbb E_{P(D|X=x, Y=y, w)}[\phi(X, Y, D)] \\
+		&\quad - \mathbb E_{P(Y, D|X=x, w)}[\phi(X, Y, D)]
+	\end{align}
+	
+	\pause
+	Expected features should match the features of the expected observation
+
+}
+
+\frame{
+	\frametitle{Note on training}
+	
+	Undirected models are considerably harder to learn
+	\begin{itemize}
+		\item expensive global normalisation
+		\item complex joint distributions
+	\end{itemize}
+	
+	\pause
+	
+	Particularly hard with latent variables
+	\begin{itemize}
+		\item Alignment: \citet{Dyer+2011:UWA} 
+		\item SMT: \citet{Blunsom+2008:LVMSMT} and \citet{Blunsom+2008:PIMT} \pause
+		\item Approximate techniques
+		\begin{itemize}
+			\item Contrastive divergence \citep{Hinton:2002:PoE}
+			\item Contrastive estimation \citep{Smith+2005:CE} 
+			\item Piecewise training \citep{Sutton+2005:PTU}
+		\end{itemize}
+	\end{itemize}
+}
+
+\section{LV-CRF for SMT}
+
+\frame{
+	\frametitle{SMT with CRFs}
+	
+	\citet{Blunsom+2008:LVMSMT}
+	\begin{itemize}
+		\item $d$ is a derivation complying with a \emph{hiero} grammar
+		\item $\phi$ featurises steps in a synchronous derivation
+		\begin{small}
+		$$P(y,d|x) = \frac{\displaystyle\exp\left(\displaystyle \sum_{r_{s,t} \in d} w^\top \phi(r_{s,t}|x, y, d)\right)}{\displaystyle\sum_{d' \in \mathcal D(x)} \exp\left(\displaystyle\sum_{r_{s,t} \in d} w^\top \phi(r_{s,t}|x, y', d')\right)}$$
+		\end{small}
+		\item $\mathcal D(x)$ is the space of derivations over target strings aligned to the source string $x$
+		\item in the denominator $y'$ is defined implicitly as $\text{yield}(d')$
+		\item $r_{s,t}$ is a synchronous rule decorated with a source span $s$ and a target span $t$	
+	\end{itemize}
+	
+}
+
+\frame{
+	\frametitle{ITG with CRFs}
+
+	In Project 2, you will use an ITG
+	\begin{tabular}{l l l}
+		$S$ & $\rightarrow$ & $X$ \\
+		$X$ & $\rightarrow$ & $X ~ X$ \\
+		$X$ & $\rightarrow$ & $x/y$  for all $x \in \Sigma$ and $y \in \Delta$\\
+		$X$ & $\rightarrow$ & $\epsilon/y$ for all $y \in \Delta$\\
+		$X$ & $\rightarrow$ & $x/\epsilon$ for all $x \in \Sigma$\\
+	\end{tabular}
+
+}
+
+\frame{
+	\frametitle{Global normalisation}
+	
+	ITGs are capable of unbounded insertion \hfill (hiero grammars are not!)
+	
+	~ \pause
+
+	Normaliser may diverge for certain $w \in \mathbb R^d$
+	\begin{itemize}
+		\item $\mathcal D(x)$ is typically inifinite
+		\item $\displaystyle\sum_{d \in \alert{\mathcal D(x)}} \exp\left(\displaystyle\sum_{r_{s,t} \in d} w^\top \phi(r_{s,t}|x, y, d)\right)$
+		
+	\end{itemize}
+	
+	~ \pause
+	 
+	Solution: constrain strings by length
+	\begin{itemize}
+		\item introduce a constrain $n$ that depends on $x$
+		\item make $\mathcal D_n(x)$ such that $|\text{yield}(d)| \le n$ for $d \in \mathcal D_n(x)$
+		\item $\displaystyle\sum_{d \in \textcolor{blue}{\mathcal D_n(x)}} \exp\left(\displaystyle\sum_{r_{s,t} \in d} w^\top \phi(r_{s,t}|x, y, d)\right)$
+		
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Learning}
+	
+	Likelihood of an observation $(x, y, n)$
+	\begin{align}
+		\mathcal L(w|x, y, n) &= \log P(y|x,n,w) \\
+		&= \log \sum_{d \in \mathcal D(x, y)} P(y, d|x, n, w)
+	\end{align}
+	\hfill note that $\mathcal D(x, y)$ is always finite
+	~\pause
+	
+	Gradient-based optimisation
+	\begin{align}
+		\nabla_w \mathcal L(w|x, y, n) &= \underbrace{\mathbb E_{P(D|X=x, Y=y, n, w)}[\phi(X, Y, D)]}_{\text{expected features for observation }(x, y)} \\
+		&\quad - \underbrace{\mathbb E_{P(Y, D|X=x, n, w)}[\phi(X, Y, D)]}_{\text{expected features for observation }x}
+	\end{align}
+}
+
+\frame{
+	\frametitle{What do we need?}
+	
+	An ITG parser in order to obtain  \pause
+	\begin{enumerate}
+		\item $\mathcal D(x)$\\ \pause
+		(potentially infinite) set of derivations over target strings that align to the source string $x$ \pause
+		\item $\mathcal D_n(x)$\\ \pause
+		finite set of derivations over target strings that align to the source string $x$ where the target string is no longer than $n$ words \pause
+		\item $\mathcal D(x, y)$\\ \pause
+		set of derivations of the string pair $(x, y)$ \pause
+		\item expected feature vector of observations $(x, y)$ \pause
+		\item expected feature vector of an observation $x$ 
+	\end{enumerate}
+}
