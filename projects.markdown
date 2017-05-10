@@ -56,7 +56,7 @@ Resources:
 * [Notes on Earley intersection](resources/papers/Aziz-Earley.pdf)
 * [Data](resources/project_crf/data.tgz)
 * [Dev target lengths](resources/project_crf/dev123_lengths.tgz) `new!`
-* [Lexicon](resources/project_crf/lexicon.tgz)
+* [Lexicon](resources/project_crf/lexicon.tgz) Format: `Chinese English P(en|zh) P(zh|en)`
 * [Notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks)
 
 Submission:
