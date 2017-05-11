@@ -58,6 +58,8 @@ Resources:
 * [Dev target lengths](resources/project_crf/dev123_lengths.tgz) `new!`
 * [Lexicon](resources/project_crf/lexicon.tgz) Format: `Chinese English P(en|zh) P(zh|en)`
 * [Notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks)
+    * check `libitg` which contains the complete parser
+    * `LV-CRF-Roadmap` is a notebook that uses `libitg` and discusses the steps towards completing project 2
 
 Submission:
 
