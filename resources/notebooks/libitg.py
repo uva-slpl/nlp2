@@ -250,6 +250,12 @@ class CFG:
                     self._terminals.add(s)
                 else:
                     self._nonterminals.add(s)
+    
+    def __eq__(self, other):
+        return type(self) == type(other) and self._rules == other._rules 
+
+    def __ne__(self, other):
+        return not (self == other)
 
     @property
     def nonterminals(self):
@@ -356,16 +362,36 @@ def make_source_side_itg(lexicon, s_str='S', x_str='X') -> CFG:
 
 class FSA:
     """
-    A container for arcs. This implements a deterministic unweighted FSA.
+    A container for arcs. This implements a non-deterministic unweighted FSA.
     """
+
+    class State:
+        def __init__(self):
+            self.by_destination = defaultdict(set)
+            self.by_label = defaultdict(set)
+
+        def __eq__(self, other):
+            return type(self) == type(other) and self.by_destination == other.by_destination and self.by_label == other.by_label
+
+        def __ne__(self, other):
+            return not (self == other)
     
     def __init__(self):
         # each state is represented as a collection of outgoing arcs
         # which are organised in a dictionary mapping a label to a destination state
-        self._states = []  # here we map from origin to label to destination
+        # each state is a tuple (by_destination and by_label)
+        #  by_destination is a dictionary that maps from destination to a set of labels
+        #  by_label is a dictionary that maps from label to a set of destinations
+        self._states = [] 
         self._initial = set()
         self._final = set()
-        self._arcs = []  # here we map from origin to destination to label
+        self._arcs = set()
+    
+    def __eq__(self, other):
+        return type(self) == type(other) and self._states == other._states and self._initial == other._initial and self._final == other._final
+
+    def __ne__(self, other):
+        return not (self == other)
         
     def nb_states(self):
         """Number of states"""
@@ -373,13 +399,13 @@ class FSA:
     
     def nb_arcs(self):
         """Number of arcs"""
-        return sum(len(outgoing) for outgoing in self._states)
+        return len(self._arcs)
     
     def add_state(self, initial=False, final=False) -> int:
         """Add a state marking it as initial and/or final and return its 0-based id"""
         sid = len(self._states)
-        self._states.append(defaultdict(int))
-        self._arcs.append(defaultdict(str))
+        self._states.append(FSA.State())
+        #self._arcs.append(defaultdict(str))
         if initial:
             self.make_initial(sid)
         if final:
@@ -388,23 +414,20 @@ class FSA:
     
     def add_arc(self, origin, destination, label: str):
         """Add an arc between `origin` and `destination` with a certain label (states should be added before calling this method)"""
-        self._states[origin][label] = destination
-        self._arcs[origin][destination] = label
-    
-    def destination(self, origin: int, label: str) -> int:
-        """Return the destination from a certain `origin` state with a certain `label` (-1 means no destination available)"""
-        if origin >= len(self._states):
-            return -1
-        outgoing = self._states[origin] 
-        if not outgoing:
-            return -1
-        return outgoing.get(label, -1)
+        self._states[origin].by_destination[destination].add(label)
+        self._states[origin].by_label[label].add(destination)
+        self._arcs.add((origin, destination, label))
 
-    def label(self, origin: int, destination: int) -> str:
+    def destinations(self, origin: int, label: str) -> set:
+        if origin >= len(self._states):
+            return set()
+        return self._states[origin].by_label.get(label, set())
+    
+    def labels(self, origin: int, destination: int) -> set:
         """Return the label of an arc or None if the arc does not exist"""
         if origin >= len(self._arcs):
-            return None
-        return self._arcs[origin].get(destination, None)
+            return set()
+        return self._states[origin].by_destination.get(destination, set())
     
     def make_initial(self, state: int):
         """Mark a state as initial"""
@@ -429,18 +452,21 @@ class FSA:
     def iterfinal(self):
         """Iterates over final states"""
         return iter(self._final)
-    
-    def iterarcs(self, origin: int):
-        return self._states[origin].items() if origin < len(self._states) else []
+   
+    def iterarcs(self, origin: int, group_by='destination') -> dict:
+        if origin + 1 < self.nb_states():
+            return self._states[origin].by_destination.items() if group_by == 'destination' else self._states[origin].by_label.items()
+        return dict()
     
     def __str__(self):
         lines = ['states=%d' % self.nb_states(), 
                  'initial=%s' % ' '.join(str(s) for s in self._initial),
                  'final=%s' % ' '.join(str(s) for s in self._final),
                  'arcs=%d' % self.nb_arcs()]        
-        for origin, arcs in enumerate(self._states):
-            for label, destination in sorted(arcs.items(), key=lambda pair: pair[1]):            
-                lines.append('origin=%d destination=%d label=%s' % (origin, destination, label))
+        for origin, state in enumerate(self._states):
+            for destination, labels in sorted(state.by_destination.items(), key=lambda pair: pair[0]):            
+                for label in sorted(labels):
+                    lines.append('origin=%d destination=%d label=%s' % (origin, destination, label))
         return '\n'.join(lines)
         
 def make_fsa(string: str) -> FSA:
@@ -676,13 +702,18 @@ def scan(fsa: FSA, item: Item, eps_symbol: Terminal=Terminal('-EPS-')) -> list:
     :returns: scanned items
     """
     assert item.next.is_terminal(), 'Only terminal symbols can be scanned, got %s' % item.next
+    items = []
     if eps_symbol and item.next.root() == eps_symbol:
-        return [item.advance(item.dot)]
+        items.append(item.advance(item.dot))
     else:
-        destination = fsa.destination(origin=item.dot, label=item.next.root().obj())  # we call .obj() because labels are strings, not Terminals
-        if destination < 0:  # cannot scan the symbol from this state
-            return []
-        return [item.advance(destination)]
+        # we call .obj() because labels are strings, not Terminals
+        for destination in fsa.destinations(origin=item.dot, label=item.next.root().obj()):
+            items.append(item.advance(destination))
+        #destination = fsa.destination(origin=item.dot, label=item.next.root().obj())  
+        #if destination < 0:  # cannot scan the symbol from this state
+        #    return []
+        #return [item.advance(destination)]
+    return items
         
 def complete(agenda: Agenda, item: Item):
     """
@@ -861,15 +892,13 @@ class LengthConstraint(FSA):
         # we always make the last state final
         self.make_final(n)
                 
-    def destination(self, origin: int, label: str) -> int:
+    def destinations(self, origin: int, label: str) -> set:
         """Return the destination from a certain `origin` state with a certain `label` (-1 means no destination available)"""
         if origin + 1 < self.nb_states():
-            outgoing = self._states[origin] 
-            if not outgoing:
-                return -1
-            return origin + 1
+            return super(LengthConstraint, self).destinations(origin, '-WILDCARD-')
         else:
-            return -1
+            return set()
+
 
 # # Enumerating paths
 
@@ -914,18 +943,120 @@ def forest_to_fsa(forest: CFG, start_symbol: Symbol) -> FSA:
     return fsa
 
 
-def enumerate_paths_in_fsa(fsa: FSA, eps_str='-EPS-') -> set:
+def language_of_fsa(fsa: FSA, eps_str='-EPS-') -> set:
+    """Return the set of strings in the FSA: this runs in exponential time, use with very small FSA only"""
     # then we enumerate paths in this FSA
-    paths = set()
+    #from collections import Counter
+    strings = set()
     
-    def visit_fsa_node(state, path):
+    def visit_fsa_state(state, string: tuple):
         if fsa.is_final(state):
-            paths.add(' '.join(x for x in path if x != eps_str))
-        for label, destination in fsa.iterarcs(state):
-            visit_fsa_node(destination, path + [label])
-    
-    visit_fsa_node(0, [])
-    
-    return paths
+            strings.add(' '.join(x for x in string))  #
+        for label, destinations in fsa.iterarcs(state, group_by='label'):
+            if label != eps_str:
+                for destination in destinations:
+                    visit_fsa_state(destination, string + (label,))
+            else:
+                for destination in destinations:
+                    visit_fsa_state(destination, string)
+   
+    for initial in fsa.iterinitial():
+        visit_fsa_state(initial, tuple())
+   
+    return strings
 
+
+def test():
+
+    # Test lexicon
+    lexicon = defaultdict(set)
+    lexicon['le'].update(['the', '-EPS-'])  # we will assume that `le` can be deleted
+    lexicon['-EPS-'].update(['a', 'the'])  # we will assume that `the` and `a` can be inserted
+    lexicon['e'].add('and')
+    lexicon['chien'].add('dog')
+    lexicon['noir'].update(['black', 'noir'])  
+    lexicon['blanc'].add('white')
+    lexicon['petit'].update(['small', 'little'])
+    lexicon['petite'].update(['small', 'little'])
+
+    # Make a source CFG using the whole lexicon
+    src_cfg = make_source_side_itg(lexicon)
+    print('SOURCE CFG')
+    print(src_cfg)
+    print()
+
+    # Make a source FSA
+    src_fsa = make_fsa('le chien noir')
+    print('SOURCE FSA')
+    print(src_fsa)
+    print()
+
+    # Intersect source FSA and source CFG
+    src_forest = earley(src_cfg, src_fsa, 
+            start_symbol=Nonterminal('S'), 
+            sprime_symbol=Nonterminal("D(x)"))
+    print('SOURCE FOREST')
+    print(src_forest)
+    print()
+
+    # Get a target CFG by projecting the forest onto the target language vocabulary using ITG rules and lexicon
+    Dx = make_target_side_itg(src_forest, lexicon)
+    print('PROJECTED FOREST D(x): all translation derivations for source x')
+    print(Dx)
+    print()
+
+    # Make a target FSA
+    tgt_fsa = make_fsa('the black dog')
+    print('TARGET FSA')
+    print(tgt_fsa)
+    print()
+
+    # Parse the target FSA obtaining D(x, y)
+    Dxy = earley(Dx, tgt_fsa,
+            start_symbol=Nonterminal("D(x)"), 
+            sprime_symbol=Nonterminal('D(x,y)'))
+    print('D(x,y): derivations of observation (x, y)')
+    print(Dxy)
+    print()
+
+    # Enumerate strings in D(x,y)
+    # this is just to illustrate that ref_forest accepts a single target (English) string
+    print('Strings in D(x,y)')
+    for string in sorted(language_of_fsa(forest_to_fsa(Dxy, Nonterminal('D(x,y)')))):
+        print(string)
+    print()
+
+    # Get an automaton that recognises \Delta^n
+    # `strict` controls whether the constraint is |yield(d)| == n (strict=True) or |yield(d)| <= n (strict=False)
+    length_fsa = LengthConstraint(4, strict=False)
+    print('FSA that recognises strings such that 1 <= |string| <= n')
+    print(length_fsa)
+    print()
+
+    # Constraint D(x) to derivations such that 1 <= |yield(d)| <= n
+    Dnx = earley(Dx, length_fsa,
+                                start_symbol=Nonterminal("D(x)"), 
+                                                    sprime_symbol=Nonterminal("D_n(x)"))
+    print('D_n(x): derivations of the incomplete observation (x, n)')
+    #print(Dnx)
+    print('Rules in D_n(x): %d' % len(Dnx))
+
+    # Enumerate strings in D_n(x)
+    # this produces a super large FSA which enumerates the strings in the forest
+    Dnx_as_fsa = forest_to_fsa(Dnx, Nonterminal('D_n(x)'))
+    print('L(D_n(x)): states=%d arcs=%d initial=%d final=%d' % (Dnx_as_fsa.nb_states(), Dnx_as_fsa.nb_arcs(), sum(1 for _ in Dnx_as_fsa.iterinitial()), sum(1 for _ in Dnx_as_fsa.iterfinal())))
+    # here we get the strings in a normal python set
+    candidates = language_of_fsa(Dnx_as_fsa)
+    print('LANGUAGE OF D_n(x)')
+    for candidate in sorted(candidates):
+        print(candidate)
+    # Let's check how many string we got
+    print('STRINGS in D_n(x): %d' % len(candidates))
+    # and check whether the gold-standard reference is still in the set of candidates (it should be!)
+    print('Does D_n(x) contain the reference (it should)? %s' % ('yes' if 'the black dog' in candidates else 'no'))
+    print()
+    return Dx, Dxy, Dnx, Dnx_as_fsa, candidates
+
+if __name__ == '__main__':
+    test()
 
