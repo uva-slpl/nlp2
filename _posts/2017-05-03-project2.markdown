@@ -63,3 +63,15 @@ A better solution is to deal with it! One approach is to have a base lexicon (th
 
 Deletions are never too costly, but insertions can be quite expensive. If that becomes an issue, an alternative is to have an ITG rule that maps unseen types to unseen types (e.g. `X -> unk/unk`) and pre-process the training set replacing types that are not in your constrained lexicon with `unk` on either side. Note that you can do the same with respect to epsilon rules (e.g. `X -> unk/eps` and `X -> eps/unk`). These solutions are roughly equivalent, but one may be slower to parse than the other. It's entirely up to you to decide which strategy you want to work with. You can also come up with alternatives. In the end of the day, simply report what you did and try to justify it. 
 
+# More features
+
+Because you have access to the source sentence at all times, you can get rich source features of the source spans and edge covers. These features may help you get better segmentation and word order.
+
+I call inside/outside span features those that summarise the context under a certain span and surrounding a certain span. For example, for an edge `X[2-6] -> X[2-3] X[3-6]` we know exactly which source phrase stands under 2-6, 2-3 and 3-6, in fact we also know which phrases stand in [bos-2] and [6-eos]. Phrases are very sparse though, thus they would make our feature vectors really huge! A good idea might be to use word embeddings to represent words (as a preprocessing step) and have an average embedding represent a phrase (in this case you would be adding as many features as dimensions in your embedding vector). You can also go beyond and use LSTM representations (if you know how to get them) which more naturally represent spans of text.
+
+You can also use source features for reordering, for example, skip bigrams. A skip-bigram is a bigram which does not have to be adjacent, for example, in `le chien noir`, `le * chien`, `le * noir`, `chien * noir` are skip-bigrams. Because you always know the source span and the source string, you can always retrieve skip-bigrams. 
+
+# Target language model features
+
+Target language model features are really hard to use! I can help you with that in the next lecture if you are curious, but that's not going to be expected for project 2 as I would have to teach you a lot more about smart approximate intersection algorithms ;)
+I am very familiar with those though, so if you are interested to go the extra mile, talk to me.
