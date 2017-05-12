@@ -6,7 +6,7 @@ author: Wilker
 categories: projects
 ---
 
-[Project 2 description]({{ "/nlp2/resources/project_crf/project2.pdf" | absolute_url }}).
+[Project 2 description]({{ "/resources/project_crf/project2.pdf" | absolute_url }}).
 
 Deadline: May 19 at 23:59 GMT-8.
 
@@ -20,27 +20,27 @@ Deadline: May 19 at 23:59 GMT-8.
 # Reading
 
 * Model
-    * [Lecture slides]({{ "/nlp2/resources/slides/crf.pdf" | absolute_url }})
+    * [Lecture slides]({{ "/resources/slides/crf.pdf" | absolute_url }})
     * [LV-CRF for Alignment](http://www.aclweb.org/anthology/P11-1042)
     * [LV-CRF for SMT](http://www.aclweb.org/anthology/P08-1024)
     * [Supervised CRFs](http://repository.upenn.edu/cgi/viewcontent.cgi?article=1162&context=cis_papers)
     * [LV-CRF](https://www.cics.umass.edu/~mccallum/papers/entropygradient-naacl2007.pdf)
 * Synchronous grammars
     * [ITGs](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf)
-    * [SCFG tutorial by David Chiang]({{ "/nlp2/resources/papers/ChiangSCFG.pdf" | absolute_url }})
-    * [Lecture slides]({{ "/nlp2/resources/slides/itg.pdf" | absolute_url }})
+    * [SCFG tutorial by David Chiang]({{ "/resources/papers/ChiangSCFG.pdf" | absolute_url }})
+    * [Lecture slides]({{ "/resources/slides/itg.pdf" | absolute_url }})
 * Bitext parsing
-    * [Lecture slides]({{ "/nlp2/resources/slides/bitext-parsing.pdf" | absolute_url }})
-    * [Notes on Earley intersection]({{ "/nlp2/resources/papers/Aziz-Earley.pdf" | absolute_url }})
+    * [Lecture slides]({{ "/resources/slides/bitext-parsing.pdf" | absolute_url }})
+    * [Notes on Earley intersection]({{ "/resources/papers/Aziz-Earley.pdf" | absolute_url }})
     * [Principles and implementation of deductive parsing](https://arxiv.org/abs/cmp-lg/9404008)
     * [Cascade of parsers](http://www.aclweb.org/anthology/N10-1033)
 * Hypergraphs
-    * [Directed hypergraphs]({{ "/nlp2/resources/papers/GalloEtAl.pdf" | absolute_url }})
+    * [Directed hypergraphs]({{ "/resources/papers/GalloEtAl.pdf" | absolute_url }})
     * [Parsing and hypergraphs](https://nlp.stanford.edu/manning/papers/klein_and_manning-parsing_and_hypergraphs-IWPT_2001.pdf)
 * FSAs
-    * [Knight and May's chapter on applications of weighted automata to NLP]({{ "/nlp2/resources/papers/KnightAndMay.pdf" | absolute_url }})
+    * [Knight and May's chapter on applications of weighted automata to NLP]({{ "/resources/papers/KnightAndMay.pdf" | absolute_url }})
     * [FSTs in language and speech processing](http://www.cs.nyu.edu/~mohri/pub/cl1.pdf)
-    * [Mohri's chapter on weighted automata algorithms]({{ "/nlp2/resources/papers/MohriWAA.pdf" | absolute_url }})
+    * [Mohri's chapter on weighted automata algorithms]({{ "/resources/papers/MohriWAA.pdf" | absolute_url }})
 * Semirings 
     * [Goodman's semiring parsing artcile](http://www.aclweb.org/anthology/J/J99/J99-4004.pdf) 
     * [Expectation semiring for translation forests](http://www.aclweb.org/anthology/D09-1005)

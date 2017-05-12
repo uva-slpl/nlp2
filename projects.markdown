@@ -10,6 +10,7 @@ To that end, we prepared three projects.
 
 Groups: check Blackboard or our blog posts.
 
+
 # Project 1 
 
 *From April 12 to April 26*
