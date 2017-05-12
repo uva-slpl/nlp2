@@ -52,6 +52,7 @@ Topics:
 
 Resources:
 
+* Make sure to check our [blogpost](https://uva-slpl.github.io/nlp2/projects/2017/05/03/project2.html) `new!`
 * [Project description](resources/project_crf/project2.pdf)
 * [Notes on Earley intersection](resources/papers/Aziz-Earley.pdf)
 * [Data](resources/project_crf/data.tgz)
