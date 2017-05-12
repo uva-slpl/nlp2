@@ -9,10 +9,10 @@
   note: 
   abstract: 
   background:
-     - "Bengio, Yoshua, et al. \"A neural probabilistic language model.\" Journal of machine learning research 3.Feb (2003): 1137-1155."
-     - "Mikolov, Tomas, et al. \"Recurrent neural network based language model.\" Interspeech. Vol. 2. 2010."  
-further:
-     - "[Goldberg NN for NLP primer](https://arxiv.org/abs/1510.00726)"
+    - "Bengio, Yoshua, et al. A neural probabilistic language model. Journal of machine learning research 3.Feb (2003): 1137-1155."
+    - "Mikolov, Tomas, et al. Recurrent neural network based language model. Interspeech. Vol. 2. 2010."  
+  further:
+    - "[Goldberg NN for NLP primer](https://arxiv.org/abs/1510.00726)"
   discussion:
   slides: resources/slides/lm.pdf 
   code: 
