@@ -53,15 +53,73 @@ Deadline: May 19 at 23:59 GMT-8.
 * You can pre-compute parse forests and feature functions and save them to disk (for example using `cPickle`), that should save some time during iterations of SGD.
 
 
-# Unknown types
+# Empty forests
 
-Note that a proper ITG will always cover the training data. That's so because the lexicon would map every source type to every target type,  allow every source type to be deleted, and every target type to be inserted. Because we do not want to overoptimise our implementations, we will be working with a constrained lexicon, this means that sometimes you will not be able to parse the source and/or the target observation. This may lead to an empty `D(x)` and/or an empty `D(x,y)` which makes the training instance useless.
+
+Note that a proper ITG will always cover the training data. That's so because the lexicon would map every source type to every target type,  allow every source type to be deleted, and every target type to be inserted. Because we cannot afford optimising our implementations, we will be working with a constrained lexicon, this means that sometimes you will not be able to parse the source and/or the target observation. This may lead to an empty `D(x)` and/or an empty `D(x,y)` which makes the training instance useless.
 
 The simplest strategy is to discard training instances for which D(x) and/or D(x,y) are empty, but that's a bit unsatisfactory and one may end up discarding too much data. Also, it is not general enough a solution and the problem will happen again with dev/test sets.
 
-A better solution is to deal with it! One approach is to have a base lexicon (the one with 5 translation options per Chinese type) with some sentence-specific modifications. For example, make sure that before you parse a Chinese sentence, every word in that sentence gets the chance to be deleted. That is, add rules `X -> x/eps` where `x` is a type in the Chinese sentence. If you are training (thus parsing string pairs), you can make sure that every target word gets a chance to be inserted. That is, add rules `X -> eps/y` where `y` is a type in the English sentence. Note that if the added rule is not really support by your base lexicon, it's wise to flag it as such with a feature (e.g. `type:out-of-source-lexicon`, `type:out-of-target-lexicon`).
+Two reasons why you get empty forests:
+* your lexicon misses a certain translation pair 
+* your lexicon cannot delete/insert a certain source/target word
 
-Deletions are never too costly, but insertions can be quite expensive. If that becomes an issue, an alternative is to have an ITG rule that maps unseen types to unseen types (e.g. `X -> unk/unk`) and pre-process the training set replacing types that are not in your constrained lexicon with `unk` on either side. Note that you can do the same with respect to epsilon rules (e.g. `X -> unk/eps` and `X -> eps/unk`). These solutions are roughly equivalent, but one may be slower to parse than the other. It's entirely up to you to decide which strategy you want to work with. You can also come up with alternatives. In the end of the day, simply report what you did and try to justify it. 
+## Unknown types
+
+To deal with unknown types you can introduce an '-UNK-' type in your lexicon and map every word that is not in the lexicon to it. For example, you can have a rule `X -> '-UNK-'/'-UNK'` or even `X -> '-UNK-'/y` where y is a type in the target observation that is not in your lexicon (this last strategy has the added benefit that you can keep named-entities such as cities, organizations, or people's names). It is wise to have features for rules that deal with unknown types (e.g. an unknown indicator, a named-entity tag in case you have access to named entity recognisers, etc.).
+
+## Deletion and Insertion
+
+You need to be careful with deletion and insertion: it is not a good idea to constrain them. A strategy that will work for sure is to have all `X -> eps/y` and `X -> x/eps` possible. 
+
+I wrote before that you could limit the insertions to the types in the target observation. I was probably sleepy. That's not at all an option! It's artificial to constrain the set of available insertions to the words in the target observation (because this is knowledge that is not available at prediction time).
+
+You can (and you should), however, add deletion rules in case you are parsing a Chinese sentence that contains an unseen type. But note that if you mapped the unseen type to '-UNK-', then it's sufficient to add a rule `X -> '-UNK-'/'-EPS-'`.
+
+Once more it's wise to have features for deletion/insertion of types that are unseen.
+
+## Summary
+
+There are may be several ways to combine the basic strategies and you may find your own, whatever you do, simply report what you did and try to justify it. 
+
+I am going to document here one way to go about it.
+
+* for each source type x, `X -> x/y` for the top 5 translations under `P(x|y) * P(y|x)` (with lexical parameters from IBM1)
+* then every symbol that is not in the lexicon is mapped to '-UNK-' on both sides of the training data
+* make sure unk maps to unk as well: `X -> '-UNK-'/'-UNK-'`
+* I would also add the following deletion rules
+    * `X -> '-UNK-'/'-EPS-'`
+    * `X -> x/'-EPS-'` for every source type in the constrained lexicon
+* and the following insertion rules
+    * `X -> '-EPS-'/'-UNK-'`
+    * `X -> '-EPS-'/y` for every target type in the constrained lexicon
+* note that at prediction time (whenever you encounter a dev/test sentence) you first need to convert unseen source types into '-UNK-', then you can parse
+
+
+# More nonterminals
+
+Somebody asked me about having more nonterminals, I think the use case was
+
+* `U -> x/eps` for some unseen type x
+* and `U -> eps/y` for some unseen type y
+
+this is possible too, but you would have to (at least) add a rule that upgrades `U` to `X`
+* `X -> U`
+but other strategies may be possible too.
+
+Note that if you do this, you will need to revisit 3 functions:
+* the function that makes the source side of an ITG assumed we were working with the basic rules only, so you need to account for your new rules there
+* the function that projects a source forest onto the target vocabulary also assumed the basic rule set, so again, you need to modify it to include your additional rules
+* the feature function prototype that I made available also makes a similar assumption
+
+Crucially, note that the parser is left unchanged! That's because I've implemented a very general Earley intersection which can deal with any CFG.
+
+In the spirit of playing with the rule set, note you can also have nonterminals that know more about deletion/insertion
+* `I -> eps/y`
+* `D -> x/eps`
+* `T -> x/y` where x and y are not empty
+and if you play with how I, D, and T interact you can further constrain the space of permutations. You can experiment with this if you like, but consider the changes carefully and justify your choices. 
+
 
 # More features
 

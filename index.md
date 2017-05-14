@@ -31,11 +31,11 @@ We will have 3 project assignments: students work in groups (**2 to 3 members**)
 
 # Grades 
 
-[Weighted geometric mean](https://en.wikipedia.org/wiki/Weighted_geometric_mean) of the grades for presentation (10%) and project work (30%/30%/30%). 
+[Weighted geometric mean](//en.wikipedia.org/wiki/Weighted_geometric_mean) of the grades for presentation (10%) and project work (30%/30%/30%). 
 
 # Contact
 
-You can contact [Wilker Aziz](mailto:w.aziz@uva.nl) by email or visiting his office at Science Park F2.11.
+You can contact [Wilker Aziz](//wilkeraziz.github.io) by email or visiting his office at Science Park 107 F2.11.
 
 [SLPLL]: {{ site.slpll_url }} "Statistical Language Processing and Learning Lab"
 [ILLC]: {{ site.illc_url }} "Institute for Logic, Language and Computation"
