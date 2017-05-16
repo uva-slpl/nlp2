@@ -26,8 +26,7 @@
   title: "Conditional language models: encoder-decoder"
   instructor: Joost Bastings and Wilker Aziz
   note: 
-  abstract:
-    - "Starting from Neural language models, we will learn how to train a model end-to-end to perform translation. "
+  abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
   slides: 
   background:
     - "[Sequence to sequence learning](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)"
