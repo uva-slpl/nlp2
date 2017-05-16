@@ -3,6 +3,7 @@ layout: photolist
 title: Syllabus
 ---
 
+
 *Spring 2017* &#124; [Spring 2016](2016)
 
 In this course you will apply several machine learning techniques to deal with structure predictions problems related to translation.
