@@ -27,11 +27,11 @@
   instructor: Joost Bastings and Wilker Aziz
   note: 
   abstract:
-    - Starting from Neural language models, we will learn how to train a model end-to-end to perform translation. 
+    - "Starting from Neural language models, we will learn how to train a model end-to-end to perform translation. "
   slides: 
   background:
-          - [Sequence to sequence learning[(https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)
-          - [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
+          - "[Sequence to sequence learning[(https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)"
+          - "[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)"
   code: 
   data: 
 -
