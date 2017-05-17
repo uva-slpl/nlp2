@@ -9,7 +9,6 @@ In this course you will apply several machine learning techniques to deal with s
 Our course is composed of 3 blocks of lectures: lexical alignment (3 lectures), statistical machine translation (4 lectures), and neural machine translation (4 lectures).
 We will also have lab sessions related to project assignments.
 
-
 # Lectures
 
 {% assign lectures = (site.data.2017.intro | where: "selected", "y") %}

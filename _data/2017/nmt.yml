@@ -24,10 +24,15 @@
   img: nmtatt
   uid: seq2seq
   title: "Conditional language models: encoder-decoder"
-  instructor: Joost Bastings and Wilker Aziz
+  instructor: Joost Bastings
   note: 
-  abstract: 
-  slides: 
+  abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
+  slides: resources/slides/nmt.pdf
+  background:
+    - "[Sequence to sequence learning](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)"
+    - "[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)"
+  further:
+    - "Pascanu, Razvan, Tomas Mikolov, and Yoshua Bengio. \"On the difficulty of training recurrent neural networks.\" ICML (3) 28 (2013): 1310-1318."
   code: 
   data: 
 -
