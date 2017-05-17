@@ -335,19 +335,20 @@ if __name__ == '__main__':
             'the little white dog and the little black dog .',
             'insertion', nb_insertions=3)
 
-    sys.exit()
-    test(lexicon,
-            'le petit chien noir e le petit chien blanc e le petit petit chien .', 
-            'the little black dog and the little white dog and the mini dog .',
-            'length')
+    # From here the length constrain is a bit too slow, but you can test if you are patient
+
+    #test(lexicon,
+    #        'le petit chien noir e le petit chien blanc e le petit petit chien .', 
+    #        'the little black dog and the little white dog and the mini dog .',
+    #        'length')
     test(lexicon,
             'le petit chien noir e le petit chien blanc e le petit petit chien .', 
             'the little black dog and the little white dog and the mini dog .',
             'insertion', nb_insertions=3)
-    test(lexicon,
-            'le petit chien noir e le petit chien blanc e le petit petit chien petit blanc e petit noir .', 
-            'the little black dog and the little white dog and the dog a bit white and a bit black .',
-            'length')
+    #test(lexicon,
+    #        'le petit chien noir e le petit chien blanc e le petit petit chien petit blanc e petit noir .', 
+    #        'the little black dog and the little white dog and the dog a bit white and a bit black .',
+    #        'length')
     test(lexicon,
             'le petit chien noir e le petit chien blanc e le petit petit chien petit blanc e petit noir .', 
             'the little black dog and the little white dog and the dog a bit white and a bit black .',
