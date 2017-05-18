@@ -98,7 +98,10 @@ class Terminal(Symbol):
             instance._symbol = symbol
             return instance
         return super(Terminal, cls).__new__(cls, symbol, constructor)
-        
+    
+    def __getnewargs__(self):
+        return (self._symbol,)
+
     def is_terminal(self):
         return True
         
@@ -132,7 +135,10 @@ class Nonterminal(Symbol):
             instance._symbol = symbol
             return instance
         return super(Nonterminal, cls).__new__(cls, symbol, constructor)
-        
+    
+    def __getnewargs__(self):
+        return (self._symbol,)
+
     def is_terminal(self):
         return False
         
@@ -175,7 +181,10 @@ class Span(Symbol):
             instance._end = end
             return instance
         return super(Span, cls).__new__(cls, (symbol, start, end), constructor)
-        
+   
+    def __getnewargs__(self):
+        return self._symbol, self._start, self._end
+
     def is_terminal(self):
         # a span delegates this to an underlying symbol
         return self._symbol.is_terminal()
@@ -221,7 +230,10 @@ class Rule(object):
             instance._rhs = rhs
             repository[rhs] = instance
         return instance
-    
+
+    def __getnewargs__(self):
+        return self._lhs, self._rhs
+
     @classmethod
     def nb_instances(cls):
         """Number of instances of Rule"""

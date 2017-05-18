@@ -35,6 +35,9 @@ class Item:
             instance._dots = dots
             repository[dots] = instance
         return instance
+   
+    def __getnewargs__(self):
+        return self._rule, self._dots
     
     @classmethod
     def nb_instances(cls):

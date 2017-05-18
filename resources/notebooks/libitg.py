@@ -288,6 +288,7 @@ def test(lexicon, src_str, tgt_str, constraint_type='length', nb_insertions=0, i
         times['D_n(x)'], len(Dnx_clean), times['clean D_n(x)']))
     print('D(x,y): %d rules in %.4f secs or clean=%d rules at extra %.4f secs' % (len(Dxy), 
         times['D(x,y)'], len(Dxy_clean), times['clean D(x,y)']))
+
     
     if inspect_strings:
         t0 = time()
@@ -296,6 +297,14 @@ def test(lexicon, src_str, tgt_str, constraint_type='length', nb_insertions=0, i
         print(' y in D(x,y):', tgt_str in summarise_strings(Dxy, Nonterminal('D(x,y)')))
         print(' y in clean D(x,y):', tgt_str in summarise_strings(Dxy_clean, Nonterminal('D(x,y)')))
         print(' gathering strings took %d secs' % (time() - t0))
+    
+    # and this is how you pickle things
+    import dill as pickle
+    with open('pickle-test', 'wb') as f:
+        pickle.dump(Dxy_clean, f)
+    with open('pickle-test', 'rb') as f:
+        Dloaded = pickle.load(f)
+    print(len(Dloaded), 'loaded')
 
     print()
 
