@@ -54,15 +54,15 @@
   layout: lecture
   selected: y
   date: 2017-05-19
-  img: nmt
-  uid: mtt
-  title: CRFs via Max-Tree Theorem
+  img: vae
+  uid: vae
+  title: "Variational auto-encoders"
   instructor: Wilker Aziz
   note: 
   abstract:  
   background:
   discussion:
-  slides: 
+  slides: resources/slides/vae.pdf
   code: 
   data: 
 -
@@ -70,8 +70,8 @@
   selected: y
   date: 2017-05-24
   img: nmt
-  uid: vae
-  title: "Align-Embed: variational auto-encoders"
+  uid: proj3
+  title: "Project 3"
   instructor: Wilker Aziz
   note: 
   abstract:  

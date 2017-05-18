@@ -1,0 +1,229 @@
+
+
+\frame{
+	\frametitle{Generative models with neural networks}
+	
+	Mixture model
+	
+	\begin{columns}
+	\begin{column}{0.2\textwidth}
+	\begin{tikzpicture}
+    % Define nodes
+    \node[latent]		(z)		{$ c $};
+    \node[obs, below = of z]		(x)		{$ x $};
+    \node[right = of x]		(theta)		{$ \theta $};
+    
+    
+    % Connect nodes
+    \edge{z,theta}{x};
+    
+    % add plates
+    \plate {x-sentence} {(x)(z)} {$ m $};
+    \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+    	\begin{itemize}\pause
+			\item sample a latent class $c \in \{1, \ldots, K\}$ \\ 
+			$c \sim \mathcal \mathcal U(\frac{1}{K})$ \pause
+			\item generate categorical observation $x$ from $c$ \\
+			$x \sim P(X|C=c)$  \pause
+			\item where $P(X|C=c) = \Cat(f_\theta(c))$  \pause
+			\begin{itemize}
+				\item e.g. $f_\theta(c) = \softmax(g_\theta(c))$ \\ \pause
+				and $g_\theta(c) = \tanh(W r(c) + b)$ \\ \pause
+				and $r(c) = E c$ \pause				
+			\end{itemize}
+			\item with $\theta=(E, W,b)$
+		\end{itemize}
+    \end{column}
+    \end{columns}
+    \pause
+    
+    $$P(x) = \underbrace{\sum_{c=1}^K \underbrace{P(c) P(x|c)}_{\textcolor{blue}{\text{differentiable function of }\theta}}}_{\alert{\text{tractable for small }K}}$$
+
+	\pause
+	Gradient-based optimisation! $\nabla_\theta \log P_\theta(x)$
+}
+
+
+
+
+\frame{
+	\frametitle{Generative models with neural networks}
+	
+	Continuous mixture model
+	
+	\begin{columns}
+	\begin{column}{0.2\textwidth}
+	\begin{tikzpicture}
+    % Define nodes
+    \node[latent]		(z)		{$ z $};
+    \node[obs, below = of z]		(x)		{$ x $};
+    \node[right = of x]		(theta)		{$ \theta $};
+    
+    
+    % Connect nodes
+    \edge{z,theta}{x};
+    
+    % add plates
+    \plate {x-sentence} {(x)(z)} {$ m $};
+    \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+    	\begin{itemize}\pause
+			\item sample a latent embedding $z \in \mathbb R^d$ \\ 
+			$z \sim \mathcal N(0, 1)$ \pause
+			\item generate categorical observation $x$ from $z$ \\
+			$x \sim P(X|Z=z)$  \pause
+			\item where $P(X|Z=z) = \Cat(f_\theta(z))$  \pause
+			\begin{itemize}
+				\item e.g. $f_\theta(z) = \softmax(g_\theta(z))$ \\ \pause
+				and $g_\theta(z) = \tanh(W z + b)$ \\
+			\end{itemize}\pause
+			\item with $\theta=(E, W,b)$ \pause
+			\item \alert{Intractability} \pause
+			\begin{itemize}
+				\item $P(x) = \int p(z) P(x|z) \mathrm{d}z$
+				\item $P(z|x) = \frac{p(z)P(x|z)}{\int p(z') P(x|z') \mathrm{d}z'}$
+			\end{itemize}
+		\end{itemize}
+    \end{column}
+    \end{columns}
+
+	
+}
+
+
+\frame{
+	\frametitle{Variational inference}
+	
+	but we know VI :D  \pause 
+	
+	\begin{columns}
+	\begin{column}{0.2\textwidth}
+	\begin{tikzpicture}
+    % Define nodes
+    \node[latent]		(z)		{$ z $};
+    \node[obs, below = of z]		(x)		{$ x $};
+    \node[right = of x]		(theta)		{$ \theta $};
+    \node[right = of z]		(phi)		{$ \phi $};
+    
+    % Connect nodes
+    \edge{z,theta}{x};
+    \edge[dashed, bend right]{x}{z};
+    \edge{phi}{z};
+    
+    % add plates
+    \plate {x-sentence} {(x)(z)} {$ m $};
+    \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+    	\begin{itemize}
+			\item approximate the posterior with \\ 
+			$q_\phi(Z|x) = \mathcal N(\mu_\phi(x), I \sigma^2_\phi(x))$ \pause
+			\item where 
+			\begin{itemize}
+				\item $\mu_\phi(x) = u_\phi(r_\phi(x))$ \\
+				e.g. $r_\phi(x) = E_{\text{u}} x$ \\
+				and $u_\phi(r) = \tanh(W_{\text{u}} r + b_{\text{u}})$ \pause
+				\item $\sigma^2_\phi(x) = \exp(v_\phi(r'_\phi(x)))$ \\
+				e.g. $r'_\phi(x) = E_{\text{v}} x$ \\
+				and $v_\phi(r) = \tanh(W_{\text{v}} r + b_{\text{v}})$ \pause
+			\end{itemize}
+			\item with $\phi=(E_{\text{u}}, E_{\text{v}}, W_{\text{u}}, W_{\text{v}}, b_{\text{u}}, b_{\text{v}})$		\pause	
+		\end{itemize}
+    \end{column}
+    \end{columns}
+    
+    Mean field assumption
+	\begin{itemize}
+		\item $q_{\phi_i}(Z|x_i)$ is specified for each observation $x_i$ by locally predicting its mean and variance
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Approximate inference by optimisation}
+	
+	 Maximise ELBO
+    $$\log P_\theta(x) \ge \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log \frac{q_\phi(Z|x)}{p_\theta(Z)}\right]}_{\textcolor{blue}{-\KL(q_\theta(Z|x)||p_\theta(Z))}} + \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log P_\theta(X=x|Z) \right]}_{\alert{\text{intractable!}}}$$
+
+	~\pause
+	
+	Prior term
+	$$\KL(q_\phi(Z|x)||p_\theta(Z)) = - \frac{1}{2} \sum_{j=1}^d (1 + \log \sigma^2_\phi(x)_j - \mu_\phi^2(x)_j - \sigma^2_\phi(x)_j)$$
+	
+	\pause
+	Likelihood term is intractable
+	\begin{itemize}
+		\item the Categorical likelihood is not conjugate with the Normal approximate posterior
+	\end{itemize}
+
+}
+
+\frame{
+	\frametitle{Change of variable for location-scale distributions}
+	
+	For $Z \sim \mathcal N(\mu, \sigma^2)$ we can re-express $Z$ in terms of $E \sim \mathcal N(0,I)$
+	\begin{itemize}
+		\item $Z = \mu + \sigma E$
+	\end{itemize} \pause
+	then we can re-express expectations
+	$$\mathbb E_{\mathcal N(\mu, \sigma^2)}[f(Z)] = \mathbb E_{\mathcal N(0,I)}[f(\mu + \sigma E)]$$ \pause
+	
+	back to the ELBO
+	$$\mathbb E_{q_\phi(Z|x)}\left[\log P(x|Z) \right] = \mathbb E_{\epsilon \sim N(0, I)}\left[\log P(x|Z=\mu_\phi(x) + \sigma_\phi(x) \epsilon)) \right]$$
+}
+
+\frame{
+	\frametitle{Monte Carlo estimate}
+	
+	\begin{equation*}
+	\begin{aligned}
+		\mathbb E_{q_\phi(Z|x)}\left[\log P(x|Z) \right] &= \mathbb E_{\epsilon \sim N(0, I)}\left[\log P(x|Z=\mu_\phi(x) + \sigma_\phi(x) \epsilon)) \right] \\
+		&\approx \frac{1}{N} \sum_{n=1}^N \log P\left(x|\mu_\phi(x) + \sigma_\phi(x) \epsilon^{(n)}\right)
+	\end{aligned}
+	\end{equation*}
+}
+
+\frame{
+	\frametitle{MC estimate of the ELBO}
+	
+	\begin{equation*}
+	\begin{aligned}
+	\log P_\theta(x) &\ge \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log \frac{q_\phi(Z|x)}{p_\theta(Z)}\right]}_{\textcolor{blue}{-\KL(q_\theta(Z|x)||p_\theta(Z))}} + \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log P_\theta(X=x|Z) \right]}_{\alert{\text{intractable!}}}\\
+	&\approx \underbrace{\frac{1}{2} \sum_{j=1}^d \left(1 + \log \sigma^2_\phi(x)_j - \mu_\phi^2(x)_j - \sigma^2_\phi(x)_j\right)}_{\textcolor{blue}{-\KL(q_\theta(Z|x)||p_\theta(Z))}} \\
+	&\quad + \underbrace{\log P_\theta\left(x|\mu_\phi(x) + \sigma_\phi(x) \epsilon \right)}_{\textcolor{blue}{\text{single-sample estimate}}}
+	\end{aligned}
+	\end{equation*}
+
+}
+
+\frame{
+	\frametitle{Gradient-based optimisation}
+	
+	Let $\mathcal L(\theta, \phi|x)$ be our objective function\\
+	\begin{equation*}
+	\begin{aligned}
+	\mathcal L(\theta, \phi|x) &= \underbrace{ \frac{1}{2} \sum_{j=1}^d \left(1 + \log \sigma^2_\phi(x)_j - \mu_\phi^2(x)_j - \sigma^2_\phi(x)_j\right)}_{\textcolor{blue}{\text{differentiable function of }\phi}} \\
+	&\quad + \underbrace{\log P_\theta\left(x|\mu_\phi(x) + \sigma_\phi(x) \epsilon \right)}_{\textcolor{blue}{\text{differentiable function of }\theta\text{ and }\phi}}
+	\end{aligned}
+	\end{equation*} \pause
+	
+	~
+	
+	We can update $\theta$ and $\phi$ using stochastic gradient steps
+	\begin{itemize}
+		\item we know chain rule (thus we can get a gradient)
+		\item we have a noisy though unbiased estimate
+		\item guaranteed convergence to a local optimum of $\mathcal L$\\
+		(with appropriate learning rate schedule)
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Further reading}
+	
+	\begin{itemize}
+		\item Auto-Encoding variational Bayes \citep{Kingma+2014:VAE}
+	\end{itemize}
+}

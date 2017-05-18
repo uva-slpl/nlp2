@@ -1,0 +1,111 @@
+
+%\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usetheme{Boadilla}
+
+\usefonttheme[onlymath]{serif}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+
+\usepackage{lmodern}
+\usepackage{comment}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{pgf}
+\usepackage{pbox}
+\usepackage{pifont}
+\usepackage{alltt}
+\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage{xspace}
+\usepackage{cases}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+\usepackage[normalem]{ulem}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xfrac}
+
+
+
+\usepackage{notation}
+\usepackage{variables}
+\usepackage{drawing}
+
+
+\DeclareMathOperator*{\KL}{KL}
+\DeclareMathOperator*{\Cat}{Cat}
+
+\DeclareMathOperator*{\softmax}{softmax}
+
+
+% declares a document
+\begin{document}
+
+
+
+	%\title{Employee's social media use}
+	%\title{Social media use by employees}
+	\title{Variational Auto-Encoders}
+
+	\author{Wilker Aziz}
+	\institute[UvA]{
+		%\inst{1}
+		Universiteit van Amsterdam\\
+		\texttt{w.aziz@uva.nl}
+	}
+
+	\date{\today}
+	
+	% Title page
+	{\setbeamertemplate{footline}{}
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+	}
+
+	\setcounter{framenumber}{0}
+
+
+	% SLIDES
+		
+	\AtBeginSection[]
+    {
+    \begin{frame}<beamer>{Embed-Align}
+    \tableofcontents[currentsection,currentsubsection, 
+        hideothersubsections, 
+        sectionstyle=show/shaded,
+    ]
+    \end{frame}
+    }
+
+
+	% trick to start counting from the table of contents
+	\setcounter{framenumber}{0}
+
+
+	% SLIDES
+	\input{vae}
+	
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
+	
+	
+
+	
+
+	% Trick to discount regular frames from the total of backup frames
+	\setcounter{framenumber}{\value{finalframe}}
+	
+	\frame[allowframebreaks]{ \frametitle{References}
+        \bibliographystyle{plainnat}
+        \bibliography{../../BIB}
+	}
+	
+	
+\end{document}

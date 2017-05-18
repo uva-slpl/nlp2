@@ -15,6 +15,7 @@ We will concentrate on *machine translation* as a good example of an NLP problem
 This is a research-oriented course where we have lectures, discussion sessions led by students, labs, and project assignments.
 We supply reading material (either research papers or tutorials) for lectures as well as a list of pointers for further reading.
 
+
 ## Discussion sessions
 
 A group (typically **3 members**) selects a paper to be discussed. Then
