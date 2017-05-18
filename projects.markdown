@@ -65,7 +65,7 @@ Resources:
 
 Submission:
 
-* Upload .tgz file on Blackboard before *Wednesday May 24*, 23:59 (GMT-8) `new deadline!`
+* Upload `.tgz` file on Blackboard before *Wednesday May 24*, 23:59 (GMT-8) `new deadline!`
 
 # Project 3
 
