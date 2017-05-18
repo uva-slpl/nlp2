@@ -40,6 +40,8 @@ Submission:
 
 # Project 2 
 
+*From May 3 to May 24*
+
 In this project we will frame translation as a latent variable model CRF.
 We will employ ITGs to constrain the space of translation derivations and experiment with maximum likelihood estimation for CRFs.
 
@@ -63,11 +65,11 @@ Resources:
 
 Submission:
 
-* Upload .tgz file on Blackboard before *Wednesday May 24*, 23:59 (GMT-8) `new!`
+* Upload .tgz file on Blackboard before *Wednesday May 24*, 23:59 (GMT-8) `new deadline!`
 
 # Project 3
 
-*From May 17 to June 7*
+*From May 24 to June 7*
 
 In this project you will learn about maximum likelihood estimation for graphical models parameterised by neural networks.
 You will investigate an unsupervised problem for which a tractable solutions exists (an IBM1-type model) and an unsupervised problems for which approximate inference is necessary (an embed-and-align type of model).
