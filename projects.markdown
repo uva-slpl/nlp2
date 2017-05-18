@@ -40,8 +40,6 @@ Submission:
 
 # Project 2 
 
-*From May 3 to May 19*
-
 In this project we will frame translation as a latent variable model CRF.
 We will employ ITGs to constrain the space of translation derivations and experiment with maximum likelihood estimation for CRFs.
 
@@ -65,7 +63,7 @@ Resources:
 
 Submission:
 
-* Upload .tgz file on Blackboard before *May 19*, 23:59 (GMT-8)
+* Upload .tgz file on Blackboard before *Wednesday May 24*, 23:59 (GMT-8) `new!`
 
 # Project 3
 
