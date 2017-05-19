@@ -88,6 +88,7 @@ Resources:
     * check `libitg` which contains the complete parser
     * `LV-CRF-Roadmap` is a notebook that uses `libitg` and discusses the steps towards completing project 2
 * [BLEU evaluation script](resources/project_crf/multi-bleu.perl) `new!` `usage: perl multi-bleu.pl reference < your_translations`
+* `New!` Faster parsing using a finite D(x) [notebook](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/Fast-Parsing-with-Finite-Dx.ipynb)
 
 Submission:
 

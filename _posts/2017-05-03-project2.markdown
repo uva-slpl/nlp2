@@ -8,7 +8,7 @@ categories: projects
 
 [Project 2 description]({{ "/resources/project_crf/project2.pdf" | absolute_url }}).
 
-Deadline: May 19 at 23:59 GMT-8.
+*New deadline*: May 24 at 23:59 GMT-8.
 
 
 # Code
@@ -16,6 +16,7 @@ Deadline: May 19 at 23:59 GMT-8.
 * [roadmap](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/LV-CRF-Roadmap.ipynb): a tutorial style description of the project that connects theory and practice; in particular, we connect the concepts discussed in class with actual code; this tutorial uses `libitg` (see below);
 * [libitg](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/libitg.py): is our implementation of Earley intersection between epsilon-free unweighted FSA and CFGs, we also provide functions to deal with ITGs and length constraints;
 * [notebook on intersection](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/ITG.ipynb): you can use this notebook to understand more about the bits and pieces of the parser, but do not copy code from there, for that use [libitg](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/libitg.py)
+* `new!` [notebook on faster parsing with finite Dx](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/Fast-Parsing-with-Finite-Dx.ipynb)
 
 # Reading
 
