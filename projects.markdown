@@ -87,6 +87,7 @@ Resources:
 * [Notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks)
     * check `libitg` which contains the complete parser
     * `LV-CRF-Roadmap` is a notebook that uses `libitg` and discusses the steps towards completing project 2
+* [BLEU evaluation script](resources/project_crf/multi-bleu.perl) `new!` `usage: perl multi-bleu.pl reference < your_translations`
 
 Submission:
 
