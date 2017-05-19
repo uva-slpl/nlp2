@@ -37,7 +37,7 @@ Submission:
 
 * Upload tgz file on Blackboard before *April 29*, 10:00. (Note: deadline extended!)
 
-Assessment:
+Assessment (grades on blackboard):  `new`
 
 * Scope (max 2 points): *Is the problem well presented? Do students understand the challenges/contributions?* Here we expected to learn about:
     * the alignment problem

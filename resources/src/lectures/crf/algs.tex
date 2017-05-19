@@ -30,7 +30,7 @@
 	I(v) = 
 	\begin{cases}
 		 \bar{1} & \text{if } BS(v) = \emptyset\\
-		 {\displaystyle \bigoplus_{e \in BS(v)}} w(e) {\displaystyle\bigotimes_{u \in \tail(e)}} \beta(u) & \text{otherwise}
+		 {\displaystyle \bigoplus_{e \in BS(v)}} \omega(e) \otimes {\displaystyle\bigotimes_{u \in \tail(e)}} I(u) & \text{otherwise}
 	\end{cases}
 	\end{equation}
 	
@@ -49,7 +49,7 @@
 	O(v) = 
 	\begin{cases}
 		 \bar{1} & \text{if } FS(v) = \emptyset \\
-		 \displaystyle \bigoplus_{e \in FS(v)} O(\head(e)) {\displaystyle\bigotimes_{s \in tail(e)\setminus \{v\}}} I(s) & \text{otherwise}
+		 \displaystyle \bigoplus_{e \in FS(v)} \omega(e) \otimes O(\head(e)) \otimes  {\displaystyle\bigotimes_{s \in tail(e)\setminus \{v\}}} I(s) & \text{otherwise}
 	\end{cases}
 	\end{equation}
 	
@@ -186,6 +186,8 @@
 \frame{
 	\frametitle{Viterbi}
 	
+	Use Inside computed in the Max-Times semiring!
+	
 	\only<1>{
 	\includegraphics[scale=0.3]{img/viterbi0}
 	}
@@ -210,6 +212,9 @@
 }
 
 \frame{
+
+	Use Inside computed in the Sum-Times semiring!
+	
 	\frametitle{Sampling}
 	\only<1>{
 	\includegraphics[scale=0.3]{img/sampling0}

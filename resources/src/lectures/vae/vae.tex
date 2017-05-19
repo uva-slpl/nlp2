@@ -29,11 +29,11 @@
 			$x \sim P(X|C=c)$  \pause
 			\item where $P(X|C=c) = \Cat(f_\theta(c))$  \pause
 			\begin{itemize}
-				\item e.g. $f_\theta(c) = \softmax(g_\theta(c))$ \\ \pause
-				and $g_\theta(c) = \tanh(W r(c) + b)$ \\ \pause
+				\item e.g. $f_\theta(c) = \softmax(W^{(f)} g(c) + b^{(f)})$ \\ \pause
+				and $g(c) = \tanh(W^{(g)} r(c) + b^{(g)})$ \\ \pause
 				and $r(c) = E c$ \pause				
 			\end{itemize}
-			\item with $\theta=(E, W,b)$
+			\item with $\theta=(E, W^{(f)},  b^{(f)},  W^{(g)},  b^{(g)})$
 		\end{itemize}
     \end{column}
     \end{columns}
@@ -72,15 +72,15 @@
     \begin{column}{0.7\textwidth}
     	\begin{itemize}\pause
 			\item sample a latent embedding $z \in \mathbb R^d$ \\ 
-			$z \sim \mathcal N(0, 1)$ \pause
+			$z \sim \mathcal N(0, I)$ \pause
 			\item generate categorical observation $x$ from $z$ \\
 			$x \sim P(X|Z=z)$  \pause
 			\item where $P(X|Z=z) = \Cat(f_\theta(z))$  \pause
 			\begin{itemize}
-				\item e.g. $f_\theta(z) = \softmax(g_\theta(z))$ \\ \pause
-				and $g_\theta(z) = \tanh(W z + b)$ \\
+				\item e.g. $f_\theta(z) = \softmax(W^{(f)} g(z) + b^{(f)})$ \\ \pause
+				and $g(z) = \tanh(W^{(g)} z + b^{(g)})$ \\
 			\end{itemize}\pause
-			\item with $\theta=(E, W,b)$ \pause
+			\item with $\theta=(W^{(f)},  b^{(f)},  W^{(g)},  b^{(g)})$ \pause
 			\item \alert{Intractability} \pause
 			\begin{itemize}
 				\item $P(x) = \int p(z) P(x|z) \mathrm{d}z$
@@ -123,14 +123,14 @@
 			$q_\phi(Z|x) = \mathcal N(\mu_\phi(x), I \sigma^2_\phi(x))$ \pause
 			\item where 
 			\begin{itemize}
-				\item $\mu_\phi(x) = u_\phi(r_\phi(x))$ \\
-				e.g. $r_\phi(x) = E_{\text{u}} x$ \\
-				and $u_\phi(r) = \tanh(W_{\text{u}} r + b_{\text{u}})$ \pause
-				\item $\sigma^2_\phi(x) = \exp(v_\phi(r'_\phi(x)))$ \\
-				e.g. $r'_\phi(x) = E_{\text{v}} x$ \\
-				and $v_\phi(r) = \tanh(W_{\text{v}} r + b_{\text{v}})$ \pause
+				\item $\mu_\phi(x) = W^{(\mu)} u(x) + b^{(\mu)}$ \\
+				e.g. $u(x) = \tanh(W^{(u)} r(x) + b^{(u)})$\\
+				and  $r(x) = E^{(u)} x$  \pause
+				\item $\sigma^2_\phi(x) = \exp(W^{(\sigma)} v(x) + b^{(\sigma)})$ \\
+				e.g. $v(x) = \tanh(W^{(v)} r(x) + b^{(v)})$ \\
+				and  $r(x) = E^{(v)} x$ \pause
 			\end{itemize}
-			\item with $\phi=(E_{\text{u}}, E_{\text{v}}, W_{\text{u}}, W_{\text{v}}, b_{\text{u}}, b_{\text{v}})$		\pause	
+			\item with $\phi=(E^{(u,v)}, W^{(u,v,\mu,\sigma)}, b^{(u,v,\mu,\sigma)})$		\pause	
 		\end{itemize}
     \end{column}
     \end{columns}
@@ -163,7 +163,7 @@
 \frame{
 	\frametitle{Change of variable for location-scale distributions}
 	
-	For $Z \sim \mathcal N(\mu, \sigma^2)$ we can re-express $Z$ in terms of $E \sim \mathcal N(0,I)$
+	For $Z \sim \mathcal N(\mu, \sigma^2)$ we can re-express $Z$ in terms of $E \sim \mathcal N(0,1)$
 	\begin{itemize}
 		\item $Z = \mu + \sigma E$
 	\end{itemize} \pause
