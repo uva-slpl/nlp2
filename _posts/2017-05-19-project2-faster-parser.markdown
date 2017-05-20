@@ -12,4 +12,4 @@ Have a nice weekend,
 
 Wilker & Joost
 
-
+`Edit: we clarified the text about designing your feature function. Please check the updated notebook.`
