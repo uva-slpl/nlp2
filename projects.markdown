@@ -77,8 +77,7 @@ Topics:
 
 Resources:
 
-* Make sure to check our [blogpost](https://uva-slpl.github.io/nlp2/projects/2017/05/03/project2.html) `new!`
-* [Project description](resources/project_crf/project2.pdf)
+* Make sure to check our [blogpost](https://uva-slpl.github.io/nlp2/projects/2017/05/03/project2.html)
 * [Notes on Earley intersection](resources/papers/Aziz-Earley.pdf)
 * Practical notes on SGD by [Leon Bottou](http://cilvr.cs.nyu.edu/diglib/lsml/bottou-sgd-tricks-2012.pdf) (in particular section 5.2 discusses *learning rate schedules* and 5.3 discusses *averaged parameters*) `new!`
 * [Data](resources/project_crf/data.tgz)
@@ -89,6 +88,7 @@ Resources:
     * `LV-CRF-Roadmap` is a notebook that uses `libitg` and discusses the steps towards completing project 2
 * [BLEU evaluation script](resources/project_crf/multi-bleu.perl) `new!` `usage: perl multi-bleu.pl reference < your_translations`
 * `New!` Faster parsing using a finite D(x) [notebook](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/Fast-Parsing-with-Finite-Dx.ipynb)
+* [Project description](resources/project_crf/project2.pdf) `New! The MBR part is optional!`
 
 Submission:
 
