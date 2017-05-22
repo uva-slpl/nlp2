@@ -10,6 +10,8 @@ categories: projects
 
 *New deadline*: May 24 at 23:59 GMT-8.
 
+`Note: The MBR part of the project is optional.`
+
 
 # Code
 
