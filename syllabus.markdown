@@ -1,6 +1,7 @@
 ---
 layout: photolist
 title: Syllabus
+menu: yes
 ---
 
 *Spring 2017* &#124; [Spring 2016](2016)

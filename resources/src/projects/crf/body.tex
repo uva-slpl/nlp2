@@ -42,8 +42,8 @@ Your first task is to build a synchronous parser for such grammar (a variant of 
 	 %instantiate $\mathcal D( x)$, the forest of 
 	 \item Compute the inside value of a node.
 	 \item Compute the outside value of a node.
-	 \item Find the best derivation and perform ancestral sampling.
-	 \item Optional (1 extra point): be able to instantiate $\mathcal D( x,  \mathbf y)$ where instead of a single reference $y$ you parse a set of references $\mathbf y$
+	 \item Find the best derivation (and perform ancestral sampling---see optional MBR decoding below).
+%	 \item Optional (1 extra point): be able to instantiate $\mathcal D( x,  \mathbf y)$ where instead of a single reference $y$ you parse a set of references $\mathbf y$
 \end{itemize}
 for these sets and operations will be crucial in fitting the CRF.
 
@@ -144,14 +144,14 @@ y^\star = \yield_\Delta \left\{ \argmax_{d \in \mathcal D_n(x)} P(y, d|x) \right
 
 % \paragraph{Marginal decoding}  ~ The marginal probabilities in (\ref{eq:besty}) can be approximated by ancestral sampling, where the $\argmax$ is taken with respect to a sample rather than the complete space. 
 
-\paragraph{Minimum Bayes risk decoding}  ~ We may introduce a loss $l(h, r)$ that compares a hypothesis $h$ and a reference $r$ (e.g. $1 - \BLEU(h, r)$) and make a decision based on minimum risk
+\paragraph{Minimum Bayes risk decoding (extra: max. 1 point)}  ~ We may introduce a loss $l(h, r)$ that compares a hypothesis $h$ and a reference $r$ (e.g. $1 - \BLEU(h, r)$) and make a decision based on minimum risk
 \begin{equation}
 \begin{aligned}
 y^\star &= \argmin_{y' \in \mathcal Y_n(x)} ~ \mathbb E_{P_{Y|x, n, w}}[l(y', y)]  \\
  &\approx \argmin_{y' \in \bar{\mathcal Y}_n(x)} ~ \yield_\Delta \left\{ \sum_{i=1}^N  l(y', \yield_\Delta(d_i)) \right\} 
 \end{aligned}
 \end{equation}
-where $d_i \sim P(Y, D|x, n, w)$ is a sample and $\bar{\mathcal Y}_n(x)$ is the set of sampled candidates.
+where $d_i \sim P(Y, D|x, n, w)$ is a sample and $\bar{\mathcal Y}_n(x)$ is the set of candidates sampled through \emph{ancestral sampling}.
 
 ~
 
@@ -160,6 +160,8 @@ where $d_i \sim P(Y, D|x, n, w)$ is a sample and $\bar{\mathcal Y}_n(x)$ is the 
 	P_\alpha(y, d|x, n, w) = P(y, d|x, n, w)^\alpha \propto \exp\left(\alpha \times w^\top \phi(x, y, d)\right)
 \end{equation}
 After training you can tune $\alpha$ for best validation $\BLEU$.
+
+MBR decoding is optional and it's worth up to 1 extra point.
 
 \section{Data and code}
 

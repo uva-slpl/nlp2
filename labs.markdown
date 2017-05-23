@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Labs
+menu: yes
 ---
 
 # Code

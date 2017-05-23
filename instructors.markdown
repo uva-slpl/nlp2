@@ -1,6 +1,7 @@
 ---
 layout: photolist
 title: Instructors
+menu: yes
 ---
 
 *Spring 2017*

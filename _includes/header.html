@@ -15,10 +15,8 @@
 
       <div class="trigger">
         {% for page in site.pages %}
-          {% if page.title %}
-            {% unless page.title == "About" %}
+          {% if page.menu %}
               <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            {% endunless %}
           {% endif %}
         {% endfor %}
 <!--        <a href="{{ site.departamental_page }}">
