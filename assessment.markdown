@@ -4,6 +4,7 @@ title: Assessment
 menu: no
 ---
 
+Here you will find the criteria used in assessing your reports. We might also post some tips you can consult when preparing your report.
 
 # Project 1
 

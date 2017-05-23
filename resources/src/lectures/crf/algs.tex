@@ -142,6 +142,8 @@
 \frame[plain]{
 	\frametitle{Expected features}
 	
+	Expectation semiring \citep{Li+2009:FSS}
+	
 	\begin{algorithmic}[1]\small
 \Function{ExpectedFeatures}{$G = \angbrack{V, \angbrack{E, w}}, I, O, \phi$}
 	\State $\bar{\phi} \la 0$
@@ -152,9 +154,16 @@
 	\EndFor
 	\State $\bar{\phi} \la \bar{\phi} + k \phi(e)$
 \EndFor
-\State \Return $\bar{\phi}$ \Comment{expected feature vector}
+\State \Return $\bar{\phi}$ \Comment{proportional to expected feature vector}
 \EndFunction
 \end{algorithmic}
+
+	Expectations manipulate quantities in a Probability semiring
+	\begin{itemize}
+		\item where weights are normalised probabilities
+		\item $\otimes$ is multiplication
+		\item $\oplus$ is sum
+	\end{itemize}
 }
 
 

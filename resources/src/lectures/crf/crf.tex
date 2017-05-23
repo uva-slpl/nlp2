@@ -227,3 +227,21 @@
 		\item expected feature vector of an observation $x$ 
 	\end{enumerate}
 }
+
+
+\frame{
+	\frametitle{Feature functions}
+	
+	Featurise edges in the support of the CRF
+	\begin{itemize}
+		\item support: the finite set $D_n(x)$
+		\item edges in $D(x,y)$ correspond to a subset of edges in $D_n(x)$ annotated with some extra span information necessary in order to restrict the set to trees that generate $y$		
+	\end{itemize}
+	
+	Feature types
+	\begin{itemize}
+		\item lexical: e.g. translation pairs;
+		\item segmentation: e.g. number of deletions, number of translation rules, number of insertions, number of binary rules;
+		\item word order: e.g. number of inversions, skip-bigrams.
+	\end{itemize}
+}
