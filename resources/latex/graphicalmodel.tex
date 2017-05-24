@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                
+\geometry{letterpaper}                   
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+
+
+
+\title{How to use tikzlibrarybayesnet}
+
+\begin{document}
+\maketitle
+
+
+\begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(f)		{$ f $};
+    \node[latent, right = of f]					(theta)		{\textcolor{blue}{$\theta$}};
+    \node[const, above = of theta]					(alpha)		{$\alpha$};
+    \node[latent, above = of f]		(a)		{$ a $};
+    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of e]		(m)		{$ m $};
+    
+    % Connect nodes
+    \edge{e,a}{f};
+    \edge{m}{a};
+    \edge{theta}{f};
+    \edge{alpha}{theta};
+    
+    % add plates
+    \plate {english-tables} {(theta)} {$v_E$}
+    \plate {source-sentence} {(f)(a)} {$ n $};
+    \plate {corpus} {(source-sentence) (e) (m)} {$ S $};
+\end{tikzpicture}
+
+\end{document}  

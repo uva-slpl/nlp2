@@ -68,6 +68,7 @@ Resources:
 * [BLEU evaluation script](resources/project_crf/multi-bleu.perl) `new!` `usage: perl multi-bleu.pl reference < your_translations`
 * `New!` Faster parsing using a finite D(x) [notebook](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/Fast-Parsing-with-Finite-Dx.ipynb)
 * [Project description](resources/project_crf/project2.pdf) `New! The MBR part is optional!`
+* [Drawing graphical models in latex](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/latex)
 
 Submission:
 
