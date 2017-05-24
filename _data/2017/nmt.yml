@@ -81,12 +81,13 @@
   date: 2017-05-24
   img: nmt
   uid: proj3
-  title: "Project 3"
+  title: "Project 3 and closing remarks"
   instructor: Wilker Aziz
   note: 
   abstract:  
   background:
   discussion:
-  slides: 
+  classmaterial: 
+    - "[Closing remarks](resources/slides/closing.pdf)"
   code: 
   data: 
