@@ -72,16 +72,21 @@
         \node[latent, right = of a]     (c)     {$ c $};
     \node[cond, left = of f]		(e)		{$ e_0^{m} $};
     \node[cond, above = of e]		(m)		{$ m $};
+    \node[latent, right = of c]		(z)		{$ z $};
+    \node[right = of z]		(ab)		{$ a,b $};
     
     % Connect nodes
     \edge{e,a,fprev}{f};
     \edge{m}{a};
     \edge{theta,c}{f};
     \edge{fprev}{c};
+    \edge{z}{c};
+    \edge{ab}{z}
     
     % add plates
     \plate {source-sentence} {(f)(a)(fprev)(c)} {$ n $};
     \plate {corpus} {(source-sentence) (e) (m)} {$ S $};
+    \plate {berparams} {(z)} {$v_F$};
 \end{tikzpicture}
 \caption{Collocation IBM1}
 \end{figure}
