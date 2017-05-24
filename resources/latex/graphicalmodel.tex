@@ -16,10 +16,32 @@
 \maketitle
 
 
+\begin{figure}[h]\centering
 \begin{tikzpicture}
     % Define nodes
     \node[obs]						(f)		{$ f $};
-    \node[latent, right = of f]					(theta)		{\textcolor{blue}{$\theta$}};
+    \node[right = of f]					(theta)		{$\theta$};
+    \node[latent, above = of f]		(a)		{$ a $};
+    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of e]		(m)		{$ m $};
+    
+    % Connect nodes
+    \edge{e,a}{f};
+    \edge{m}{a};
+    \edge{theta}{f};
+    
+    % add plates
+    \plate {source-sentence} {(f)(a)} {$ n $};
+    \plate {corpus} {(source-sentence) (e) (m)} {$ S $};
+\end{tikzpicture}
+\caption{IBM1}
+\end{figure}
+
+\begin{figure}[h]\centering
+\begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(f)		{$ f $};
+    \node[latent, right = of f]					(theta)		{$\theta$};
     \node[const, above = of theta]					(alpha)		{$\alpha$};
     \node[latent, above = of f]		(a)		{$ a $};
     \node[cond, left = of f]		(e)		{$ e_0^{m} $};
@@ -36,5 +58,33 @@
     \plate {source-sentence} {(f)(a)} {$ n $};
     \plate {corpus} {(source-sentence) (e) (m)} {$ S $};
 \end{tikzpicture}
+\caption{Bayesian IBM1}
+\end{figure}
+
+
+\begin{figure}[h]\centering
+\begin{tikzpicture}
+    % Define nodes
+    \node[obs]						(f)		{$ f $};
+    \node[below = of f]					(theta)		{$\theta$};
+    \node[obs, right = of f]        (fprev) {$f_{\text{prev}}$};
+    \node[latent, above = of f]		(a)		{$ a $};
+        \node[latent, right = of a]     (c)     {$ c $};
+    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
+    \node[cond, above = of e]		(m)		{$ m $};
+    
+    % Connect nodes
+    \edge{e,a,fprev}{f};
+    \edge{m}{a};
+    \edge{theta,c}{f};
+    \edge{fprev}{c};
+    
+    % add plates
+    \plate {source-sentence} {(f)(a)(fprev)(c)} {$ n $};
+    \plate {corpus} {(source-sentence) (e) (m)} {$ S $};
+\end{tikzpicture}
+\caption{Collocation IBM1}
+\end{figure}
+
 
 \end{document}  

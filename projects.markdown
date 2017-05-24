@@ -11,7 +11,6 @@ To that end, we prepared three projects.
 
 Groups: check Blackboard or our blog posts.
 
-
 # Project 1 
 
 *From April 12 to April 26*
@@ -33,7 +32,6 @@ Resources:
 * [Tips](https://uva-slpl.github.io/nlp2/project1/2017/04/12/IBM.html)
 * [Helper functions for validation AER](resources/project_ibm/aer.py)
     * Note that I wrote this helper class using `python3`, if you are using `python2` you will need to import `from __future__ import division` to avoid the default integer division (whereby stuff like 1/2 evaluates to 0 instead of 1.5)
-* [Drawing graphical models in latex](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/latex)
 
 Submission:
 
