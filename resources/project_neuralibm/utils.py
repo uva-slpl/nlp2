@@ -46,4 +46,15 @@ def prepare_data(batch, vocabulary_x, vocabulary_y):
   y = vocabulary_y.batch2tensor(batch_y, add_null=False, add_end_symbol=False)    
   return x, y
 
+def prepare_batch_data(batch, vocabulary):
+  """Prepare batch of sentences for TensorFlow input."""
+  x = vocabulary.batch2tensor(batch, add_null=True, add_end_symbol=False)
+  return x
+
+
+def filter_len(data, max_length=30):
+  for x in data:
+    if len(x) > max_length:
+      continue
+    yield x
 
