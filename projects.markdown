@@ -93,6 +93,6 @@ Resources:
 
 * [Project description](resources/project_neuralibm/project3.pdf)
 * [Notebooks and Data](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/project_neuralibm/)
-    * Notebook `Theory` contains the theoretical background and questions to be answered
-    * Notebook `Neural IBM 1` contains a tensorflow implementation of neural IBM 1 and the complete training/test pipeline
-    * note that formulas do not render well on github, thus make sure to run `jupyter notebook` on your own computer when reading the theoretical background.
+    * Notebook `Theory` is your starting point, it contains the theoretical background and questions to be answered.
+    * From there, check notebook `Neural IBM 1` which contains a tensorflow implementation of neural IBM 1 and the complete training/test pipeline.
+    * Note that formulas do not render well on github, thus make sure to run `jupyter notebook` on your own computer when reading the theoretical background.
