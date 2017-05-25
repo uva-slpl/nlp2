@@ -81,13 +81,12 @@ Assessment: [guidelines and tips for report](assessment).
 
 In this project you will learn about maximum likelihood estimation for graphical models parameterised by neural networks.
 You will investigate an unsupervised problem for which a tractable solutions exists (an IBM1-type model) and an unsupervised problems for which approximate inference is necessary (a collocation model).
-You will employ techniques like explicit marginalisation of latent alignments and variational inference for the following models.
+You will employ techniques like explicit marginalisation of latent alignments and variational inference for the following models:
 
 * Neural IBM1
 * Neural IBM1 augmented with additional French contex
 * Neural IBM1 with latent collocation
 * Neural IBM1 with latent gates
-
 
 Resources:
 
@@ -96,3 +95,4 @@ Resources:
     * Notebook `Theory` is your starting point, it contains the theoretical background and questions to be answered.
     * From there, check notebook `Neural IBM 1` which contains a tensorflow implementation of neural IBM 1 and the complete training/test pipeline.
     * Note that formulas do not render well on github, thus make sure to run `jupyter notebook` on your own computer when reading the theoretical background.
+
