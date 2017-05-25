@@ -81,13 +81,13 @@ Assessment: [guidelines and tips for report](assessment).
 
 In this project you will learn about maximum likelihood estimation for graphical models parameterised by neural networks.
 You will investigate an unsupervised problem for which a tractable solutions exists (an IBM1-type model) and an unsupervised problems for which approximate inference is necessary (a collocation model).
+You will employ techniques like explicit marginalisation of latent alignments and variational inference for the following models.
 
-* IBM1 with NNs: a NN predicts the parameters of the lexical categorical distributions (note that this requires to explicitly marginalise over alignments);
-* IBM1 augment with French contex: this model leverages FFNNs to make translation distributions of IBM1 condition on additional context.
-* IBM1 with latent collocation: this introduces a binary latent variable that decides between translation components (which condition on English words) and language model (or insertion) components (which condition on French words).
-* Finally, IBM1 with latent gates: this model introduces a latent gate value that allows us to mix translation and insertion components instead of choose either one or the other.
+* Neural IBM1
+* Neural IBM1 augmented with additional French contex
+* Neural IBM1 with latent collocation
+* Neural IBM1 with latent gates
 
-In this project you will employ techniques like explicit marginalisation of latent alignments and variational inference to circumvent the explicit marginalisation of latent embeddings.
 
 Resources:
 
@@ -95,3 +95,4 @@ Resources:
 * [Notebooks and Data](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/project_neuralibm/)
     * Notebook `Theory` contains the theoretical background and questions to be answered
     * Notebook `Neural IBM 1` contains a tensorflow implementation of neural IBM 1 and the complete training/test pipeline
+    * note that formulas do not render well on github, thus make sure to run `jupyter notebook` on your own computer when reading the theoretical background.
