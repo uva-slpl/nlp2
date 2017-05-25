@@ -80,11 +80,18 @@ Assessment: [guidelines and tips for report](assessment).
 *From May 24 to June 7*
 
 In this project you will learn about maximum likelihood estimation for graphical models parameterised by neural networks.
-You will investigate an unsupervised problem for which a tractable solutions exists (an IBM1-type model) and an unsupervised problems for which approximate inference is necessary (an embed-and-align type of model).
+You will investigate an unsupervised problem for which a tractable solutions exists (an IBM1-type model) and an unsupervised problems for which approximate inference is necessary (a collocation model).
 
 * IBM1 with NNs: a NN predicts the parameters of the lexical categorical distributions (note that this requires to explicitly marginalise over alignments);
-* IBM1 without null words: this model adds a latent variable that can propose segmentations trading between translation and monolingual insertion (again this requires explicit marginalisation of translation/insertion decisions);
-* Jointly learn how to embed and align: along with alignment and segmentation, learn latent random embeddings (where marginalisation of latent embeddings is intractable in general).
+* IBM1 augment with French contex: this model leverages FFNNs to make translation distributions of IBM1 condition on additional context.
+* IBM1 with latent collocation: this introduces a binary latent variable that decides between translation components (which condition on English words) and language model (or insertion) components (which condition on French words).
+* Finally, IBM1 with latent gates: this model introduces a latent gate value that allows us to mix translation and insertion components instead of choose either one or the other.
 
 In this project you will employ techniques like explicit marginalisation of latent alignments and variational inference to circumvent the explicit marginalisation of latent embeddings.
 
+Resources:
+
+* [Project description](resources/project_neuralibm/project3.pdf)
+* [Notebooks and Data](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/project_neuralibm/)
+    * Notebook `Theory` contains the theoretical background and questions to be answered
+    * Notebook `Neural IBM 1` contains a tensorflow implementation of neural IBM 1 and the complete training/test pipeline
