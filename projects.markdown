@@ -96,3 +96,7 @@ Resources:
     * From there, check notebook `Neural IBM 1` which contains a tensorflow implementation of neural IBM 1 and the complete training/test pipeline.
     * Note that formulas do not render well on github, thus make sure to run `jupyter notebook` on your own computer when reading the theoretical background.
 
+Remarks:
+
+* You are free to use a framework other than tensorflow (including pre-defined layers), but then our support may be limitted by your choice.
+* You can use pre-defined layers (e.g. MLP, Embedding, etc.) and optimisers (e.g. SGD, Adagrad, Adam, etc.), but note that you still need to answer theoretical questions about some of these.
