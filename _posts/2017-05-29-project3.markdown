@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Project 3 updated & TF basics
+title:  Project 3 updated 
 date:   2017-05-29
 author: Joost
 categories: projects
