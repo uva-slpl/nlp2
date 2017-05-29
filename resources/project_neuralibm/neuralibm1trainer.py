@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import random
+from pprint import pprint
 from utils import iterate_minibatches, prepare_data, smart_reader, bitext_reader
 
 
@@ -48,7 +49,12 @@ class NeuralIBM1Trainer:
   def _build_optimizer(self):
     """Buid the optimizer."""
     self.lr_ph = tf.placeholder(tf.float32)
-    self.optimizer = tf.train.GradientDescentOptimizer(
+    # Uncomment this to use simple SGD instead (uses less memory, converges slower)
+    #self.optimizer = tf.train.GradientDescentOptimizer(
+    #  learning_rate=self.lr_ph).minimize(self.model.loss)
+
+    # use Adam optimizer
+    self.optimizer = tf.train.AdamOptimizer(
       learning_rate=self.lr_ph).minimize(self.model.loss)
     
   def train(self):
@@ -59,6 +65,7 @@ class NeuralIBM1Trainer:
     for epoch_id in range(1, self.num_epochs + 1):
       
       # shuffle data set every epoch
+      print("Shuffling training data")
       random.shuffle(self.corpus)
       
       loss = 0.0
@@ -74,6 +81,14 @@ class NeuralIBM1Trainer:
         
         x, y = prepare_data(batch, self.model.x_vocabulary, 
                             self.model.y_vocabulary)
+        
+        # If you want to see the data that goes into the model during training
+        # you may uncomment this.
+        #if batch_id % 1000 == 0:
+        #    print(" ".join([str(t) for t in x[0]]))
+        #    print(" ".join([str(t) for t in y[0]]))
+        #    print(" ".join([self.model.x_vocabulary.get_token(t) for t in x[0]]))
+        #    print(" ".join([self.model.y_vocabulary.get_token(t) for t in y[0]]))
 
         # input to the TF graph
         feed_dict = { 
