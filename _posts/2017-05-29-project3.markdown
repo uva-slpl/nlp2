@@ -1,0 +1,21 @@
+---
+layout: post
+title:  Project 3 updated & TF basics
+date:   2017-05-29
+author: Joost
+categories: projects
+---
+
+Hi everyone,
+
+We've pushed an update to the Project 3 code that adds better initialization and now uses the Adam optimizer. Adam has an adaptive learning rate, and we found it to be much better in optimization than SGD in this case. It will require a bit more memory though.
+
+Please use this version of the code since we also fixed a mistake in the AER calculation. (Sorry!) With the current settings (i.e. a vocabulary of only 1000 types), you will reach a validation AER of about 0.45 after one epoch, and it will not improve much from there. With a larger vocabulary, you should expect a much lower AER of about 0.32, and whatever you try it will be hard to beat  ~0.25.
+
+If you want to know more about Adam, you can read more here: https://arxiv.org/abs/1412.6980  
+
+Don't wait too long to get started!
+
+Best,
+
+Wilker & Joost
