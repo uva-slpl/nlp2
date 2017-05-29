@@ -3,6 +3,13 @@ import tensorflow as tf
 from aer import read_naacl_alignments, AERSufficientStatistics
 from utils import iterate_minibatches, prepare_data
 
+# for TF 1.1
+import tensorflow
+try:
+  from tensorflow.contrib.keras.initializers import glorot_uniform
+except:  # for TF 1.0
+  from tensorflow.contrib.layers import xavier_initializer as glorot_uniform
+
 
 class NeuralIBM1Model:
   """Our Neural IBM1 model."""
@@ -36,21 +43,21 @@ class NeuralIBM1Model:
     
   def _create_weights(self):
     """Create weights for the model."""
-    with tf.name_scope("MLP") as scope:
+    with tf.variable_scope("MLP") as scope:
       self.mlp_W_ = tf.get_variable(
-        name="W_", initializer=tf.random_normal_initializer(),
+        name="W_", initializer=glorot_uniform(),
         shape=[self.emb_dim, self.mlp_dim])
 
       self.mlp_b_ = tf.get_variable(
-        name="b_", initializer=tf.random_normal_initializer(),
+        name="b_", initializer=tf.zeros_initializer(),
         shape=[self.mlp_dim])
       
       self.mlp_W = tf.get_variable(
-        name="W", initializer=tf.random_normal_initializer(),
+        name="W", initializer=glorot_uniform(),
         shape=[self.mlp_dim, self.y_vocabulary_size])
 
       self.mlp_b = tf.get_variable(
-        name="b", initializer=tf.random_normal_initializer(),
+        name="b", initializer=tf.zeros_initializer(),
         shape=[self.y_vocabulary_size])    
 
   def save(self, session, path="model.ckpt"):
@@ -64,7 +71,7 @@ class NeuralIBM1Model:
     # These are trainable parameters, so we use tf.get_variable.
     # Shape: [Vx, emb_dim] where Vx is the source vocabulary size
     x_embeddings = tf.get_variable(
-      name="x_embeddings", initializer=tf.random_normal_initializer(),
+      name="x_embeddings", initializer=tf.random_uniform_initializer(),
       shape=[self.x_vocabulary_size, self.emb_dim])    
     
     # Now we start defining our graph.
@@ -113,6 +120,7 @@ class NeuralIBM1Model:
 
     # Now we perform the tiling:
     pa_x = tf.tile(pa_x, [1, longest_y, 1])  # [B, N, M]    
+
     # Result:
     #  pa_x = [[[1/2 1/2   0]
     #           [1/2 1/2   0]]
@@ -130,6 +138,11 @@ class NeuralIBM1Model:
     h = tf.matmul(mlp_input, self.mlp_W_) + self.mlp_b_  # affine transformation
     h = tf.tanh(h)                                       # non-linearity  
     h = tf.matmul(h, self.mlp_W) + self.mlp_b            # affine transformation [B * M, Vy]
+
+    # You could also use TF fully connected to create the MLP.
+    # Then you don't have to specify all the weights and biases separately.
+    #h = tf.contrib.layers.fully_connected(mlp_input, self.mlp_dim, activation_fn=tf.tanh, trainable=True)
+    #h = tf.contrib.layers.fully_connected(h, self.y_vocabulary_size, activation_fn=None, trainable=True)
     
     # Now we perform a softmax which operates on a per-row basis.
     py_xa = tf.nn.softmax(h)
@@ -162,14 +175,17 @@ class NeuralIBM1Model:
     acc = acc_correct / acc_total
     
     cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(
-      labels=self.y,
-      logits=tf.log(py_x),
+      labels=tf.reshape(self.y, [-1]),
+      logits=tf.log(tf.reshape(py_x,[batch_size * longest_y, self.y_vocabulary_size])),
       name="logits"
     )
+    cross_entropy = tf.reshape(cross_entropy, [batch_size, longest_y])
     cross_entropy = tf.reduce_sum(cross_entropy * y_mask, axis=1)
-    cross_entropy = tf.reduce_mean(cross_entropy)
+    cross_entropy = tf.reduce_mean(cross_entropy, axis=0)
     
-    # Now we define our cross entropy loss   
+    # Now we define our cross entropy loss 
+    # Play with this if you want to try and replace TensorFlow's CE function.
+    # Disclaimer: untested code
 #     y_one_hot = tf.one_hot(self.y, depth=self.y_vocabulary_size)     # [B, N, Vy]
 #     cross_entropy = tf.reduce_sum(y_one_hot * tf.log(py_x), axis=2)  # [B, N]
 #     cross_entropy = tf.reduce_sum(cross_entropy * y_mask, axis=1)    # [B]
@@ -185,18 +201,17 @@ class NeuralIBM1Model:
     self.accuracy_total = tf.cast(acc_total, tf.int64)
     
     
-  def evaluate(self, data, ref_alignments):
+  def evaluate(self, data, ref_alignments, batch_size=4):
     """Evaluate the model on a data set."""
     
     ref_align = read_naacl_alignments(ref_alignments)
     
-    align_iterator = iter(ref_align)
+    ref_iterator = iter(ref_align)
     metric = AERSufficientStatistics()
     accuracy_correct = 0
     accuracy_total = 0
     
-    for batch_id, batch in enumerate(iterate_minibatches(data, batch_size=4)):
-      
+    for batch_id, batch in enumerate(iterate_minibatches(data, batch_size=batch_size)):
       x, y = prepare_data(batch, self.x_vocabulary, self.y_vocabulary)
       y_len = np.sum(np.sign(y), axis=1, dtype="int64")
       
@@ -206,12 +221,17 @@ class NeuralIBM1Model:
       
 #       if batch_id == 0:
 #         print(batch[0])      
-      
-      for alignment, N, (sure, probable) in zip(align, y_len, ref_align):
+#      s = 0
+
+      for alignment, N, (sure, probable) in zip(align, y_len, ref_iterator):
         # the evaluation ignores NULL links, so we discard them
         # j is 1-based in the naacl format
         pred = set((aj, j) for j, aj in enumerate(alignment[:N], 1) if aj > 0)
         metric.update(sure=sure, probable=probable, predicted=pred)
+ #       print(batch[s])
+ #       print(alignment[:N])
+ #       print(pred)
+ #       s +=1
 
     accuracy = accuracy_correct / float(accuracy_total)
     return metric.aer(), accuracy
