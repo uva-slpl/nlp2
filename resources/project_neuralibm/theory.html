@@ -11796,7 +11796,7 @@ div#notebook {
 </ul>
 </li>
 <li><a href="#ibm1-latent-gate">Latent Gate</a><ul>
-<li><a href="#ibm1-latent-gate-vi">Variational Inference</a></li>
+<li><a href="#ibm1-latent-gate-vi">Variational Approximation</a></li>
 <li><a href="#ibm1-latent-gate-reparam">Reparameterisation</a></li>
 <li><a href="#ibm1-latent-gate-elbo">ELBO</a></li>
 <li><a href="#ibm1-latent-gate-kl">KL</a></li>
@@ -12401,7 +12401,7 @@ P(f_j|e_0^m, s_j) &= \sum_{a_j=0}^m P(a_j|m) P(f_j|e_{a_j}, f_{j-1}, s_j)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.3.1-ELBO-">2.3.1 ELBO <a class="anchor" id="ibm1-latent-gate-elbo" /><a class="anchor-link" href="#2.3.1-ELBO-">&#182;</a></h3><p>Now, we will employ gradient-based optimisation to obtain a local optimum of the <em>evidence lower-bound</em> (ELBO), which for a single French position is</p>
+<h3 id="2.3.3-ELBO-">2.3.3 ELBO <a class="anchor" id="ibm1-latent-gate-elbo" /><a class="anchor-link" href="#2.3.3-ELBO-">&#182;</a></h3><p>Now, we will employ gradient-based optimisation to obtain a local optimum of the <em>evidence lower-bound</em> (ELBO), which for a single French position is</p>
 \begin{align}
 \mathcal E_j(\theta, \phi|e_0^m, f_j) 
  &= \mathbb E_{q_j}[\log P(f_j|e_0^m, f_{j-1}, S_j)] 
@@ -12427,7 +12427,7 @@ P(f_j|e_0^m, s_j) &= \sum_{a_j=0}^m P(a_j|m) P(f_j|e_{a_j}, f_{j-1}, s_j)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.3.2-KL-">2.3.2 KL <a class="anchor" id="ibm1-latent-gate-kl" /><a class="anchor-link" href="#2.3.2-KL-">&#182;</a></h3><p>The KL divergence between Kumaraswamy and Beta (<a href="https://arxiv.org/pdf/1605.06197.pdf">see appendix</a>) is given by</p>
+<h3 id="2.3.4-KL-">2.3.4 KL <a class="anchor" id="ibm1-latent-gate-kl" /><a class="anchor-link" href="#2.3.4-KL-">&#182;</a></h3><p>The KL divergence between Kumaraswamy and Beta (<a href="https://arxiv.org/pdf/1605.06197.pdf">see appendix</a>) is given by</p>
 \begin{align}
 \mathrm{KL}(\mathrm{Kuma}(\alpha, \beta) || \mathrm{Beta}(a, b)) 
  &= \frac{\alpha - a}{\alpha}\left( -\gamma - \Psi(\beta) - \frac{1}{\beta} \right) \\
@@ -12449,7 +12449,7 @@ P(f_j|e_0^m, s_j) &= \sum_{a_j=0}^m P(a_j|m) P(f_j|e_{a_j}, f_{j-1}, s_j)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.3.3-MC-Estimate-of-ELBO-">2.3.3 MC Estimate of ELBO <a class="anchor" id="ibm1-latent-gate-mc" /><a class="anchor-link" href="#2.3.3-MC-Estimate-of-ELBO-">&#182;</a></h3><p>Then a single-sample approximation to the ELBO is given by</p>
+<h3 id="2.3.5-MC-Estimate-of-ELBO-">2.3.5 MC Estimate of ELBO <a class="anchor" id="ibm1-latent-gate-mc" /><a class="anchor-link" href="#2.3.5-MC-Estimate-of-ELBO-">&#182;</a></h3><p>Then a single-sample approximation to the ELBO is given by</p>
 \begin{align}
 \mathcal E_j(\theta, \phi|e_0^m, f_j) 
  &= \mathbb \log P(f_j|e_0^m, f_{j-1}, s_j) 
@@ -12494,19 +12494,6 @@ l(\theta, \phi|\mathcal S) &= \ldots
 \end{align}
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
