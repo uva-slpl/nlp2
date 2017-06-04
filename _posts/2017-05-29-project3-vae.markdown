@@ -26,19 +26,3 @@ Best,
 Wilker & Joost
 
 
-# FAQ
-
-* Where are the manual alignments for the test set?
-
-We have uploaded the alignments, you should be able to find them on github now.
-
-* How do I do model selection?
-
-Just like you did for project 1. That is, you should use *validation* log-likelihood and *validation* AER to track the performance after each epoch. At the end of training, you assess performance on *test set* using the best parameters you've got.
-
-* How do I track log-likelihood of training data?
-
-That's tricky. You don't really want to track the likelihood of the complete training data because that would be rather expensive. One strategy is to plot likelihood of each training mini-batch. Another strategy is to keep a running average for each epoch (that's what Joost implemented for you). 
-
-
-
