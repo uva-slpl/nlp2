@@ -34,5 +34,20 @@ Just like you did for project 1. That is, you should use *validation* log-likeli
 
 That's tricky. You don't really want to track the likelihood of the complete training data because that would be rather expensive. One strategy is to plot likelihood of each training mini-batch. Another strategy is to keep a running average for each epoch (that's what Joost implemented for you). 
 
+* How many terms do I need in the Taylor expansion of the KL?
+
+Use something like 5 to 10.
+
+* What if I get numerical problems when computing the KL?
+
+You can constrain your predictions for parameters of Beta and Kuma to be in (0, k] where k is some small positive integer (e.g. 10). For example you can clip your activations to that interval. This is not super satisfactory, but better strategies are considerably more involved. 
+
+* Do I need NULL words on the English side in T3 and T4?
+
+Actually, you don't! The collocation variables mediate between translation and insertion which makes NULL words unnecessary. 
+
+* What if I already did everything with NULL words in T3 and T4?
+
+That's okay. Now you know you didn't have to ;)
 
 
