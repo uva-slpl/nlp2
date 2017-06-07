@@ -34,6 +34,14 @@ Just like you did for project 1. That is, you should use *validation* log-likeli
 
 That's tricky. You don't really want to track the likelihood of the complete training data because that would be rather expensive. One strategy is to plot likelihood of each training mini-batch. Another strategy is to keep a running average for each epoch (that's what Joost implemented for you). 
 
+* Are the models in T2 better than the basic neural IBM 1?
+
+Not really. Sometimes with enough tricks (e.g. like getting the right layer size, right number of nonlinear layers, some regularisation) you can get it to be as good as the basic model or slightly better. But that's what I call *death by hyperparameter optimisation* and we do not find that exciting. The most common case is that T2 will underperform. 
+
+* Are T3/T4 better than the basic neural IBM 1?
+
+In my experience yes, about 2 AER, but I only tried in a larger scale scenario.
+
 * How many terms do I need in the Taylor expansion of the KL?
 
 Use something like 5 to 10.
