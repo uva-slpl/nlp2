@@ -34,7 +34,13 @@ Use something like 5 to 10.
 
 * What if I get numerical problems when computing the KL?
 
-You can constrain your predictions for parameters of Beta and Kuma to be in (0, k] where k is some small positive integer (e.g. 10). For example you can clip your activations to that interval. This is not super satisfactory, but better strategies are considerably more involved. 
+You can constrain your predictions for parameters of Beta and Kuma to be in [0.001, k] where k is some small positive integer (e.g. 10). For example you can clip your exponential activations to that interval or you can scale a sigmoid activation by k (and sum 0.001 to stay far enough from 0). 
+
+After doing so, you will still observe some negative KL, the reason is because when the Kuma and the Beta overlap considerably KL should be 0. The truncated Taylor expansion gets worse as your Kuma/Beta parameters get close to 0 or too large. You will notice that when the parameters are very similar to each other, KL is going to be some small negative number. But you should notice that they are really small in magnitude (that means, still close to zero).
+
+The problem is that a negative number being added to the loss becomes an opportunity for the optimiser to exploit numerical instability in order to make the loss artificially small. You can circumvent that by clipping the KL term from below at 0.
+
+I know this little tweaks are not super satisfactory, but better strategies are considerably more involved. 
 
 * Do I need NULL words on the English side in T3 and T4?
 
@@ -43,5 +49,9 @@ Actually, you don't! The collocation variables mediate between translation and i
 * What if I already did everything with NULL words in T3 and T4?
 
 That's okay. Now you know you didn't have to ;)
+
+* How do I decode in the collocation model?
+
+I would suggest you simply argmax over both latent variables, for each French position. Then if you get a collocation variable to be set to 1, you can consider that word NULL-aligned.
 
 
