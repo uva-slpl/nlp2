@@ -9,13 +9,16 @@ def KL(kuma_a, kuma_b, beta_a, beta_b, terms=10):
     In the theory notebook: Kuma(alpha, beta), Beta(a, b)
     Here: Kuma(kuma_a, kuma_b), Beta(beta_a, beta_b).
 
-    I am assuming at this point you have already clipped the parameters of Kuma and Beta between 0.001 and 10 (for example), to make sure we do not have 0s and to make sure we do not have large numbers.
+    I am assuming at this point you have already clipped the parameters of 
+        Kuma and Beta between 0.001 and 10 (for example), 
+        to make sure we do not have 0s and to make sure we do not have large numbers.
 
-    Here
+    Note that:
         kuma_a, kumba_b, beta_a and beta_b should all have the same shape
     
     I am not doing it here, but I suggest you clip the resulting KL from below at 0 
-        this prevents your optimiser opportunistically exploting numerical instabilities due to the truncated Taylor expansion
+        this prevents your optimiser from opportunistically exploiting numerical instabilities 
+        due to the truncated Taylor expansion
 
     I hope this helps :)
     """
