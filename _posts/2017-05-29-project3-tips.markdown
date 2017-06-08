@@ -41,6 +41,8 @@ After doing so, you will still observe some negative KL, the reason is because w
 The problem is that a negative number being added to the loss becomes an opportunity for the optimiser to exploit numerical instability in order to make the loss artificially small. You can circumvent that by clipping the KL term from below at 0.
 
 I know this little tweaks are not super satisfactory, but better strategies are considerably more involved. 
+I added an example to the repository, check it in case you are struggling to get the KL term right!
+
 
 * Do I need NULL words on the English side in T3 and T4?
 
