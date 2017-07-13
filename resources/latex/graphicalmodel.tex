@@ -19,6 +19,28 @@
 \begin{figure}[h]\centering
 \begin{tikzpicture}
     % Define nodes
+    \node[obs]						(x)		{$ x $};
+    \node[right = of x]					(theta)		{$\theta$};
+    \node[latent, above = of x]		(z)		{$ z $};
+    \node[right = of z]					(phi)		{$\phi$};
+    
+    % Connect nodes
+    \edge{z}{x};
+    \edge{theta}{x};
+    \edge{phi}{z};
+    \edge[dashed, bend right]{x}{z};
+    
+    % add plates
+    \plate {sentence} {(x)(z)} {$ n $};
+    \plate {corpus} {(sentence)} {$ S $};
+\end{tikzpicture}
+\caption{VAE}
+\end{figure}
+
+
+\begin{figure}[h]\centering
+\begin{tikzpicture}
+    % Define nodes
     \node[obs]						(f)		{$ f $};
     \node[right = of f]					(theta)		{$\theta$};
     \node[latent, above = of f]		(a)		{$ a $};
