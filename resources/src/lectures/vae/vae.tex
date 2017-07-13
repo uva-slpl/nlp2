@@ -126,7 +126,7 @@
 				\item $\mu_\phi(x) = W^{(\mu)} u(x) + b^{(\mu)}$ \\
 				e.g. $u(x) = \tanh(W^{(u)} r(x) + b^{(u)})$\\
 				and  $r(x) = E^{(u)} x$  \pause
-				\item $\sigma^2_\phi(x) = \exp(W^{(\sigma)} v(x) + b^{(\sigma)})$ \\
+				\item $\sigma_\phi(x) = \exp(W^{(\sigma)} v(x) + b^{(\sigma)})$ \\
 				e.g. $v(x) = \tanh(W^{(v)} r(x) + b^{(v)})$ \\
 				and  $r(x) = E^{(v)} x$ \pause
 			\end{itemize}
@@ -145,7 +145,7 @@
 	\frametitle{Approximate inference by optimisation}
 	
 	 Maximise ELBO
-    $$\log P_\theta(x) \ge \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log \frac{q_\phi(Z|x)}{p_\theta(Z)}\right]}_{\textcolor{blue}{-\KL(q_\theta(Z|x)||p_\theta(Z))}} + \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log P_\theta(X=x|Z) \right]}_{\alert{\text{intractable!}}}$$
+    $$\log P_\theta(x) \ge \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log \frac{p_\theta(Z)}{q_\phi(Z|x)}\right]}_{\textcolor{blue}{-\KL(q_\theta(Z|x)||p_\theta(Z))}} + \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log P_\theta(X=x|Z) \right]}_{\alert{\text{intractable!}}}$$
 
 	~\pause
 	
@@ -190,7 +190,7 @@
 	
 	\begin{equation*}
 	\begin{aligned}
-	\log P_\theta(x) &\ge \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log \frac{q_\phi(Z|x)}{p_\theta(Z)}\right]}_{\textcolor{blue}{-\KL(q_\theta(Z|x)||p_\theta(Z))}} + \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log P_\theta(X=x|Z) \right]}_{\alert{\text{intractable!}}}\\
+	\log P_\theta(x) &\ge \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log \frac{p_\theta(Z)}{q_\phi(Z|x)}\right]}_{\textcolor{blue}{-\KL(q_\theta(Z|x)||p_\theta(Z))}} + \underbrace{\mathbb E_{q_\phi(Z|x)}\left[\log P_\theta(X=x|Z) \right]}_{\alert{\text{intractable!}}}\\
 	&\approx \underbrace{\frac{1}{2} \sum_{j=1}^d \left(1 + \log \sigma^2_\phi(x)_j - \mu_\phi^2(x)_j - \sigma^2_\phi(x)_j\right)}_{\textcolor{blue}{-\KL(q_\theta(Z|x)||p_\theta(Z))}} \\
 	&\quad + \underbrace{\log P_\theta\left(x|\mu_\phi(x) + \sigma_\phi(x) \epsilon \right)}_{\textcolor{blue}{\text{single-sample estimate}}}
 	\end{aligned}
