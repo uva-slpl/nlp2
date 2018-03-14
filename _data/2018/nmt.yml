@@ -1,0 +1,93 @@
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-12
+  img: nnlm
+  uid: nlm
+  title: Neural language models
+  instructor: Joost Bastings
+  note: 
+  abstract: 
+  background:
+    - "Bengio, Yoshua, et al. A neural probabilistic language model. Journal of machine learning research 3.Feb (2003): 1137-1155."
+    - "Mikolov, Tomas, et al. Recurrent neural network based language model. Interspeech. Vol. 2. 2010."  
+  further:
+    - "[Goldberg NN for NLP primer](https://arxiv.org/abs/1510.00726)"
+  discussion:
+  slides: resources/slides/lm.pdf 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-17
+  img: nmtatt
+  uid: seq2seq
+  title: "Conditional language models: encoder-decoder"
+  instructor: Joost Bastings
+  note: 
+  abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
+  slides: resources/slides/nmt.pdf
+  background:
+    - "[Sequence to sequence learning](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)"
+    - "[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)"
+  further:
+    - "Pascanu, Razvan, Tomas Mikolov, and Yoshua Bengio. \"On the difficulty of training recurrent neural networks.\" ICML (3) 28 (2013): 1310-1318."
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: n
+  date: 2017-05-19
+  img: nmt
+  uid: convenc
+  title: Convolutional encoders
+  instructor: Joost Bastings
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-19
+  img: vae
+  uid: vae
+  title: "Variational auto-encoders"
+  instructor: Wilker Aziz
+  abstract:  "In this lecture I will present generative modelling with neural networks, we will start with a mixture model and then present the variational auto-encoder."
+  background:
+    - "Variational Inference: "
+    - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
+    - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
+    - "[Gaussian distribution](https://en.wikipedia.org/wiki/Normal_distribution)"
+  further:
+    - "Variational auto-encoders:"
+    - "A [tutorial](https://arxiv.org/abs/1606.05908) (`disclaimer:` not my favourite!)"
+    - "The original: [Kingma and Welling (2014)](https://arxiv.org/abs/1312.6114) and [Rezend et al (2014)](https://arxiv.org/abs/1401.4082)"
+    - "KL for Gaussians: [Soch and Allefeld (2016)](https://arxiv.org/pdf/1611.01437.pdf) or [wikipedia](https://en.wikipedia.org/wiki/Kullback–Leibler_divergence#Kullback.E2.80.93Leibler_divergence_for_multivariate_normal_distributions)"
+    - "More on reparameterisation (`advanced!`): [Titsias and Lazaro-Gredilla (2014)](http://www2.aueb.gr/users/mtitsias/papers/titsias14.pdf) and [Ruiz et al (2016)](https://arxiv.org/abs/1610.02287)"
+    - "Stochastic optimisation:"
+    - "Practical notes by [Leon Bottou](http://cilvr.cs.nyu.edu/diglib/lsml/bottou-sgd-tricks-2012.pdf) (in particular section 5.2 discusses learning rate schedules)"
+    - "A [handbook chapter](http://www.jhuapl.edu/spsa/PDF-SPSA/Handbook04_StochasticOptimization.pdf)"
+    - "The [original](https://www.jstor.org/stable/2236626) `advanced!`"
+  slides: resources/slides/vae.pdf
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-24
+  img: end
+  uid: end
+  title: "Project 3 and closing remarks"
+  instructor: Wilker Aziz
+  note: 
+  abstract:  
+  background:
+  discussion:
+  classmaterial: 
+    - "[Closing remarks](resources/slides/closing.pdf)"
+  code: 
+  data: 

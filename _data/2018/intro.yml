@@ -1,0 +1,17 @@
+-
+  layout: lecture
+  selected: y
+  date: 2017-04-05
+  img: introduction
+  uid: intro
+  title: "Introduction: parallel corpora"
+  instructor: "Khalil Sima'an"
+  note: 
+  abstract: >
+    In this introductory lecture we will discuss the nature of translation data (parallel corpora) and the opportunities around  
+    this particular source of annotation. 
+  background:
+  discussion:
+  slides: 
+  code: 
+  data: 

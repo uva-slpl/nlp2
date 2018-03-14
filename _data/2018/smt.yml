@@ -1,0 +1,124 @@
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-03
+  img: biparsing
+  uid: biparsing
+  title: Bitext Parsing
+  instructor: Wilker Aziz
+  note: 
+  abstract: In this lecture we will review PCFG parsing as weighted deduction. We will then extend the idea to parsing with synchronous grammars. This lecture covers the necessary background for ITGs and tree-structured CRFs (parameter estimation and prediction).
+  background:
+    - "I will discuss bitext parsing using deductive systems, if you are not familiar with that you might want to read a good [tutorial](http://arxiv.org/abs/cmp-lg/9404008)."  
+    - "David Chiang has a nice [tutorial](resources/papers/ChiangSCFG.pdf) on synchronous grammar. I will not stick too much to it though."
+  further:
+    - "[Dyer (2010)](http://www.aclweb.org/anthology/N10-1033) shows that a cascade of monolingual parsers is a very neat and general way to perform bitext parsing."
+    - "Laura Kallmeyer's book (i.e. *Parsing Beyond Context-Free Grammars*) is a really good reference. Particularly, Chapter 3 on *parsing as deduction*."
+  discussion:
+  classmaterial: 
+    - "[Bitext parsing](resources/slides/bitext-parsing.pdf)"
+    - "[ITGs](resources/slides/itg.pdf)"
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-10
+  img: itg
+  uid: crf
+  title: "Probablistic models: Latent-variable CRF"
+  instructor: Wilker Aziz
+  note: 
+  abstract: In this lecture we will present probabilistic models built on top of synchronous context-free grammars.
+  background:
+    - "ITG is a form of context-free transducer. Thus the more you know about context-free grammars (CFGs) and their probabilistic extensions (PCFGs), the better. You can start with M Collins's [lecture notes](http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/pcfgs.pdf) on PCFGs. In estimating parameters for a PCFG with EM we need expectations (as always), there is an efficient algorithm to compute those from parse forests. Again, M Collins's has nice [lecture notes](http://www.cs.columbia.edu/~mcollins/io.pdf) on this algorithm (the Inside-Outside algorithm) as well as EM for PCFGs."
+    - "[Wu (1997)](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf) is the best introduction to ITG in the literature."
+    - "IBM alignment models fit within a larger translation component inspired by the noisy channel approach from information theory. ITGs can also play that role, see [Wu and Wong (1998)](http://www.aclweb.org/anthology/P98-2230). "
+  further:
+    - "ITGs have a very generic vocabulary of nonterminals leading to very flat distributions. One can use the idea of state splitting to refine the vocabulary of a vanilla ITG. This is very difficul to do in terms of MLE. [Blunsom et al. (2008)](http://papers.nips.cc/paper/3453-bayesian-synchronous-grammar-induction) develop a non-parametric Bayesian model which learns how far to refine the vocabulary of a vanilla ITG. [Blunsom and Cohn (2010)](http://www.aclweb.org/anthology/N10-1028) build on that work and propose a more efficient inference technique based on slice sampling."
+    - "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
+    - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
+    - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
+  discussion:
+  slides: resources/slides/crf.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: n
+  date: 2017-05-10
+  img: rg
+  uid: rg
+  title: Factorisation of permutations and reordering grammar
+  instructor: "Miloš Stanojević"
+  note: 
+  abstract: In this lecture we will talk about preordering, factorization of permutations and reordering grammar.
+  background:
+    - "Stanojevic ́ and Sima'an. 2015. [Reordering Grammar Induction](http://www.aclweb.org/anthology/D15-1005)"
+  slides: resources/slides/rg.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-04-21
+  img: pbsmt
+  uid: pbsmt
+  title: "Linear models: phrase-based and hierarchical phrase-based SMT"
+  instructor: Miguel Rios and Wilker Aziz
+  note: 
+  abstract: 
+  code: 
+  data:
+  classmaterial: 
+    - "Part 1: [PBSMT](resources/slides/pbsmt.pdf)"
+    - "Part 2: [HPBSMT](resources/slides/hpbsmt.pdf)"
+  background:
+    - "Adam Lopez's [SMT survey](http://www.cs.jhu.edu/~alopez/papers/survey.pdf), in particular, sections 1 to 3."
+-
+  layout: lecture
+  selected: y
+  date: 2017-04-26
+  img: mteval
+  uid: mteval
+  title: Evaluation
+  instructor: "Miloš Stanojević"
+  note: 
+  abstract: |
+    Evaluation in Machine Translation is dealing with automatic assesment of the translation quality. 
+    Unlike many machine learning tasks, here there is no unique gold truth to which we can compare the translation -- there are many equally good translations. 
+    Also translations can be good or bad in many dimensions: morphology, syntax or semantics. 
+    Evaluation is important not only for assesing the quality of the final system but also for automatic tuning of the systems. 
+  background:
+    - "A good survey of evaluation methods can be found in Chapter 8 of [Koehn's book](http://www.statmt.org/book/). You can also refer to statmt's survey [page](http://www.statmt.org/survey/Topic/Evaluation)"
+    - "[BLEU](http://www.aclweb.org/anthology/P02-1040.pdf) is the most widely used automatic evaluation metric, it is mostly a precision metric."
+  further:
+    - "[BEER](http://aclweb.org/anthology/D14-1025) is a trainable metric meant for approximating human ranking of translations."
+    - "[METEOR](http://www.aclweb.org/anthology/W/W05/W05-0909.pdf) tries to balance precision and recall."
+    - "Read [(Lopez, 2012)](http://www.aclweb.org/anthology/W/W12/W12-3101.pdf) for a formal view of evaluation of automatic evaluation metrics (you read it right!)." 
+    - "[Hypothesis testing for SMT](http://www.aclweb.org/anthology/P/P11/P11-2031.pdf) or whether two systems differ."
+  discussion:
+  slides: resources/slides/mteval.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-05-03
+  img: tuning
+  uid: tuning
+  title: Tuning
+  instructor: "Miloš Stanojević"
+  note: 
+  abstract: >
+    We will cover a few algorithms that allow us to fine tune many parameters that our MT system can have (weights for language model, translation model, word penalty...).
+  background:
+    - "A [survey](http://www.phontron.com/paper/neubig16cl.pdf) of optimisation techniques for machine translation."
+  further:
+    - "MT tuning can be seen as a learning to rank task. In learning to rank, a typical approach is to approximate a complex ranking task by a series of pairwise ranking decision. This idea has been popularised in MT by the algorithm [PRO](http://www.aclweb.org/anthology/D11-1125)."
+    - "For a nice overview of large margin discriminative learning in MT refer to [(Eidelman, 2012)](http://www.aclweb.org/anthology/W12-3160)"
+    - "For MIRA with batched updates in MT refer to [(Cherry and Forster, 2012)](http://www.aclweb.org/anthology/N12-1047)"
+  discussion:
+  slides: resources/slides/tuning.pdf
+  code: 
+  data: 
