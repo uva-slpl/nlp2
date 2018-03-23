@@ -4,11 +4,11 @@ title: Instructors
 menu: yes
 ---
 
-*Spring 2017*
+*Spring 2018*
 
 [Statistical Language Processing and Learning Lab][SLPLL] (minus just a few).
 
-{% assign instructors = (site.data.2017.instructors | where: "selected", "y") %}
+{% assign instructors = (site.data.2018.instructors | where: "selected", "y") %}
 {% for person in instructors %}
 {% include person.html person=person %}
 {% endfor %}
