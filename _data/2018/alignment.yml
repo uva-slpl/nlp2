@@ -1,11 +1,11 @@
 -
   layout: lecture
   selected: y
-  date: 2017-04-07
+  date: 2017-04-09
   img: ibm
   uid: ibm_em
-  title: "IBM1-2: MLE via EM for categorical distributions"
-  instructor: Wilker Aziz
+  title: "IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
+  instructor: Khalil Sima'an
   note: 
   abstract: >
     In this session we will discuss the IBM word alignment models 1 and 2. 
@@ -27,9 +27,38 @@
   code: 
   data: 
 -
+-
   layout: lecture
   selected: y
-  date: 2017-04-12
+  date: 2017-04-13
+  img: ibm
+  uid: ibm_em
+  title: "Cont. IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
+  instructor: Khalil Sima'an
+  note: 
+  abstract: >
+    In this session we will continue the exposition of IBM 1 and 2 models for word alignment. 
+    We will view them as constrained mixture models. After motivating the models intuitively, we will develop them formally and devise an EM parameter estimation algorithm for them. 
+    We will also try to understand why the resulting optimisation problem contains multiple optima. 
+  background:
+    - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf) which is the basis for his lecture."
+    - "Wilker Aziz has made available some notes on the derivation of the [M-step for IBM1-2](resources/papers/Aziz-IBM12-EM.pdf)."
+    - "In order to get a more concrete view of implementation, including pseudo-codes for the EM procedure, read M. Collins's [lecture notes](resources/papers/CollinsIBM.pdf)."
+  further: 
+    - "The original [IBM paper](http://www.aclweb.org/anthology/J93-2003) is very dense, but if you want to go around teaching IBM models you should probably read it a few times."
+    - "[R. Moore (2004)](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf) discusses a number of problems with IBM model 1 involving 1) null words, 2) rare words, and 3) initialisation for EM. If you can understand the problems he raises and the solutions he proposes, you are really getting it about IBM1. Also, implementing some of his improvements will be worth some extra points in project 1."
+    - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
+    - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
+    - "[Schulz et al, 2016](https://www.aclweb.org/anthology/P/P16/P16-2028.pdf) revisit NULL alignments in IBM1-2."
+  slides: resources/slides/ibm.pdf
+  classmaterial: 
+    - "[Illustration](resources/slides/ibm-illustration.pdf)"
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2017-04-16
   img: logistic
   uid: ibm_logistic
   title: "Feature-rich IBM1: EM for logistic CPDs"
@@ -49,7 +78,7 @@
   data: 
 -
   layout: lecture
-  selected: y
+  selected: n
   date: 2017-04-19
   img: bibm
   uid: ibm_vb
