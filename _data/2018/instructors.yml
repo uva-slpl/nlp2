@@ -2,17 +2,17 @@
   layout: person
   selected: y
   institution: UvA
-  img: wilker
-  name: Wilker Aziz
-  github: wilkeraziz
-  url: http://wilkeraziz.github.io
+  img: khalil
+  name: "Khalil Sima'an"
+  url: https://staff.fnwi.uva.nl/k.simaan/
 -
   layout: person
   selected: y
   institution: UvA
-  img: khalil
-  name: "Khalil Sima'an"
-  url: https://staff.fnwi.uva.nl/k.simaan/
+  img: wilker
+  name: Wilker Aziz
+  github: wilkeraziz
+  url: http://wilkeraziz.github.io
 -
   layout: person
   selected: y
@@ -25,23 +25,8 @@
   layout: person
   selected: y
   institution: UvA
-  img: joost
-  name: Joost Bastings
-  url: http://joost.ninja
-  github: bastings
+  img: Iacer
+  name: Calixto
+  url: http://illc.uva.nl
+  github: 
 -
-  layout: person
-  selected: y
-  institution: UvA
-  img: philip
-  name: Philip Schulz
-  url: http://philipschulz.org
-  github: philschulz
--
-  layout: person
-  selected: y
-  institution: UvA
-  img: milos
-  name: Miloš Stanojević
-  url: https://staff.fnwi.uva.nl/m.stanojevic/
-  github: stanojevic
