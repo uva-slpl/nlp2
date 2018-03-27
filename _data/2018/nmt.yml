@@ -37,7 +37,7 @@
   data: 
 -
   layout: lecture
-  selected: n
+  selected: y
   date: 2017-05-19
   img: nmt
   uid: convenc
@@ -52,7 +52,7 @@
   data: 
 -
   layout: lecture
-  selected: y
+  selected: n
   date: 2017-05-19
   img: vae
   uid: vae
