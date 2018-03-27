@@ -1,6 +1,6 @@
 <div class="media">
   <a class="pull-left thumbnail" {% if include.person.url %} href="{{ include.person.url }}" {% endif %}>
-    <img src="img/people/{{ include.person.img }}.png" alt=""/>
+    <img src="img/people/{{ include.person.img }}.png" alt="" style="max-width:100px; height:auto;"/>
 </a>
   <div class="media-body">
     <strong>{% if include.person.name == "Khalil Sima'an" %} {{ site.ksimaanstyle }} {% else %} {{ include.person.name }} {% endif %}</strong>

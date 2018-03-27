@@ -1,7 +1,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-04-09
+  date: 2018-04-09
   img: ibm
   uid: ibm_em
   title: "IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
@@ -29,7 +29,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-04-13
+  date: 2018-04-13
   img: ibm
   uid: ibm_em
   title: "Cont. IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
@@ -56,8 +56,8 @@
   data: 
 -
   layout: lecture
-  selected: y
-  date: 2017-04-16
+  selected: n
+  date: 2018-04-16
   img: logistic
   uid: ibm_logistic
   title: "Feature-rich IBM1: EM for logistic CPDs"
@@ -77,12 +77,12 @@
   data: 
 -
   layout: lecture
-  selected: n
-  date: 2017-04-19
+  selected: y
+  date: 2018-04-16
   img: bibm
   uid: ibm_vb
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
-  instructor: Philip Schulz and Wilker Aziz
+  instructor: Wilker Aziz
   note:
   abstract: >
     We present a Bayesian version of IBM1 which has a conjugate Dirichlet prior on the translation parameters. We exploit the conjugacy of the resulting model to develop an efficient variational inference
