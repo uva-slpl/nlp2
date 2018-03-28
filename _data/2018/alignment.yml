@@ -96,6 +96,8 @@
     - "[Bayesian estimation for NLP](http://www.arbylon.net/publications/text-est.pdf)"
     - "For Bayesian inference without VI, check this [MCMC tutorial](http://www-users.mat.umk.pl/~wniem/SemMgr/besag_MCMC.pdf)"
     - "[Dyer et al. 2013](http://www.aclweb.org/anthology/N13-1073.pdf) revisit the parameterisation of IBM model 2. Their model, called 'fast_align' achieves state-of-the-art performance and a robust and efficient [implementation](https://github.com/clab/fast_align) is available."
+  discussion:
+    - "[Bayesian Word Alignment for Statistical Machine Translation](//www.aclweb.org/anthology/P11-2032)"
   slides: resources/slides/ibm-vb.pdf
   code: 
   data: 
