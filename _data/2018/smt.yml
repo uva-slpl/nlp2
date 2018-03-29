@@ -97,7 +97,7 @@
     - "Part 2: [HPBSMT](resources/slides/hpbsmt.pdf)"
   background:
     - "Adam Lopez's [SMT survey](http://www.cs.jhu.edu/~alopez/papers/survey.pdf), in particular, sections 1 to 3."
-    -
+ -
   layout: lecture
   selected: y
   date: 2017-05-4
