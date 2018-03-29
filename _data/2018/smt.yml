@@ -1,15 +1,15 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-03
+  date: 2017-04-20
   img: biparsing
   uid: biparsing
-  title: Bitext Parsing
-  instructor: Wilker Aziz
+  title: Bitext Parsing: Alignment and Word Order Difference.
+  instructor: Khalil Simaan, Miguel Rios and Iacer Calixto
   note: 
-  abstract: In this lecture we will review PCFG parsing as weighted deduction. We will then extend the idea to parsing with synchronous grammars. This lecture covers the necessary background for ITGs and tree-structured CRFs (parameter estimation and prediction).
-  background:
-    - "I will discuss bitext parsing using deductive systems, if you are not familiar with that you might want to read a good [tutorial](http://arxiv.org/abs/cmp-lg/9404008)."  
+  abstract: This lecture covers the necessary background for Inversion Transduction Grammars and possibly also tree-structured CRFs (parameter estimation and prediction).
+  background: 
+    - "[ITGs](resources/slides/itg.pdf)"
     - "David Chiang has a nice [tutorial](resources/papers/ChiangSCFG.pdf) on synchronous grammar. I will not stick too much to it though."
   further:
     - "[Dyer (2010)](http://www.aclweb.org/anthology/N10-1033) shows that a cascade of monolingual parsers is a very neat and general way to perform bitext parsing."
@@ -17,12 +17,34 @@
   discussion:
   classmaterial: 
     - "[Bitext parsing](resources/slides/bitext-parsing.pdf)"
-    - "[ITGs](resources/slides/itg.pdf)"
+  code: 
+  data: 
+  -
+  layout: lecture
+  selected: n
+  date: 2017-04-23
+  img: itg
+  uid: crf
+  title: "Probablistic models for Inducing Aligned Tree Pairs over Permutations"
+  instructor: Khalil Simaan, Miguel Rios and Iacer Calixto
+  note: 
+  abstract: In this lecture we will present probabilistic models of synchronous context-free grammars induced from permutations. 
+  background:
+    - "ITG is a form of context-free transducer. Thus the more you know about context-free grammars (CFGs) and their probabilistic extensions (PCFGs), the better. You can start with M Collins's [lecture notes](http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/pcfgs.pdf) on PCFGs. In estimating parameters for a PCFG with EM we need expectations (as always), there is an efficient algorithm to compute those from parse forests. Again, M Collins's has nice [lecture notes](http://www.cs.columbia.edu/~mcollins/io.pdf) on this algorithm (the Inside-Outside algorithm) as well as EM for PCFGs."
+    - "[Wu (1997)](https://www.aclweb.org/anthology/J/J97/J97-3002.pdf) is the best introduction to ITG in the literature."
+    - "IBM alignment models fit within a larger translation component inspired by the noisy channel approach from information theory. ITGs can also play that role, see [Wu and Wong (1998)](http://www.aclweb.org/anthology/P98-2230). "
+  further:
+    - "ITGs have a very generic vocabulary of nonterminals leading to very flat distributions. One can use the idea of state splitting to refine the vocabulary of a vanilla ITG. This is very difficul to do in terms of MLE. [Blunsom et al. (2008)](http://papers.nips.cc/paper/3453-bayesian-synchronous-grammar-induction) develop a non-parametric Bayesian model which learns how far to refine the vocabulary of a vanilla ITG. [Blunsom and Cohn (2010)](http://www.aclweb.org/anthology/N10-1028) build on that work and propose a more efficient inference technique based on slice sampling."
+    - "You probably want to wait until after the lecture on 'Phrase-based models' before you read the following papers."
+    - "Phrase-based ITGs have never shown state-of-the-art performance because of its degenerate maximum likelihood estimates. [Mylonakis and Sima'an (2010)](http://www.aclweb.org/anthology/W10-2915) propose a better estimation procedure."
+    - "ITGs impose hard constraints on reordering, yet these constraints are not as unmotivated as an ad-hoc distortion limit. [Zens et al. (2004)](http://www.aclweb.org/anthology/C04-1030) investigate the effectiveness of ITG-style constraints in a phrase-based decoder. They also compare it to IBM-style constraints (namely, distortion limit)." 
+  discussion:
+  slides: resources/slides/crf.pdf
   code: 
   data: 
 -
   layout: lecture
-  selected: y
+  selected: n
   date: 2017-05-10
   img: itg
   uid: crf
@@ -45,14 +67,14 @@
   data: 
 -
   layout: lecture
-  selected: n
-  date: 2017-05-10
+  selected: y
+  date: 2017-04-23
   img: rg
   uid: rg
   title: Factorisation of permutations and reordering grammar
-  instructor: "Miloš Stanojević"
+  instructor: Khalil Simaan, Miguel Rios and Iacer Calixto
   note: 
-  abstract: In this lecture we will talk about preordering, factorization of permutations and reordering grammar.
+  abstract: In this lecture we will talk about word order difference in terms of a permutation of the integers. We will learn factorization of permutations into prime permutations and permutation trees (PETs). A word-aligned parallel corpus can be factorized into (almost) a parallel treebank of synchronous trees called PETs. Given a parallel treebank we will present work on inducing  reordering grammar for preordering and translation.
   background:
     - "Stanojevic ́ and Sima'an. 2015. [Reordering Grammar Induction](http://www.aclweb.org/anthology/D15-1005)"
   slides: resources/slides/rg.pdf
@@ -61,11 +83,28 @@
 -
   layout: lecture
   selected: y
-  date: 2017-04-21
+  date: 2017-04-30
   img: pbsmt
   uid: pbsmt
-  title: "Linear models: phrase-based and hierarchical phrase-based SMT"
-  instructor: Miguel Rios and Wilker Aziz
+  title: "Linear models (part 1): phrase-based and hierarchical phrase-based SMT"
+  instructor: Miguel Rios and Iacer Calixto
+  note: 
+  abstract: 
+  code: 
+  data:
+  classmaterial: 
+    - "Part 1: [PBSMT](resources/slides/pbsmt.pdf)"
+    - "Part 2: [HPBSMT](resources/slides/hpbsmt.pdf)"
+  background:
+    - "Adam Lopez's [SMT survey](http://www.cs.jhu.edu/~alopez/papers/survey.pdf), in particular, sections 1 to 3."
+    -
+  layout: lecture
+  selected: y
+  date: 2017-05-4
+  img: pbsmt
+  uid: pbsmt
+  title: "Linear models (part 2): phrase-based and hierarchical phrase-based SMT"
+  instructor: Miguel Rios and Iacer Calixto
   note: 
   abstract: 
   code: 
@@ -78,11 +117,11 @@
 -
   layout: lecture
   selected: y
-  date: 2017-04-26
+  date: 2017-05-7
   img: mteval
   uid: mteval
   title: Evaluation
-  instructor: "Miloš Stanojević"
+  instructor: Iacer Calixto and Miguel Rios
   note: 
   abstract: |
     Evaluation in Machine Translation is dealing with automatic assesment of the translation quality. 
@@ -103,7 +142,7 @@
   data: 
 -
   layout: lecture
-  selected: y
+  selected: n
   date: 2017-05-03
   img: tuning
   uid: tuning
