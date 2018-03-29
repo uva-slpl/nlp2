@@ -1,11 +1,11 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-12
+  date: 2017-05-14
   img: nnlm
   uid: nlm
   title: Neural language models
-  instructor: Joost Bastings
+  instructor: Iacer Calixto, Miguel Rios and Joost Bastings
   note: 
   abstract: 
   background:
@@ -20,11 +20,11 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-17
+  date: 2017-05-18
   img: nmtatt
   uid: seq2seq
   title: "Conditional language models: encoder-decoder"
-  instructor: Joost Bastings
+  instructor: Joost Bastings, Iacer Calixto and Miguel Rios
   note: 
   abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
   slides: resources/slides/nmt.pdf
@@ -37,7 +37,7 @@
   data: 
 -
   layout: lecture
-  selected: y
+  selected: n
   date: 2017-05-19
   img: nmt
   uid: convenc
@@ -78,10 +78,10 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-24
+  date: 2017-05-25
   img: end
   uid: end
-  title: "Project 3 and closing remarks"
+  title: "Remaining papers, Projects and closing remarks"
   instructor: Wilker Aziz
   note: 
   abstract:  
