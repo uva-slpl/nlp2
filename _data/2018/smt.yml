@@ -4,7 +4,7 @@
   date: 2017-04-20
   img: biparsing
   uid: biparsing
-  title: Bitext Parsing: Alignment and Word Order Difference.
+  title: "Bitext Parsing: Alignment and Word Order Difference"
   instructor: "Khalil Simaan"
   note: 
   abstract: This lecture covers the necessary background for Inversion Transduction Grammars and possibly also tree-structured CRFs (parameter estimation and prediction).
