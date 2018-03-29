@@ -5,7 +5,7 @@
   img: biparsing
   uid: biparsing
   title: Bitext Parsing: Alignment and Word Order Difference.
-  instructor: Khalil Simaan, Miguel Rios and Iacer Calixto
+  instructor: "Khalil Simaan"
   note: 
   abstract: This lecture covers the necessary background for Inversion Transduction Grammars and possibly also tree-structured CRFs (parameter estimation and prediction).
   background: 
@@ -26,7 +26,7 @@
   img: itg
   uid: crf
   title: "Probablistic models for Inducing Aligned Tree Pairs over Permutations"
-  instructor: Khalil Simaan, Miguel Rios and Iacer Calixto
+  instructor: Khalil Simaan
   note: 
   abstract: In this lecture we will present probabilistic models of synchronous context-free grammars induced from permutations. 
   background:
@@ -72,7 +72,7 @@
   img: rg
   uid: rg
   title: Factorisation of permutations and reordering grammar
-  instructor: Khalil Simaan, Miguel Rios and Iacer Calixto
+  instructor: Khalil Simaan
   note: 
   abstract: In this lecture we will talk about word order difference in terms of a permutation of the integers. We will learn factorization of permutations into prime permutations and permutation trees (PETs). A word-aligned parallel corpus can be factorized into (almost) a parallel treebank of synchronous trees called PETs. Given a parallel treebank we will present work on inducing  reordering grammar for preordering and translation.
   background:
@@ -87,7 +87,7 @@
   img: pbsmt
   uid: pbsmt
   title: "Linear models (part 1): phrase-based and hierarchical phrase-based SMT"
-  instructor: Miguel Rios and Iacer Calixto
+  instructor: "Miguel Rios and Iacer Calixto"
   note: 
   abstract: 
   code: 
@@ -104,7 +104,7 @@
   img: pbsmt
   uid: pbsmt
   title: "Linear models (part 2): phrase-based and hierarchical phrase-based SMT"
-  instructor: Miguel Rios and Iacer Calixto
+  instructor: "Miguel Rios and Iacer Calixto"
   note: 
   abstract: 
   code: 
@@ -121,7 +121,7 @@
   img: mteval
   uid: mteval
   title: Evaluation
-  instructor: Iacer Calixto and Miguel Rios
+  instructor: "Iacer Calixto and Miguel Rios"
   note: 
   abstract: |
     Evaluation in Machine Translation is dealing with automatic assesment of the translation quality. 
