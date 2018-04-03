@@ -29,7 +29,7 @@ A group (typically **3 members**) selects a paper to be discussed. Then
 
 # Projects
 
-We will have 3 project assignments: students work in groups (**2 to 3 members**). Projects will be assessed on the basis of technical reports and ipython notebooks.
+We will have 2 project assignments: students work in groups (**2 to 3 members**). Projects will be assessed on the basis of technical reports and ipython notebooks.
 
 
 # Grades 
@@ -38,7 +38,7 @@ We will have 3 project assignments: students work in groups (**2 to 3 members**)
 
 # Contact
 
-You can contact [Wilker Aziz](//wilkeraziz.github.io) by email or visiting his office at Science Park 107 F2.11.
+You can contact [Khalil Sima'an](https://staff.fnwi.uva.nl/k.simaan/index.html), [Miguel Rios](http://mriosb08.github.io) and [Iacer Calixto](iacer.calixto@uva.nl).
 
 [SLPLL]: {{ site.slpll_url }} "Statistical Language Processing and Learning Lab"
 [ILLC]: {{ site.illc_url }} "Institute for Logic, Language and Computation"
