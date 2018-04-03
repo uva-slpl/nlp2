@@ -13,7 +13,7 @@ Groups: check Blackboard or our blog posts.
 
 # Project 1 
 
-*From April 12 to April 26*
+*From TBA*
 
 In this project you will learn about lexical alignment, the task of learning correspondences between words in different languages.
 You will apply latent variable modelling techniques, in particular, learning with directed graphical models (aka locally normalised models).
@@ -35,68 +35,13 @@ Resources:
 
 Submission:
 
-* Upload tgz file on Blackboard before *April 29*, 10:00. (Note: deadline extended!)
+TBA
 
 Assessment: [guidelines](assessment) /  grades on blackboard.
 
 
 # Project 2 
 
-*From May 3 to May 24*
+*TBA*
 
-In this project we will frame translation as a latent variable model CRF.
-We will employ ITGs to constrain the space of translation derivations and experiment with maximum likelihood estimation for CRFs.
 
-Topics:
-
-* Algorithms: Earley intersection, Topsort, Inside-Outside, Viterbi, and ancestral sampling
-* Undirected graphical models: CRF
-* MLE by gradient-based optimisation
-
-Resources:
-
-* Make sure to check our [blogpost](https://uva-slpl.github.io/nlp2/projects/2017/05/03/project2.html)
-* [Notes on Earley intersection](resources/papers/Aziz-Earley.pdf)
-* Practical notes on SGD by [Leon Bottou](http://cilvr.cs.nyu.edu/diglib/lsml/bottou-sgd-tricks-2012.pdf) (in particular section 5.2 discusses *learning rate schedules* and 5.3 discusses *averaged parameters*) `new!`
-* [Data](resources/project_crf/data.tgz)
-* [Dev target lengths](resources/project_crf/dev123_lengths.tgz)
-* [Lexicon](resources/project_crf/lexicon.tgz) Format: `Chinese English P(en|zh) P(zh|en)`
-* [Notebooks](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks)
-    * check `libitg` which contains the complete parser
-    * `LV-CRF-Roadmap` is a notebook that uses `libitg` and discusses the steps towards completing project 2
-* [BLEU evaluation script](resources/project_crf/multi-bleu.perl) `new!` `usage: perl multi-bleu.pl reference < your_translations`
-* `New!` Faster parsing using a finite D(x) [notebook](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/notebooks/Fast-Parsing-with-Finite-Dx.ipynb)
-* [Project description](resources/project_crf/project2.pdf) `New! The MBR part is optional!`
-* [Drawing graphical models in latex](https://github.com/uva-slpl/nlp2/blob/gh-pages/resources/latex)
-
-Submission:
-
-* Upload `.tgz` file on Blackboard before *Wednesday May 24*, 23:59 (GMT-8) `new deadline!`
-
-Assessment: [guidelines and tips for report](assessment).
-
-# Project 3
-
-*From May 24 to June 7*
-
-In this project you will learn about maximum likelihood estimation for graphical models parameterised by neural networks.
-You will investigate an unsupervised problem for which a tractable solutions exists (an IBM1-type model) and an unsupervised problems for which approximate inference is necessary (a collocation model).
-You will employ techniques like explicit marginalisation of latent alignments and variational inference for the following models:
-
-* Neural IBM1
-* Neural IBM1 augmented with additional French contex
-* Neural IBM1 with latent collocation
-* Neural IBM1 with latent gates
-
-Resources:
-
-* [Project description](resources/project_neuralibm/project3.pdf)
-* [Notebooks and Data](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/project_neuralibm/)
-    * Notebook `Theory` is your starting point, it contains the theoretical background and questions to be answered.
-    * From there, check notebook `Neural IBM 1` which contains a tensorflow implementation of neural IBM 1 and the complete training/test pipeline.
-    * Note that formulas do not render well on github, thus make sure to run `jupyter notebook` on your own computer when reading the theoretical background.
-
-Remarks:
-
-* You are free to use a framework other than tensorflow (including pre-defined layers), but then our support may be limitted by your choice.
-* You can use pre-defined layers (e.g. MLP, Embedding, etc.) and optimisers (e.g. SGD, Adagrad, Adam, etc.), but note that you still need to answer theoretical questions about some of these.
