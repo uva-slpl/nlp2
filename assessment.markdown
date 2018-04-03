@@ -43,28 +43,21 @@ Your conference-style report will be assessed by two independent reviewers accor
 * Writing style (max 2 points): 
 * Extra (max 1 point): 
 
-
-
-
 Scope:
 
-* Introduce the problem: translation along with unsupervised induction of a hierarchical mapping between two strings.
-* Discuss the challenge with permutations and what ITGs give you.
-* Discuss the benefits of an undirected model. Contrast it with directed models. 
+* Introduce the problem.
+* Discuss the challenge.
 
 Theoretical background:
 
 * Clearly present graphical model and assumptions.
-* Clearly present the grammar and constraints you are using.
-* No pseudo codes: I'm pretty familiar with graph algorithms. Instead, make sure it's obvious from your report that you understand the role of each algorithm in computing some key quantity. Discuss the quantity, the role of algorithm, refer to literature.
 * Present your learning technique: MLE via gradient based optimisation. Derive the objective clearly. Discuss parameter updates and regularisation techniques.
 * Discuss prediction techniques: assumptions, approximations, caveats, etc.
 
 Experiments:
 
 * You have hyper-parameters: SGD learning rate schedule, regularisation strength. Investigate them. Plot likelihood and validation BLEU.
-* You have features of 3 sorts: segmentation, lexical translation, word order. Conduct ablation experiments.
-* Report BLEU1 (it gives an ideal of how well your model performs lexical selection), report BLEU4 (it gives an idea of lexical selection and word ord).
+* Report BLEU1 report BLEU4.
 
 Style:
 
