@@ -2,11 +2,12 @@
 layout: post
 title:  Welcome!
 date:   2018-04-04
-author: Wilker
+author: Miguel
 categories: lectures
 ---
 
-Stay tuned for announcements, resources and slides.
-Very soon we will update the *reading* and *discussion* sections in the syllabus.
+Welcome to NLP2.
+Stay tuned for posts about announcements, resources and slides.
+
 
 
