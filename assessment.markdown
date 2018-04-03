@@ -37,32 +37,14 @@ Your conference-style report will be assessed by two independent reviewers accor
 
 Your conference-style report will be assessed by two independent reviewers according to the following evaluation criteria:
 
-* Scope (max 2 points): *Is the problem well presented? Do students understand the challenges/contributions?* Here we expected to learn about:
-    * the problem: translation with latent hierarchical mapping between two strings
-    * the problem with space of permutations: the role of ITG
-    * role of undirected graphical models: contrast with directed models
-* Theoretical description (max 3 points): *Are the models presented clearly and cor- rectly?* Here we expected to learn about:
-    * model formulation: assumptions, factorisation, parameterisation, limitations
-    * grammar formalism: is the grammar presented and discussed?
-    * parameter estimation: MLE, SGD, regularisation technique
-    * inference techniques: role of inside/outside and expectation semiring
-* Empirical evaluation (max 3 points): *Is the experimental setup sound/convincing? Are experimental findings presented in an organised and effective manner?* Here we expected to learn about:
-    * the data, experimental setup, practical constraints
-    * training conditions (the various choices and hyperparameters discussed and justified)
-    * ablation studies if applicable
-    * test results
-    * a critical discussion of findings
-* Writing style (max 2 points): *use of latex, structure of report, use of tables/figures/plots, command of English.* Here we expected
-    * good use of latex and compliance with the format specified in the project description (w.r.t. template and length)
-    * clear structure
-    * good use of visualization techniques (e.g. tables, figures, and plots)
-    * command of English
-* Extra (max 1 point): *MBR decoding using ancestral sampling, BLEU, and annealing*
+* Scope (max 2 points): 
+* Theoretical description (max 3 points):
+* Empirical evaluation (max 3 points): 
+* Writing style (max 2 points): 
+* Extra (max 1 point): 
 
 
-**Tips**:
 
-In general, be rigorous with notation: I don't like sloppy math.
 
 Scope:
 
