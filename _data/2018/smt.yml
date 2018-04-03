@@ -1,7 +1,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-04-20
+  date: 2018-04-20
   img: biparsing
   uid: biparsing
   title: "Bitext Parsing: Alignment and Word Order Difference"
@@ -22,7 +22,7 @@
 -
   layout: lecture
   selected: n
-  date: 2017-04-23
+  date: 2018-04-23
   img: itg
   uid: crf
   title: "Probablistic models for Inducing Aligned Tree Pairs over Permutations"
@@ -45,7 +45,7 @@
 -
   layout: lecture
   selected: n
-  date: 2017-05-10
+  date: 2018-05-10
   img: itg
   uid: crf
   title: "Probablistic models: Latent-variable CRF"
@@ -68,7 +68,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-04-23
+  date: 2018-04-23
   img: rg
   uid: rg
   title: Factorisation of permutations and reordering grammar
@@ -83,7 +83,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-04-30
+  date: 2018-04-30
   img: pbsmt
   uid: pbsmt
   title: "Linear models (part 1): phrase-based and hierarchical phrase-based SMT"
@@ -100,7 +100,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-4
+  date: 2018-05-4
   img: pbsmt
   uid: pbsmt
   title: "Linear models (part 2): phrase-based and hierarchical phrase-based SMT"
@@ -117,7 +117,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-7
+  date: 2018-05-7
   img: mteval
   uid: mteval
   title: Evaluation
@@ -143,7 +143,7 @@
 -
   layout: lecture
   selected: n
-  date: 2017-05-03
+  date: 2018-05-03
   img: tuning
   uid: tuning
   title: Tuning
