@@ -29,7 +29,7 @@ Resources:
 * [Training data](resources/project_ibm/training.tgz)
 * [Validation data](resources/project_ibm/validation.tgz)
 
-[comment]: # ([Test data](resources/project_ibm/testing.tgz)  ``new!``)
+[comment]: ([Test data](resources/project_ibm/testing.tgz)  ``new!``)
 
 * [Tips](https://uva-slpl.github.io/nlp2/project1/2017/04/12/IBM.html)
 * [Helper functions for validation AER](resources/project_ibm/aer.py)
