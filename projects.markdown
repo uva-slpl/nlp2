@@ -4,10 +4,10 @@ title: Projects
 menu: yes
 ---
 
-*Spring 2017*
+*Spring 2018*
 
 We want you to get your hands dirty with most of the core topics covered in the course. 
-To that end, we prepared three projects. 
+To that end, we prepared two projects. 
 
 Groups: check Blackboard or our blog posts.
 
