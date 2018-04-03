@@ -1,7 +1,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-14
+  date: 2018-05-14
   img: nnlm
   uid: nlm
   title: Neural language models
@@ -20,7 +20,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-18
+  date: 2018-05-18
   img: nmtatt
   uid: seq2seq
   title: "Conditional language models: encoder-decoder"
@@ -38,7 +38,7 @@
 -
   layout: lecture
   selected: n
-  date: 2017-05-19
+  date: 2018-05-19
   img: nmt
   uid: convenc
   title: Convolutional encoders
@@ -53,7 +53,7 @@
 -
   layout: lecture
   selected: n
-  date: 2017-05-19
+  date: 2018-05-19
   img: vae
   uid: vae
   title: "Variational auto-encoders"
@@ -78,7 +78,7 @@
 -
   layout: lecture
   selected: y
-  date: 2017-05-25
+  date: 2018-05-25
   img: end
   uid: end
   title: "Remaining papers, Projects and closing remarks"
