@@ -38,7 +38,7 @@ We will have 2 project assignments: students work in groups (**2 to 3 members**)
 
 # Contact
 
-You can contact [Khalil Sima'an](https://staff.fnwi.uva.nl/k.simaan/index.html), [Miguel Rios](http://mriosb08.github.io) and [Iacer Calixto](iacer.calixto@uva.nl).
+You can contact [Khalil Sima'an](https://staff.fnwi.uva.nl/k.simaan/index.html), [Miguel Rios](http://mriosb08.github.io) and [Iacer Calixto](mailto:iacer.calixto@uva.nl).
 
 [SLPLL]: {{ site.slpll_url }} "Statistical Language Processing and Learning Lab"
 [ILLC]: {{ site.illc_url }} "Institute for Logic, Language and Computation"
