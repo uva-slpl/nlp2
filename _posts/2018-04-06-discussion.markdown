@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  Discussion sessions
+title:  Papers to be presented by students
 date:   2018-04-06
 author: Miguel
 categories: lectures
 ---
 
 We are going to have discussion sessions each lecture.
-All of you are expected to read the paper and prepare some questions, some of you are also expected to lead the discussion with a presentation (15 minutes) about the selected paper where you summarise: problem, solution, and findings.
+All of you are expected to read the paper and prepare some questions, some of you are also expected to lead the discussion with a presentation (20 minutes) about the selected paper where you summarise: problem, solution, and findings.
 
 
 # Session Alignment
