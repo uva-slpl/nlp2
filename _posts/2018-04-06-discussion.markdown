@@ -102,17 +102,22 @@ All of you are expected to read the paper and prepare some questions, some of yo
 
 * Group: 20
 * When:
-* What: [Learning to Parse and Translate Improves Neural Machine Translation](https://arxiv.org/pdf/1702.03525.pdf)
+* What: [Linguistic Input Features Improve Neural Machine Translation](http://www.aclweb.org/anthology/W16-2209.pdf)
+
 
 * Group: 21
 * When:
-* What: [Graph Convolutional Encoders for Syntax-aware Neural Machine Translation](http://aclweb.org/anthology/D/D17/D17-1209.pdf)
+* What: [Learning to Parse and Translate Improves Neural Machine Translation](https://arxiv.org/pdf/1702.03525.pdf)
 
 * Group: 22
 * When:
-* What: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+* What: [Graph Convolutional Encoders for Syntax-aware Neural Machine Translation](http://aclweb.org/anthology/D/D17/D17-1209.pdf)
 
 * Group: 23
+* When:
+* What: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+
+* Group: 24
 * When:
 * What: [The Neural Noisy Channel](https://arxiv.org/pdf/1702.03525.pdf)
 
