@@ -13,14 +13,21 @@ All of you are expected to read the paper and prepare some questions, some of yo
 # Session Alignment
 
 * Group: 1
-* When: 
+  * Alex Geenen
+  * Bence Keresztury
+* When: 13/04/2018
 * What: [A Simple, Fast, and Effective Reparameterization of IBM Model 2](http://www.aclweb.org/anthology/N13-1073.pdf)
 
 
-
 * Group: 2
-* When: 
-* What: [HMM Alignment model](https://www.mitpressjournals.org/doi/10.1162/089120103321337421)
+  * Mark Romme
+  * Bart Bussmann
+* When: 13/04/2018
+* What: [HMM Alignment model](https://www.cse.iitb.ac.in/~pb/cs626-2013/word-alignment/alignment-comparison-J03-1002.pdf)
+  * Section 1-2.2
+  * Section 3.4
+  * Section 5
+  * Section 6 (Optional)
 
 * Group: 3
 * When: 
