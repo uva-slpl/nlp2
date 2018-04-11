@@ -30,6 +30,8 @@ All of you are expected to read the paper and prepare some questions, some of yo
   * Section 6 (Optional)
 
 * Group: 3
+ * Simone van Bruggen
+ * Santosh Kumar Rajamanickam
 * When: 20/04/2018
 * What: [Fast Collocation-Based Bayesian HMM Word Alignment](http://www.aclweb.org/anthology/C/C16/C16-1296.pdf)
 
@@ -40,10 +42,14 @@ All of you are expected to read the paper and prepare some questions, some of yo
 # Session Hierharchical Phrase-Based MT
 
 * Group: 4
+ * Freek Boutkan
+ * Caitlin Lagrand
 * When: 23/04/2018
 * What: [Hierarchical Phrase-Based Translation](http://www.aclweb.org/anthology/P/P05/P05-1033.pdf)
 
 * Group: 5
+ * Maartje de Jonge
+ * Lina Murady
 * When: 23/04/2018
 * What: [Reordering Grammar Induction](http://aclweb.org/anthology/D15-1005.pdf)
 
@@ -55,28 +61,40 @@ All of you are expected to read the paper and prepare some questions, some of yo
 # Session Phrase-based MT
 
 * Group: 6
+ * Fredie Haver
+ * Lois van Vliet
 * When: 30/04/2018
 * What: [Joint Phrase-based SMT](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.4471)
 
 * Group: 7
+ * Sabina van Rooij
+ * Ece Takmaz
 * When: 30/04/2018
 * What: [Discriminative Training and Maximum Entropy Models for Statistical Machine Translation](http://www.aclweb.org/anthology/P02-1038)
 
 * Group: 8
+ * Laura Ruis
+ * Jana Leible 
 * When: 4/05/2018
 * What: [Phrase based SMT](http://acl.ldc.upenn.edu/N/N03/N03-1017.pdf)
 
-* Group: 8
+* Group: 9
+ * Fabio Curi
+ * Mirthe van Diepen 
 * When: 4/05/2018
 * What: [A Simple and Effective Hierarchical Phrase Reordering Model](http://www.aclweb.org/anthology/D08-1089.pdf)
 
 # Session Evaluation and Domain Adaptation
 
-* Group: 9
+* Group: 10
+ * Joris Baan
+ * Bakhtiariziabari Masoumeh
 * When: 7/05/2018
 * What: [Latent Domain Translation Models in Mix-of-Domains Haystack](http://www.aclweb.org/anthology/C14-1182.pdf)
 
-* Group: 14
+* Group: 11
+ * Marianne de Heer Koolts
+ * Urja Khurana
 * When: 7/05/2018
 * What: [Fitting Sentence Level Translation Evaluation with Many Dense Features](http://aclweb.org/anthology/C/C16/C16-1204.pdf)
 
@@ -87,8 +105,10 @@ All of you are expected to read the paper and prepare some questions, some of yo
 
 # Session Neural MT
 
-* Group: 15
-* When: 
+* Group: 12
+ * Tirza Soute
+ * David Stan
+* When: 14/05/2018
 * What: [Recurrent neural network based language model](http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf)
 
 * Group: 16
