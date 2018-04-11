@@ -30,8 +30,8 @@ All of you are expected to read the paper and prepare some questions, some of yo
   * Section 6 (Optional)
 
 * Group: 3
- * Simone van Bruggen
- * Santosh Kumar Rajamanickam
+   * Simone van Bruggen
+   * Santosh Kumar Rajamanickam
 * When: 20/04/2018
 * What: [Fast Collocation-Based Bayesian HMM Word Alignment](http://www.aclweb.org/anthology/C/C16/C16-1296.pdf)
 
