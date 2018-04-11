@@ -36,8 +36,8 @@ All of you are expected to read the paper and prepare some questions, some of yo
    * What: [Fast Collocation-Based Bayesian HMM Word Alignment](http://www.aclweb.org/anthology/C/C16/C16-1296.pdf)
 
 * Group: Not assigned
-* When: Not assigned
-* What: [Unsupervised Word Alignment with Arbitrary Features](http://www.aclweb.org/anthology/P11-1042)
+   * When: Not assigned
+   * What: [Unsupervised Word Alignment with Arbitrary Features](http://www.aclweb.org/anthology/P11-1042)
 
 # Session Hierharchical Phrase-Based MT
 
