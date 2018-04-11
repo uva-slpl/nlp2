@@ -30,14 +30,14 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * Section 6 (Optional)
 
 * Group: 3
-   * Simone van Bruggen
-   * Santosh Kumar Rajamanickam
-   * When: 20/04/2018
-   * What: [Fast Collocation-Based Bayesian HMM Word Alignment](http://www.aclweb.org/anthology/C/C16/C16-1296.pdf)
+    * Simone van Bruggen
+    * Santosh Kumar Rajamanickam
+    * When: 20/04/2018
+    * What: [Fast Collocation-Based Bayesian HMM Word Alignment](http://www.aclweb.org/anthology/C/C16/C16-1296.pdf)
 
 * Group: Not assigned
-   * When: Not assigned
-   * What: [Unsupervised Word Alignment with Arbitrary Features](http://www.aclweb.org/anthology/P11-1042)
+    * When: Not assigned
+    * What: [Unsupervised Word Alignment with Arbitrary Features](http://www.aclweb.org/anthology/P11-1042)
 
 # Session Hierharchical Phrase-Based MT
 
@@ -54,8 +54,8 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * What: [Reordering Grammar Induction](http://aclweb.org/anthology/D15-1005.pdf)
 
 * Group: Not assigned
-* When: 
-* What: [Phrase Translation Probabilities with ITG Priors and Smoothing as Learning Objective](http://www.aclweb.org/anthology/D08-1066)
+    * When: 
+    * What: [Phrase Translation Probabilities with ITG Priors and Smoothing as Learning Objective](http://www.aclweb.org/anthology/D08-1066)
 
 
 # Session Phrase-based MT
@@ -99,8 +99,8 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * What: [Fitting Sentence Level Translation Evaluation with Many Dense Features](http://emnlp2014.org/papers/pdf/EMNLP2014025.pdf)
 
 * Group: Not assigned
-* When: Not assigned
-* What: [Hierarchical Permutation Complexity for Word Order Evaluation](http://aclweb.org/anthology/C/C16/C16-1204.pdf)
+    * When: Not assigned
+    * What: [Hierarchical Permutation Complexity for Word Order Evaluation](http://aclweb.org/anthology/C/C16/C16-1204.pdf)
 
 
 # Session Neural MT
@@ -112,12 +112,12 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * What: [Recurrent neural network based language model](http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf)
 
 * Group: Not assigned
-* When: Not assigned
-* What: [Character-Aware Neural Language Models](https://arxiv.org/pdf/1508.06615.pdf)
+    * When: Not assigned
+    * What: [Character-Aware Neural Language Models](https://arxiv.org/pdf/1508.06615.pdf)
 
 * Group: Not assigned
-* When: Not assigned
-* What: [Frustratingly Short Attention Spans in Neural Language Modeling](https://arxiv.org/pdf/1702.04521.pdf)
+    * When: Not assigned
+    * What: [Frustratingly Short Attention Spans in Neural Language Modeling](https://arxiv.org/pdf/1702.04521.pdf)
 
 * Group: 13
     * Ruben Gerritse
@@ -132,8 +132,8 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * What: [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/pdf/1409.0473.pdf)
 
 * Group: Not assigned
-* When: Not assigned
-* What: [Linguistic Input Features Improve Neural Machine Translation](http://www.aclweb.org/anthology/W16-2209.pdf)
+    * When: Not assigned
+    * What: [Linguistic Input Features Improve Neural Machine Translation](http://www.aclweb.org/anthology/W16-2209.pdf)
 
 
 * Group: 15
@@ -155,8 +155,8 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * What: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
 * Group: Not assigned
-* When: Not assigned
-* What: [The Neural Noisy Channel](https://arxiv.org/pdf/1702.03525.pdf)
+    * When: Not assigned
+    * What: [The Neural Noisy Channel](https://arxiv.org/pdf/1702.03525.pdf)
 
 
 
