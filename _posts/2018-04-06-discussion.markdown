@@ -76,7 +76,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * Laura Ruis
     * Jana Leible 
     * When: 4/05/2018
-    * What: [Phrase based SMT](http://acl.ldc.upenn.edu/N/N03/N03-1017.pdf)
+    * What: [Phrase based SMT](http://www.aclweb.org/anthology/N03-1017)
 
 * Group: 9
     * Fabio Curi
