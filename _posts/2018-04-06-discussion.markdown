@@ -36,7 +36,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
 * What: [Fast Collocation-Based Bayesian HMM Word Alignment](http://www.aclweb.org/anthology/C/C16/C16-1296.pdf)
 
 * Group: Not assigned
-* When: 
+* When: Not assigned
 * What: [Unsupervised Word Alignment with Arbitrary Features](http://www.aclweb.org/anthology/P11-1042)
 
 # Session Hierharchical Phrase-Based MT
@@ -111,41 +111,50 @@ All of you are expected to read the paper and prepare some questions, some of yo
 * When: 14/05/2018
 * What: [Recurrent neural network based language model](http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf)
 
-* Group: 16
-* When:
+* Group: Not assigned
+* When: Not assigned
 * What: [Character-Aware Neural Language Models](https://arxiv.org/pdf/1508.06615.pdf)
 
-* Group: 17
-* When:
+* Group: Not assigned
+* When: Not assigned
 * What: [Frustratingly Short Attention Spans in Neural Language Modeling](https://arxiv.org/pdf/1702.04521.pdf)
 
-* Group: 18
-* When:
+* Group: 13
+ * Ruben Gerritse
+ * Houda Alberts
+* When: 14/05/2018
 * What: [Sequence to Sequence Learning with Neural Networks](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)
 
-* Group: 19
-* When:
+* Group: 14
+ * Victor Milewski
+ * Diana Rodrigez Luna
+* When: 18/05/2018
 * What: [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/pdf/1409.0473.pdf)
 
-* Group: 20
-* When:
+* Group: Not assigned
+* When: Not assigned
 * What: [Linguistic Input Features Improve Neural Machine Translation](http://www.aclweb.org/anthology/W16-2209.pdf)
 
 
-* Group: 21
-* When:
+* Group: 15
+ * Felicien Veldema
+ * Adriaand de Vries 
+* When: 18/05/2018
 * What: [Learning to Parse and Translate Improves Neural Machine Translation](https://arxiv.org/pdf/1702.03525.pdf)
 
-* Group: 22
-* When:
+* Group: Not assigned
+* When: Not assigned
 * What: [Graph Convolutional Encoders for Syntax-aware Neural Machine Translation](http://aclweb.org/anthology/D/D17/D17-1209.pdf)
 
-* Group: 23
-* When:
+* Group: 16
+ * Radu Sibechi
+ * Verna Dankers
+ * Dennis Ulmer
+* When: 25/05/2018
 * What: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
-* Group: 24
-* When:
+* Group: Not assigned
+* When: Not assigned
 * What: [The Neural Noisy Channel](https://arxiv.org/pdf/1702.03525.pdf)
 
 
