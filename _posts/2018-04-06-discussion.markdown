@@ -146,7 +146,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * Dennis Ulmer
     * Rasyan Ahmed
     * When: 25/05/2018
-    * What: [Doubly-Attentive Decoder for Multi-modal Neural Machine Translation](https://arxiv.org/pdf/1702.01287.pdf)
+    * What: [Doubly-Attentive Decoder for Multi-modal Neural Machine Translation](http://aclweb.org/anthology/P/P17/P17-1175.pdf)
 
 * Group: 16
     * Radu Sibechi
