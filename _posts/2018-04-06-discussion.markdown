@@ -30,59 +30,59 @@ All of you are expected to read the paper and prepare some questions, some of yo
   * Section 6 (Optional)
 
 * Group: 3
-* When: 
+* When: 20/04/2018
 * What: [Fast Collocation-Based Bayesian HMM Word Alignment](http://www.aclweb.org/anthology/C/C16/C16-1296.pdf)
 
-* Group: 4
+* Group: Not assigned
 * When: 
 * What: [Unsupervised Word Alignment with Arbitrary Features](http://www.aclweb.org/anthology/P11-1042)
+
+# Session Hierharchical Phrase-Based MT
+
+* Group: 4
+* When: 23/04/2018
+* What: [Hierarchical Phrase-Based Translation](http://www.aclweb.org/anthology/P/P05/P05-1033.pdf)
+
+* Group: 5
+* When: 23/04/2018
+* What: [Reordering Grammar Induction](http://aclweb.org/anthology/D15-1005.pdf)
+
+* Group: Not assigned
+* When: 
+* What: [Phrase Translation Probabilities with ITG Priors and Smoothing as Learning Objective](http://www.aclweb.org/anthology/D08-1066)
 
 
 # Session Phrase-based MT
 
-* Group: 5
-* When: 
-* What: [Discriminative Training and Maximum Entropy Models for Statistical Machine Translation](http://www.aclweb.org/anthology/P02-1038)
-
 * Group: 6
-* When: 
+* When: 30/04/2018
 * What: [Joint Phrase-based SMT](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.4471)
 
 * Group: 7
-* When: 
+* When: 30/04/2018
+* What: [Discriminative Training and Maximum Entropy Models for Statistical Machine Translation](http://www.aclweb.org/anthology/P02-1038)
+
+* Group: 8
+* When: 4/05/2018
 * What: [Phrase based SMT](http://acl.ldc.upenn.edu/N/N03/N03-1017.pdf)
 
 * Group: 8
-* When: 
+* When: 4/05/2018
 * What: [A Simple and Effective Hierarchical Phrase Reordering Model](http://www.aclweb.org/anthology/D08-1089.pdf)
-
-# Session Hierharchical Phrase-Based MT
-
-* Group: 9
-* When: 
-* What: [Hierarchical Phrase-Based Translation](https://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201)
-
-* Group: 10
-* When: 
-* What: [Phrase Translation Probabilities with ITG Priors and Smoothing as Learning Objective](http://www.aclweb.org/anthology/D08-1066)
-
-* Group: 11
-* When: 
-* What: [Hierarchical Permutation Complexity for Word Order Evaluation](http://aclweb.org/anthology/C/C16/C16-1204.pdf)
-
-* Group: 12
-* When: 
-* What: [Reordering Grammar Induction](http://aclweb.org/anthology/D15-1005.pdf)
 
 # Session Evaluation and Domain Adaptation
 
-* Group: 13
-* When: 
-* What: [Latent Domain Translation Models in Mix-of-Domains Haystack](http://aclweb.org/anthology/C/C16/C16-1204.pdf)
+* Group: 9
+* When: 7/05/2018
+* What: [Latent Domain Translation Models in Mix-of-Domains Haystack](http://www.aclweb.org/anthology/C14-1182.pdf)
 
 * Group: 14
-* When: 
+* When: 7/05/2018
 * What: [Fitting Sentence Level Translation Evaluation with Many Dense Features](http://aclweb.org/anthology/C/C16/C16-1204.pdf)
+
+* Group: Not assigned
+* When: Not assigned
+* What: [Hierarchical Permutation Complexity for Word Order Evaluation](http://aclweb.org/anthology/C/C16/C16-1204.pdf)
 
 
 # Session Neural MT
