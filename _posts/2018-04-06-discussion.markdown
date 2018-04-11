@@ -96,7 +96,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * Marianne de Heer Koolts
     * Urja Khurana
     * When: 7/05/2018
-    * What: [Fitting Sentence Level Translation Evaluation with Many Dense Features](http://aclweb.org/anthology/C/C16/C16-1204.pdf)
+    * What: [Fitting Sentence Level Translation Evaluation with Many Dense Features](http://emnlp2014.org/papers/pdf/EMNLP2014025.pdf)
 
 * Group: Not assigned
 * When: Not assigned
