@@ -151,6 +151,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
 * Group: 16
     * Radu Sibechi
     * Verna Dankers
+    * Ioanna Sanida
     * When: 25/05/2018
     * What: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
