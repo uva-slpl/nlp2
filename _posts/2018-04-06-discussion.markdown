@@ -87,7 +87,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
 # Session Evaluation and Domain Adaptation
 
 * Group: 10
-    * Joris Baan
+    * Tirza Soute
     * Bakhtiariziabari Masoumeh
     * When: 7/05/2018
     * What: [Latent Domain Translation Models in Mix-of-Domains Haystack](http://www.aclweb.org/anthology/C14-1182.pdf)
@@ -106,7 +106,7 @@ All of you are expected to read the paper and prepare some questions, some of yo
 # Session Neural MT
 
 * Group: 12
-    * Tirza Soute
+    * Joris Baan
     * David Stan
     * When: 14/05/2018
     * What: [Recurrent neural network based language model](http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf)
