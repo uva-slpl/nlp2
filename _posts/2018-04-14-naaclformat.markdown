@@ -28,11 +28,17 @@ Consider the two following aligned sentences:
 They had gone . 
 [from the French file]
 Ils etaient alles .
+
 A correct word alignment that will be produced for this sentence is
+
 18 1 1
+
 18 2 2 
+
 18 3 3
+
 18 4 4
+
 Which states that all these alignments are from sentence 18, and the English 
 token 1 ("They") aligns with the French token 1 ("Ils"), the English token 2 
 ("had"), aligns with the French token 2 ("etaient"), and so on. Note that the 
