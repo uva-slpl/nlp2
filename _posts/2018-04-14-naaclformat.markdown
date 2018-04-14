@@ -24,9 +24,13 @@ The S|P field overlap is optional.
 Running example
 ---------------
 Consider the two following aligned sentences:
+
 [from the English file]
+
 They had gone . 
+
 [from the French file]
+
 Ils etaient alles .
 
 A correct word alignment that will be produced for this sentence is
