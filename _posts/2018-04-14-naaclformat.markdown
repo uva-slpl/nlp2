@@ -6,7 +6,9 @@ Output format
 The results file should include one line for each word-to-word alignment 
 identified by the system. The lines in the results file should follow the 
 format below:     
+
 sentence_no position_L1 position_L2 [S|P] 
+
 where:
 - sentence_no represents the id of the sentence within the test file. 
 Sentences in the test data already have an id assigned. (see the examples 
@@ -21,6 +23,7 @@ alignments set (that is, all alignments that are considered "Sure" alignments
 are also part of the "Probable" alignments set). If the S|P field is missing, 
 a value of S will be assumed by default.
 The S|P field overlap is optional. 
+
 Running example
 ---------------
 Consider the two following aligned sentences:
