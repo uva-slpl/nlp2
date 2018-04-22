@@ -45,7 +45,9 @@ Example of use:
 wth, jump_dist[0,..,2*max_jump]
 
 ...
+
 delta = t[(e,f)] * jump_dist[0, jump_func(j, i, l, m)]
+
 ...
 
 ## Log likelihood
@@ -55,13 +57,13 @@ Formula (14) in [tutorial](https://uva-slpl.github.io/nlp2/resources/papers/Schu
 
 For example the alignment distributon in IBM 1:
 
-	      p(a_j | m, l)  = log(1 / (l+1)^m) 
+	p(a_j | m, l)  = log(1 / (l+1)^m) 
 
-               = -m * log(l + 1)
+	= -m * log(l + 1)
 
 Aligment distributon IBM 2:
 
- 		p(i | j, m, l) = jump(i, j, l, m) 
+	p(i | j, m, l) = jump(i, j, l, m) 
 
 ## Bayesian IBM
 
