@@ -24,8 +24,10 @@ If you want to implement a cheaper parametrization of the jump distribution [Vog
 Init of jump distribution:
 
 Array jump_dist[0, 2*max_jump]
+
 with e.g. max_jump = 100
-jump_dist = 1. / (2 * max_jump) * ones([(1, 2 * max_jump)])
+
+	jump_dist = 1. / (2 * max_jump) * ones([(1, 2 * max_jump)])
 
 ```
 jump_func(i, j, l, m):
