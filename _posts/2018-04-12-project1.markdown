@@ -21,9 +21,9 @@ If your log-likelihoods are different (e.g. lower) than the ones reported here, 
 
 If you want to implement a cheaper parametrization of the jump distribution [Vogel et. al., 1996](http://www.aclweb.org/anthology/C96-2141):
 
-* define a jumpfunction d(aj,j,m,n)= a_j − j\lfloor \frac{m}{n} \rfloor 
-* P(A_j|m,n)=Cat(\Delta |\lambda )
-* \Delta  takes values from -max jump to +max jump
+* define a jumpfunction $ d(aj,j,m,n)= a_j − j\lfloor \frac{m}{n} \rfloor $
+* $ P(A_j|m,n)=Cat(\Delta |\lambda ) $
+* $ \Delta $  takes values from -max jump to +max jump
 
 ```
 jump_func(i, j, l, m):
@@ -57,12 +57,12 @@ Formula (14) in Schulz's tutorial:
 
 For example the alignment distributon in IBM 1:
 
-p(a_j | m, l) = log(1 / (l+1)^m)
+$ p(a_j | m, l) = log(1 / (l+1)^m) $
                = -m * log(l + 1)
 
 Aligment distributon IBM 2:
 
-p(i | j, m, l) = jump(i, j, l, m)
+$ p(i | j, m, l) = jump(i, j, l, m) $
 
 ## Bayesian IBM
 
