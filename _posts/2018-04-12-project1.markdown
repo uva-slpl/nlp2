@@ -1,4 +1,4 @@
-# Deadline Project 1 02-05-2018
+# Deadline Project1 02-05-2018
 
 Tutorial for theory for [IBM](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-IBM12-Tutorial.pdf)
 
@@ -49,7 +49,7 @@ delta = t[(e,f)] * jump_dist[0, jump_func(j, i, l, m)]
 ...
 
 ## Log likelihood
-Formula (14) in Schulz's tutorial:
+Formula (14) in [tutorial](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-IBM12-Tutorial.pdf) of dataset for current  parameters:
 
 	log p(f_1^m, a_1^m, m | e_0^l) \propto sum_{j=1}^m log p(i | j, m, l) + log p(f_j | e_{a_j})
 
