@@ -1,6 +1,6 @@
 # Deadline Project1 02-05-2018
 
-Tutorial for theory for [IBM](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-IBM12-Tutorial.pdf)
+Tutorial for theory of [IBM](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-IBM12-Tutorial.pdf)
 
 # Tips
 
