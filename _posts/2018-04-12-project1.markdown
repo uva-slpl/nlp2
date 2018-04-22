@@ -45,6 +45,8 @@ jump_func(i, j, l, m):
 ```     
 Example of use:
 
+wth, jump_dist[0,..,2*max_jump]
+
 ...
 delta = t[(e,f)] * jump_dist[0, jump_func(j, i, l, m)]
 ...
@@ -64,7 +66,8 @@ $p(i | j, m, l) = jump(i, j, l, m)$
 
 ## Bayesian IBM
 
-[Tutorial](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-BayesIBM1-tutorial.pdf)
+Bayesian IBM [Tutorial](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-BayesIBM1-tutorial.pdf)
+
 Dirichlet [notebook](https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/notebooks/Dirichlet.ipynb)
 
 # NAACL alignment format
