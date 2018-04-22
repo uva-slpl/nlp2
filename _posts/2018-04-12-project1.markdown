@@ -21,6 +21,11 @@ If your log-likelihoods are different (e.g. lower) than the ones reported here, 
 
 If you want to implement a cheaper parametrization of the jump distribution [Vogel et al., 1996](http://www.aclweb.org/anthology/C96-2141):
 
+Init of jump distribution:
+
+Array jump_dist[0, 2*max_jump]
+with e.g. max_jump = 100
+jump_dist = 1. / (2 * max_jump) * ones([(1, 2 * max_jump)])
 
 ```
 jump_func(i, j, l, m):
@@ -49,6 +54,8 @@ wth, jump_dist[0,..,2*max_jump]
 delta = t[(e,f)] * jump_dist[0, jump_func(j, i, l, m)]
 
 ...
+
+
 
 ## Log likelihood
 Formula (14) in [tutorial](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-IBM12-Tutorial.pdf) of dataset for current  parameters:
