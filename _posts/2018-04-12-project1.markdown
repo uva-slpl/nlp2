@@ -29,18 +29,15 @@ If you want to implement a cheaper parametrization of the jump distribution [Vog
 jump_func(i, j, l, m):
 		"""
 		Alignment of french word j to english word i. 
-		i = 0,...,l
-		j = 1,...,m
+		i = 0, to ,l
+		j = 1, to ,m
 		That is: a_j = i
 		with e.g. max_jump = 100
-    
-		Returns a jump value in the range [0, 2*max_jump].
-		We shifted[-max_jump, max_jump] to [0, 2*max_jump] to
-		make indices compatible with an array.
+		from[-max_jump, max_jump] to [0, 2*max_jump] 
 		"""
 		jump = int(i - floor(j * l / m)) + max_jump 
-		if jump >= 2 * self.max_jump:
-			return self.max_jump - 1
+		if jump >= 2 * max_jump:
+			return max_jump - 1
 		if jump < 0:
 			return 0
 		else:
@@ -49,7 +46,7 @@ jump_func(i, j, l, m):
 Example of use:
 
 ...
-delta = t[(e,f)] * jump_func[0, jump_func(j, i, l, m)]
+delta = t[(e,f)] * jump_dist[0, jump_func(j, i, l, m)]
 ...
 
 ## Log likelihood
