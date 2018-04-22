@@ -19,7 +19,7 @@ If your log-likelihoods are different (e.g. lower) than the ones reported here, 
 
 ## IBM2 jump function
 
-If you want to implement a cheaper parametrization of the jump distribution [Vogel et. al., 1996](http://www.aclweb.org/anthology/C96-2141):
+If you want to implement a cheaper parametrization of the jump distribution [Vogel et al., 1996](http://www.aclweb.org/anthology/C96-2141):
 
 
 ```
