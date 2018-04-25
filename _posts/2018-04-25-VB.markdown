@@ -8,7 +8,7 @@ categories: lectures
 
 Hello everyone, 
 
-I've prepared [some material](resources/slides/ibm-vb.pdf) on Variational Bayes for IBM1 for you.
+I've prepared [some material](//uva-slpl.github.io/nlp2/resources/slides/ibm-vb.pdf) (also available from the syllabus page) on Variational Bayes for IBM1 for you.
 
 I apologise for I did not show up last lab session (something that could not wait came up), but I will be there this Thursday (April 26) and will go through the slides with you. 
 
