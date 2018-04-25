@@ -99,5 +99,8 @@
   discussion:
     - "[Bayesian Word Alignment for Statistical Machine Translation](//www.aclweb.org/anthology/P11-2032)"
   slides: resources/slides/ibm-vb.pdf
+  classmaterial:
+    - "[IBM1-2](resources/slides/ibm.pdf)"
+    - "[VB for IBM1](resources/slides/ibm-vb.pdf)"
   code: 
   data: 

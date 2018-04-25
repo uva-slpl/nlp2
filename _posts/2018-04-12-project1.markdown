@@ -1,3 +1,11 @@
+---
+layout: post
+title:  Welcome!
+date:   2018-04-12
+author: Miguel
+categories: projects
+---
+
 # Deadline Project1 02-05-2018
 
 Tutorial for theory of [IBM](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-IBM12-Tutorial.pdf)

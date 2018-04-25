@@ -1,3 +1,12 @@
+---
+layout: post
+title:  Welcome!
+date:   2018-04-14
+author: Miguel
+categories: projects
+---
+
+
 NAACL alignment format
 ----------------------
 
