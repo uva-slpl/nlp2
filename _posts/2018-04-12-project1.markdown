@@ -38,22 +38,28 @@ with e.g. max_jump = 100
 	jump_dist = 1. / (2 * max_jump) * ones([(1, 2 * max_jump)])
 
 ```
-jump_func(i, j, l, m):
+jump_func(i, j, m, n):
 		"""
 		Alignment of french word j to english word i. 
-		i = 0, to ,l
-		j = 1, to ,m
+		i = 0, to ,m  (we use m as in Wilker's lecture slides -- length of English sentence)
+		j = 1, to ,n  (we use n as in Wilker's lecture slides -- length of French sentence)
 		That is: a_j = i
 		with e.g. max_jump = 100
-		from[-max_jump, max_jump] to [0, 2*max_jump] 
+		from[-max_jump, max_jump] to [0, 2*max_jump + 1] 
 		"""
-		jump = int(i - floor(j * l / m)) + max_jump 
-		if jump >= 2 * max_jump:
-			return max_jump - 1
-		if jump < 0:
-			return 0
-		else:
-			return jump
+		# We normalise j by the lenght of the French sentence and scale the result to the length of the English sentence
+		# this gives us a continuous value that is an interpolation of where we j would be in the English sentence
+		# if alignments were a linear function of the length ratio
+		jump = floor(i - (j * m / n)) 
+		# then we collapse all jumps that are too far to the right to the maximum jump value allowed
+		if jump > max_jump:  # or we collapse all jumps that are too far to the left to the maximum (negative) jump allowed
+			jump = max_jump   
+		elif jump < -max_jump:
+			jump = -max_jump
+		# Now we shift the jump values so they start from 0
+		#  this is only necessary if you use python lists or numpy vectors to store jump probabilities
+		#  otherwise, you can use a python dict and this shifting is not required since dicts can have negative keys
+		return jump + max_jump
 ```     
 Example of use:
 
