@@ -14,7 +14,8 @@ Groups: check Blackboard or our blog posts.
 # Project 1 
 
 *Deadline 08-05-2018*
-latex
+
+
 In this project you will learn about lexical alignment, the task of learning correspondences between words in different languages.
 You will apply latent variable modelling techniques, in particular, learning with directed graphical models (aka locally normalised models).
 In this project, you will parameterise the model using categorical distributions. 
@@ -43,6 +44,8 @@ Assessment: [guidelines](assessment) /  grades on blackboard.
 # Project 2 
 
 *Deadline 27-05-2018*
+
+
 In this project you will learn about neural machine translation and will implement a basic model with attention.
 
 Resources:
