@@ -42,6 +42,6 @@ Assessment: [guidelines](assessment) /  grades on blackboard.
 
 # Project 2 
 
-*TBA*
+Announcement *30-04-2018*
 
 
