@@ -16,3 +16,12 @@ Best,
 
 W.
 
+
+**After lecture** 
+
+I've uploaded some notation on slide (14). If you want to learn more about VI and its connection to EM, check [Beal's thesis](//www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) and if you want to learn more about the ELBO you can also check a tutorial on [VI](//arxiv.org/pdf/1601.00670.pdf). By the way, I mentioned slides from unsupervised language learning, [this is it](//uva-slpl.github.io/ull/resources/slides/dgm.pdf).
+
+Cheers, 
+
+W.
+
