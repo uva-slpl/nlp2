@@ -78,7 +78,7 @@
 -
   layout: lecture
   selected: y
-  date: 2018-04-16
+  date: 2018-04-16 and 2018-04-26
   img: bibm
   uid: ibm_vb
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
