@@ -76,17 +76,17 @@ delta = t[(e,f)] * jump_dist[0, jump_func(j, i, l, m)]
 ## Log likelihood
 Formula (14) in [tutorial](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-IBM12-Tutorial.pdf) of dataset for current  parameters:
 
-	log p(f_1^m, a_1^m, m | e_0^l) \propto sum_{j=1}^m log p(i | j, m, l) + log p(f_j | e_{a_j})
+	log p(f_1^m, a_1^m, m | e_0^l) \propto sum_{j=1}^m log P(Aj=i | m, n) + log p(f_j | e_{a_j})
 
 For example the alignment distributon in IBM 1:
 
-	p(a_j | m, l)  = log(1 / (l+1)^m) 
+	P(a_j | m, n)  = log(1 / (l+1)^m) 
 
 	= -m * log(l + 1)
 
 Aligment distributon IBM 2:
 
-	p(i | j, m, l) = jump(i, j, l, m) 
+	$P(A_j=i | m, n) = \delta[\text{jump}(i, j, l, m)]$  
 
 ## Bayesian IBM
 
