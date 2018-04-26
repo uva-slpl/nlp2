@@ -80,13 +80,13 @@ Formula (14) in [tutorial](https://uva-slpl.github.io/nlp2/resources/papers/Schu
 
 For example the alignment distributon in IBM 1:
 
-	P(a_j | m, n)  = log(1 / (l+1)^m) 
+	P(A_j=i | m, n)  = log(1 / (l+1)^m) 
 
 	= -m * log(l + 1)
 
 Aligment distributon IBM 2:
 
-	$P(A_j=i | m, n) = \delta[\text{jump}(i, j, l, m)]$  
+	P(A_j=i | m, n) = \delta[\text{jump}(i, j, m, n)]  
 
 ## Bayesian IBM
 
