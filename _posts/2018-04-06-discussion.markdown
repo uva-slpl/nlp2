@@ -149,9 +149,10 @@ All of you are expected to read the paper and prepare some questions, some of yo
     * What: [Doubly-Attentive Decoder for Multi-modal Neural Machine Translation](http://aclweb.org/anthology/P/P17/P17-1175.pdf)
 
 * Group: 16
-    * Radu Sibechi
+    * ~~Radu Sibechi~~
+    * ~~Ioanna Sanida~~
     * Verna Dankers
-    * Ioanna Sanida
+    * Rick Groenendijk
     * When: 25/05/2018
     * What: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
