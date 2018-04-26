@@ -1,19 +1,40 @@
 
-This project will help you 
-
-In summary, your task is to
+This project will help you learn and implement a neural machine translation model with attention.
+In summary, your task is to:
 
 \begin{itemize}
-	\item Implement 
+	\item Pre-process the training, validation, and test data;
+	\item Implement the model as described below;
+	\item Optionally implement one or more of the \texttt{extra}'s;
+	\item Evaluate your model on the test data;
+	\item Write a report on the entire process.
 \end{itemize}
 
 \section{Neural Machine Translation}
 
+Implement the following, using English--French parallel data (translations from French into English):
+
 \begin{enumerate}
-	\item 
+	\item Preprocessing:
 	\begin{enumerate}[a)]
-		\item Implement 
+		\item Tokenisation;
+		\item Lowercasing or truecasing;
+		\item Byte-pair encodings (BPE);
 	\end{enumerate}
+	\item Seq2seq with positional embeddings (without an RNN encoder) (e.g. attention is all you need paper);
+	\begin{enumerate}[a)]
+		\item \textbf{\textit{Extra}}. Use a different encoder (GRU or LSTM);
+	\end{enumerate}
+	\item Attention:
+	\begin{enumerate}[a)]
+		\item Dot product;
+		\item \textbf{\textit{Extra}}. Bilinear;
+	\end{enumerate}
+	\item Regularization with dropout;
+	\item Evaluation (BLEU, Meteor, Beer);
+	\item \textbf{\textit{Extra}}. Attention visualization;
+	\item \textbf{\textit{Extra}}. Beam search decoder;
+	\item \textbf{\textit{Tips}}: \url{https://github.com/neubig/nmt-tips}.
 \end{enumerate}
 
 %In your report, you should also consider the limitations of Model 1
@@ -26,7 +47,8 @@ In summary, your task is to
 
 All relevant data (including details about file formats) are available from \url{https://uva-slpl.github.io/nlp2/projects.html}.
 
-In this project, you will work with a parallel corpus taken from 
+In this project, you will work with a parallel corpus based on the Flickr30k data set.\footnote{For more information, see \url{http://web.engr.illinois.edu/~bplumme2/Flickr30kEntities/}.}
+This corpus is called Multi30k (more information here\footnote{\url{https://github.com/multi30k/dataset}}) and the English-French parallel sentences used for training, validation and testing your models are publicly available.\footnote{\url{https://github.com/uva-slpl/nlp2/tree/gh-pages/resources/project_nmt/data}.}
 
 We are making available \emph{training} data (which you can use to perform parameter estimation), \emph{validation} data (which you can use to debug your implementation as well as to perform model selection), and finally in due time \emph{test} data (which you will use to conduct your final empirical comparison).
 
@@ -34,44 +56,34 @@ We are making available \emph{training} data (which you can use to perform param
 
 \section{Report}
 
-You should use latex for your report, and you should use the ACL template available from \url{http://acl2017.org/downloads/acl17-latex.zip} (unlike the template suggests, your submission should not be anonymous). 
+You should use \LaTeX~for your report, and you should use the ACL template available from \url{http://acl2017.org/downloads/acl17-latex.zip} (unlike the template suggests, your submission should not be anonymous). 
 
-We expect short reports (4 pages plus references) written in English. The typical submission is organised as follows: 
+We expect short reports (2--4 pages plus references) written in English. The typical submission is organised as follows: 
 \begin{itemize}
-	\item abstract: conveys scope and contributions;
-	\item introduction: present the problem and relevant background;
-	\item model: technical description of models;
-	\item experiments: details about the data, experimental setup and findings;
-	\item conclusion: a critical take on contributions and limitations.
+	\item \textbf{Abstract}: conveys scope and contributions;
+	\item \textbf{Introduction}: present the problem and relevant background;
+	\item \textbf{Model}: technical description of models;
+	\item \textbf{Experiments}: details about the data, experimental setup and findings;
+	\item \textbf{Conclusion}: a critical take on contributions and limitations.
 \end{itemize}
+
 
 
 \section{Submission}
 
-You should submit a tgz file containing a folder (folder name {\tt lastname1.lastname2}) with the following content: 
-\begin{itemize}
-	\item Test predictions (in naacl format) using your best run for each of the following models
-	\begin{itemize}
-		\item 
-	\end{itemize}
-	\item Report as a single pdf file (filename: {\tt report.pdf})
-\end{itemize}
-
-Your report may contain a link to an open-source repository (such as github), but please do not attach code or additional data to your tgz submission.
-
-You can complete your project submission on Blackboard.
-
+You should submit a \texttt{.tgz} file containing a folder (folder name {\tt lastname1.lastname2}) with the report as a single \texttt{pdf} file (filename: {\tt report.pdf}).
+Your report may contain a link to an open-source repository (such as github), but please do not attach code or additional data to your submission. You can complete your project submission on Blackboard.
 %You should email your tgz file to \url{J.C.P.Bastings@uva.nl} no later than {\bf 23:59 GMT-8 on April 26}. If you do not get a confirmation email within 24h after submission, please make sure to contact one of us.
 
 \section{Assessment}
 
 Your report will be assessed by two independent reviewers according to the following evaluation criteria:
 \begin{enumerate}
-	\item Scope (max 2 points): Is the problem well presented? Do students understand the challenges/contributions?
-	\item Theoretical description (max 3 points): Are the models presented clearly and correctly?
-	\item Empirical evaluation (max 3 points): Is the experimental setup sound/convincing? Are experimental findings presented in an organised and effective manner? 
-	\item Writing style (max 2 points): use of latex, structure of report, use of tables/figures/plots, command of English.	
-	\item Extra.
+	\item \textbf{Scope} (max 2 points): Is the problem well presented? Do students understand the challenges/contributions?
+	\item \textbf{Theoretical description} (max 3 points): Are the models presented clearly and correctly?
+	\item \textbf{Empirical evaluation} (max 3 points): Is the experimental setup sound/convincing? Are experimental findings presented in an organised and effective manner? 
+	\item \textbf{Writing style} (max 2 points): use of \LaTeX , structure of report, use of tables/figures/plots, command of English.
+	\item \textbf{Extra}: surprise...
 \end{enumerate}
 
 
