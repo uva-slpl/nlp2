@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Welcome!
+title:  NAACL format
 date:   2018-04-14
 author: Miguel
 categories: projects
