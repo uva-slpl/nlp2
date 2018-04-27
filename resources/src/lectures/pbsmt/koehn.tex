@@ -36,6 +36,24 @@ Capturing non-compositional translation equivalents
 	
 }
 
+%TODO 1 Trasnlation model
+%TODO p(e|f)
+%TODO 
+\frame{
+   \frametitle{Phrase Alignment}
+	\begin{center}
+	\begin{tabular}{l  r}
+		I$_1$ have$_2$ black$_3$ eyes$_4$ & input\\ \pause
+		{[\textcolor{blue}{I$_1$ have$_2$}] [\textcolor{Green}{black$_3$ }] [\textcolor{red}{eyes$_4$}]} & segmentation\\ \pause
+		{[\textcolor{blue}{I$_1$ have$_2$}]$_1$ [\textcolor{red}{eyes$_4$}]$_3$ [\textcolor{Green}{black$_3$ }]$_2$} & ordering\\		\pause
+		{[\textcolor{blue}{J' ai}]$_1$ [\textcolor{red}{les yeux}]$_3$ [\textcolor{Green}{noirs}]$_2$} & translation \\			
+	\end{tabular}
+	\end{center}
+	
+}
+
+\subsection{Phrase-based Model}
+
 \frame{
     \frametitle{Generative story}
 	A new hidden variable: segmentation $S$
@@ -50,92 +68,104 @@ Capturing non-compositional translation equivalents
 			%&= \sum_A \prod_k t(\bar{f}_k|\bar{e}_k) d(\text{start}_k - \text{end}_{k-1} - 1)
 	\end{align*}
 
-	\pause
-	\begin{center}
-	\begin{tabular}{l  r}
-		I$_1$ have$_2$ black$_3$ eyes$_4$ & input\\ \pause
-		{[\textcolor{blue}{I$_1$ have$_2$}] [\textcolor{Green}{black$_3$ }] [\textcolor{red}{eyes$_4$}]} & segmentation\\ \pause
-		{[\textcolor{blue}{I$_1$ have$_2$}]$_1$ [\textcolor{red}{eyes$_4$}]$_3$ [\textcolor{Green}{black$_3$ }]$_2$} & ordering\\		\pause
-		{[\textcolor{blue}{J' ai}]$_1$ [\textcolor{red}{les yeux}]$_3$ [\textcolor{Green}{noirs}]$_2$} & translation \\			
-	\end{tabular}
-	\end{center}
-
-}
-
-\subsection{Generative Modelling}
-\frame{
-    \frametitle{(MLE) inference in phrase-based models}
-	\begin{itemize}
-	\item \citep{Marcu+2002:JPBSMT}
-		\begin{itemize}
-		\item hidden segmentation and alignment
-		\item uniform segmentation, infer distortion and translation probabilities 
-		\pause
-		\item approximate inference, overfitting
-		\end{itemize}
-	\pause
-	\item \citep{DeNero+2006:heuristics}\\
-		\begin{itemize}
-		\item comparable to \citep{Marcu+2002:JPBSMT}, with observed (word) alignments
-		\pause
-		\item approximate inference, overfitting
-		\end{itemize}
-	\pause
-	\item \citep{Koehn+2003:pbsmt}\\
-		\begin{itemize}
-		\item observed (word) alignment and phrase pairs (\alert{not segmentations!})
-		\item parametric distortion and heuristic translation estimates  
-		\end{itemize}
-	\pause
-	\item \citep{Mylonakis+2008:itgprior}
-		\begin{itemize}
-		\item observed (word) alignment and phrase pairs
-		\item ITG-based segmentation, infer translation probabilities  
-		\end{itemize}
-	\end{itemize}
 
 }
 
 
-\subsection{Discriminative modelling}
 \frame{
-    \frametitle{The Alignment-Template Approach}
-
-	\citep{Och+2000:atm} laid out the fundations for \citep{Koehn+2003:pbsmt}
-
-	~
-\begin{center}	
-\includegraphics[scale=0.4]{"img/och99-atm"}
-\end{center}
-	~
-
-	Alignment template: (class) phrase pair \& internal alignment
+    \frametitle{PBSMT Model}
 	
+	TODO
+	 %~
+	
+	\begin{align*}
+		e_{\text{best}} = \argmax_e P(E|F) 
+			&= \argmax_e P(F|E) \times P_{LM}(E)
+	\end{align*}
+
+	\begin{itemize}
+	\item Translation model $P(F|E)$
+	\item Language model $P_{LM}(E)$
+	\end{itemize}
+	\pause
+	Decomposition of translation model
+	\begin{align*}
+		P(\bar{f}_{1}^{I}|\hat{e}_{1}^{I}) = \prod_{i=1}^{I}\phi(\bar{f}_{i}|\hat{e}_{i}) \times d(\text{start}_i - \text{end}_{i-1} - 1)
+	\end{align*}
+	\begin{itemize}
+	\item Phrase translation probability $\phi$
+	\item Reordering Probability $d$
+	\end{itemize}
+	
+
+}
+
+
+
+
+\frame{
+    \frametitle{Weighted Model}
+    \begin{itemize}
+    \item Model consists of three components.
+    
+    \begin{itemize}
+    \item Phrase translation model $\phi()$.
+    \item Reordering model $d$.
+    \item Language model $P_{LM}()$.
+    \end{itemize}
+    \end{itemize}
+    \pause
+    \begin{itemize}
+    \item Some component may be more important:
+    \item $\lambda_{\phi}, \lambda_{d}, \lambda_{LM}$
+    \end{itemize}
+    \begin{align*}
+		e_{\text{best}} = \argmax \prod_{i=1}^{I}\phi(\hat{f}_{i}|\hat{f}_{i})^{\lambda_{\phi}} \times d(\text{start}_i - \text{end}_{i-1} - 1)^\lambda_{d} \times P_{LM}(e_{0}|e...)^\lambda_{LM}
+			
+	\end{align*}
+    
 }
 
 \frame{
-    \frametitle{Model}
-        \begin{align*}
-                \text{score}(E,S, A|F) 
-                        &= \theta^\top h(F, E, A, S)
-        \end{align*}
-
-	~
-	\pause
-	features include
-	\begin{itemize}
-	\item language model
-	\item alignment (distortion)
-	\item translation
-	\end{itemize}
-	~
-	\pause
-	independence assumptions
-	\begin{itemize}
-	\item $h_A(F,E,A,S)= \log \prod_k p(a_k|F,E,A,S)$
-	\item $h_F(F,E,A,S)= \log \prod_k p(\bar{f}_k|F,E,A,S)$
-	\end{itemize}	
+    \frametitle{Log-linear Model}
+    \begin{itemize}
+    \item The weighted components model is a log-linear model.
+   
+   	   
+    \end{itemize}
+    \begin{align*}
+		P(X) = \exp \times \sum_{i=1}^{n}\times\phi_{i}\timesh_{i}(X)
+			
+	\end{align*}
+    \pause
+     \begin{itemize}
+    \item Feature functions $n=3$.
+    \item Random variable $x=(e,f,\text{start}, \text{end})$.
+    \item Feature function: $h_{1} = \log \times \phi$.
+    \item Feature function: $h_{2} = \log \times d$.
+    \item Feature function: $h_{3} = \log \times P_{LM}$
+    \end{itemize}
+    
 }
+
+
+\frame{
+    \frametitle{Phrase Table}
+    \begin{itemize}
+    \item Goal: Learn phrase translation table from parallel corpus.
+    \item Three stages:
+    \begin{itemize}
+    \item Word alignment given IBM.
+    \item Extraction of phrase pairs.
+    \item Phrase scoring.
+    \end{itemize}
+    \end{itemize}
+    
+}
+
+
+
+
 
 \frame{
     \frametitle{Alignment symmetrization}
@@ -303,8 +333,23 @@ Capturing non-compositional translation equivalents
 	$$\phi(\bar{f}|\bar{e}) = \frac{c(\bar{f}, \bar{e})}{\sum_{\bar{f}'} c(\bar{f}', \bar{e})}$$
 }
 
+
+
 \frame{
-    \frametitle{Features}
+    \frametitle{EM for PBSMT}
+    \begin{itemize}
+    \item Initialize uniform $\phi(\bar{f}|\bar{e})$.
+    \item E step:\\
+    Estimate likelihood of all possible phrase alignments for all sentence pairs.
+    \item M step:\\
+   	Collect counts $c(\bar{f}, \bar{e})$.\\
+   	Update probability $\phi(\bar{f}|\bar{e})$
+    \end{itemize}
+    
+}
+
+\frame{
+    \frametitle{Other Features}
 
 	\begin{itemize}
 		\item language model
@@ -372,13 +417,9 @@ Capturing non-compositional translation equivalents
 }
 
 \frame{
-	\frametitle{Conclusion}
+	\frametitle{Summary}
 
 	\begin{itemize}
-	\item generative modelling requires approximations
-	\item overfitting in fragment models (DOP)
-	\item \citep{Koehn+2003:pbsmt} ignore segmentation:\\
-		good feature choice in discriminative model
-	\item reordering remains an issue 
+	\item ...
 	\end{itemize}
 }

@@ -270,6 +270,7 @@
 			
 			\frame{
 				\frametitle{Heuristic rule extraction}
+				Initial phrase pairs created with same heuristic as PBSMT.\\
 				\begin{center}			
 				\only<1>{	
 				\cblue{shall be} \cgreen{passing on} \cgray{to you} \cred{some comments} \\
@@ -316,62 +317,40 @@
 				}			
 			}
 			
-			\frame{
-				\frametitle{Hiero - Constraints}
-				Practical Limitations \citep{Chiang:2005:HPBSMT}
-				\begin{itemize}
-					\pause
-					\item at most two nonterminal symbols
-					\pause
-					\item $X$ spans at least 1 and at most 15 source words
-					\pause
-					\item no nonterminals next to each other in the source side\\
-					\pause
-					\begin{center}
-					\cred{les} \cblue{grandes} \cbrown{maisons} $\leftrightarrow$ \cred{the} \cblue{big} \cbrown{houses\\}
-					\cred{les} \cblue{$X_1$} \cbrown{maisons} $\leftrightarrow$ \cred{the} \cblue{$X_1$} \cbrown{houses}\\
-					\cred{les} \cblue{$X_1$} \cbrown{$X_2$} $\leftrightarrow$ \cred{the} \cblue{$X_1$} \cbrown{$X_2$}\\
-					\cred{les} $X$ $\leftrightarrow$ \cred{the} $X$\\
-					\end{center}
-				\end{itemize}
-				\pause
-				Glue rules
-				\begin{itemize}
-					\item $S \ra \angbrack{S_1 X_2, S_1 X_2}$ 
-				\end{itemize}
-			}
+			
 			\frame{
 				\frametitle{Hiero - Scoring}
 				\begin{footnotesize}
 				Relative frequency: assume all fragments have been ``observed''\\
+				Give a count of one to phrase pair occurrence, then distribute its weight equally among the obtained rules.
 				\begin{itemize}
-					\pause
+					
 					\item Joint rule probatility: $p(LHS, RHS_{source},RHS_{target})$\\
-					\pause
+					
 					\begin{center}
 						$p(X, \text{la maison } X_1, \text{the } X_1 \text{ house})$
 					\end{center}
-					\pause
+					
 					\item Rule application probability: $p(RHS_{source},RHS_{target}|LHS)$\\
-					\pause
+					
 					\begin{center}
 						$p(\text{la maison } X_1, \text{the } X_1 \text{ house} | X)$
 					\end{center}
-					\pause
+					
 					\item Direct translation probability: $p(RHS_{target}|RHS_{source},LHS)$\\
-					\pause
+				
 					\begin{center}
 						$p(\text{the } X_1 \text{ house} |\text{la maison } X_1, X)$
 					\end{center}
-					\pause
+					
 					\item Noisy-channel translation probability: $p(RHS_{source}|RHS_{target},LHS)$\\
-					\pause
+					
 					\begin{center}
 						$p(\text{la maison } X_1 |\text{the } X_1 \text{ house}, X)$
 					\end{center}
-					\pause
+					
 					\item Lexical translation probability\\
-					\pause
+					
 					\begin{center}
 					$\prod_{t_i \in RHS_{target}} p(t_i|RHS_{source},a)$ \hspace{10pt}
 					$\prod_{s_i \in RHS_{source}} p(s_i|RHS_{target},a)$\\
@@ -382,852 +361,35 @@
 			\frame{
 				\frametitle{Hiero - Model}
 				Log-linear combination of features
-
 					\pause
-
-					\begin{center}
-						$p(\mdd, \mxx) = \prod_i \phi_i(\mdd, \mxx)^{\lambda_i}$
-					\end{center}
-					\pause
-					\begin{center}
-						$\log p(\mdd, \mxx) = \sum_i \lambda_i \log \phi_i(\mdd, \mxx)$
-					\end{center}
-					\pause
-					\begin{center}
-						$\log p(\mdd, \mxx) = \sum_i \lambda_i \log \prod_{r \in \mdd} \phi_i(r, \mxx)$
-					\end{center}
-					\pause
-					\begin{center}
-						$\log p(\mdd, \mxx) = \sum_i \lambda_i \left( \sum_{r \in \mdd} \log \phi_i(r, \mxx) \right)$
-					\end{center}
-					\pause
-					\begin{center}
-						$\log p(\mdd, \mxx) = \sum_{r \in \mdd} \sum_i \lambda_i \log \phi_i(r, \mxx)$
-					\end{center}
-
-				\pause
 				Linear model
-				$$f(\mdd, \mxx) = \sum_i \lambda_i h_i(\mdd, \mxx) = \sum_{r\in \mdd} \pmb \lambda^\top \mathbf{h}(r, \mxx)$$
+				$$S_{\theta}(e,d,f) = \theta^T \sum_{r_{s,t} \epsilon d} h_i(r_{s,t}|e,f)$$
+				where $s$ is a span over F,\\
+				$t$ is a span over E\\ 
+				and $r$ is a rule.\\
+				Weighted synchronous CFG.\\
+				LM.\\ 
+			
 			}
-
-\subsection{Syntactic constraints}
-		\frame[plain]{
-				\frametitle{Syntactic Constraints}
-				Rules are learnt from the word-alignment\\
-				And constrained by syntactic categories\\
-
-				\only<1>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.VP0
-						[ ai ].VB
-						[.NP0
-							[ \text{les} ].DT
-							[ \text{yeux} ].NN
-							[ \text{noirs} ].JJ
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.VP
-						[ have ].VB
-						[.NP
-							[ black ].JJ
-							[ eyes ].NN
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						black  & & & & & \celldg \\ \hline
-						eyes  & & & \celldg & \celldg & \\ \hline
-					\end{tabular}
-					}
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule requires a single LHS
-					\item A rule must be consistent with word-alignment
-					\item Nonterminals in the RHS must align one-to-one
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}
-				\only<2>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.VP0
-						[ ai ].VB
-						[.NP0
-							[ les ].DT
-							[ yeux ].NN
-							[ \cblue{noirs} ].{\cblue{\textbf{JJ}}}
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.VP
-						[ have ].VB
-						[.NP
-							[ \cblue{black} ].{\cblue{\textbf{JJ}}}
-							[ eyes ].NN
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & \cblue{les} & \cblue{yeux} & \cblue{noirs} \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						\cblue{black}  & & &  &  & \cellblue \\ \hline
-						\cblue{eyes}  & & & \celldg & \celldg &  \\ \hline
-					\end{tabular}					
-					}
-					
-					
-					\vspace{5pt}					
-					\begin{footnotesize}
-					\cblue{\textbf{JJ}} $\rightarrow$ \cblue{noirs} $|$ \cblue{black} \\is straightforward
-					\end{footnotesize}
-					
-				\end{column}
-				\begin{column}{7cm}	
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule requires a \cgreen{single LHS}
-					\item A rule must be \cgreen{consistent with word-alignment}
-					\item Nonterminals in the RHS must \cgreen{align one-to-one}
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}
-				\only<3>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.VP0
-						[ ai ].VB
-						[.NP0
-							[ les ].DT
-							[ yeux ].NN
-							[ \textbf{noirs} ].JJ
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.VP
-						[ have ].VB
-						[.NP
-							[ \textbf{black} ].JJ
-							[ eyes ].NN
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						black  & & & & & \celldg \\ \hline
-						eyes  & & & \celldg & \celldg & \\ \hline
-					\end{tabular}
-					}
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule requires a single LHS
-					\item A rule must be consistent with word-alignment
-					\item Nonterminals in the RHS must align one-to-one
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}
-
-				\only<4>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.VP0
-						[ ai ].VB
-						[.NP0
-							[ \cblue{les} ].DT
-							[ \cblue{yeux} ].{NN}
-							[ \textbf{noirs} ].JJ
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.VP %!{\qframesubtree}
-						[ have ].VB
-						[.{NP}
-							[ \textbf{black} ].JJ
-							[ \cblue{eyes} ].NN
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						black  & & & & & \celldg \\ \hline
-						eyes  & & & \cellblue & \cellblue & \\ \hline
-					\end{tabular}					
-					}
-					
-					\vspace{5pt}
-									
-					\begin{footnotesize}
-					A single LHS $\rightarrow$ subtree
-					\end{footnotesize}
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule \cred{requires a single LHS}
-					\item A rule must be \cgreen{consistent with word-alignment}
-					\item Nonterminals in the RHS \cred{must align one-to-one}
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}				
-				
-				\only<5>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.VP0
-						[ ai ].VB
-						[.{\cblue{NP0}}
-							[ \cblue{les} ].{\cred{DT}\indice{?}}
-							[ \cblue{yeux} ].{NN\indice{2}}
-							[ \textbf{noirs} ].{JJ\indice{1}}
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.VP %!{\qframesubtree}
-						[ have ].VB
-						[.{\cblue{NP}}
-							[ \textbf{black} ].{JJ\indice{1}}
-							[ \cblue{eyes} ].{NN\indice{2}}
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						black  & & & \cellg & \cellg & \celldg \\ \hline
-						eyes  & & & \cellblue & \cellblue & \cellg \\ \hline
-					\end{tabular}					
-					}
-					
-					\vspace{5pt}
-									
-					\begin{footnotesize}
-					Use \cblue{NP0/NP}
-					\end{footnotesize}
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule \cgreen{requires a single LHS}
-					\item A rule must be \cgreen{consistent with word-alignment}
-					\item Nonterminals in the RHS \cred{must align one-to-one}
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}	
-				
-				\only<6>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.VP0
-						[ ai ].VB
-						[.{\cblue{NP0}}
-							[ \cblue{\textbf{les}} ].{\cblue{DT}}
-							[ \cblue{\textbf{yeux}} ].{\cblue{NN}}
-							[ \textbf{noirs} ].{\cblue{\textbf{JJ}}\indice{1}}
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.VP %!{\qframesubtree}
-						[ have ].VB
-						[.{\cblue{NP}}
-							[ \textbf{black} ].{\cblue{\textbf{JJ}}\indice{1}}
-							[ \cblue{\textbf{eyes}} ].{\cblue{NN}}
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						black  & & & \cellg & \cellg & \cellblue \WN{JJ} \\ \hline
-						eyes  & & & \cellblue & \cellblue & \cellg \\ \hline
-					\end{tabular}					
-					}
-					
-					\vspace{5pt}
-									
-					\begin{footnotesize}
-					NP0/NP $\rightarrow$ \\
-					\hspace{5pt} $\overset{DT}{les}$ $\overset{NN}{yeux}$ JJ\indice{1} $|$ JJ\indice{1} $\overset{NN}{eyes}$ 
-					\end{footnotesize}
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule \cgreen{requires a single LHS}
-					\item A rule must be \cgreen{consistent with word-alignment}
-					\item Nonterminals in the RHS \cgreen{must align one-to-one}
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}
-				
-				\only<7>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.VP0
-						[ ai ].VB
-						[.{NP0}
-							[ \textbf{les} ].{\textbf{DT}}
-							[ \textbf{yeux} ].{\textbf{NN}}
-							[ \textbf{noirs} ].{\textbf{JJ}}
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.VP
-						[ have ].VB
-						[.NP
-							[ \textbf{black} ].{\textbf{JJ}}
-							[ \textbf{eyes} ].{\textbf{NN}}
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						black  & & & & & \celldg \\ \hline
-						eyes  & & & \celldg & \celldg & \\ \hline
-					\end{tabular}
-					}
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule requires a single LHS
-					\item A rule must be consistent with word-alignment
-					\item Nonterminals in the RHS must align one-to-one
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}		
-				
-				\only<8>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.{\cblue{VP0}}
-						[ \cblue{\textbf{ai}} ].{\cblue{VB}}
-						[.{\cblue{\textbf{NP0}}\indice{3}}
-							[ \textbf{les} ].{\textbf{DT}}
-							[ \textbf{yeux} ].{\textbf{NN}}
-							[ \textbf{noirs} ].{\textbf{JJ}}
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.{\cblue{VP}}
-						[ \cblue{\textbf{have}} ].{\cblue{VB}}
-						[.{\cblue{\textbf{NP}}\indice{3}}
-							[ \textbf{black} ].{\textbf{JJ}}
-							[ \textbf{eyes} ].{\textbf{NN}}
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \cellblue & \cellg & \cellg & \cellg \\ \hline
-						black  & & \cellg & \cellg & \cellg & \cellblue \WN{NP} \\ \hline
-						eyes  & & \cellg & \cellblue \WN{NP} & \cellblue \WN{NP} & \cellg \\ \hline
-					\end{tabular}
-					}
-					
-					\vspace{5pt}
-									
-					\begin{footnotesize}
-					VP0/VP $\rightarrow$ \\
-					\hspace{5pt} $\overset{VB}{ai}$ NP0\indice{3} $|$ $\overset{VB}{have}$ NP\indice{3} 
-					\end{footnotesize}
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule requires a single LHS
-					\item A rule must be consistent with word-alignment
-					\item Nonterminals in the RHS must align one-to-one
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}	
-				
-				\only<9>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ J' ].PRP0
-					[.VP0
-						[ \textbf{ai} ].{\textbf{VB}}
-						[.{\textbf{NP0}}
-							[ \textbf{les} ].{\textbf{DT}}
-							[ \textbf{yeux} ].{\textbf{NN}}
-							[ \textbf{noirs} ].{\textbf{JJ}}
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.VP
-						[ \textbf{have} ].{\textbf{VB}}
-						[.{\textbf{NP}}
-							[ \textbf{black} ].{\textbf{JJ}}
-							[ \textbf{eyes} ].{\textbf{NN}}
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \celldg & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						black  & & & & & \celldg \\ \hline
-						eyes  & & & \celldg & \celldg & \\ \hline
-					\end{tabular}
-					}
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule requires a single LHS
-					\item A rule must be consistent with word-alignment
-					\item Nonterminals in the RHS must align one-to-one
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}	
-				
-				\only<10>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ \cblue{\textbf{J'}} ].{\cblue{PRP0}}
-					[.VP0
-						[ \textbf{ai} ].{\textbf{VB}}
-						[.{\textbf{NP0}}
-							[ \textbf{les} ].{\textbf{DT}}
-							[ \textbf{yeux} ].{\textbf{NN}}
-							[ \textbf{noirs} ].{\textbf{JJ}}
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.S
-					[ \cblue{\textbf{I}} ].{\cblue{PRP}}
-					[.VP
-						[ \textbf{have} ].{\textbf{VB}}
-						[.{\textbf{NP}}
-							[ \textbf{black} ].{\textbf{JJ}}
-							[ \textbf{eyes} ].{\textbf{NN}}
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \cellblue & & & & \\ \hline
-						have  & & \celldg & & & \\ \hline
-						black  & & & & & \celldg \\ \hline
-						eyes  & & & \celldg & \celldg & \\ \hline
-					\end{tabular}
-					}
-					
-					\vspace{5pt}
-									
-					\begin{footnotesize}
-					\cblue{PRP0/PRP} $\rightarrow$ \cblue{J'} $|$ \cblue{I}\\
-					is straightforward 
-					\end{footnotesize}
-					
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule requires a single LHS
-					\item A rule must be consistent with word-alignment
-					\item Nonterminals in the RHS must align one-to-one
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}	
-				
-				\only<11>{	
-				\begin{columns}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.{\cblue{S}}
-					[ \textbf{J'} ].{\cblue{\textbf{PRP0}}\indice{4}}
-					[.{\cblue{\textbf{VP0}}\indice{5}}
-						[ \textbf{ai} ].{\textbf{VB}}
-						[.{\textbf{NP0}}
-							[ \textbf{les} ].{\textbf{DT}}
-							[ \textbf{yeux} ].{\textbf{NN}}
-							[ \textbf{noirs} ].{\textbf{JJ}}
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{4cm}
-				\resizebox{4cm}{!} {				
-				\Tree
-				[.{\cblue{S}}
-					[ \textbf{I} ].{\cblue{\textbf{PRP}}\indice{4}}
-					[.{\cblue{\textbf{VP}}\indice{5}}
-						[ \textbf{have} ].{\textbf{VB}}
-						[.{\textbf{NP}}
-							[ \textbf{black} ].{\textbf{JJ}}
-							[ \textbf{eyes} ].{\textbf{NN}}
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				\begin{columns}
-				\begin{column}{4cm}
-					\resizebox{4cm}{!} {
-					\begin{tabular}{|l|l|l|l|l|l|}
-						\hline
-						& J' & ai & les & yeux & noirs \\ \hline
-						I  & \cellblue \WN{PRP} & \cellg & \cellg & \cellg & \cellg \\ \hline
-						have  & \cellg & \cellblue \WN{VP} & \cellg & \cellg & \cellg \\ \hline
-						black  & \cellg & \cellg & \cellg & \cellg & \cellblue \WN{VP} \\ \hline
-						eyes  & \cellg & \cellg & \cellblue \WN{VP} & \cellblue \WN{VP} & \cellg \\ \hline
-					\end{tabular}
-					}
-					
-					\vspace{5pt}
-									
-					\begin{footnotesize}
-					S $\rightarrow$ PRP0\indice{4} VP\indice{5} $|$ PRP\indice{4} VP\indice{5}\\
-					\end{footnotesize}
-					
-				\end{column}
-				\begin{column}{7cm}
-				\begin{footnotesize}			
-				\begin{itemize}
-					\item A context-free rule requires a single LHS
-					\item A rule must be consistent with word-alignment
-					\item Nonterminals in the RHS must align one-to-one
-				\end{itemize}
-				\end{footnotesize}
-				\end{column}
-				\end{columns}
-				}				
-					
-			}
+			
 			\frame{
-				\frametitle{Grammar}
-				Grammar\\
-				\vspace{10pt}
-				\hspace{5pt} PRP0/PRP $\rightarrow$ J' $|$ I\\
-				\vspace{10pt}
-				\hspace{5pt} JJ $\rightarrow$ noirs $|$ black\\
-				\vspace{10pt}
-				\hspace{5pt} NP0/NP $\rightarrow$  $\overset{DT}{les}$ $\overset{NN}{yeux}$ JJ $|$ JJ\\
-				\vspace{10pt}
-				\hspace{5pt} VP0/VP $\rightarrow$  $\overset{VB}{ai}$ NP0 $|$ $\overset{VB}{have}$ NP\\
-				\vspace{10pt}
-				\hspace{5pt} S $\rightarrow$ PRP0 VP0 $|$ PRP VP\\
-			}
-			\frame{
-				\frametitle{Syntax-based vs Hiero}	
-				More constraints on rules\\
-				\begin{center}
-					Can we extract the discontiguous phrase \textbf{ai X noirs}?\\
-				\end{center}
-				\cblue{Hiero}: X $\rightarrow$ ai X\indice{1} noirs $|$ have black X\indice{1} \\
-				\cred{Syntactic}: No! \\
-				\only<1>{	
-				\begin{columns}
-				\begin{column}{5cm}
-				\resizebox{3cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.{\cblue{VP}}
-						[ \cblue{ai} ].VB
-						[.NP
-							[ les ].DT
-							[ yeux ].NN
-							[ \cblue{noirs} ].JJ
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{5cm}
-				\resizebox{3cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.{\cblue{VP}}
-						[ \cblue{have} ].VB
-						[.NP
-							[ \cblue{black} ].JJ
-							[ eyes ].NN
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				}
-				\only<2>{	
-				\begin{columns}
-				\begin{column}{5cm}
-				\resizebox{3cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.{\cblue{VP}}
-						[ \cblue{ai} ].VB
-						[.NP
-							[ \cred{les} ].{\cred{DT}}
-							[ \cred{yeux} ].{\cred{NN}}
-							[ \cblue{noirs} ].JJ
-						]
-					]
-				]
-				}
-				\end{column}
-				\begin{column}{5cm}
-				\resizebox{3cm}{!} {				
-				\Tree
-				[.S
-					[ I ].PRP
-					[.{\cblue{VP}}
-						[ \cblue{have} ].VB
-						[.NP
-							[ \cblue{black} ].JJ
-							[ \cred{eyes} ].{\cred{NN}}
-						]
-					]
-				]
-				}	
-				\end{column}
-				\end{columns}
-				}
+				\frametitle{Hiero - Model}
 				
+				
+				(0) J' (1) ai (2) les (3) yeux (4) noir (5)\\
+ 				(0) I (1) have (2) black (3) eyes (4)\\
+				$$X[0-2/0-2] \rightarrow \text{J' ai} | \text{I have}$$ \\
+				$$X[2-4/3-4] \rightarrow \text{les yeux} | \text{eyes}$$ \\
+				$$X[2-5/2-4] \rightarrow X[2-4] \text{noir} | \text{black} X[3-4]$$ \\
+				$$S[0-5/0-4] \rightarrow X[0-2] X[2-5] | X[0-2] X[2-4]$$
+				
+
 			}
+
 
 \section{Decoding}
-			\frame{			
-				\frametitle{Decoding}
-				\begin{columns}
-					\begin{column}{5cm}
-						Phrase-based\\
-						\begin{itemize}
-							\item<2-> Left-to-Right
-							\item<3-> Beam Search
-						\end{itemize}
-					\end{column}
-					\begin{column}{5cm}
-						Tree-based\\
-						\begin{itemize}
-							\item<2-> Bottom-Up
-							\item<3-> Chart Parsing
-						\end{itemize}
-					\end{column}
-				\end{columns}
-			}
-			\frame[plain,shrink]{			
+\begin{comment}
+\frame[plain,shrink]{			
 				\frametitle{Decoding by Parsing}
 				\begin{center}
 					\only<1>{J' ai les yeux noirs}
@@ -1409,3 +571,28 @@
 				\end{columns}
 				
 			}
+		\end{comment}
+			\frame{			
+				\frametitle{Decoding}
+				\begin{columns}
+					\begin{column}{5cm}
+						Phrase-based\\
+						\begin{itemize}
+							\item<2-> Left-to-Right
+							\item<3-> Beam Search
+							\item<4-> Formally intersection:
+							\item<5-> FST (TM) $\times$ FSA (LM)
+						\end{itemize}
+					\end{column}
+					\begin{column}{5cm}
+						Tree-based\\
+						\begin{itemize}
+							\item<2-> Bottom-Up
+							\item<3-> Chart Parsing (In  the next Lab.)
+							\item<4-> Formally intersection:
+							\item<5-> SCFG (TM) $\times$ FSA (LM)
+						\end{itemize}
+					\end{column}
+				\end{columns}
+			}
+		

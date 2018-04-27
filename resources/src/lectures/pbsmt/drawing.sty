@@ -2,5 +2,14 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
             
-\newcommand{\ftext}[1]{\textcolor{blue}{\text{#1}}}
-\newcommand{\etext}[1]{\textcolor{red}{\text{#1}}}
+\newcommand{\ftext}[1]{\textcolor{red}{\text{#1}}}
+\newcommand{\etext}[1]{\textcolor{blue}{\text{#1}}}
+
+
+\newcommand{\ibr}[1]{\ensuremath{\textcolor{red}{\left\langle\text{#1}\right\rangle}}}
+\newcommand{\dbr}[1]{\ensuremath{\textcolor{blue}{\left(\text{#1}\right)}}}
+
+\newcommand{\lefttik}[2]{\only<#1>{$\leftarrow$}\only<#2->{$\checkmark$}}
+
+\newcommand{\cmark}{{\color{ForestGreen}\ding{51}}}
+\newcommand{\xmark}{{\color{BurntOrange}\ding{55}}}
