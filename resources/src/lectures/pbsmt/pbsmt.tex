@@ -341,7 +341,7 @@
 
 \frame{
 	\frametitle{Feature Translation Model}
-	Features $$\log  P(\bar{f}, \bar{e})$$ and $$\log  P(\bar{e}, \bar{f})$$\\
+	Features $$\log  P(\bar{f}| \bar{e})$$ and $$\log  P(\bar{e}| \bar{f})$$\\
 	Number of times a (consistent) phrase pair is ``observed''\\
 	$$c(\bar{f}, \bar{e})$$
 
@@ -352,7 +352,7 @@
 
 }
 
-
+\begin{comment}
 \frame{
 	\frametitle{Feature Distortion}
 	Feature $$h_3 = \log  d(\text{start}_k - \text{end}_{k-1} - 1)$$\\
@@ -399,6 +399,7 @@
 
 	\end{columns}
 }
+\end{comment}
 
 \frame{
 	\frametitle{Feature Language Model}
@@ -425,22 +426,6 @@
 \section{Prediction}
 
 
-
-
-
-\frame{
-	\frametitle{Decoding}
-	\begin{center}
-	\includegraphics[scale=0.3]{"img/beam_search"}
-	\end{center}
-	\begin{footnotesize}
-	Figure: \citet{Koehn:2010:SMT}
-	\end{footnotesize}
-	
-
-}
-
-
 \frame{
 	\frametitle{Translation Options}
 
@@ -458,3 +443,20 @@
 	\end{itemize}
 
 }
+
+
+
+\frame{
+	\frametitle{Decoding}
+	\begin{center}
+	\includegraphics[scale=0.3]{"img/beam_search"}
+	\end{center}
+	\begin{footnotesize}
+	Figure: \citet{Koehn:2010:SMT}
+	\end{footnotesize}
+	
+
+}
+
+
+
