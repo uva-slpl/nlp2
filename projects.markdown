@@ -50,7 +50,7 @@ In this project you will learn about neural machine translation and will impleme
 
 Resources:
 
-* [Project description](resources/src/projects/nmt/master.pdf)
+* [Project description](resources/project_nmt/project2.pdf)
 * [Training data](resources/project_nmt/data/train.zip)
 * [Validation data](resources/project_nmt/data/val.zip)
 * [Test data](resources/project_nmt/data/test.zip)
