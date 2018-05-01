@@ -372,19 +372,19 @@
 			
 			}
 			
-			\frame{
-				\frametitle{Hiero - Model}
+			%\frame{
+			%	\frametitle{Hiero - Model}
 				
 				
-				(0) J' (1) ai (2) les (3) yeux (4) noir (5)\\
- 				(0) I (1) have (2) black (3) eyes (4)\\
-				$$X[0-2/0-2] \rightarrow \text{J' ai} | \text{I have}$$ \\
-				$$X[2-4/3-4] \rightarrow \text{les yeux} | \text{eyes}$$ \\
-				$$X[2-5/2-4] \rightarrow X[2-4] \text{noir} | \text{black} X[3-4]$$ \\
-				$$S[0-5/0-4] \rightarrow X[0-2] X[2-5] | X[0-2] X[2-4]$$
+			%	(0) J' (1) ai (2) les (3) yeux (4) noir (5)\\
+ 			%	(0) I (1) have (2) black (3) eyes (4)\\
+			%	$$X[0-2/0-2] \rightarrow \text{J' ai} | \text{I have}$$ \\
+			%	$$X[2-4/3-4] \rightarrow \text{les yeux} | \text{eyes}$$ \\
+			%	$$X[2-5/2-4] \rightarrow X[2-4] \text{noir} | \text{black} X[3-4]$$ \\
+			%	$$S[0-5/0-4] \rightarrow X[0-2] X[2-5] | X[0-2] X[2-4]$$
 				
 
-			}
+			%}
 
 
 \section{Decoding}
@@ -571,7 +571,7 @@
 				\end{columns}
 				
 			}
-		\end{comment}
+	\end{comment}
 			\frame{			
 				\frametitle{Decoding}
 				\begin{columns}
@@ -596,3 +596,67 @@
 				\end{columns}
 			}
 		
+\section{Tuning}
+\frame{
+				\frametitle{Discriminative Model}
+				\begin{itemize}[<+->]
+				\item model consists of features.
+				\item each feature has a weight.
+				\item supervised learning: tune feature weights wrt. an evaluation metric on development data
+				\item Which objective? \\
+				 \color{blue}{Bilingual Evaluation Understudy metric BLEU}
+				\end{itemize}
+			
+			}
+			
+\frame{
+	\frametitle{Tuning}
+\textbf{Task}: find weights so that the model ranks best translations first.
+\begin{itemize}[<+->]
+\item Translate development corpus using model with current feature weights, \\
+  N -best list of translations (N = 100, 1000, . . .)
+\item Evaluate translations with the objective 
+\item Adjust feature weights to increase the gain
+\item Iterate translation, evaluation, and adjustment of feature weights 
+\end{itemize}
+
+}
+
+\frame{
+	\frametitle{MERT}
+Minimum error rate training (MERT)
+\begin{itemize}[<+->]
+\item coordinate ascent, where the search updates a feature weight which appears most likely to offer improvements.
+\item  Highest point in a hilly city with a grid of streets, like San Francisco. [Koehn, 2008]\\
+We start along a certain street. \\
+Find its highest point and continue along the cross-street. \\
+Also in this cross-street we find the highest point.
+\end{itemize}
+
+}
+
+\frame{
+	\frametitle{MERT}
+
+\begin{itemize}[<+->]
+\item Line search for best feature weights \\
+given: sentences with n-best lists of translations
+\item iterate n times \\
+ randomize starting feature weights
+\item[]          for each feature
+\begin{itemize}[<+->]
+\item           find best feature weight
+\item           update if different from current
+\end{itemize}
+\item return best feature weights found in any iteration
+\end{itemize}
+
+}
+
+
+%\frame{
+%	\frametitle{MERT}
+%Minimum error rate training (MERT)
+
+
+%}
