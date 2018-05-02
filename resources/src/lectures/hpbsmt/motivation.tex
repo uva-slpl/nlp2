@@ -1,3 +1,21 @@
+\section{Introduction}
+\frame{
+\frametitle{Recap}
+\begin{itemize}[<+->]
+\item Noisy Channel \\
+$P(E|F) =  \frac{P(E) P(F | E) }{P(F)} $
+\item Most likely translation\\
+$\underset{e}{\mathrm{argmax}}  P(E | F)  =  \underset{e}{\mathrm{argmax}} P(E)  P(F |E)
+$ \\ (1) the chance that someone would say \textbf{E}  first place \\
+(2) if  say \textbf{E}, the chance that someone else would translate it into \textbf{F}.\\
+(3) $ P(F| E)$ will ensure that a good  \textbf{E} will have words that generally translate to words in  \textbf{F}.\\
+(4) $P(E)$  language model.
+
+\item Linear Model \\
+$$S_{\theta}(e,d,f) = \theta^T \sum_{i}^{n} h_i(d_i|e,f)$$
+\end{itemize}
+}
+
 \section{Motivation}
 
 \frame{
