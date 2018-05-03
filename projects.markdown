@@ -15,6 +15,7 @@ Groups: check Blackboard or our blog posts.
 
 *Deadline 08-05-2018*
 
+**Note: in IBM2 it is optional to use relative jumps (jump function); you are also allowed to use absolute positions.**
 
 In this project you will learn about lexical alignment, the task of learning correspondences between words in different languages.
 You will apply latent variable modelling techniques, in particular, learning with directed graphical models (aka locally normalised models).
