@@ -3,7 +3,7 @@ layout: post
 title: Practical notes on computing the ELBO for Bayesian IBM1
 date:   2018-05-03
 author: Wilker
-categories: reading
+categories: projects
 mathjax: true
 ---
 
