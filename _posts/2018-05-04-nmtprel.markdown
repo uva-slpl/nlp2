@@ -6,7 +6,7 @@ author: Miguel
 categories: lectures
 ---
 
-Neural Machine Translation and Sequence-to-sequence Models: A Tutorial
+[Neural Machine Translation and Sequence-to-sequence Models: A Tutorial](https://arxiv.org/pdf/1703.01619.pdf)
 * Section 5.1 - 5.3 Neural Networks and Feed-forward Language Models
 * Section 6.1-6.4, 6.5 Recurrent Neural Network Language Models
 
