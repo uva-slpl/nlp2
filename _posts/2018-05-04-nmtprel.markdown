@@ -1,0 +1,19 @@
+---
+layout: post
+title:  NMT reading
+date:   2018-05-04
+author: Miguel
+categories: lectures
+---
+
+Neural Machine Translation and Sequence-to-sequence Models: A Tutorial
+* Section 5.1 - 5.3 Neural Networks and Feed-forward Language Models
+* Section 6.1-6.4, 6.5 Recurrent Neural Network Language Models
+
+[Deep Learning, NLP, and Representations](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations)  
+[Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs)
+
+
+
+
+
