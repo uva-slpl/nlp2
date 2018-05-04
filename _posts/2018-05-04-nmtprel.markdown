@@ -13,6 +13,8 @@ categories: lectures
 [Deep Learning, NLP, and Representations](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations)  
 [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs)
 
+Pytorch intro [tutorial](https://github.com/jcjohnson/pytorch-examples#pytorch-custom-nn-modules)
+
 
 
 
