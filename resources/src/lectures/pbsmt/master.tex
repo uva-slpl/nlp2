@@ -75,7 +75,8 @@
 \newcommand{\pht}{\overset{\_}{t}}
 \newcommand{\hypoe}[2]{\fbox{$\overset{\text{#1}}{#2}$}}
 \newcommand{\hypot}[2]{\fbox{$\overset{\text{#1}}{\text{#2}}$}}
-
+%\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+%\newcommand{\thickbar}[1]{\mathbf{\bar{\text{$#1$}}}}
 
 
 
@@ -89,7 +90,7 @@
 	\title{Phrase-based SMT}
 	%\subtitle{for unsupervised language learning}
 
-	\author{Sophie Arnoult}
+	\author{Miguel Rios}
 	\institute[UvA]{
 		%\inst{1}
 		Universiteit van Amsterdam\\
@@ -121,9 +122,10 @@
 
 
 	% SLIDES
-	\input{ibm}
-	\input{koehn}
-	\input{decoding}
+	%\input{ibm}
+	\input{pbsmt}
+	
+	%\input{decoding}
 	
 	\newcounter{finalframe}
 	\setcounter{finalframe}{\value{framenumber}}
@@ -141,7 +143,7 @@
 
 	\frame[allowframebreaks]{ \frametitle{References}
         \bibliographystyle{plainnat}
-        \bibliography{../../bib}
+        \bibliography{../bib}
 	}
 
 	

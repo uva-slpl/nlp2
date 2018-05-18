@@ -3,7 +3,7 @@
 \documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
 
 \usetheme{Amsterdam}
-
+\usepackage{verbatim}
 \usefonttheme[onlymath]{serif}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
@@ -70,11 +70,11 @@
 	\title{Hierarchical Machine Translation}
 	%\subtitle{for unsupervised language learning}
 
-	\author{Wilker Aziz}
+	\author{Miguel Rios}
 	\institute[UvA]{
 		%\inst{1}
 		Universiteit van Amsterdam\\
-		\texttt{w.aziz@uva.nl}
+		
 	}
 
 	\date{\today}
@@ -122,31 +122,10 @@
 	
 	%\section{Conclusion}
 
-	\input{syntax}
+	%\input{syntax}
 		
 	
-	\frame{
-	\frametitle{Conclusions and further reading}
 	
-	Hierarchical structure
-	\begin{itemize}
-		\item reasonable accounts of languages with different word-order \pause
-		\begin{itemize}
-			\item however, rather strict/fixed word-order (simpler morphology)
-		\end{itemize}
-	\end{itemize}
-	
-	\pause
-	
-	Linguistically-informed labels
-	\begin{itemize}
-		\item constrain hiero grammar \citep{Zollmann+2006:SAMT}
-		\item tree-based grammars \citep{DeNeefe+2009:STAG}
-		\item feature-rich models \citep{Chiang+2009:11k}
-		\item tree transducers and EM training \citep{Galley+2006:CRST}
-	\end{itemize}
-	
-	}
 	
 	
 	\newcounter{finalframe}
@@ -159,12 +138,12 @@
   	}
 	
 	
-	\input{backup}
+	%\input{backup}
 
 
 	\frame[allowframebreaks]{ \frametitle{References}
         \bibliographystyle{plainnat}
-        \bibliography{../../bib}
+        \bibliography{../bib}
 	}
 
 	
