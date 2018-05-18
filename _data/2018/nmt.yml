@@ -14,7 +14,7 @@
   further:
     - "[Goldberg NN for NLP primer](https://arxiv.org/abs/1510.00726)"
   discussion:
-  slides: resources/slides/lm.pdf 
+  slides: resources/slides/nlm-iacer-2018.pdf 
   code: 
   data: 
 -
@@ -23,11 +23,11 @@
   date: 2018-05-18
   img: nmtatt
   uid: seq2seq
-  title: "Conditional language models: encoder-decoder"
+  title: "Neural Machine Translation: encoder-decoder"
   instructor: Joost Bastings, Iacer Calixto and Miguel Rios
   note: 
   abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
-  slides: resources/slides/nmt.pdf
+  slides: resources/slides/nmt-iacer-2018.pdf
   background:
     - "[Sequence to sequence learning](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)"
     - "[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)"
