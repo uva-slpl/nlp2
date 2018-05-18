@@ -120,7 +120,7 @@
   date: 2018-05-7
   img: mteval
   uid: mteval
-  title: Evaluation
+  title: Machine Translation Evaluation
   instructor: "Iacer Calixto and Miguel Rios"
   note: 
   abstract: |
@@ -137,7 +137,7 @@
     - "Read [(Lopez, 2012)](http://www.aclweb.org/anthology/W/W12/W12-3101.pdf) for a formal view of evaluation of automatic evaluation metrics (you read it right!)." 
     - "[Hypothesis testing for SMT](http://www.aclweb.org/anthology/P/P11/P11-2031.pdf) or whether two systems differ."
   discussion:
-  slides: resources/slides/mteval.pdf
+  slides: resources/slides/mteval-iacer-2018.pdf
   code: 
   data: 
 -
