@@ -23,6 +23,7 @@ In this project, you will parameterise the model using categorical distributions
 You will experiment with maximum likelihood estimation.
 
 * Maximum likelihood estimation for IBM1 and IBM2: EM algorithm
+
 **Note: in IBM2 experiment with both relative jumps (jump function) and absolute positions.**
 
 
