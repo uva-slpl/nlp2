@@ -1,11 +1,11 @@
 -
   layout: lecture
   selected: y
-  date: 2018-04-09
+  date: 
   img: ibm
   uid: ibm_em
   title: "IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
-  instructor: Khalil Sima'an
+  instructor: Miguel Rios
   note: 
   abstract: >
     In this session we will discuss the IBM word alignment models 1 and 2. 
@@ -29,7 +29,7 @@
 -
   layout: lecture
   selected: y
-  date: 2018-04-13
+  date: 
   img: ibm
   uid: ibm_em
   title: "Cont. IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
@@ -57,7 +57,7 @@
 -
   layout: lecture
   selected: n
-  date: 2018-04-16
+  date: 
   img: logistic
   uid: ibm_logistic
   title: "Feature-rich IBM1: EM for logistic CPDs"
@@ -78,7 +78,7 @@
 -
   layout: lecture
   selected: y
-  date: 2018-04-16 and 2018-04-26
+  date: 
   img: bibm
   uid: ibm_vb
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
