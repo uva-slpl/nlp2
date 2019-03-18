@@ -4,7 +4,7 @@ title: Projects
 menu: yes
 ---
 
-*Spring 2018*
+*Spring 2019*
 
 We want you to get your hands dirty with most of the core topics covered in the course. 
 To that end, we prepared two projects. 
@@ -27,7 +27,7 @@ You will experiment with maximum likelihood estimation and Bayesian modelling wi
 
 Resources:
 
-* [Project description](resources/project_ibm/project1.pdf)
+<!---* [Project description](resources/project_ibm/project1.pdf)`--->
 * [Training data](resources/project_ibm/training.tgz)
 * [Validation data](resources/project_ibm/validation.tgz)
 <!---* [Test data](resources/project_ibm/testing.tgz)  ``new!``--->
