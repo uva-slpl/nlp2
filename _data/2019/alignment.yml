@@ -5,7 +5,7 @@
   img: ibm
   uid: ibm_em
   title: "IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
-  instructor: Miguel Rios
+  instructor:
   note: 
   abstract: >
     In this session we will discuss the IBM word alignment models 1 and 2. 
@@ -33,7 +33,7 @@
   img: ibm
   uid: ibm_em
   title: "Cont. IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
-  instructor: Miguel Rios
+  instructor: 
   note: 
   abstract: >
     In this session we will continue the exposition of IBM 1 and 2 models for word alignment. 
@@ -82,7 +82,7 @@
   img: bibm
   uid: ibm_vb
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
-  instructor: Wilker Aziz
+  instructor: 
   note:
   abstract: >
     We present a Bayesian version of IBM1 which has a conjugate Dirichlet prior on the translation parameters. We exploit the conjugacy of the resulting model to develop an efficient variational inference
