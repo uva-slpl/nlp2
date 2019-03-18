@@ -5,7 +5,6 @@
   img: nnlm
   uid: nlm
   title: Neural language models
-  instructor: 
   note: 
   abstract: 
   background:
@@ -24,7 +23,6 @@
   img: nmt
   uid: seq2seq
   title: "Neural Machine Translation: encoder-decoder"
-  instructor: 
   note: 
   abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
   slides: resources/slides/nmt-iacer-2018.pdf
@@ -41,7 +39,6 @@
   img: nmtatt
   uid: seq2seqatt
   title: "Neural Machine Translation: Attention" 
-  instructor: 
   note: 
   abstract:  
   background:
@@ -57,7 +54,6 @@
   img: nmtatt
   uid: seq2seqenc
   title: "Neural Machine Translation: Encoders"
-  instructor: 
   note: 
   abstract:  
   background:
@@ -72,7 +68,6 @@
   img: nmtatt
   uid: seq2seqtech
   title: "Neural Machine Translation: Techniques"
-  instructor: 
   note: 
   abstract:  
   background:
@@ -87,7 +82,6 @@
   img: mteval
   uid: eval
   title: "Machine Translation Evaluation"
-  instructor: 
   note: 
   abstract:  
   background:
@@ -102,7 +96,6 @@
   img: transf
   uid: selfatt
   title: "Neural Machine Translation with self-attention (Transformer)"
-  instructor:
   note: 
   abstract:  
   background:
@@ -116,7 +109,7 @@
   date: 
   img: nmtatt
   uid: induct
-  title: "Linguistic Inductive Biases"
+  title: "Linguistic Inductive Biases for Neural Machine Translation"
   instructor: 
   note: 
   abstract:  
@@ -146,7 +139,6 @@
   img: end
   uid: end
   title: "Remaining papers, Projects and closing remarks"
-  instructor: 
   note: 
   abstract:  
   background:
