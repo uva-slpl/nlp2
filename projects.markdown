@@ -20,7 +20,7 @@ Groups: check Canvas or our blog posts.
 In this project you will learn about lexical alignment, the task of learning correspondences between words in different languages.
 You will apply latent variable modelling techniques, in particular, learning with directed graphical models (aka locally normalised models).
 In this project, you will parameterise the model using categorical distributions. 
-You will experiment with maximum likelihood estimation and Bayesian modelling with Dirichlet priors.
+You will experiment with maximum likelihood estimation.
 
 * Maximum likelihood estimation for IBM1 and IBM2: EM algorithm
 
