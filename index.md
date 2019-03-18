@@ -20,7 +20,7 @@ We supply reading material (either research papers or tutorials) for lectures as
 
 ## Discussion sessions
 
-A group (typically **3 members**) selects a paper to be discussed. Then
+A group (**3 members**) selects a paper to be discussed. Then
 
 1. Everyone reads the chosen paper before the session
 2. The selected group gives a talk presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
@@ -29,16 +29,16 @@ A group (typically **3 members**) selects a paper to be discussed. Then
 
 # Projects
 
-We will have 2 project assignments: students work in groups (**2 to 3 members**). Projects will be assessed on the basis of technical reports and ipython notebooks.
+We will have 2 project assignments: students work in groups (**3 members**). Projects will be assessed on the basis of technical reports.
 
 
 # Grades 
 
-[Weighted geometric mean](//en.wikipedia.org/wiki/Weighted_geometric_mean) of the grades for presentation (10%) and project work (30%/30%/30%). 
+[Weighted geometric mean](//en.wikipedia.org/wiki/Weighted_geometric_mean) of the grades for presentation (10%) and project work (45%/45%). 
 
 # Contact
 
-You can contact [Khalil Sima'an](https://staff.fnwi.uva.nl/k.simaan/index.html), [Miguel Rios](http://mriosb08.github.io) and [Iacer Calixto](mailto:iacer.calixto@uva.nl).
+You can contact [Miguel Rios](http://mriosb08.github.io).
 
 [SLPLL]: {{ site.slpll_url }} "Statistical Language Processing and Learning Lab"
 [ILLC]: {{ site.illc_url }} "Institute for Logic, Language and Computation"
