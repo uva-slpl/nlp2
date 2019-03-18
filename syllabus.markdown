@@ -24,12 +24,6 @@ We will also have lab sessions related to project assignments.
 {% include lecture.html lecture=lecture %}
 {% endfor %}
 
-<!---## Statistical machine translation
-{% assign lectures = (site.data.2018.smt | where: "selected", "y") %}
-{% for lecture in lectures %}
-{% include lecture.html lecture=lecture %}
-{% endfor %}--->
-
 ## Neural machine translation
 
 {% assign lectures = (site.data.2019.nmt | where: "selected", "y") %}
