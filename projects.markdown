@@ -9,11 +9,11 @@ menu: yes
 We want you to get your hands dirty with most of the core topics covered in the course. 
 To that end, we prepared two projects. 
 
-Groups: check Blackboard or our blog posts.
+Groups: check Canvas or our blog posts.
 
 # Project 1 
 
-*Deadline 08-05-2018*
+*Deadline TBA*
 
 **Note: in IBM2 it is optional to use relative jumps (jump function); you are also allowed to use absolute positions.**
 
@@ -22,8 +22,8 @@ You will apply latent variable modelling techniques, in particular, learning wit
 In this project, you will parameterise the model using categorical distributions. 
 You will experiment with maximum likelihood estimation and Bayesian modelling with Dirichlet priors.
 
-* Maximum likelihood estimation for IBM1: EM algorithm
-* Bayesian estimation for IBM1: variational Bayes
+* Maximum likelihood estimation for IBM1 and IBM2: EM algorithm
+
 
 Resources:
 
@@ -31,7 +31,7 @@ Resources:
 * [Training data](resources/project_ibm/training.tgz)
 * [Validation data](resources/project_ibm/validation.tgz)
 * [Test data](resources/project_ibm/testing.tgz)  ``new!``
-* [Tips](https://uva-slpl.github.io/nlp2/projects/2018/04/12/project1.html)
+<!---* [Tips](https://uva-slpl.github.io/nlp2/projects/2018/04/12/project1.html)--->
 * [Helper functions for validation AER](resources/project_ibm/aer.py)
     * Note that I wrote this helper class using `python3`, if you are using `python2` you will need to import `from __future__ import division` to avoid the default integer division (whereby stuff like 1/2 evaluates to 0 instead of 1.5)
 
@@ -39,21 +39,18 @@ Submission:
 
 TBA
 
-Assessment: [guidelines](assessment) /  grades on blackboard.
+Assessment: [guidelines](assessment) /  grades on Canvas.
 
 
 # Project 2 
 
-*Deadline 27-05-2018*
+*Deadline TBA*
 
 
-In this project you will learn about neural machine translation and will implement a basic model with attention.
-
+<!---In this project you will learn about neural machine translation and will implement a basic model with attention.
 Resources:
-
 * [Project description](resources/project_nmt/project2.pdf)
 * [Training data](resources/project_nmt/data/train.zip)
 * [Validation data](resources/project_nmt/data/val.zip)
 * [Test data](resources/project_nmt/data/test.zip)
-
-Assessment: described in the project description / grades on blackboard.
+Assessment: described in the project description / grades on Canvas.--->
