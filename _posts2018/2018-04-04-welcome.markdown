@@ -1,0 +1,14 @@
+---
+layout: post
+title:  Welcome!
+date:   2018-04-04
+author: Miguel
+categories: lectures
+---
+
+Welcome to NLP2.
+
+Stay tuned for posts about announcements, resources and slides.
+
+
+

@@ -10,7 +10,7 @@ In summary, your task is to
 \begin{itemize}
 	\item Implement IBM model 1;
 	\item Implement IBM model 2 using a jump distribution as in \cite{Vogel+1996:HMMWA};
-	\item Experiment with maximum likelihood estimation and variational Bayes;
+	\item Experiment with maximum likelihood estimation;
 	\item Write a technical report where you present the models and an empirical comparison. Your report should also present learning curves
     where applicable along with a discussion explaining aspects such
     as non-convexity, stability and convergence.
@@ -22,11 +22,10 @@ In summary, your task is to
 	\item 
 	\begin{enumerate}[a)]
 		\item Implement EM training \citep{Brown+1993:smt} for IBM model 1;
-		\item Implement variational inference for Bayesian IBM model 1;
 		\item All of the tasks below should be performed for both models.
 	\end{enumerate}
-	\item Plot the evolution of {\bf training} log likelihood (or ELBO) as a function of the iteration. How to compute the Dirichlet par of the ELBO
-	is described \href{https://github.com/philschulz/PublicWriting/blob/master/DirichletElbo/DirichletELBO.pdf}{here};
+	\item Plot the evolution of {\bf training} log likelihood as a function of the iteration. 
+	%How to compute the Dirichlet par of the ELBO is described \href{https://github.com/philschulz/PublicWriting/blob/master/DirichletElbo/DirichletELBO.pdf}{here};
 	\item Plot the evolution of alignment error rate (AER) on {\bf validation} data as a function of the iteration;
 	\item Experiment with two criteria for model selection (i.e. deciding on number of training iterations): 1) convergence in terms of {\bf training log likelihood}; 2) best {\bf AER on validation} data;
 	\item For the selected models, obtain Viterbi alignments for every sentence pair in a test corpus and compute AER using a gold-standard provided by the assistant;
@@ -39,7 +38,7 @@ In summary, your task is to
 \section{IBM model 2}
 
 \begin{enumerate}
-  \item Extend your previous model by implementing a full IBM model 2 \citep{Brown+1993:smt}, however using the cheaper parameterisation in terms of jumps;
+  \item Extend your previous model by implementing a full IBM model 2 \citep{Brown+1993:smt}, however using absolute positions, and the cheaper parameterisation in terms of jumps;
   \item IBM 2 is non-convex, thus you will see that optimising the log-likelihood function is 
         not as trivial as in the case of IBM model 1, particularly, convergence will depend 
         on how you initialise the model parameters, you will try
@@ -54,7 +53,7 @@ In summary, your task is to
   \item Compare the selected models to IBM model 1 in terms of AER in the test set.
 \end{enumerate}
 
-{\bf Extra (optional)} variational Bayes for IBM model 2 (at least for the lexical model).
+%{\bf Extra (optional)} variational Bayes for IBM model 2 (at least for the lexical model).
 
 \section{Data}
 
@@ -82,7 +81,7 @@ IBM 2 & 0.2428 & 10 iterations (lexical component), then 5 additional iterations
 
 You should use latex for your report, and you should use the ACL template available from \url{http://acl2017.org/downloads/acl17-latex.zip} (unlike the template suggests, your submission should not be anonymous). 
 
-We expect short reports (4 pages plus references) written in English. The typical submission is organised as follows: 
+We expect short reports (5 pages plus references) written in English. The typical submission is organised as follows: 
 \begin{itemize}
 	\item abstract: conveys scope and contributions;
 	\item introduction: present the problem and relevant background;
@@ -99,22 +98,22 @@ You should submit a tgz file containing a folder (folder name {\tt lastname1.las
 	\item Test predictions (in naacl format) using your best run for each of the following models
 	\begin{itemize}
 		\item IBM1 MLE (filename: {\tt ibm1.mle.naacl})
-		\item IBM1 VB (filename: {\tt ibm1.vb.naacl})
+		%\item IBM1 VB (filename: {\tt ibm1.vb.naacl})
 		\item IBM2 MLE (filename: {\tt ibm2.mle.naacl})
-		\item If you opted for the extra exercise, then also include IBM2 VB (filename: {\tt ibm2.vb.naacl})
+		%\item If you opted for the extra exercise, then also include IBM2 VB (filename: {\tt ibm2.vb.naacl})
 	\end{itemize}
 	\item Report as a single pdf file (filename: {\tt report.pdf})
 \end{itemize}
 
 Your report may contain a link to an open-source repository (such as github), but please do not attach code or additional data to your tgz submission.
 
-You can complete your project submission on Blackboard no later than {\bf April 27, 10:00}.
+You can complete your project submission on Canvas.
 
 %You should email your tgz file to \url{J.C.P.Bastings@uva.nl} no later than {\bf 23:59 GMT-8 on April 26}. If you do not get a confirmation email within 24h after submission, please make sure to contact one of us.
 
 \section{Assessment}
 
-Your report will be assessed by two independent reviewers according to the following evaluation criteria:
+Your report will be assessed according to the following evaluation criteria:
 \begin{enumerate}
 	\item Scope (max 2 points): Is the problem well presented? Do students understand the challenges/contributions?
 	\item Theoretical description (max 3 points): Are the models presented clearly and correctly?
