@@ -54,7 +54,7 @@
   layout: lecture
   selected: y
   date: 
-  img: nmt
+  img: nmtatt
   uid: seq2seqenc
   title: "Neural Machine Translation: Encoders"
   instructor: Iacer Calixto and Miguel Rios
@@ -69,7 +69,7 @@
   layout: lecture
   selected: y
   date: 
-  img: nmt
+  img: nmtatt
   uid: seq2seqtech
   title: "Neural Machine Translation: Techniques"
   instructor: Iacer Calixto and Miguel Rios
@@ -99,7 +99,7 @@
   layout: lecture
   selected: y
   date: 
-  img: nmt
+  img: nmtatt
   uid: selfatt
   title: "Neural Machine Translation with self-attention (Transformer)"
   instructor: Iacer Calixto and Miguel Rios
@@ -114,7 +114,7 @@
   layout: lecture
   selected: y
   date: 
-  img: nmt
+  img: nmtatt
   uid: induct
   title: "Linguistic Inductive Biases"
   instructor: Iacer Calixto and Miguel Rios
