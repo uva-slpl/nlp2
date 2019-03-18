@@ -50,7 +50,7 @@
   slides: 
   code: 
   data: 
- -
+-
   layout: lecture
   selected: y
   date: 
@@ -65,7 +65,6 @@
   slides: 
   code: 
   data: 
-  
 -
   layout: lecture
   selected: y
@@ -80,10 +79,8 @@
   discussion:
   slides: 
   code: 
-  data: 
-  
+  data:  
 -
-
   layout: lecture
   selected: y
   date: 
@@ -98,7 +95,6 @@
   slides: 
   code: 
   data: 
-  
 -
   layout: lecture
   selected: y
@@ -114,7 +110,6 @@
   slides: 
   code: 
   data:  
-  
 -
   layout: lecture
   selected: y
@@ -130,7 +125,6 @@
   slides: 
   code: 
   data:  
-  
 -
   layout: lecture
   selected: n
@@ -170,8 +164,6 @@
   discussion:
   code: 
   data:   
-  
-  
 -
   layout: lecture
   selected: y
