@@ -21,7 +21,7 @@
   layout: lecture
   selected: y
   date: 
-  img: nmtatt
+  img: nmt
   uid: seq2seq
   title: "Neural Machine Translation: encoder-decoder"
   instructor: Iacer Calixto and Miguel Rios
@@ -84,7 +84,7 @@
   layout: lecture
   selected: y
   date: 
-  img: nmt
+  img: mteval
   uid: eval
   title: "Machine Translation Evaluation"
   instructor: Iacer Calixto and Miguel Rios
@@ -129,7 +129,7 @@
   layout: lecture
   selected: y
   date: 
-  img: end
+  img: multi
   uid: guest
   title: "Guest Lecture"
   instructor: TBA
