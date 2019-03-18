@@ -99,7 +99,7 @@
   layout: lecture
   selected: y
   date: 
-  img: nmtatt
+  img: transf
   uid: selfatt
   title: "Neural Machine Translation with self-attention (Transformer)"
   instructor: Iacer Calixto and Miguel Rios
