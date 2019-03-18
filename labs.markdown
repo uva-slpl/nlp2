@@ -4,13 +4,9 @@ title: Labs
 menu: yes
 ---
 
-# Code
-
-TBA.
-
 # Sessions
 
-## April 2018
+## April 2019
 
 * TBA.
 
