@@ -1,0 +1,106 @@
+-
+  layout: lecture
+  selected: y
+  date: 2018-04-09
+  img: ibm
+  uid: ibm_em
+  title: "IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
+  instructor: Khalil Sima'an
+  note: 
+  abstract: >
+    In this session we will discuss the IBM word alignment models 1 and 2. 
+    We will view them as constrained mixture models. After motivating the models intuitively, we will develop them formally and devise an EM parameter estimation algorithm for them. 
+    We will also try to understand why the resulting optimisation problem contains multiple optima. 
+  background:
+    - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf) which is the basis for his lecture."
+    - "Wilker Aziz has made available some notes on the derivation of the [M-step for IBM1-2](resources/papers/Aziz-IBM12-EM.pdf)."
+    - "In order to get a more concrete view of implementation, including pseudo-codes for the EM procedure, read M. Collins's [lecture notes](resources/papers/CollinsIBM.pdf)."
+  further: 
+    - "The original [IBM paper](http://www.aclweb.org/anthology/J93-2003) is very dense, but if you want to go around teaching IBM models you should probably read it a few times."
+    - "[R. Moore (2004)](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf) discusses a number of problems with IBM model 1 involving 1) null words, 2) rare words, and 3) initialisation for EM. If you can understand the problems he raises and the solutions he proposes, you are really getting it about IBM1. Also, implementing some of his improvements will be worth some extra points in project 1."
+    - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
+    - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
+    - "[Schulz et al, 2016](https://www.aclweb.org/anthology/P/P16/P16-2028.pdf) revisit NULL alignments in IBM1-2."
+  slides: resources/slides/ibm-ks.pdf
+  classmaterial: 
+    - "[Illustration](resources/slides/ibm-illustration.pdf)"
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2018-04-13
+  img: ibm
+  uid: ibm_em
+  title: "Cont. IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
+  instructor: Khalil Sima'an
+  note: 
+  abstract: >
+    In this session we will continue the exposition of IBM 1 and 2 models for word alignment. 
+    We will view them as constrained mixture models. After motivating the models intuitively, we will develop them formally and devise an EM parameter estimation algorithm for them. 
+    We will also try to understand why the resulting optimisation problem contains multiple optima. 
+  background:
+    - "Philip Schulz has made available a nice [tutorial](resources/papers/Schulz-IBM12-Tutorial.pdf) which is the basis for his lecture."
+    - "Wilker Aziz has made available some notes on the derivation of the [M-step for IBM1-2](resources/papers/Aziz-IBM12-EM.pdf)."
+    - "In order to get a more concrete view of implementation, including pseudo-codes for the EM procedure, read M. Collins's [lecture notes](resources/papers/CollinsIBM.pdf)."
+  further: 
+    - "The original [IBM paper](http://www.aclweb.org/anthology/J93-2003) is very dense, but if you want to go around teaching IBM models you should probably read it a few times."
+    - "[R. Moore (2004)](http://www.aclweb.org/anthology/P/P04/P04-1066.pdf) discusses a number of problems with IBM model 1 involving 1) null words, 2) rare words, and 3) initialisation for EM. If you can understand the problems he raises and the solutions he proposes, you are really getting it about IBM1. Also, implementing some of his improvements will be worth some extra points in project 1."
+    - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
+    - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
+    - "[Schulz et al, 2016](https://www.aclweb.org/anthology/P/P16/P16-2028.pdf) revisit NULL alignments in IBM1-2."
+  slides: resources/slides/ibm-ks.pdf
+  classmaterial: 
+    - "[Illustration](resources/slides/ibm-illustration.pdf)"
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: n
+  date: 2018-04-16
+  img: logistic
+  uid: ibm_logistic
+  title: "Feature-rich IBM1: EM for logistic CPDs"
+  instructor: Wilker Aziz
+  note: 
+  abstract: >
+    In this lecture, we will show a different parameterisation of categorical distributions in terms of logistic distributions. This neat trick helps decouple the number of model parameters from the size of the data.
+  background:
+    - "Wilker Aziz has made available [notes on EM for categorical and logistic distributions](resources/papers/Aziz-EM.pdf)"
+    - "[EM with logistic CPDs for NLP](http://www.aclweb.org/anthology/N10-1083)"
+  further:
+    - "[A view of the EM algorithm that justifies incremental, sparse, and other variants](http://www.cs.toronto.edu/~fritz/absps/emk.pdf)"
+    - "[EM vs direct optimisation via gradient-based methods](http://www.cs.cmu.edu/~rsalakhu/papers/emecg.pdf)"
+  discussion:
+  slides: resources/slides/logistic.pdf
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 2018-04-16 and 2018-04-26
+  img: bibm
+  uid: ibm_vb
+  title: "Bayesian IBM1: Dirichlet priors and posterior inference"
+  instructor: Wilker Aziz
+  note:
+  abstract: >
+    We present a Bayesian version of IBM1 which has a conjugate Dirichlet prior on the translation parameters. We exploit the conjugacy of the resulting model to develop an efficient variational inference
+    algorithm. During the lecture we will explicitly introduce the logic of variational inference. Students should acquaint themselves with basic properties of exponential families beforehand.
+  background:
+    - "The lecture will very closely follow [this script](resources/papers/Schulz-BayesIBM1-tutorial.pdf). Students should read it **before** the lecture. We may decide to skip some details from the script in the lecture."
+    - "The same model but with a Gibbs sampler for inference is presented in [Mermer and Saraclar (2011)](http://www.aclweb.org/website/old_anthology/P/P11/P11-2.pdf#page=222)."
+  further:
+    - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
+    - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
+    - "[Bayesian estimation for NLP](http://www.arbylon.net/publications/text-est.pdf)"
+    - "For Bayesian inference without VI, check this [MCMC tutorial](http://www-users.mat.umk.pl/~wniem/SemMgr/besag_MCMC.pdf)"
+    - "[Dyer et al. 2013](http://www.aclweb.org/anthology/N13-1073.pdf) revisit the parameterisation of IBM model 2. Their model, called 'fast_align' achieves state-of-the-art performance and a robust and efficient [implementation](https://github.com/clab/fast_align) is available."
+  discussion:
+    - "[Bayesian Word Alignment for Statistical Machine Translation](//www.aclweb.org/anthology/P11-2032)"
+  slides: resources/slides/ibm-vb.pdf
+  classmaterial:
+    - "[IBM1-2](resources/slides/ibm.pdf)"
+    - "[VB for IBM1](resources/slides/ibm-vb.pdf)"
+  code: 
+  data: 
