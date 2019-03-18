@@ -12,14 +12,14 @@ We will also have lab sessions related to project assignments.
 
 # Lectures
 
-{% assign lectures = (site.data.2018.intro | where: "selected", "y") %}
+{% assign lectures = (site.data.2019.intro | where: "selected", "y") %}
 {% for lecture in lectures %}
 {% include lecture.html lecture=lecture %}
 {% endfor %}
 
 ## Lexical alignment
 
-{% assign lectures = (site.data.2018.alignment | where: "selected", "y") %}
+{% assign lectures = (site.data.2019.alignment | where: "selected", "y") %}
 {% for lecture in lectures %}
 {% include lecture.html lecture=lecture %}
 {% endfor %}
@@ -32,7 +32,7 @@ We will also have lab sessions related to project assignments.
 
 ## Neural machine translation
 
-{% assign lectures = (site.data.2018.nmt | where: "selected", "y") %}
+{% assign lectures = (site.data.2019.nmt | where: "selected", "y") %}
 {% for lecture in lectures %}
 {% include lecture.html lecture=lecture %}
 {% endfor %}
