@@ -33,7 +33,7 @@
   img: ibm
   uid: ibm_em
   title: "Cont. IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
-  instructor: Khalil Sima'an
+  instructor: Miguel Rios
   note: 
   abstract: >
     In this session we will continue the exposition of IBM 1 and 2 models for word alignment. 
