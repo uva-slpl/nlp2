@@ -41,7 +41,7 @@ Submission:
 
 TBA
 
-Assessment: [guidelines](assessment) /  grades on Canvas.
+Assessment: [guidelines](resources/project_ibm/assessment-sheet.pdf) /  grades on Canvas.
 
 
 # Project 2 
