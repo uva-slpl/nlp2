@@ -38,7 +38,7 @@
   date: 
   img: nmtatt
   uid: seq2seqatt
-  title: "Neural Machine Translation: Attention" 
+  title: "Neural Machine Translation: attention" 
   note: 
   abstract:  
   background:
@@ -53,7 +53,7 @@
   date: 
   img: nmtatt
   uid: seq2seqenc
-  title: "Neural Machine Translation: Encoders"
+  title: "Neural Machine Translation: different encoders"
   note: 
   abstract:  
   background:
@@ -67,7 +67,7 @@
   date: 
   img: nmtatt
   uid: seq2seqtech
-  title: "Neural Machine Translation: Techniques"
+  title: "Neural Machine Translation: techniques"
   note: 
   abstract:  
   background:
@@ -81,7 +81,7 @@
   date: 
   img: mteval
   uid: eval
-  title: "Machine Translation Evaluation"
+  title: "Machine translation evaluation"
   note: 
   abstract:  
   background:
@@ -109,7 +109,7 @@
   date: 
   img: nmtatt
   uid: induct
-  title: "Linguistic Inductive Biases for Neural Machine Translation"
+  title: "Linguistic inductive biases for Neural Machine Translation"
   instructor: 
   note: 
   abstract:  
@@ -138,7 +138,7 @@
   date: 
   img: end
   uid: end
-  title: "Remaining papers, Projects and closing remarks"
+  title: "Remaining papers, projects and closing remarks"
   note: 
   abstract:  
   background:
