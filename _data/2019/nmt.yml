@@ -1,11 +1,11 @@
 -
   layout: lecture
   selected: y
-  date: 2018-05-14
+  date: 
   img: nnlm
   uid: nlm
   title: Neural language models
-  instructor: Iacer Calixto, Miguel Rios and Joost Bastings
+  instructor: Iacer Calixto, Miguel Rios
   note: 
   abstract: 
   background:
@@ -20,11 +20,11 @@
 -
   layout: lecture
   selected: y
-  date: 2018-05-18
+  date: 
   img: nmtatt
   uid: seq2seq
   title: "Neural Machine Translation: encoder-decoder"
-  instructor: Joost Bastings, Iacer Calixto and Miguel Rios
+  instructor: Iacer Calixto and Miguel Rios
   note: 
   abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
   slides: resources/slides/nmt-iacer-2018.pdf
@@ -37,12 +37,12 @@
   data: 
 -
   layout: lecture
-  selected: n
-  date: 2018-05-19
-  img: nmt
-  uid: convenc
-  title: Convolutional encoders
-  instructor: Joost Bastings
+  selected: y
+  date: 
+  img: nmtatt
+  uid: seq2seqatt
+  title: Neural Machine Translation: Attention 
+  instructor: Iacer Calixto and Miguel Rios
   note: 
   abstract:  
   background:
@@ -50,6 +50,87 @@
   slides: 
   code: 
   data: 
+ -
+  layout: lecture
+  selected: y
+  date: 
+  img: nmt
+  uid: seq2seqenc
+  title: Neural Machine Translation: Encoders
+  instructor: Iacer Calixto and Miguel Rios
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data: 
+  
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nmt
+  uid: seq2seqtech
+  title: Neural Machine Translation: Techniques
+  instructor: Iacer Calixto and Miguel Rios
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data: 
+  
+-
+
+  layout: lecture
+  selected: y
+  date: 
+  img: nmt
+  uid: eval
+  title: Machine Translation Evaluation
+  instructor: Iacer Calixto and Miguel Rios
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data: 
+  
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nmt
+  uid: selfatt
+  title: Neural Machine Translation with self-attention (Transformer)
+  instructor: Iacer Calixto and Miguel Rios
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data:  
+  
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nmt
+  uid: induct
+  title: Linguistic Inductive Biases
+  instructor: Iacer Calixto and Miguel Rios
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data:  
+  
 -
   layout: lecture
   selected: n
@@ -78,11 +159,27 @@
 -
   layout: lecture
   selected: y
-  date: 2018-05-25
+  date: 
+  img: end
+  uid: guest
+  title: Guest Lecture
+  instructor: TBA
+  note: 
+  abstract:  
+  background:
+  discussion:
+  code: 
+  data:   
+  
+  
+-
+  layout: lecture
+  selected: y
+  date: 
   img: end
   uid: end
   title: "Remaining papers, Projects and closing remarks"
-  instructor: "Khalil Simaan, Miguel Rios and Iacer Calixto"
+  instructor: "Miguel Rios and Iacer Calixto"
   note: 
   abstract:  
   background:
