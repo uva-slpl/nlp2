@@ -4,10 +4,10 @@ title: Syllabus
 menu: yes
 ---
 
-*Spring 2018* &#124; [Spring 2017](2017)
+*Spring 2019* &#124; [Spring 2018](2018)
 
 In this course you will apply several machine learning techniques to deal with structure predictions problems related to translation.
-Our course is composed of 3 blocks of lectures: lexical alignment (3 lectures), statistical machine translation (4 lectures), and neural machine translation (4 lectures).
+Our course is composed of 2 blocks of lectures: lexical alignment,and neural machine translation.
 We will also have lab sessions related to project assignments.
 
 # Lectures
@@ -24,12 +24,11 @@ We will also have lab sessions related to project assignments.
 {% include lecture.html lecture=lecture %}
 {% endfor %}
 
-## Statistical machine translation
-
+<!---## Statistical machine translation
 {% assign lectures = (site.data.2018.smt | where: "selected", "y") %}
 {% for lecture in lectures %}
 {% include lecture.html lecture=lecture %}
-{% endfor %}
+{% endfor %}--->
 
 ## Neural machine translation
 
