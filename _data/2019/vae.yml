@@ -5,8 +5,8 @@
   img: dgm 
   uid: dgm
   title: "Probabilistic modelling for NLP"
-  note: 
-   abstract:  "This lecture presents probabilistic modelling with neural networks, we will start with maximum likelihood estimation based on fully observed data, then we will discuss the challenges of learning distributions over observed and unobserved (latent) data. We will then talk about variational inference and how it may help us estimate deep generative models."
+  instructor:
+  abstract:  "This lecture presents probabilistic modelling with neural networks, we will start with maximum likelihood estimation based on fully observed data, then we will discuss the challenges of learning distributions over observed and unobserved (latent) data. We will then talk about variational inference and how it may help us estimate deep generative models."
   background:
     - "[Neural Variational Inference and Learning in Belief Networks](https://arxiv.org/pdf/1402.0030.pdf)"
     - "Variational Inference: "
