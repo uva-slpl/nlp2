@@ -25,7 +25,7 @@ We will have 2 project assignments: students work in groups (**3 members**). Pro
 
 # Grades 
 
-The grades for projects  is: **project 1** 50%  and **project 2** 50%. 
+The grades are: **project 1** 50%  and **project 2** 50%. 
 
 # Contact
 
