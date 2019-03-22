@@ -101,3 +101,21 @@
     - "[VB for IBM1](resources/slides/ibm-vb.pdf)"
   code: 
   data: 
+
+
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: bibm
+  uid: ibm_vb
+  title: "Neural IBM Models"
+  note:
+  abstract:
+  background:
+  further:
+  discussion:
+  slides: 
+  classmaterial:
+  code: 
+  data: 
