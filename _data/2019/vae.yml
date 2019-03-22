@@ -2,122 +2,128 @@
   layout: lecture
   selected: y
   date: 
-  img: nnlm
-  uid: nlm
-  title: Neural language models
+  img: dgm 
+  uid: dgm
+  title: "Probabilistic modelling for NLP"
   note: 
-  abstract: 
+   abstract:  "This lecture presents probabilistic modelling with neural networks, we will start with maximum likelihood estimation based on fully observed data, then we will discuss the challenges of learning distributions over observed and unobserved (latent) data. We will then talk about variational inference and how it may help us estimate deep generative models."
   background:
-    - "Bengio, Yoshua, et al. A neural probabilistic language model. Journal of machine learning research 3.Feb (2003): 1137-1155."
-    - "Mikolov, Tomas, et al. Recurrent neural network based language model. Interspeech. Vol. 2. 2010."  
+    - "[Neural Variational Inference and Learning in Belief Networks](https://arxiv.org/pdf/1402.0030.pdf)"
+    - "Variational Inference: "
+    - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
+    - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
   further:
-    - "[Goldberg NN for NLP primer](https://arxiv.org/abs/1510.00726)"
-  discussion:
-  slides: resources/slides/nlm-iacer-2018.pdf 
-  code: 
-  data: 
--
-  layout: lecture
-  selected: y
-  date: 
-  img: nmt
-  uid: seq2seq
-  title: "Neural Machine Translation: encoder-decoder"
-  note: 
-  abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
-  slides: resources/slides/nmt-iacer-2018.pdf
-  background:
-    - "[Sequence to sequence learning](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)"
-  further:
-    - "Pascanu, Razvan, Tomas Mikolov, and Yoshua Bengio. \"On the difficulty of training recurrent neural networks.\" ICML (3) 28 (2013): 1310-1318."
-  code: 
-  data: 
--
-  layout: lecture
-  selected: y
-  date: 
-  img: nmtatt
-  uid: seq2seqatt
-  title: "Neural Machine Translation: attention" 
-  note: 
-  abstract:  
-  background:
-  - "[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)"
-  discussion:
   slides: 
-  code: 
-  data: 
 -
   layout: lecture
   selected: y
   date: 
-  img: nmtatt
-  uid: seq2seqenc
-  title: "Neural Machine Translation: different encoders"
-  note: 
-  abstract:  
-  background:
-  discussion:
-  slides: 
-  code: 
-  data: 
--
-  layout: lecture
-  selected: y
-  date: 
-  img: nmtatt
-  uid: seq2seqtech
-  title: "Neural Machine Translation: techniques"
-  note: 
-  abstract:  
-  background:
-  discussion:
-  slides: 
-  code: 
-  data:  
--
-  layout: lecture
-  selected: y
-  date: 
-  img: mteval
-  uid: eval
-  title: "Machine translation evaluation"
-  note: 
-  abstract:  
-  background:
-  discussion:
-  slides: 
-  code: 
-  data: 
--
-  layout: lecture
-  selected: y
-  date: 
-  img: transf
-  uid: selfatt
-  title: "Neural Machine Translation with self-attention (Transformer)"
-  note: 
-  abstract:  
-  background:
-  discussion:
-  slides: 
-  code: 
-  data:  
--
-  layout: lecture
-  selected: y
-  date: 
-  img: nmtatt
-  uid: induct
-  title: "Linguistic inductive biases for Neural Machine Translation"
+  img: vae_1
+  uid: vae
+  title: "Variational auto-encoders"
   instructor: 
-  note: 
+  abstract:  "This lecture will present the variational auto-encoder, an important deep generative model that makes a building block for many others. We will also learn about the reparameterised gradient, a major development for efficient estimation of DGMs."
+  background:
+    - "[Gaussian distribution](https://en.wikipedia.org/wiki/Normal_distribution)"
+    - "The original: [Kingma and Welling (2014)](https://arxiv.org/abs/1312.6114) and [Rezend et al (2014)](https://arxiv.org/abs/1401.4082)"
+  further:
+    - "Variational auto-encoders:"
+    - "A [tutorial](https://arxiv.org/abs/1606.05908) (`disclaimer:` not my favourite!)"
+    - "More on reparameterisation (`advanced!`): [Titsias and Lazaro-Gredilla (2014)](http://www2.aueb.gr/users/mtitsias/papers/titsias14.pdf) and [Ruiz et al (2016)](https://arxiv.org/abs/1610.02287)"
+    - "[Automatic Differentiation Variational Inference](https://arxiv.org/pdf/1603.00788.pdf)"
+  slides:
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: sntdgms
+  uid: sntdgms
+  title: "Generative language models"
+  instructor: 
+  abstract:  "This lecture will present generative models over natural language sentences."
+  background:
+    - "[Recurrent neural network based language model](http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf)"
+  discussion: 
+    - "[Generating Sentences from a Continuous Space](https://arxiv.org/pdf/1511.06349.pdf)"
+    - "[Variational neural machine translation](https://arxiv.org/pdf/1605.07869.pdf)"
+ -
+  layout: lecture
+  selected: y
+  date: 
+  img: embedalign
+  uid: worddgms
+  title: "Generative models of word representation"
+  instructor: 
+  abstract:  "This lecture will present deep latent variable models of word representation"
+  background:
+    - "CBOW and Skip-gram: [Distributed Representations of Words and Phrases and their Compositionality](https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf)"
+    - "Skip-gram is a binary classifier: [word2vec Explained: Deriving Mikolov et al.’s Negative-Sampling Word-Embedding Method](https://arxiv.org/pdf/1402.3722.pdf)"
+    - "Generative modelling via lexical alignment: [Learning Bilingual Word Representations by Marginalizing Alignments](http://acl2014.org/acl2014/P14-2/pdf/P14-2037.pdf)"
+  further:
+    - "[Embedding Words as Distributions with a Bayesian Skip-gram Model](https://arxiv.org/pdf/1711.11027)"
+    - "[Deep Generative Model for Joint Alignment and Word Representation](https://arxiv.org/pdf/1802.05883.pdf)"
+  discussion:
+    - "[Auto-encoding variational inference for topic models](https://arxiv.org/pdf/1703.01488.pdf)"
+    - "[Semantic Parsing with Semi-Supervised Sequential Autoencoders](https://arxiv.org/pdf/1609.09315.pdf)"
+  slides: 
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: graphdgms
+  uid: rtevae
+  title: "Generative models for Natural Language inference"
+  instructor: 
   abstract:  
   background:
   discussion:
+  further:
   slides: 
-  code: 
-  data:  
+  code:
+
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: graphdgms
+  uid: graphdgms
+  title: "Continuous relaxations of discrete variables"
+  instructor: 
+  abstract:  "This lecture will present models of graph induction."
+  background:
+    - "[Encoding Sentences with Graph Convolutional Networks for Semantic Role Labeling](http://www.aclweb.org/anthology/D17-1159)"
+    - "[The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables](https://arxiv.org/pdf/1611.00712.pdf)"
+    - "[Categorical Reparameterization with Gumbel-Softmax](https://arxiv.org/pdf/1611.01144.pdf)"
+  discussion:
+    - "[Structured Attention Networks](https://arxiv.org/pdf/1702.00887.pdf)"
+    - "[Learning to Compose Task-Specific Tree Structures](https://arxiv.org/pdf/1707.02786.pdf)"
+  further:
+    - "[Learning Structured Text Representations](https://arxiv.org/pdf/1705.09207.pdf)"
+    - "[Neural Machine Translation with Source-Side Latent Graph Parsing](https://arxiv.org/pdf/1702.02265.pdf)"
+  slides: 
+  code:
+
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: discretedgms
+  uid: discretedgms
+  title: "Discrete latent variable models"
+  instructor: 
+  abstract:  "This lecture will present models of whose latent variables are discrete and cannot be exactly marginalised."
+  background:
+    - "VI without reparameterised gradients: [Neural Variational Inference and Learning in Belief Networks](https://arxiv.org/pdf/1402.0030.pdf)"
+    - "Control variates: [MuProp: Unbiased Backpropagation for Stochastic Neural Networks](https://arxiv.org/pdf/1511.05176.pdf)"
+  discussion:
+    - "[Jointly Learning Sentence Embeddings and Syntax with Unsupervised Tree-LSTMs](https://arxiv.org/pdf/1705.09189.pdf)"
+    - "[Learning to Compose Words into Sentences with Reinforcement Learning](https://arxiv.org/pdf/1611.09100.pdf)"
+  further:
+    - "Investigation of induced latent variables: [Do latent tree learning models identify meaningful structure in sentences?](https://arxiv.org/pdf/1709.01121.pdf)"
+    - "No latent variables, but generative training: [Recurrent Neural Network Grammars](https://arxiv.org/pdf/1602.07776.pdf)"
+    - "More on gradient estimation: [Simple Statistical Gradient-Flowing Algorithms for Connectionist Reinforcement Learning](https://link.springer.com/content/pdf/10.1007%2FBF00992696.pdf)"
+  slides:
+
 -
   layout: lecture
   selected: y
@@ -138,7 +144,7 @@
   date: 
   img: end
   uid: end
-  title: "Remaining papers, projects and closing remarks"
+  title: "Projects and closing remarks"
   note: 
   abstract:  
   background:
