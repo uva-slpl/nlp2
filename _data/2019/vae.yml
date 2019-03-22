@@ -1,0 +1,147 @@
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nnlm
+  uid: nlm
+  title: Neural language models
+  note: 
+  abstract: 
+  background:
+    - "Bengio, Yoshua, et al. A neural probabilistic language model. Journal of machine learning research 3.Feb (2003): 1137-1155."
+    - "Mikolov, Tomas, et al. Recurrent neural network based language model. Interspeech. Vol. 2. 2010."  
+  further:
+    - "[Goldberg NN for NLP primer](https://arxiv.org/abs/1510.00726)"
+  discussion:
+  slides: resources/slides/nlm-iacer-2018.pdf 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nmt
+  uid: seq2seq
+  title: "Neural Machine Translation: encoder-decoder"
+  note: 
+  abstract: Starting from Neural language models, we will learn how to train a model end-to-end to perform translation.
+  slides: resources/slides/nmt-iacer-2018.pdf
+  background:
+    - "[Sequence to sequence learning](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)"
+  further:
+    - "Pascanu, Razvan, Tomas Mikolov, and Yoshua Bengio. \"On the difficulty of training recurrent neural networks.\" ICML (3) 28 (2013): 1310-1318."
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nmtatt
+  uid: seq2seqatt
+  title: "Neural Machine Translation: attention" 
+  note: 
+  abstract:  
+  background:
+  - "[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)"
+  discussion:
+  slides: 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nmtatt
+  uid: seq2seqenc
+  title: "Neural Machine Translation: different encoders"
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nmtatt
+  uid: seq2seqtech
+  title: "Neural Machine Translation: techniques"
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data:  
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: mteval
+  uid: eval
+  title: "Machine translation evaluation"
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data: 
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: transf
+  uid: selfatt
+  title: "Neural Machine Translation with self-attention (Transformer)"
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data:  
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: nmtatt
+  uid: induct
+  title: "Linguistic inductive biases for Neural Machine Translation"
+  instructor: 
+  note: 
+  abstract:  
+  background:
+  discussion:
+  slides: 
+  code: 
+  data:  
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: multi
+  uid: guest
+  title: "Guest Lecture"
+  instructor: TBA
+  note: 
+  abstract:  
+  background:
+  discussion:
+  code: 
+  data:   
+-
+  layout: lecture
+  selected: y
+  date: 
+  img: end
+  uid: end
+  title: "Remaining papers, projects and closing remarks"
+  note: 
+  abstract:  
+  background:
+  discussion:
+  code: 
+  data: 
