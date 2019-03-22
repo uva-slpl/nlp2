@@ -24,9 +24,9 @@ We will also have lab sessions related to project assignments.
 {% include lecture.html lecture=lecture %}
 {% endfor %}
 
-## Neural machine translation
+## Deep generative models for NLP
 
-{% assign lectures = (site.data.2019.nmt | where: "selected", "y") %}
+{% assign lectures = (site.data.2019.vae | where: "selected", "y") %}
 {% for lecture in lectures %}
 {% include lecture.html lecture=lecture %}
 {% endfor %}
