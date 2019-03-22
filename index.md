@@ -14,17 +14,8 @@ We will concentrate on *machine translation* as a good example of an NLP problem
 
 # Format
 
-This is a research-oriented course where we have lectures, discussion sessions led by students, labs, and project assignments.
+This is a research-oriented course where we have lectures, labs, and project assignments.
 We supply reading material (either research papers or tutorials) for lectures as well as a list of pointers for further reading.
-
-
-## Discussion sessions
-
-A group (**3 members**) selects a paper to be discussed. Then
-
-1. Everyone reads the chosen paper before the session
-2. The selected group gives a talk presenting the work to the rest of the class: you can decide how to organise your talk (whether everyone presents, or just one presents is entirely up to you)
-3. Everyone participates in an open discussion 
 
 
 # Projects
@@ -34,7 +25,7 @@ We will have 2 project assignments: students work in groups (**3 members**). Pro
 
 # Grades 
 
-[Weighted geometric mean](//en.wikipedia.org/wiki/Weighted_geometric_mean) of the grades for presentation (10%) and project work (45%/45%). 
+The grades for projects  is: *project 1* 50%  and *project 2* 50%. 
 
 # Contact
 
