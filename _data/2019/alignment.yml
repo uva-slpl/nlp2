@@ -1,7 +1,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-04-04
   img: ibm
   uid: ibm_em
   title: "IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
@@ -28,7 +28,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-04-08
   img: ibm
   uid: ibm_em
   title: "Cont. IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
@@ -76,7 +76,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-04-11
   img: bibm
   uid: ibm_vb
   title: "Bayesian IBM1: Dirichlet priors and posterior inference"
@@ -106,7 +106,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-04-15
   img: bibm
   uid: ibm_vb
   title: "Neural IBM Models"
