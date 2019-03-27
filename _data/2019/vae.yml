@@ -77,7 +77,7 @@
   date: 2019-05-06
   img: graphdgms
   uid: rtevae
-  title: "Generative models for Natural Language inference and Machine Translation"
+  title: "Generative models for natural language inference and machine translation"
   instructor: 
   abstract:  
   background:
@@ -92,7 +92,7 @@
   date: 2019-05-09
   img: graphdgms
   uid: graphdgms
-  title: "Continuous relaxations of discrete variables and models for morphology"
+  title: "Continuous relaxations of discrete variables"
   instructor: 
   abstract:  "This lecture will present models of graph induction."
   background:
@@ -114,7 +114,7 @@
   date: 2019-05-13
   img: discretedgms
   uid: discretedgms
-  title: "Discrete latent variable models"
+  title: "Discrete latent variable models and generative models for morphology"
   instructor: 
   abstract:  "This lecture will present models of whose latent variables are discrete and cannot be exactly marginalised."
   background:
