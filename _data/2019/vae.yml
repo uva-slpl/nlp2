@@ -1,7 +1,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-04-18
   img: dgm 
   uid: dgm
   title: "Probabilistic modelling for NLP"
@@ -18,7 +18,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-04-25
   img: vae_1
   uid: vae
   title: "Variational auto-encoders"
@@ -37,7 +37,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-04-29
   img: sntdgms
   uid: sntdgms
   title: "Generative language models"
@@ -53,7 +53,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-05-02
   img: embedalign
   uid: worddgms
   title: "Generative models of word representation"
@@ -74,10 +74,10 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-05-06
   img: graphdgms
   uid: rtevae
-  title: "Generative models for Natural Language inference"
+  title: "Generative models for Natural Language inference and Machine Translation"
   instructor: 
   abstract:  
   background:
@@ -89,10 +89,10 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-05-09
   img: graphdgms
   uid: graphdgms
-  title: "Continuous relaxations of discrete variables"
+  title: "Continuous relaxations of discrete variables and models for morphology"
   instructor: 
   abstract:  "This lecture will present models of graph induction."
   background:
@@ -111,7 +111,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-05-13
   img: discretedgms
   uid: discretedgms
   title: "Discrete latent variable models"
@@ -132,7 +132,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-05-16
   img: nmt
   uid: guest
   title: "Guest Lecture"
@@ -147,7 +147,7 @@
 -
   layout: lecture
   selected: y
-  date: 
+  date: 2019-05-20
   img: end
   uid: end
   title: "Projects and closing remarks"
