@@ -1,0 +1,49 @@
+\section{Word-based SMT}
+\subsection{IBM models 1 and 2}
+\frame{
+    \frametitle{The Noisy-Channel approach}
+	
+	Bayes rule 
+	
+	$$P(E|F) = \frac{P(E)P(F|E)}{P(F)}$$
+	
+	Inference
+	
+	$$\hat{E} = \argmax_E P(E)P(F|E)$$
+	
+	Estimation
+	
+	\begin{itemize}
+		\item $P(E)$ $n$-gram LM
+		\item $P(F|E)$ TM
+	\end{itemize}
+	
+}
+
+\frame{
+    \frametitle{The IBM models}
+
+		$$P(F|E) = \sum_A P(A,F|E) $$
+	\begin{center}
+
+    	 \includegraphics[width=0.8\textwidth]{"img/wilker-align"}
+	\end{center}
+}
+
+
+
+\frame{
+    \frametitle{Decoding with models 1 \& 2?}
+	\begin{center}
+    	 \includegraphics[width=0.8\textwidth]{"img/wilker-align"}
+	\end{center}
+	
+	~
+	\pause
+	how to explain insertions on the English side?
+}
+
+
+
+
+
