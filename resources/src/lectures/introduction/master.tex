@@ -7,8 +7,9 @@
 \usefonttheme[onlymath]{serif}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
-
-
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+\usepackage{animate}
 \usepackage{lmodern}
 \usepackage{comment}
 \usepackage{natbib}
@@ -78,6 +79,7 @@
 \newcommand{\hypot}[2]{\fbox{$\overset{\text{#1}}{\text{#2}}$}}
 %\newcommand{\argmax}{\operatornamewithlimits{argmax}}
 %\newcommand{\thickbar}[1]{\mathbf{\bar{\text{$#1$}}}}
+\DeclareMathOperator{\Cat}{Cat}
 
 
 
@@ -144,7 +146,7 @@
 
 	\frame[allowframebreaks]{ \frametitle{References}
         \bibliographystyle{plainnat}
-        \bibliography{../bib}
+        \bibliography{BIB}
 	}
 
 	
