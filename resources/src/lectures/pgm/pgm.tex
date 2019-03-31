@@ -1,0 +1,409 @@
+\section{Introduction}
+
+\frame[<+->]{
+	\frametitle{Probability review}
+	
+	\begin{itemize}
+	\item The \cblue{sample space} is the set of all possible outcomes of the experiment denoted by $\Omega$. \\
+	For example, two successive coin tosses the sample space of \{hh, tt, ht, th\}, where $h$ heads and $t$ tails.
+
+	\item A set whose elements $A  \in  F$ (called events) are subsets of $\Omega$ (i.e., $A \subseteq \Omega$ is a collection of possible outcomes of an experiment)
+	\item  Probability measure $A$ function $P : F \to \Re$, we associate a number $P(A)$ that measures the
+probability or degree of belief that the event will occur.
+    \item satisfies the following properties:
+    \begin{itemize}
+    \item $P(A) \geq 0$
+    \item$ A_1$, $A_2$, . . . are disjoint events (i.e. $A_i \cap A_j = \emptyset$ whenever $i \neq j$), then \\
+    $P(\bigcup_i A_i) = \sum_i P(A_i)$
+    \item $P(\Omega) = 1$
+    \end{itemize}
+     
+	\end{itemize}
+
+}
+
+\frame[<+->]{
+	\frametitle{}
+	\begin{block}{Example}
+	Consider the event of tossing a six-sided die. The sample space is $\Omega = \{1, 2, 3, 4, 5, 6\}$. We can define the simplest event space $F = \{\emptyset, \Omega\}$. Another event space is the set of all subsets of $\Omega$. \\
+	For the first event space, the unique probability measure satisfying the requirements above is given by $P(\emptyset) = 0$, $P(\Omega) = 1$. \\
+	For the second event space, one valid probability measure is to assign the probability of each set in the event space to be $\frac{i}{6}$ where $i$ is the number of elements of that set; for example, $P(\{1, 2, 3, 4\}) = \frac{4}{6}$ and $P(\{1, 2, 3\}) = \frac{3}{6}$
+	\end{block}
+	
+
+
+
+}
+
+
+\section{PGM}
+\frame[<+->]{
+	\frametitle{Conditional probability}
+	\begin{itemize}
+	\item Let $B$ be an event with non-zero probability. \\
+	The conditional probability of any event $A$ given $B$ is defined as:
+	\begin{equation}
+		\begin{aligned}
+		P(A \mid B) = \frac {P(A, B)}{P(B)}
+		\end{aligned}
+	\end{equation}
+
+	\item $P(A \mid B)$ is the probability measure of the event $A$ after observing the occurrence of event $B$.
+	\end{itemize}
+	
+
+
+}
+
+\frame[<+->]{
+	\frametitle{Chain rule}
+	\begin{itemize}
+	\item Let  $S_1, \cdots, S_k$  be events, $P(S_i) >0$. Then the chain rule:
+		\begin{equation}
+		\begin{aligned}
+ 		 	& P(S_1, S_2 ,\cdots , S_k) \\
+ 		 	 =& P(S_1) P(S_2 | S_1) P(S_3 | S_2 , S_1 ) \cdot  P(S_k | S_1 , S_2 , \cdot S_{k-1})
+		\end{aligned} 
+	\end{equation}
+	\item  With $k=2$ events, this is the definition of conditional probability:
+	\begin{equation}
+	\begin{aligned}
+	P(S_1 , S_2) = P(S_1) P(S_2 | S_1)
+	\end{aligned}
+	\end{equation}
+
+	\item In general, the chain rule is derived by applying the definition of conditional probability multiple times, for example:
+	\begin{equation}
+	\begin{aligned}
+  & P(S_1 , S_2 , S_3,S_4) \\
+=& P(S_1, S_2 , S_3) P(S_4 \mid S_1 , S_2 , S_3) \\
+=& P(S_1 , S_2) P(S_3  \mid S_1, S_2) P(S_4  \mid S_1, S_2 , S_3) \\
+=& P(S_1) P(S_2 \mid S_1) P(S_3 \mid S_1 , S_2) P(S_4 \mid S_1 , S_2 , S_3)
+\end{aligned}
+	\end{equation}
+
+	\end{itemize}
+	
+
+
+}
+
+
+\frame[<+->]{
+	\frametitle{Independence  }
+	\begin{itemize}
+	\item Two events are called independent if and only if \\
+	$P(A , B) = P(A)P(B)$, or $P(A \mid B) = P(A)$
+	\item Thus, independence is equivalent to saying that observing $B$ does not have any effect on the probability of $A$
+	\end{itemize}
+
+
+}
+
+
+\frame[<+->]{
+	\frametitle{Random variables}
+	\begin{itemize}
+	\item We flip 10 coins, and we want to know the number of coins that come up heads.\\
+	 The sample space $\Omega$ are 10-length sequences of heads and tails. For example, we might have $\omega_0 = \langle H, H, T, H, T, H, H, T, T, T \rangle \in \Omega$.
+	 \item we care about real-valued functions of outcomes, the number of heads that appear among our 10 tosses. \\ These functions are known as \cblue{random variables}.
+
+\item A random variable $X$ is a function $X : \Omega \to \Re$. 
+\item We will denote random variables using upper case letters $X$ 
+\item We will denote the value that a random variable may take on using lower case letters $x$. \\
+Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random variable $X$
+	\end{itemize}
+
+
+}
+
+
+\frame[<+->]{
+	\frametitle{Cumulative distribution functions}
+	\begin{itemize}
+	\item To specify the probability measures used with random variables, it is convenient to specify alternative functions (\cblue{CDFs}, \cblue{PDFs}, and \cblue{PMFs}).
+	\item A cumulative distribution function (CDF) is a function $F_X : \Re \to [0, 1]$ which specifies a probability measure as,\\
+	\begin{equation}
+	\begin{aligned}
+	F_X(x) = P(X \leq x)
+	\end{aligned}
+	\end{equation}
+	\item Properties:
+	\begin{equation}
+	\begin{aligned}
+	& 0 \leq  F_X(x) \leq  1 \\
+  & \lim_{x \to -\infty} F_X(x) = 0 \\
+  & \lim_{x \to +\infty} F_X(x) = 1 \\
+  & x \leq y \leftarrow  F_X(x) \leq F_X(y)
+	\end{aligned}
+	\end{equation}
+	
+	\end{itemize}
+
+
+}
+
+\frame[<+->]{
+	\frametitle{Probability mass functions}
+	\begin{itemize}
+	\item When a random variable $X$ takes on a \cblue{finite} set of possible values  is a discrete random variable
+	\item  A way to represent the probability measure associated with a random variable is to directly specify the probability of each value that the random variable can assume a probability mass function \cblue{PMF} is a function
+	\item  $p_X : \Omega \to \Re$ such that $p_X(x) = P(X = x)$
+
+\item Properties:
+\begin{equation}
+\begin{aligned}
+0 \leq p_X(x) & \leq 1 \\
+ \sum_{x \in Val(X)} p_X(x) & = 1 \\
+\sum_{x \in A} p_X(x) & = P(X \in A)
+\end{aligned}
+\end{equation}
+
+	\end{itemize}
+
+
+}
+
+
+\frame[<+->]{
+	\frametitle{Probability density functions}
+	\begin{itemize}
+	\item For some continuous random variables, the cumulative distribution function $F_X(x)$  is differentiable everywhere. \\
+	In these cases, we define the Probability Density Function or \cblue{PDF} as the derivative of the CDF
+	\begin{equation}
+	\begin{aligned}
+	f_X(x) = \frac{dF_X(x)}{dx}
+	\end{aligned}
+	\end{equation}
+
+	\item Properties:
+	\begin{equation}
+	\begin{aligned}
+	f_X(x) & \geq 0 \\
+  	\int^{\infty}_{-\infty} f_X(x) & = 1 \\
+  	\int_{x \in A} f_X(x) dx & = P(X \in A)
+	\end{aligned}
+	\end{equation}
+
+	\end{itemize}
+
+
+}
+
+\frame[<+->]{
+	\frametitle{Expectation}
+	\begin{itemize}
+	\item $X$ is a discrete random variable with \cblue{PMF} $p_X(x)$ and $g : \Re \to \Re$ is an arbitrary function.
+	\item  In this case, $g(X)$ can be considered a random variable, and we define the \cblue{expectation}> of $g(X)$  as
+	\begin{equation}
+	\begin{aligned}
+	\E[g(X)] = \sum_{x \in Val(X)} g(x)p_X(x)
+	\end{aligned}
+	\end{equation}
+	\item If $X$ is a continuous random variable with PDF $f_X(x)$, then the expected value of $g(X)$ is defined as:
+	\begin{equation}
+	\begin{aligned}
+	\E[g(X)] = \int^{\infty}_{-\infty} g(x)f_X(x)dx
+	\end{aligned}
+	\end{equation}
+
+	
+
+	\end{itemize}
+
+
+}
+
+\frame[<+->]{
+	\frametitle{Expectation}
+	\begin{itemize}
+	\item Intuitively, the expectation of $g(X)$ can be thought of as a \cblue{weighted average} of the values that $g(x)$ can taken on for different values of $x$, where the weights are given by $p_X(x)$
+	\item Properties:
+	
+	\begin{equation}
+	\begin{aligned}
+	& \E[a] = a \text{for any constant}  a \in \Re \\
+   	& \E[af(X)] = a\E[f(X)] \text{for any constant} a \in \Re \\
+  	& \text{Linearity of Expectation} \E[f(X) + g(X)] = \E[f(X)] + \E[g(X)] 
+	\end{aligned}
+	\end{equation}
+
+	\end{itemize}
+
+
+}
+
+\frame[<+->]{
+	\frametitle{Discrete random variables}
+	\begin{itemize}
+	\item $X \sim \text{Bernoulli}(p)$ (where $0 \leq p \leq 1$): \\
+	 one if a coin with heads probability $p$ comes up heads, zero otherwise
+	\begin{equation}
+	\begin{aligned}
+	p(x)=\begin{cases}
+    		p, & \text{if }x = 1. \\
+    		1-p, & \text{if }x = 0.
+	\end{cases} 
+	\end{aligned}
+	\end{equation}
+	\item $X \sim \text{Binomial}(n, p)$ (where $0 \leq  p \leq  1$):\\
+	 the number of heads in $n$  independent flips of a coin with heads probability $p$
+	\begin{equation}
+	\begin{aligned}
+	 p= \binom{n}{x} \cdot p^x (1-p)^{n-x}
+	 \end{aligned}
+	\end{equation}
+			 
+	\end{itemize}
+
+
+}
+
+
+\frame[<+->]{
+	\frametitle{Discrete random variables}
+	\begin{itemize}
+	
+	\item $X \sim \text{Geometric}(p)$ (where $p > 0$):\\
+	 the number of flips of a coin with heads probability $p$ until the first heads.
+	 \begin{equation}
+	 \begin{aligned}
+	 p(x) = p(1 - p)^{x-1}
+	 \end{aligned}
+	 \end{equation}
+	\item $X \sim \text{Poisson}(\lambda)$  (where $\lambda > 0$):\\
+	 a probability distribution over the non-negative integers used for modelling the frequency of rare events.	
+	\begin{equation}
+	 \begin{aligned}
+	 p(x) = e^{-\lambda} \frac{\lambda^x}{x!}
+	  \end{aligned}
+	\end{equation}		 
+	\end{itemize}
+
+
+}
+
+
+\frame[<+->]{
+	\frametitle{Continuous random variables}
+	\begin{itemize}
+	
+	\item $X \sim \text{Uniform}(a, b)$ (where $a < b$): \\
+	equal probability density to every value between $a$ and $b$ on the real line
+	\begin{equation}
+	\begin{aligned}
+	f(x)=\begin{cases}
+    \frac{1}{b-a}, & \text{if }a \leq b \\
+    0, & \text{otherwise}
+	\end{cases}
+	\end{aligned}
+	\end{equation}
+	\item $X \sim \text{Exponential}(\lambda)$ (where $\lambda > 0$): \\
+	decaying probability density over the non-negative real
+	\begin{equation}
+	\begin{aligned}
+	f(x)=\begin{cases}
+    \lambda e^{-\lambda x}, & \text{if }x \geq 0 \\
+    0, & \text{otherwise}
+	\end{cases}
+	\end{aligned}
+	\end{equation}
+	\item $X \sim \text{Normal}(\mu, \sigma^2)$: also known as the Gaussian distribution
+	\begin{equation}
+	\begin{aligned}
+	f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+	\end{aligned}
+	\end{equation}
+		 
+	\end{itemize}
+
+
+}
+
+\frame[<+->]{
+	\frametitle{Sum rule and product rule}
+	\begin{itemize}
+	\item  $p(x, y)$ is the joint distribution of two random variables $x, y$.\\
+	 With the corresponding marginal distributions $p(x)$ and $p(y)$
+	 \item $p(y | x)$ is the conditional distribution of $y$ given $x$.
+	 \item We denote the sum rule as (also known as the marginalization property):
+		\begin{equation}
+	\begin{aligned}
+	 p(x)=\begin{cases}
+    \sum_{y \in Y} p(x,y), & \text{if} y \text{is discrete} \\
+    \int_{Y} p(x,y)dy, & \text{if} y \text{is continuous}
+	\end{cases}
+	\end{aligned}
+	\end{equation}
+	\item We sum out (or integrate out) the set of states $y$ of the random variable $Y$.
+	\end{itemize}
+	
+	
+}
+
+\frame[<+->]{
+	\frametitle{Bayes' rule}
+	\begin{itemize}
+	\item To derive expressions for conditional probability \cblue{Bayes' rule}
+
+	\begin{equation}
+	\begin{aligned}
+	 \underbrace{p(y \mid x)}_{\text{posterior}} = \frac{\overbrace{p(x \mid y)}^{\text{likelihood}} \, \overbrace{p(y)}^{prior}}{ \underbrace{p(x)}_{evidence}} 
+	\end{aligned}
+	\end{equation}
+	
+	\end{itemize}
+	
+}
+
+\frame[<+->]{
+	\frametitle{Bayes' rule}
+	\begin{itemize}
+	
+	\item To derive expressions for conditional probability \cblue{Bayes' rule}
+
+	\item In the case of discrete random variables $X$ and $Y$
+	\begin{equation}
+	\begin{aligned}
+	p(y \mid x) = \frac{p(x, y)}{p(x)} = \frac{p (x \mid y) p(y)}{\sum_{y' \in Y} p(x \mid y') p(y')}
+	\end{aligned}
+	\end{equation}
+	\item  If the random variables $X$ and $Y$ are continuous
+	\begin{equation}
+	\begin{aligned}
+	f(y\mid x) = \frac{f(x, y)}{f_X(x)} = \frac{f (x \mid y) f(y)}{\int^{\infty}_{- \infty} f (x \mid y') f (y') dy'}
+	\end{aligned}
+	\end{equation}
+	\end{itemize}
+}
+
+\frame[<+->]{
+	\frametitle{Probabilistic modelling}
+	\begin{itemize}
+	\item Representation \\
+	How to express a probability distribution that models some real-world phenomenon?
+	\item Inference \\
+	Given a probabilistic model, how do we obtain answers to relevant questions about the world? \\
+	Querying the marginal or conditional probabilities of certain events of interest.
+	\item Learning \\
+	Goal of fitting a model given  a dataset. The model can be then use to make predictions about the future.
+	\end{itemize}
+	
+}
+
+\frame[<+->]{
+	\frametitle{Bayesian networks}
+	\begin{itemize}
+	\item 
+	\end{itemize}
+	
+}
+
+
+
+
+
+
+
+
+

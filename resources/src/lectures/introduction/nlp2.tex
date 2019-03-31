@@ -72,11 +72,16 @@
 
 \frame[<+->]{
 	\frametitle{Machine translation}
-	\begin{itemize}
-	\item \citep{BahdanauCB14}
-	\end{itemize}
+
+\begin{figure}
+   \includegraphics[width=0.25\textwidth]{mtgoog}
+   \hfill
+   \includegraphics[width=0.75\textwidth]{nmt_eg}
+\end{figure}	
 	
 
+	
+\footnotetext{\citep{BahdanauCB14}}
 }
 
 \frame[<+->]{
@@ -169,8 +174,8 @@
 		\end{aligned}
 		\end{equation}
 
-	\item $y$ classes computed with a neural network $f$ parameterised by $\theta$ 
-	\item estimate parameters that assign maximum likelihood to observations
+	\item $y$ outputs computed by mapping from the input to the class probabilities with a neural network $f$ parameterised by $\theta$ 
+	\item \cblue{Goal} estimate parameters that assign maximum likelihood to observations
 	\end{itemize}
 	
 
@@ -246,6 +251,48 @@ general purpose gradient-based optimisers
 	
 }
 
+\frame[<+->]{
+	\frametitle{Maximum likelihood estimation}
+	\begin{itemize}
+	\item Let $p(y \mid \theta)$ be the probability of an observation $y$ and $\theta$ refer to all of its parameters \\
+	Given a dataset $y^{(1)},...,y^{(N)}$ of i.i.d. observations,\\
+	 the log-likelihood function gives us a criterion for parameter estimation
+
+	\begin{equation}
+	\begin{aligned}
+	\Lagr(\theta \mid  y^{(1:N)})  = log \prod_{s=1}^{N}p(y^{(N)} \mid  \theta) = \sum_{s=1}^{N} log p(y^{(N)} \mid  \theta) 
+	\end{aligned}
+	\end{equation}
+
+	\end{itemize}
+	
+}
+
+
+\frame[<+->]{
+	\frametitle{MLE via gradient-based optimisation}
+	\begin{itemize}
+	\item If the log-likelihood is \cblue{differentiable} and \cblue{tractable} then backprop gives us the gradient
+
+	\begin{equation}
+	\begin{aligned}
+	\nabla_{\theta} \Lagr(\theta \mid y^{(1:N)} ) &= \nabla_{\theta} \sum_{s=1}^{N}log p(y^{(N)} \mid  \theta) \\
+	&= \sum_{s=1}^{N}\nabla_{\theta} log p(y^{(N)} \mid  \theta)
+	\end{aligned}
+	\end{equation}
+	\item and we can update $\theta$ in the direction
+	\begin{equation}
+	\begin{aligned}
+	\gamma \nabla_{\theta} \Lagr(\theta \mid y^{(1:N)})
+	\end{aligned}
+	\end{equation}
+	
+	to achieve  a local maximum of the likelihood function
+	\end{itemize}
+	
+}
+
+
 
 
 \frame[<+->]{
@@ -301,6 +348,24 @@ general purpose gradient-based optimisers
 
 }
 
+\frame[<+->]{
+	\frametitle{What is this course?}
+	\begin{figure}
+	\includegraphics[scale=0.43]{word_alignment}
+	
+	\end{figure}
+
+}
+
+\frame[<+->]{
+	\frametitle{What is this course?}
+	\begin{figure}
+	\includegraphics[scale=0.43]{ibm_lectures}
+	
+	\end{figure}
+
+}
+
 
 \frame[<+->]{
 	\frametitle{What is this course?}
@@ -321,9 +386,9 @@ general purpose gradient-based optimisers
 \frame[<+->]{
 	\frametitle{Goals}
 	\begin{itemize}
-	\item go through current literature
-	\item define probabilistic models
-	\item start combining probabilistic models and NN architectures
+	\item Go through current literature
+	\item Define probabilistic models
+	\item Start combining probabilistic models and NN architectures
 	
 	\end{itemize}
 	
