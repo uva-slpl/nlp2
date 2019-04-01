@@ -7,7 +7,7 @@
 	\item The \cblue{sample space} is the set of all possible outcomes of the experiment denoted by $\Omega$. \\
 	For example, two successive coin tosses the sample space of \{hh, tt, ht, th\}, where $h$ heads and $t$ tails.
 
-	\item A set whose elements $A  \in  F$ (called events) are subsets of $\Omega$ (i.e., $A \subseteq \Omega$ is a collection of possible outcomes of an experiment)
+	\item A \cblue{event space} is a set whose elements $A  \in  F$ (called events) are subsets of $\Omega$ (i.e., $A \subseteq \Omega$ is a collection of possible outcomes of an experiment)
 	\item  Probability measure $A$ function $P : F \to \Re$, we associate a number $P(A)$ that measures the
 probability or degree of belief that the event will occur.
     \item satisfies the following properties:
@@ -26,7 +26,7 @@ probability or degree of belief that the event will occur.
 	\frametitle{}
 	\begin{block}{Example}
 	Consider the event of tossing a six-sided die. The sample space is $\Omega = \{1, 2, 3, 4, 5, 6\}$. We can define the simplest event space $F = \{\emptyset, \Omega\}$. Another event space is the set of all subsets of $\Omega$. \\
-	For the first event space, the unique probability measure satisfying the requirements above is given by $P(\emptyset) = 0$, $P(\Omega) = 1$. \\
+	For the first event space, the probability measure is given by $P(\emptyset) = 0$, $P(\Omega) = 1$. \\
 	For the second event space, one valid probability measure is to assign the probability of each set in the event space to be $\frac{i}{6}$ where $i$ is the number of elements of that set; for example, $P(\{1, 2, 3, 4\}) = \frac{4}{6}$ and $P(\{1, 2, 3\}) = \frac{3}{6}$
 	\end{block}
 	
@@ -394,14 +394,126 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 \frame[<+->]{
 	\frametitle{Bayesian networks}
 	\begin{itemize}
-	\item 
+	\item Directed graphical models are a family of probability distributions that admit a compact parameterisation that can be described using a directed graph.
+	\item By the chain rule we can write any probability as:
+	\begin{equation}
+	\begin{aligned}
+	p(x_1,x_2,...,x_n) = p(x_1) p(x_2\mid x_1) \cdots p(x_n\mid x_{n-1},...,x_2,x_1).
+	\end{aligned}
+	\end{equation}
+	\item A Bayesian network is a distribution in which each factor on the right hand side depends only on a small number of ancestor variables $x_{A_i}$:
+	\begin{equation}
+	\begin{aligned}
+	p(x_i \mid x_{i-1},...,x_1) = p(x_i \mid x_{A_i})
+	\end{aligned}
+	\end{equation}
+
 	\end{itemize}
+	
+}
+
+\frame[<+->]{
+	\frametitle{Bayesian networks}
+	\begin{itemize}
+	\item Distributions of this form can be naturally expressed as directed acyclic graphs (DAG), in which vertices correspond to variables $x_i$ and edges indicate dependency relationships.
+	\end{itemize}
+	\begin{exampleblock}{}
+	Model of a student's grade $g$ on an exam. This grade depends on the exam's difficulty $d$ and the student's intelligence $i$ it also affects the quality $l$ of the reference letter from the professor who taught the course. \\
+	The student's intelligence $i$ affects his SAT score $s$ in addition to $g$. Each variable is binary, except for $g$, which takes 3 possible values.
+	\end{exampleblock}
+	
+}
+
+
+\frame[<+->]{
+	\frametitle{Bayesian networks}
+		\begin{figure}
+		\includegraphics[scale=0.3]{grade-model}
+		\end{figure}
+	\begin{equation}
+	\begin{aligned}
+	p(l, g, i, d, s) = p(l \mid g) p(g \mid i, d) p(i) p(d) p(s\mid i)
+	\end{aligned}
+	\end{equation}
 	
 }
 
 
 
+\frame[<+->]{
+	\frametitle{Bayesian networks}
+		\begin{itemize}
+		\item Bayesian network is a directed graph  $G =(V , E)$ 
+		\item  Together with a random variable $x_i$ for each node $i \in V$ 
+		\item One conditional probability distribution (CPD) conditioned on its parents\\
+		$p(x_i \mid x_{A_i})$
+		\item probability  $p$ factorizes over a DAG  $G$  if it can be decomposed into a product of factors
+		\end{itemize}
+}
 
+\section{Introduction word alignment}
+
+
+\frame[<+->]{
+	\frametitle{Word Alignment}
+		\begin{itemize}
+		\item  Learn a conditional probabilistic model of a French sentence $f$ given an English sentence $e$,\\
+		 which we denote as  $p(f|e)$.
+		 \item A dataset $D$ of $N$ sentence pairs that are known to be translations of each other, \\
+		 $D = {(f^{(1)}, e^{(1)})...(f^{(N)}, e^{(N)})}$
+		 \item  \cblue{Goal} of our model will be to uncover the hidden word-to-word correspondences in these
+translation pairs.
+		\item We will learn the model from data, and use it to predict the existence of the missing word alignments
+		\end{itemize}
+}
+
+\frame[<+->]{
+	\frametitle{Word alignment}
+		\begin{itemize}
+		%\item
+		 \item The notation to refer to each word.\\\
+		  Let a French sentence $f$ be represented by an array of $m$ words, $\left \langle f_1, ..., f_m  \right \rangle$, \\
+		  and English sentence $e$ be represented by an array of $l$ words, $\left \langle e_1, ..., e_l  \right \rangle$ 
+		  \item IBM models decompose the joint probability of a sentence pair with the chain rule as:
+		  \begin{equation}
+			\begin{aligned}
+				p(e_{1}^{l}, f_{1}^{m}) = \underbrace{p(e_{1}^{l})}_{\text{language model}} \times \underbrace{p(f_{1}^{m} \mid e_{1}^{l}) }_{\text{translation model}}
+			\end{aligned}
+		\end{equation}
+		\item  IBM models assume that each word in the French sentence is a translation of exactly zero or one word of the English sentence.
+		\item French words are conditionally independent given the English sentence.
+		\item inference can be done exactly.
+		  %\item The assumption that each French word aligned to exactly one English word \\
+		  %We represent the alignment by an array $a$ of length $I$, denoted $\left \langle f_1, ..., f_I  \right \rangle$,
+		  %\item  Alignment variable $a_i$ takes a value in the range $[0, J]$ denoting the index of the English word to which French word fi is aligned. \\
+		%If $ai = 0$, this means that $f_i$ is not aligned to any word in the English sentence, called \cbleu{null alignment}. 
+		\end{itemize}
+}
+
+\frame[<+->]{
+	\frametitle{Mixture models}
+		\begin{itemize}
+		\item IBM models are constrained mixture models.
+		\item A mixture model consist of $k$ mixture components, each defines a distribution over the space $X$.
+		\item Each component can specialise its distribution on a subset of the data.
+		\item The probability of a mixture model with $k$ components assigns to $n$ data point is denoted by:
+		
+		\begin{equation}
+			\begin{aligned}
+				p(x_{1}^{n}) &=  \prod_{i=1}^{n} \sum_{j=1}^{k} p(x_i, y_i = j) \\
+				&= \prod_{i=1}^{n} \sum_{j=1}^{k} p(y_i= j)p(x_i \mid y_i = j)
+			\end{aligned}
+		\end{equation}
+		\item We introduced the random variable $y_i$ that ranges over the mixture components
+		\end{itemize}
+}
+
+\frame[<+->]{
+	\frametitle{}
+		\begin{itemize}
+		\item 
+		\end{itemize}
+}
 
 
 
