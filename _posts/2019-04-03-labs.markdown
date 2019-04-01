@@ -1,0 +1,15 @@
+---
+layout: post
+title:  Labs
+date:   2019-04-01
+author: Miguel
+categories: lectures
+---
+
+The labs will start on the **10th of April**. 
+This week I will assign the groups to a TA and a room, and announce it in **Canvas**.  
+
+
+
+
+
