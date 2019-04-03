@@ -154,7 +154,7 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 \begin{equation}
 \begin{aligned}
 0 \leq p_X(x) & \leq 1 \\
- \sum_{x \in Val(X)} p_X(x) & = 1 \\
+ \sum_{x \in X} p_X(x) & = 1 \\
 \sum_{x \in A} p_X(x) & = P(X \in A)
 \end{aligned}
 \end{equation}
@@ -197,7 +197,7 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 	\item  In this case, $g(X)$ can be considered a random variable, and we define the \cblue{expectation}> of $g(X)$  as
 	\begin{equation}
 	\begin{aligned}
-	\E[g(X)] = \sum_{x \in Val(X)} g(x)p_X(x)
+	\E[g(X)] = \sum_{x \in X} g(x)p_X(x)
 	\end{aligned}
 	\end{equation}
 	\item If $X$ is a continuous random variable with PDF $f_X(x)$, then the expected value of $g(X)$ is defined as:
@@ -321,6 +321,85 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 }
 
 \frame[<+->]{
+	\frametitle{Random variable example}
+	\begin{itemize}
+	\item We cannot talk about the exact value of the random variable but we can reason about it's possible values
+	\item We quantify the degree of belief we have in each outcome
+	\item \cblue{Uniform distribution}: every outcome is equally likely\\
+	 if $n$ is the size of the set of possible outcomes the probability that $x$ takes on any value (e.g. a) is $\frac{1}{n}$
+	 	\begin{equation}
+	\begin{aligned}
+	p(x) = \frac{1}{n} \text{for all} x \in [a,b]
+	\end{aligned}
+	\end{equation}
+	\begin{figure}
+	\includegraphics[scale=0.5]{uniform}
+	\end{figure}
+	
+	\end{itemize}
+	
+	
+}
+
+\frame[<+->]{
+	\frametitle{Random variable example}
+	\begin{itemize}
+	\item A random variable is a function it maps from a sample space $\Omega$ to $\Re$ \\
+			$x : \Omega \rightarrow \Re$
+	\item Example: which pet do kids love the most? \\
+			Sample space: $\Omega =$ \{bird, cat, dog\}
+			
+				\begin{equation}
+	\begin{aligned}
+	 x(\omega)=\begin{cases}
+   	1 &\omega = {bird}  \\
+    2 &\omega = {cat}  \\
+    3 &\omega = {dog}  \\
+	\end{cases}
+	\end{aligned}
+	\end{equation}
+	\item  if say $x$ we mean the set of outcomes	 \\
+	${\omega : x() = x}$ which is called an event
+	\item we call $\mathcal{X}$ the support of $X$
+	\begin{figure}
+	\includegraphics[scale=0.3]{support}
+	\end{figure}
+	
+	\end{itemize}
+	
+	
+}
+
+
+\frame[<+->]{
+	\frametitle{Random variable example}
+	\begin{itemize}
+	\item A Categorical variable can model $1$ of $k$ categories \\
+		$x \sim \text{Cat}(\theta_1, . . . , \theta_k )$
+	\item $x = {1, . . . , k}$
+	\item the categorical parameter is a probability vector
+	
+	\begin{equation}
+	\begin{aligned}
+	0 \leq  \theta_x  & \leq  1 \text{for} x \in [1, k] \\
+	\sum_{x=1}^{k} \theta_x & = 1
+	\end{aligned}
+	\end{equation}
+	
+	\begin{figure}
+	\includegraphics[scale=0.5]{cat}
+	\end{figure}
+	
+	\end{itemize}
+	
+	
+}
+
+
+
+I 
+
+\frame[<+->]{
 	\frametitle{Sum rule and product rule}
 	\begin{itemize}
 	\item  $p(x, y)$ is the joint distribution of two random variables $x, y$.\\
@@ -428,7 +507,7 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 \frame[<+->]{
 	\frametitle{Bayesian networks}
 		\begin{figure}
-		\includegraphics[scale=0.3]{grade-model}
+		\includegraphics[scale=0.3]{pgm_eg}
 		\end{figure}
 	\begin{equation}
 	\begin{aligned}
@@ -451,7 +530,97 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 		\end{itemize}
 }
 
+\frame[<+->]{
+	\frametitle{Bayesian networks}
+		\begin{figure}
+		\includegraphics[scale=0.3]{grade-model}
+		\end{figure}
+	\begin{equation}
+	\begin{aligned}
+	p(l, g, i, d, s) = p(l \mid g) p(g \mid i, d) p(i) p(d) p(s\mid i)
+	\end{aligned}
+	\end{equation}
+	
+}
+
+\frame[<+->]{
+	\frametitle{Bayesian networks}
+		\begin{figure}
+		\includegraphics[scale=0.3]{pgm_eg}
+		\end{figure}
+%	\begin{equation}
+	%\begin{aligned}
+	
+	%\end{aligned}
+	%\end{equation}
+	
+}
+
+
+\frame[<+->]{
+	\frametitle{Probabilistic modelling}
+	\begin{itemize}
+	\item Inference \\
+	Given a probabilistic model, how do we obtain answers to relevant questions about the world? \\
+	Querying the marginal or conditional probabilities of certain events of interest.
+		\begin{equation}
+	\begin{aligned}
+	p(x_1) = \sum_{x_2} \sum_{x_2}...\sum_{x_n} p(x_1, x_2, x3, ..., x_n)
+	\end{aligned}
+	\end{equation}
+	\end{itemize}
+	
+}
+
 \section{Introduction word alignment}
+
+\frame[<+->]{
+	\frametitle{Word alignment}
+		\begin{itemize}
+		\item  IBM models assume that each word in the French sentence is a translation of exactly zero or one word of the English sentence.
+		 \item The notation to refer to each word.\\\
+		  Let a French sentence $f$ be represented by an array of $m$ words, $\left \langle f_1, ..., f_m  \right \rangle$, \\
+		  and English sentence $e$ be represented by an array of $l$ words, $\left \langle e_1, ..., e_l  \right \rangle$ 
+		  \item IBM models decompose the joint probability of a sentence pair with the chain rule as:
+		  \begin{equation}
+			\begin{aligned}
+				p(e_{1}^{l}, f_{1}^{m}) = \underbrace{p(e_{1}^{l})}_{\text{language model}} \times \underbrace{p(f_{1}^{m} \mid e_{1}^{l}) }_{\text{translation model}}
+			\end{aligned}
+		\end{equation}
+		
+		\item French words are conditionally independent given the English sentence.
+		\item inference can be performed exactly.
+		\item 
+		  %\item The assumption that each French word aligned to exactly one English word \\
+		  %We represent the alignment by an array $a$ of length $I$, denoted $\left \langle f_1, ..., f_I  \right \rangle$,
+		  %\item  Alignment variable $a_i$ takes a value in the range $[0, J]$ denoting the index of the English word to which French word fi is aligned. \\
+		%If $ai = 0$, this means that $f_i$ is not aligned to any word in the English sentence, called \cbleu{null alignment}. 
+		\end{itemize}
+}
+
+\frame[<+->]{
+	\frametitle{Mixture models}
+		\begin{itemize}
+		\item A mixture model consist of $c$ mixture components, each defines a distribution over the space $X$.
+		\item Each component can specialise its distribution on a subset of the data.
+		\item The probability of a mixture model with $c$ components assigns to $n$ data point is denoted by:
+		
+		\begin{equation}
+			\begin{aligned}
+				p(x_{1}^{n}) &=  \prod_{i=1}^{n} \sum_{j=1}^{c} p(x_i, y_i = j) \\
+				&= \prod_{i=1}^{n} \sum_{j=1}^{c} p(y_i= j)p(x_i \mid y_i = j)
+			\end{aligned}
+		\end{equation}
+		\item We introduced the random variable $y_i$ that ranges over the mixture components
+		\begin{figure}
+		\includegraphics[scale=0.5]{mixture_pgm}
+		\end{figure}
+		\end{itemize}
+}
+
+
+
+
 
 
 \frame[<+->]{
@@ -467,52 +636,36 @@ translation pairs.
 		\end{itemize}
 }
 
+
+
+
+
 \frame[<+->]{
-	\frametitle{Word alignment}
-		\begin{itemize}
-		%\item
-		 \item The notation to refer to each word.\\\
-		  Let a French sentence $f$ be represented by an array of $m$ words, $\left \langle f_1, ..., f_m  \right \rangle$, \\
-		  and English sentence $e$ be represented by an array of $l$ words, $\left \langle e_1, ..., e_l  \right \rangle$ 
-		  \item IBM models decompose the joint probability of a sentence pair with the chain rule as:
-		  \begin{equation}
-			\begin{aligned}
-				p(e_{1}^{l}, f_{1}^{m}) = \underbrace{p(e_{1}^{l})}_{\text{language model}} \times \underbrace{p(f_{1}^{m} \mid e_{1}^{l}) }_{\text{translation model}}
-			\end{aligned}
-		\end{equation}
-		\item  IBM models assume that each word in the French sentence is a translation of exactly zero or one word of the English sentence.
-		\item French words are conditionally independent given the English sentence.
-		\item inference can be done exactly.
-		  %\item The assumption that each French word aligned to exactly one English word \\
-		  %We represent the alignment by an array $a$ of length $I$, denoted $\left \langle f_1, ..., f_I  \right \rangle$,
-		  %\item  Alignment variable $a_i$ takes a value in the range $[0, J]$ denoting the index of the English word to which French word fi is aligned. \\
-		%If $ai = 0$, this means that $f_i$ is not aligned to any word in the English sentence, called \cbleu{null alignment}. 
-		\end{itemize}
+	\frametitle{Generative Process}
+	\begin{itemize}
+	\item 	Generative process for the French sentence conditioned on the English sentence:
+		\begin{enumerate}
+		\item Choose French sentence length $m$ based on the English sentence length $l$
+		\item For each French position $j$, choose the English position $a_j$ that it is generated from
+		\item For each French position $j$, choose a French word based on the English word in position $a_j$
+		\end{enumerate}
+	\item The generative story introduces the alignment variable $a_j$ \\
+	It is an indicator for the mixture component that the French word in position $j$ is generated from
+	\item The mixture components are English words
+	\end{itemize}
 }
 
 \frame[<+->]{
-	\frametitle{Mixture models}
-		\begin{itemize}
-		\item IBM models are constrained mixture models.
-		\item A mixture model consist of $k$ mixture components, each defines a distribution over the space $X$.
-		\item Each component can specialise its distribution on a subset of the data.
-		\item The probability of a mixture model with $k$ components assigns to $n$ data point is denoted by:
-		
-		\begin{equation}
-			\begin{aligned}
-				p(x_{1}^{n}) &=  \prod_{i=1}^{n} \sum_{j=1}^{k} p(x_i, y_i = j) \\
-				&= \prod_{i=1}^{n} \sum_{j=1}^{k} p(y_i= j)p(x_i \mid y_i = j)
-			\end{aligned}
-		\end{equation}
-		\item We introduced the random variable $y_i$ that ranges over the mixture components
-		\end{itemize}
-}
-
-\frame[<+->]{
-	\frametitle{}
-		\begin{itemize}
-		\item 
-		\end{itemize}
+	\frametitle{IBM graphical model}
+		\begin{figure}
+		\includegraphics[scale=0.5]{ibm_pgm}
+		\end{figure}
+%	\begin{equation}
+	%\begin{aligned}
+	
+	%\end{aligned}
+	%\end{equation}
+	
 }
 
 

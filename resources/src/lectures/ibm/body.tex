@@ -75,10 +75,10 @@
 	\only<1>{Imagine you are given a text
 	\begin{center}
     \begin{tabular}{c|c}
-    the black dog & o c\~{a}o preto \\
-    the nice dog & o c\~{a}o amigo \\
-    the black cat & o gato preto \\
-    a dog chasing a cat & um c\~{a}o perseguindo um gato\\
+    the black dog & el perro negro \\
+    the nice dog & el perro bonito \\
+    the black cat & el gato negro \\
+    a dog chasing a cat & un perro presiguiendo a un gato\\
     \end{tabular}
     \end{center}}
     \only<2->{Now imagine the French words were replaced by placeholders
@@ -125,7 +125,7 @@
 	Observations:
 	\begin{center}
     \begin{tabular}{c|c}
-    the black dog & o c\~{a}o preto \\
+    the black dog & el perro negro \\
     \end{tabular}
     \end{center}
     
@@ -136,9 +136,9 @@
     \only<2->{
     \begin{center}
     \begin{tabular}{c|c}
-    the black dog & \only<2>{$(A_1, E_{A_1} \rightarrow F_1)$}\only<3>{$(1, E_{A_1} \rightarrow F_1)$}\only<4->{$(1, \text{the}\rightarrow\text{o})$} 
-    \only<2-4>{$(A_2, E_{A_2} \rightarrow F_2)$}\only<5>{$(3, E_{A_2} \rightarrow F_2)$}\only<6->{$(3, \text{dog}\rightarrow\text{c\~{a}o})$} 
-    \only<2-6>{$(A_3, E_{A_3} \rightarrow F_3)$}\only<7>{$(2, E_{A_3} \rightarrow  F_3)$}\only<8->{$(2, \text{black}\rightarrow\text{preto})$} \\
+    the black dog & \only<2>{$(A_1, E_{A_1} \rightarrow F_1)$}\only<3>{$(1, E_{A_1} \rightarrow F_1)$}\only<4->{$(1, \text{the}\rightarrow\text{el})$} 
+    \only<2-4>{$(A_2, E_{A_2} \rightarrow F_2)$}\only<5>{$(3, E_{A_2} \rightarrow F_2)$}\only<6->{$(3, \text{dog}\rightarrow\text{perro})$} 
+    \only<2-6>{$(A_3, E_{A_3} \rightarrow F_3)$}\only<7>{$(2, E_{A_3} \rightarrow  F_3)$}\only<8->{$(2, \text{black}\rightarrow\text{negro})$} \\
     \end{tabular}
     \end{center}
     }
@@ -146,9 +146,9 @@
     \begin{center}
     \begin{tabular}{c|c}
     the black dog & 
-     $(1, \text{the}\rightarrow\text{o})$ 
-     $(1, \text{the}\rightarrow\text{c\~{a}o})$ 
-     $(1, \text{the}\rightarrow\text{preto})$ 
+     $(A_1, \text{the}\rightarrow\text{el})$ 
+     $(A_1, \text{the}\rightarrow\text{perro})$ 
+     $(A_1, \text{the}\rightarrow\text{negro})$ 
     \end{tabular}
     \end{center}
     }
@@ -176,13 +176,13 @@
     \begin{tikzpicture}
     % Define nodes
     \node[obs]						(x)		{$ x $};
-    \node[latent, left = of x]		(z)		{$ z $};
+    \node[latent, left = of x]		(y)		{$ y $};
     
     % Connect nodes
-    \edge{z}{x};
+    \edge{y}{x};
     
     % add plates
-    \plate {source-sentence} {(z)(x)} {$ m $};
+    \plate {source-sentence} {(y)(x)} {$ n $};
     \end{tikzpicture}
     }
     \end{center}
@@ -197,8 +197,8 @@
     
     Generative story
     \begin{enumerate}
-    	\item select a mixture component $z \sim P(Z)$
-		\item generate an observation from it $x \sim P(X|Z=z)$
+    	\item select a mixture component $y \sim p(y)$
+		\item generate an observation from it $x \sim p(x|y)$
     \end{enumerate} 
 	
 }
@@ -212,13 +212,13 @@
     \begin{tikzpicture}
     % Define nodes
     \node[obs]						(x)		{$ x $};
-    \node[latent, left = of x]		(z)		{$ z $};
+    \node[latent, left = of x]		(y)		{$ y $};
     
     % Connect nodes
-    \edge{z}{x};
+    \edge{y}{x};
     
     % add plates
-    \plate {source-sentence} {(z)(x)} {$ m $};
+    \plate {source-sentence} {(y)(x)} {$ m $};
     \end{tikzpicture}
     }
     \end{center}
@@ -226,9 +226,9 @@
 	
     Incomplete-data likelihood
     \begin{align}
-    	P(x_1^m) &= \prod_{i=1}^m P(x_i) \\
-			&= \prod_{i=1}^m \sum_{z=1}^c \underbrace{P(X=x_i, Z=z)}_{\text{complete-data likelihood}} \\
-			&= \prod_{i=1}^m \sum_{z=1}^c P(Z=z)P(X=x_i| Z=z)
+    	p(x_1^m) &= \prod_{i=1}^m p(x_i) \\
+			&= \prod_{i=1}^m \sum_{y=1}^c \underbrace{p(x_i, y)}_{\text{complete-data likelihood}} \\
+			&= \prod_{i=1}^m \sum_{y=1}^c p(z)p(x_i| y)
 	\end{align}
 	
 	
@@ -239,8 +239,8 @@
 	
 	Missing data
 	\begin{itemize}
-		\item Let $Z$ take one of $c$ mixture components
-		\item Assume data consists of pairs $(x, z)$
+		\item Let $y$ take one of $c$ mixture components
+		\item Assume data consists of pairs $(x, y)$
 		\item $x$ is always observed
 		\item $y$ is always missing		
 	\end{itemize}
@@ -249,11 +249,11 @@
 	
 	~
 	
-	Inference: posterior distribution over possible $Z$ for each $x$
+	Inference: posterior distribution over possible $y$ for each $x$
 	
 	\begin{align}
-		P(Z=z|X=x) &= \frac{P(Z=z, X=x)}{\sum_{z'=1}^c P(Z=z', X=x)} \\
-			&= \frac{P(Z=z)P(X=x|Z=z)}{\sum_{z'=1}^c P(Z=z')P(X=x|Z=z')}
+		p(y|x) &= \frac{p(y, x)}{\sum_{y'=1}^c p(y', x)} \\
+			&= \frac{p(y)p(x|y)}{\sum_{y'=1}^c p(y')p(x|y')}
 	\end{align}
 	
 }
@@ -266,17 +266,17 @@
 	~
 	
 	Suppose $\mathcal X = \{a, b\}$ and $c=2$ \\
-	~ ~ and let $P(Z=1) = P(Z=2) = 0.5$ \\
+	~ ~ and let $p(y=1) = p(y=2) = 0.5$ \\
 	
 	~
 	
 	\begin{columns}
 	\begin{column}{0.3\textwidth}
 	\begin{tabular}{c | c  c}
-		$Z$ & $X=a$ & $X=b$ \\ \hline
+		$y$ & $x=a$ & $x=b$ \\ \hline
 		1   & 0.2   & 0.8 \\ \hline
  		2   & 0.7   & 0.3 \\ \hline
-	  $P(X)$& 0.45  & 0.55 \\
+	  $p(x)$& 0.45  & 0.55 \\
 	\end{tabular}
 	% P(X=a) = P(Z=1)P(a|1) + P(Z=2)P(a|2)
 	% 0.5 * (0.2 + 0.7) = 0.45
@@ -285,10 +285,10 @@
 	\end{column}
 	\begin{column}{0.3\textwidth}
 	\begin{tabular}{c | c c}
-		$Z$ & $X=a$ & $X=b$ \\ \hline
+		$y$ & $x=a$ & $x=b$ \\ \hline
 		1   & 0.7   & 0.3 \\ \hline
 		2   & 0.2   & 0.8 \\ \hline		
-	  $P(X)$& 0.45  & 0.55 \\	
+	  $p(x)$& 0.45  & 0.55 \\	
 	\end{tabular}
 	\end{column}
 	% P(X=a) = P(Z=1)P(a|1) + P(Z=2)P(a|2)
@@ -314,15 +314,15 @@
 	$\mathcal D = \{x^{(1)}, x^{(2)}, \cdots, x^{(m)}\}$
 	\pause
 	
-	Suppose $P(X)$ is one of a parametric family with parameters $\theta$
+	Suppose $p(x)$ is one of a parametric family with parameters $\theta$
 	\pause
 	%then we choose $\theta$ as to maximise the likelihood of the observations
 	
 	Likelihood of iid observations
-	$$P(\mathcal D) = \prod_{i=1}^m P_\theta(X=x^{(i)})$$
+	$$p(\mathcal D) = \prod_{i=1}^m p_\theta(x^{(i)})$$
 	\pause
 	the score function is
-	$$l(\theta) = \sum_{i=1}^m \log P_\theta(X=x^{(i)})$$
+	$$l(\theta) = \sum_{i=1}^m \log p_\theta(x^{(i)})$$
 	\pause
 	then we choose
 	$$\theta^\star = \argmax_\theta l(\theta)$$
@@ -334,19 +334,19 @@
 
 	Suppose we have {\bf complete data}
 	\begin{itemize}
-		\item $\textcolor{blue}{\mathcal D_{\text{complete}}} = \{ (x^{(1)}, z^{(1)}), \ldots, (x^{(m)}, z^{(m)}) \}$
+		\item $\textcolor{blue}{\mathcal D_{\text{complete}}} = \{ (x^{(1)}, y^{(1)}), \ldots, (x^{(m)}, y^{(m)}) \}$
 	\end{itemize}
 	
 	~ \pause
 	
 	Then, for a {\bf categorical distribution}
-		$$P(X=x|Z=z) = \theta_{z,x}$$
-	~and $n(z, x|\mathcal D_{\text{complete}}) =$ \textit{count of $(z, x)$ in} $\textcolor{blue}{\mathcal D_{\text{complete}}}$ \\
+		$$p(x|y) = \theta_{y,x}$$
+	~and $n(y, x|\mathcal D_{\text{complete}}) =$ \textit{count of $(y, x)$ in} $\textcolor{blue}{\mathcal D_{\text{complete}}}$ \\
 	
 	~
 	
 	MLE solution:
-	$$\theta_{z,x} = \frac{n(z, x| \textcolor{blue}{\mathcal D_{\text{complete}}})}{\sum_{x'} n(z, x'|\textcolor{blue}{\mathcal D_{\text{complete}}})}$$
+	$$\theta_{y,x} = \frac{n(y, x| \textcolor{blue}{\mathcal D_{\text{complete}}})}{\sum_{x'} n(y, x'|\textcolor{blue}{\mathcal D_{\text{complete}}})}$$
 	
 	
 }
@@ -362,10 +362,10 @@
 	
 	E-step: 
 	\begin{itemize}
-		\item for every observation $x$, imagine that every possible latent assignment $z$ happened with probability $P_\theta(Z=z|X=x)$		
+		\item for every observation $x$, imagine that every possible latent assignment $y$ happened with probability $p_\theta(y|x)$		
 	\end{itemize}
 	
-	$$\alert{\mathcal D_{\text{completed}}} = \{ (x, Z= 1), \ldots, (x, Z= c): x \in \mathcal D \}$$
+	$$\alert{\mathcal D_{\text{completed}}} = \{ (x, y= 1), \ldots, (x, y= c): x \in \mathcal D \}$$
 	
 }
 
@@ -379,15 +379,15 @@
 	M-step: 
 	\begin{itemize}
 		\item reestimate $\theta$ as to climb the likelihood surface	
-		\item for categorical distributions $P(X=x|Z=z) = \theta_{z, x}$ \\
-		~ $z$ and $x$ are categorical  \\
-		~ $0 \le \theta_{z,x} \le 1$ ~ and ~ $\sum_{x \in \mathcal \mathcal X} \theta_{z, x} = 1$
+		\item for categorical distributions $p(x|y) = \theta_{y, x}$ \\
+		~ $y$ and $x$ are categorical  \\
+		~ $0 \le \theta_{y,x} \le 1$ ~ and ~ $\sum_{x \in \mathcal \mathcal X} \theta_{y, x} = 1$
 	\end{itemize}	
 	
 	\begin{align}
-		\theta_{z,x} &= \frac{\mathbb E[n(z \rightarrow x | \alert{\mathcal D_{\text{completed}}})]}{\sum_{x'} \mathbb E[n(z \rightarrow x' |\alert{\mathcal D_{\text{completed}}})]} \\
-		&= \frac{\sum_{i=1}^m  \sum_{z'} P(z'|x^{(i)}) \mathds 1_{z}(z') \mathds 1_{x}(x^{(i)})} {\sum_{i=1}^m  \sum_{x'} \sum_{z'} P(z'|x^{(i)}) \mathds 1_{z}(z') \mathds 1_{x'}(x^{(i)})} \\
-		&= \frac{\sum_{i=1}^m  P(z|x^{(i)}) \mathds 1_{x}(x^{(i)})} {\sum_{i=1}^m  \sum_{x'}  P(z|x^{(i)}) \mathds 1_{x'}(x^{(i)})}
+		\theta_{y,x} &= \frac{\mathbb E[n(y \rightarrow x | \alert{\mathcal D_{\text{completed}}})]}{\sum_{x'} \mathbb E[n(y \rightarrow x' |\alert{\mathcal D_{\text{completed}}})]} \\
+		&= \frac{\sum_{i=1}^m  \sum_{y'} p(y'|x^{(i)}) \mathds 1_{y}(y') \mathds 1_{x}(x^{(i)})} {\sum_{i=1}^m  \sum_{x'} \sum_{y'} p(y'|x^{(i)}) \mathds 1_{y}(y') \mathds 1_{x'}(x^{(i)})} \\
+		&= \frac{\sum_{i=1}^m  p(y|x^{(i)}) \mathds 1_{x}(x^{(i)})} {\sum_{i=1}^m  \sum_{x'}  p(y|x^{(i)}) \mathds 1_{x'}(x^{(i)})}
 	\end{align}
 }
 
@@ -404,9 +404,9 @@
     % Define nodes
     \node[obs]						(f)		{$ f $};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[cond, above = of a]		(n)		{$ n $};
-    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
-    \node[cond, above = of e]		(m)		{$ m $};
+    \node[const, above = of a]		(n)		{$ n $};
+    \node[obs, left = of f]		(e)		{$ e_0^{m} $};
+    \node[const, above = of e]		(m)		{$ m $};
     
     % Connect nodes
     \edge{e,a}{f};
@@ -439,14 +439,14 @@
 	
 	Alignment distribution: uniform
 	\begin{align}
-		P(A|M=m, N=n) = \frac{1}{m + 1}
+		p(a|m, n) = \frac{1}{m + 1}
 	\end{align}
 	
 	~
 	
 	Lexical distribution: categorical
 	\begin{align}
-		P(F|E=e) = \Cat(F|\theta_e)
+		p(f|e) = \Cat(f|\theta_e)
 	\end{align}
 	\begin{itemize}
 		\item where $\theta_e \in \mathbb R^{v_F}$ 
@@ -468,9 +468,9 @@
     % Define nodes
     \node[obs]						(f)		{$ f $};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[cond, above = of a]		(n)		{$ n $};
-    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
-    \node[cond, above = of e]		(m)		{$ m $};
+    \node[const, above = of a]		(n)		{$ n $};
+    \node[obs, left = of f]		(e)		{$ e_0^{m} $};
+    \node[const, above = of e]		(m)		{$ m $};
     
     % Connect nodes
     \edge{e,a}{f};
@@ -487,9 +487,9 @@
 	
     Incomplete-data likelihood
     \begin{align}
-    P(f_1^n|e_0^m) &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m P(f_1^n, a_1^n|e_{a_j}) \\
-     &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m \prod_{j=1}^n P(a_j|m, n) P(f_j|e_{a_j}) \\
-	 &= \prod_{j=1}^n \sum_{a_j=0}^m P(a_j|m, n) P(f_j|e_{a_j})
+    p(f_1^n|e_0^m) &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m p(f_1^n, a_1^n|e_{a_j}) \\
+     &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m \prod_{j=1}^n p(a_j|m, n) p(f_j|e_{a_j}) \\
+	 &= \prod_{j=1}^n \sum_{a_j=0}^m p(a_j|m, n) p(f_j|e_{a_j})
     \end{align}
 
 	\end{column}	
@@ -504,12 +504,12 @@
 		
 	Posterior
 	\begin{align}
-	P(a_1^n|f_1^n, e_0^m) &= \frac{P(f_1^n, a_1^n|e_0^m)}{P(f_1^n|e_0^m)} 
+	p(a_1^n|f_1^n, e_0^m) &= \frac{p(f_1^n, a_1^n|e_0^m)}{p(f_1^n|e_0^m)} 
 	\end{align}
 	
 	Factorised
 	\begin{align}\label{eq:paj}
-		P(a_j|f_1^n, e_0^m) &= \frac{P(a_j|m, n) P(f_j|e_{a_j})}{\sum_{i=0}^m P(i|m, n) P(f_j|e_i)} 
+		p(a_j|f_1^n, e_0^m) &= \frac{p(a_j|m, n) p(f_j|e_{a_j})}{\sum_{i=0}^m p(i|m, n) p(f_j|e_i)} 
 	\end{align}
 }
 
@@ -521,15 +521,15 @@
 	E-step:
 	\begin{small}
 	\begin{align}
-		\mathbb E[n(\mathsf e \rightarrow \mathsf f | A_1^n)] &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m P(a_1^n|f_1^n,e_0^m) n(\mathsf e \rightarrow \mathsf f | A_1^n)  \\
-		&= \sum_{a_1=0}^m \dotsb \sum_{A_n=0}^m \prod_{j=1}^n P(a_j|f_1^n,e_0^m) \mathds 1_{\mathsf e}(e_{a_j}) \mathds 1_{\mathsf f}(f_j)  \\
-		&= \prod_{j=1}^n \sum_{i=0}^m P(A_j = i|f_1^n,e_0^m) \mathds 1_{\mathsf e}(e_i) \mathds 1_{\mathsf f}(f_j) 
+		\mathbb E[n(\mathsf e \rightarrow \mathsf f | a_1^n)] &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m p(a_1^n|f_1^n,e_0^m) n(\mathsf e \rightarrow \mathsf f | A_1^n)  \\
+		&= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m \prod_{j=1}^n p(a_j|f_1^n,e_0^m) \mathds 1_{\mathsf e}(e_{a_j}) \mathds 1_{\mathsf f}(f_j)  \\
+		&= \prod_{j=1}^n \sum_{i=0}^m p(a_j = i|f_1^n,e_0^m) \mathds 1_{\mathsf e}(e_i) \mathds 1_{\mathsf f}(f_j) 
 	\end{align}
 	\end{small}
 	
 	M-step:
 	\begin{align}
-		\theta_{e, f} = \frac{\mathbb E[n(e \rightarrow f | A_1^n)]}{\sum_{ f'} \mathbb E[n( e \rightarrow  f' | A_1^n)]}
+		\theta_{e, f} = \frac{\mathbb E[n(e \rightarrow f | a_1^n)]}{\sum_{ f'} \mathbb E[n( e \rightarrow  f' | a_1^n)]}
 	\end{align}
 \end{adjustwidth}
 }
@@ -554,7 +554,7 @@
 	\frametitle{Alignment distribution}
 	
 	Positional distribution\\
-	~ $P(A_j|M=m, N=n) = \Cat(A|\lambda_{j, m, n})$
+	~ $p(a_j|m, n) = \Cat(a|\lambda_{j, m, n})$
 	\begin{itemize}
 		\item one distribution for each tuple $(j, m, n)$
 		\item support must include length of longest English sentence
@@ -569,7 +569,7 @@
 	\begin{itemize}
 		\item define a jump function
 		$\delta(a_j, j, m, n) = a_j - \left \lfloor j \frac{m}{n} \right \rfloor$
-		\item $P(A_j|m, n) = \Cat(\Delta|\lambda)$
+		\item $p(a_j|m, n) = \Cat(\Delta|\lambda)$
 		\item $\Delta$ takes values from $-\text{longest}$ to $+\text{longest}$
 	\end{itemize}
 }
