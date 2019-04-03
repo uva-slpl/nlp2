@@ -20,7 +20,7 @@
     - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
     - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
     - "[Schulz et al, 2016](https://www.aclweb.org/anthology/P/P16/P16-2028.pdf) revisit NULL alignments in IBM1-2."
-  slides: resources/slides/ibm-ks.pdf
+  slides: resources/slides/pgm.pdf
   classmaterial: 
     - "[Illustration](resources/slides/ibm-illustration.pdf)"
   code: 
@@ -47,7 +47,7 @@
     - "[Toutanova et al. (2011)](http://www.aclweb.org/anthology/P11-2081) discuss the non-strict convexity of IBM1. This is related to the non-identifiability problem discussed in class."
     - "[Vogel et al. 1996](http://www.aclweb.org/anthology/C96-2141) revisit the assumption that alignments links are independent."
     - "[Schulz et al, 2016](https://www.aclweb.org/anthology/P/P16/P16-2028.pdf) revisit NULL alignments in IBM1-2."
-  slides: resources/slides/ibm-ks.pdf
+  slides: resources/slides/ibm_2019.pdf
   classmaterial: 
     - "[Illustration](resources/slides/ibm-illustration.pdf)"
   code: 
