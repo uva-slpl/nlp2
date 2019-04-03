@@ -13,7 +13,7 @@ Groups: check Canvas or our blog posts.
 
 # Project 1 
 
-*April 26th, 2019*
+*Deadline: April 26th, 2019*
 
 
 
