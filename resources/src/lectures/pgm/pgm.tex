@@ -8,7 +8,7 @@
 	For example, two successive coin tosses the sample space of \{hh, tt, ht, th\}, where $h$ heads and $t$ tails.
 
 	\item A \cblue{event space} is a set whose elements $A  \in  F$ (called events) are subsets of $\Omega$ (i.e., $A \subseteq \Omega$ is a collection of possible outcomes of an experiment)
-	\item  Probability measure $A$ function $P : F \to \Re$, we associate a number $P(A)$ that measures the
+	\item  Probability measure is a function $P : F \to \Re$, we associate a number $P(A)$ that measures the
 probability or degree of belief that the event will occur.
     \item satisfies the following properties:
     \begin{itemize}
@@ -25,7 +25,8 @@ probability or degree of belief that the event will occur.
 \frame[<+->]{
 	\frametitle{}
 	\begin{block}{Example}
-	Consider the event of tossing a six-sided die. The sample space is $\Omega = \{1, 2, 3, 4, 5, 6\}$. We can define the simplest event space $F = \{\emptyset, \Omega\}$. Another event space is the set of all subsets of $\Omega$. \\
+	Consider the event of tossing a six-sided die. The sample space is $\Omega = \{1, 2, 3, 4, 5, 6\}$.\\
+	 We can define the simplest event space $F = \{\emptyset, \Omega\}$. Another event space is the set of all subsets of $\Omega$. \\
 	For the first event space, the probability measure is given by $P(\emptyset) = 0$, $P(\Omega) = 1$. \\
 	For the second event space, one valid probability measure is to assign the probability of each set in the event space to be $\frac{i}{6}$ where $i$ is the number of elements of that set; for example, $P(\{1, 2, 3, 4\}) = \frac{4}{6}$ and $P(\{1, 2, 3\}) = \frac{3}{6}$
 	\end{block}
@@ -134,7 +135,7 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 	& 0 \leq  F_X(x) \leq  1 \\
   & \lim_{x \to -\infty} F_X(x) = 0 \\
   & \lim_{x \to +\infty} F_X(x) = 1 \\
-  & x \leq y \leftarrow  F_X(x) \leq F_X(y)
+  & x \leq y \rightarrow  F_X(x) \leq F_X(y)
 	\end{aligned}
 	\end{equation}
 	
@@ -146,7 +147,7 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 \frame[<+->]{
 	\frametitle{Probability mass functions}
 	\begin{itemize}
-	\item When a random variable $X$ takes on a \cblue{finite} set of possible values  is a discrete random variable
+	\item When a random variable $X$ takes on a \cblue{finite} set of possible values  is a \cblue{discrete} random variable
 	\item  A way to represent the probability measure associated with a random variable is to directly specify the probability of each value that the random variable can assume a probability mass function \cblue{PMF} is a function
 	\item  $p_X : \Omega \to \Re$ such that $p_X(x) = P(X = x)$
 
@@ -194,7 +195,7 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 	\frametitle{Expectation}
 	\begin{itemize}
 	\item $X$ is a discrete random variable with \cblue{PMF} $p_X(x)$ and $g : \Re \to \Re$ is an arbitrary function.
-	\item  In this case, $g(X)$ can be considered a random variable, and we define the \cblue{expectation}> of $g(X)$  as
+	\item  In this case, $g(X)$ can be considered a random variable, and we define the \cblue{expectation} of $g(X)$  as
 	\begin{equation}
 	\begin{aligned}
 	\E[g(X)] = \sum_{x \in X} g(x)p_X(x)
@@ -333,7 +334,7 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 	\end{aligned}
 	\end{equation}
 	\begin{figure}
-	\includegraphics[scale=0.5]{uniform}
+	\includegraphics[scale=0.65]{uniform}
 	\end{figure}
 	
 	\end{itemize}
@@ -344,7 +345,7 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 \frame[<+->]{
 	\frametitle{Random variable example}
 	\begin{itemize}
-	\item A random variable is a function it maps from a sample space $\Omega$ to $\Re$ \\
+	\item A random variable is a function that maps from a sample space $\Omega$ to $\Re$ \\
 			$x : \Omega \rightarrow \Re$
 	\item Example: which pet do kids love the most? \\
 			Sample space: $\Omega =$ \{bird, cat, dog\}
@@ -359,10 +360,10 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 	\end{aligned}
 	\end{equation}
 	\item  if say $x$ we mean the set of outcomes	 \\
-	${\omega : x() = x}$ which is called an event
+	${\omega : x(\omega) = x}$ which is called an event
 	\item we call $\mathcal{X}$ the support of $X$
 	\begin{figure}
-	\includegraphics[scale=0.3]{support}
+	\includegraphics[scale=0.25]{support}
 	\end{figure}
 	
 	\end{itemize}
@@ -395,16 +396,13 @@ Thus, $X = x$ means that we are assigning the value $x \in \Re$ to the random va
 	
 }
 
-
-
-I 
-
 \frame[<+->]{
 	\frametitle{Sum rule and product rule}
 	\begin{itemize}
-	\item  $p(x, y)$ is the joint distribution of two random variables $x, y$.\\
-	 With the corresponding marginal distributions $p(x)$ and $p(y)$
-	 \item $p(y | x)$ is the conditional distribution of $y$ given $x$.
+	\item  $p(x, y)$ is the joint distribution of two random variables $x, y$. 
+	\item product rule: $p(x,y) = p(y \mid x ) p(x)$
+	\item  How does the joint PMF over two variables relate to the PMF for each variable separately? \\
+	With the corresponding marginal distributions $p(x)$ and $p(y)$ \\
 	 \item We denote the sum rule as (also known as the marginalization property):
 		\begin{equation}
 	\begin{aligned}
@@ -546,7 +544,7 @@ I
 \frame[<+->]{
 	\frametitle{Bayesian networks}
 		\begin{figure}
-		\includegraphics[scale=0.3]{pgm_eg}
+		\includegraphics[scale=0.5]{cause}
 		\end{figure}
 %	\begin{equation}
 	%\begin{aligned}
@@ -565,7 +563,7 @@ I
 	Querying the marginal or conditional probabilities of certain events of interest.
 		\begin{equation}
 	\begin{aligned}
-	p(x_1) = \sum_{x_2} \sum_{x_2}...\sum_{x_n} p(x_1, x_2, x3, ..., x_n)
+	p(x_1) = \sum_{x_2} \sum_{x_3}...\sum_{x_n} p(x_1, x_2, x3, ..., x_n)
 	\end{aligned}
 	\end{equation}
 	\end{itemize}
@@ -589,8 +587,8 @@ I
 		\end{equation}
 		
 		\item French words are conditionally independent given the English sentence.
-		\item inference can be performed exactly.
-		\item 
+		\item Inference can be performed exactly.
+	
 		  %\item The assumption that each French word aligned to exactly one English word \\
 		  %We represent the alignment by an array $a$ of length $I$, denoted $\left \langle f_1, ..., f_I  \right \rangle$,
 		  %\item  Alignment variable $a_i$ takes a value in the range $[0, J]$ denoting the index of the English word to which French word fi is aligned. \\
