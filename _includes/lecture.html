@@ -60,6 +60,10 @@
     {% if include.lecture.code %}
       <a href="{{ include.lecture.code }}" class="label label-info">Code</a>
     {% endif %}
+      
+    {% if include.lecture.video %}
+      <a href="{{ include.lecture.video }}" class="label label-info">Video</a>
+    {% endif %}
 
     {% if include.lecture.data %}
     <a href="{{ include.lecture.data }}" class="label label-info">Data</a>
