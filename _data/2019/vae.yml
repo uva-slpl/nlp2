@@ -13,7 +13,8 @@
     - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
     - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
   further:
-  slides: 
+  slides:
+  video:
   
 -
   layout: lecture
@@ -33,6 +34,7 @@
     - "More on reparameterisation (`advanced!`): [Titsias and Lazaro-Gredilla (2014)](http://www2.aueb.gr/users/mtitsias/papers/titsias14.pdf) and [Ruiz et al (2016)](https://arxiv.org/abs/1610.02287)"
     - "[Automatic Differentiation Variational Inference](https://arxiv.org/pdf/1603.00788.pdf)"
   slides:
+  video:
   
 -
   layout: lecture
@@ -49,6 +51,7 @@
     - "[Generating Sentences from a Continuous Space](https://arxiv.org/pdf/1511.06349.pdf)"
     - "[Variational neural machine translation](https://arxiv.org/pdf/1605.07869.pdf)"
   slides:
+  video:
   
 -
   layout: lecture
@@ -69,7 +72,8 @@
   discussion:
     - "[Auto-encoding variational inference for topic models](https://arxiv.org/pdf/1703.01488.pdf)"
     - "[Semantic Parsing with Semi-Supervised Sequential Autoencoders](https://arxiv.org/pdf/1609.09315.pdf)"
-  slides: 
+  slides:
+  video:
   
 -
   layout: lecture
@@ -85,7 +89,7 @@
   further:
   slides: 
   code:
-  
+  video:
 -
   layout: lecture
   selected: y
@@ -107,7 +111,7 @@
     - "[Neural Machine Translation with Source-Side Latent Graph Parsing](https://arxiv.org/pdf/1702.02265.pdf)"
   slides: 
   code:
-  
+  video:
 -
   layout: lecture
   selected: y
@@ -128,7 +132,7 @@
     - "No latent variables, but generative training: [Recurrent Neural Network Grammars](https://arxiv.org/pdf/1602.07776.pdf)"
     - "More on gradient estimation: [Simple Statistical Gradient-Flowing Algorithms for Connectionist Reinforcement Learning](https://link.springer.com/content/pdf/10.1007%2FBF00992696.pdf)"
   slides:
-  
+  video:
 -
   layout: lecture
   selected: y
@@ -142,6 +146,7 @@
   background:
   discussion:
   code: 
+  video:
   data: 
   
 -
@@ -156,4 +161,5 @@
   background:
   discussion:
   code: 
+  video:
   data: 
