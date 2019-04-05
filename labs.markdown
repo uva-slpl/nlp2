@@ -11,6 +11,7 @@ menu: yes
 # Deadline Project1 April 26, 2019
 
 Tutorial for theory of [IBM](https://uva-slpl.github.io/nlp2/resources/papers/Schulz-IBM12-Tutorial.pdf)
+
 Tutorial for practical [Collins](http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/ibm12.pdf)
 
 # NAACL alignment format
