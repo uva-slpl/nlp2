@@ -23,6 +23,7 @@
   slides: resources/slides/pgm.pdf
   classmaterial: 
     - "[Illustration](resources/slides/ibm-illustration.pdf)"
+  code: 
   video: [Recording](https://webcolleges.uva.nl/Mediasite/Play/1945d6885c924aa1af6c5a4cbf2f4f251d) 
   data: 
 -
@@ -51,6 +52,7 @@
   classmaterial: 
     - "[Illustration](resources/slides/ibm-illustration.pdf)"
   code: 
+  video:
   data: 
 -
   layout: lecture
@@ -72,6 +74,7 @@
   discussion:
   slides: resources/slides/logistic.pdf
   code: 
+  video:
   data: 
 -
   layout: lecture
@@ -100,6 +103,7 @@
     - "[IBM1-2](resources/slides/ibm.pdf)"
     - "[VB for IBM1](resources/slides/ibm-vb.pdf)"
   code: 
+  video:
   data: 
 
 
@@ -118,4 +122,5 @@
   slides: 
   classmaterial:
   code: 
+  video:
   data: 
