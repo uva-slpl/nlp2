@@ -1,0 +1,21 @@
+---
+layout: post
+title:  Project1
+date:   2019-04-05
+author: Miguel
+categories: lectures
+---
+
+Project 1 description is available at:
+[Projects](/nlp2/projects.html)
+
+Deadline: April 26, 2019.
+
+Check out the assingment of the current groups to a TA.
+The students missing a group, please e-mail me with your list of 3 students.
+There will be a discussion in Canvas for students missing  group.
+
+
+
+
+
