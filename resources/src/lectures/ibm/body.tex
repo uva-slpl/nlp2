@@ -228,7 +228,7 @@
     \begin{align}
     	p(x_1^m) &= \prod_{i=1}^m p(x_i) \\
 			&= \prod_{i=1}^m \sum_{y=1}^c \underbrace{p(x_i, y)}_{\text{complete-data likelihood}} \\
-			&= \prod_{i=1}^m \sum_{y=1}^c p(z)p(x_i| y)
+			&= \prod_{i=1}^m \sum_{y=1}^c p(y)p(x_i| y)
 	\end{align}
 	
 	
@@ -404,17 +404,17 @@
     % Define nodes
     \node[obs]						(f)		{$ f $};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[const, above = of a]		(n)		{$ n $};
-    \node[obs, left = of f]		(e)		{$ e_0^{m} $};
-    \node[const, above = of e]		(m)		{$ m $};
+    \node[const, above = of a]		(m)		{$ m $};
+    \node[obs, left = of f]		(e)		{$ e_0^{l} $};
+    \node[const, above = of e]		(l)		{$ l $};
     
     % Connect nodes
     \edge{e,a}{f};
-    \edge{m,n}{a};
+    \edge{l,m}{a};
     
     % add plates
-    \plate {source-sentence} {(f)(a)} {$ n $};
-    \plate {corpus} {(source-sentence) (e) (m) (n)} {$ S $};
+    \plate {source-sentence} {(f)(a)} {$ m $};
+    \plate {corpus} {(source-sentence) (e) (l) (m)} {$ S $};
     \end{tikzpicture}
     }
     \end{center}
@@ -427,6 +427,7 @@
 			can be assigned \pause
 			\item $a_j$ acts as an indicator for the mixture component that generates French word $f_j$ 
 			\item $e_0$ is occupied by a special \textsc{Null} component
+			\item $j$ ranges over French words and $i$ over English words 
 		\end{itemize}
 	\end{column}	
 	\end{columns}
@@ -439,7 +440,7 @@
 	
 	Alignment distribution: uniform
 	\begin{align}
-		p(a|m, n) = \frac{1}{m + 1}
+		p(a|l, m) = \frac{1}{l + 1}
 	\end{align}
 	
 	~
@@ -468,17 +469,17 @@
     % Define nodes
     \node[obs]						(f)		{$ f $};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[const, above = of a]		(n)		{$ n $};
-    \node[obs, left = of f]		(e)		{$ e_0^{m} $};
-    \node[const, above = of e]		(m)		{$ m $};
+    \node[const, above = of a]		(m)		{$ m $};
+    \node[obs, left = of f]		(e)		{$ e_0^{l} $};
+    \node[const, above = of e]		(l)		{$ l $};
     
     % Connect nodes
     \edge{e,a}{f};
-    \edge{m,n}{a};
+    \edge{l,m}{a};
     
     % add plates
-    \plate {source-sentence} {(f)(a)} {$ n $};
-    \plate {corpus} {(source-sentence) (e) (m) (n)} {$ S $};
+    \plate {source-sentence} {(f)(a)} {$ m $};
+    \plate {corpus} {(source-sentence) (e) (l) (m)} {$ S $};
     \end{tikzpicture}
     }
     \end{center}
@@ -487,9 +488,9 @@
 	
     Incomplete-data likelihood
     \begin{align}
-    p(f_1^n|e_0^m) &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m p(f_1^n, a_1^n|e_{a_j}) \\
-     &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m \prod_{j=1}^n p(a_j|m, n) p(f_j|e_{a_j}) \\
-	 &= \prod_{j=1}^n \sum_{a_j=0}^m p(a_j|m, n) p(f_j|e_{a_j})
+    p(f_1^m|e_0^l) &= \sum_{a_1=0}^l \dotsb \sum_{a_m=0}^l p(f_1^m, a_1^m|e_{a_j}) \\
+     &= \sum_{a_1=0}^l \dotsb \sum_{a_m=0}^l \prod_{j=1}^n p(a_j|l, m) p(f_j|e_{a_j}) \\
+	 &= \prod_{j=1}^n \sum_{a_j=0}^l p(a_j|l, m) p(f_j|e_{a_j})
     \end{align}
 
 	\end{column}	
@@ -504,12 +505,12 @@
 		
 	Posterior
 	\begin{align}
-	p(a_1^n|f_1^n, e_0^m) &= \frac{p(f_1^n, a_1^n|e_0^m)}{p(f_1^n|e_0^m)} 
+	p(a_1^m|f_1^m, e_0^l) &= \frac{p(f_1^m, a_1^m|e_0^l)}{p(f_1^m|e_0^l)} 
 	\end{align}
 	
 	Factorised
 	\begin{align}\label{eq:paj}
-		p(a_j|f_1^n, e_0^m) &= \frac{p(a_j|m, n) p(f_j|e_{a_j})}{\sum_{i=0}^m p(i|m, n) p(f_j|e_i)} 
+		p(a_j|f_1^m, e_0^l) &= \frac{p(a_j|l, m) p(f_j|e_{a_j})}{\sum_{i=0}^l p(i|l, m) p(f_j|e_i)} 
 	\end{align}
 }
 
@@ -521,15 +522,15 @@
 	E-step:
 	\begin{small}
 	\begin{align}
-		\mathbb E[n(\mathsf e \rightarrow \mathsf f | a_1^n)] &= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m p(a_1^n|f_1^n,e_0^m) n(\mathsf e \rightarrow \mathsf f | A_1^n)  \\
-		&= \sum_{a_1=0}^m \dotsb \sum_{a_n=0}^m \prod_{j=1}^n p(a_j|f_1^n,e_0^m) \mathds 1_{\mathsf e}(e_{a_j}) \mathds 1_{\mathsf f}(f_j)  \\
-		&= \prod_{j=1}^n \sum_{i=0}^m p(a_j = i|f_1^n,e_0^m) \mathds 1_{\mathsf e}(e_i) \mathds 1_{\mathsf f}(f_j) 
+		\mathbb E[n(\mathsf e \rightarrow \mathsf f | a_1^m)] &= \sum_{a_1=0}^l \dotsb \sum_{a_m=0}^l p(a_1^m|f_1^m,e_0^l) n(\mathsf e \rightarrow \mathsf f | A_1^m)  \\
+		&= \sum_{a_1=0}^l \dotsb \sum_{a_m=0}^l \prod_{j=1}^m p(a_j|f_1^m,e_0^l) \mathds 1_{\mathsf e}(e_{a_j}) \mathds 1_{\mathsf f}(f_j)  \\
+		&= \prod_{j=1}^m \sum_{i=0}^l p(a_j = i|f_1^m,e_0^l) \mathds 1_{\mathsf e}(e_i) \mathds 1_{\mathsf f}(f_j) 
 	\end{align}
 	\end{small}
 	
 	M-step:
 	\begin{align}
-		\theta_{e, f} = \frac{\mathbb E[n(e \rightarrow f | a_1^n)]}{\sum_{ f'} \mathbb E[n( e \rightarrow  f' | a_1^n)]}
+		\theta_{e, f} = \frac{\mathbb E[n(e \rightarrow f | a_1^m)]}{\sum_{ f'} \mathbb E[n( e \rightarrow  f' | a_1^m)]}
 	\end{align}
 \end{adjustwidth}
 }
@@ -554,9 +555,9 @@
 	\frametitle{Alignment distribution}
 	
 	Positional distribution\\
-	~ $p(a_j|m, n) = \Cat(a|\lambda_{j, m, n})$
+	~ $p(a_j|l, m) = \Cat(a|\lambda_{j, l, m})$
 	\begin{itemize}
-		\item one distribution for each tuple $(j, m, n)$
+		\item one distribution for each tuple $(j, l, m)$
 		\item support must include length of longest English sentence
 		\item extremely over-parameterised!
 	\end{itemize}
@@ -568,8 +569,24 @@
 	Jump distribution \hfill \citep{Vogel+1996:HMMWA}
 	\begin{itemize}
 		\item define a jump function
-		$\delta(a_j, j, m, n) = a_j - \left \lfloor j \frac{m}{n} \right \rfloor$
-		\item $p(a_j|m, n) = \Cat(\Delta|\lambda)$
+		$\delta(a_j, j, l, m) = a_j - \left \lfloor j \frac{l}{m} \right \rfloor$
+		\item $p(a_j|l, m) = \Cat(\Delta|\lambda)$
 		\item $\Delta$ takes values from $-\text{longest}$ to $+\text{longest}$
 	\end{itemize}
+}
+
+\section{Decoding}
+
+
+\frame{
+	\frametitle{Decoding}
+	\begin{itemize}
+	\item Pick the alignment that has the highest posterior probability.
+	\item Assumption conditional independence of alignment links \\
+	Maximising the probability of an alignment factorises over  individual alignment links.
+	\item $arg\,max p(a_1^m \mid f_1^m, e_0^l)$
+	
+	\end{itemize}
+	
+	
 }

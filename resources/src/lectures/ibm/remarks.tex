@@ -13,12 +13,12 @@
 
 	~
 	
-	From a noisy channel perspective, where we want to translate a \emph{source} sentence $f_1^n$  into some \emph{target} sentence $e_1^m$
+	From a noisy channel perspective, where we want to translate a \emph{source} sentence $f_1^n$  into some \emph{target} sentence $e_1^l$
 	\begin{itemize}
-		\item Bayes rule decomposes $p(e_1^m|f_1^n) \propto p(f_1^n|e_1^m)p(e_1^m)$
-		\item train $p(e_1^m)$ and $p(f_1^n|e_1^m)$ independently
-		\item {\bf language model:} $p(e_1^m)$ 
-		\item {\bf alignment model:} $p(f_1^n|e_1^m)$
+		\item Bayes rule decomposes $p(e_1^l|f_1^n) \propto p(f_1^n|e_1^l)p(e_1^l)$
+		\item train $p(e_1^l)$ and $p(f_1^n|e_1^l)$ independently
+		\item {\bf language model:} $p(e_1^l)$ 
+		\item {\bf alignment model:} $p(f_1^n|e_1^l)$
 		\item note that the alignment model conditions on the target sentence (English) and generates the source sentence (French)
 	\end{itemize}
 }
