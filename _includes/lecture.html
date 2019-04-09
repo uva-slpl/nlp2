@@ -61,8 +61,8 @@
       <a href="{{ include.lecture.code }}" class="label label-info">Code</a>
     {% endif %}
       
-    {%  if include.lecture.video or include.lecture.videowarn %}
-       <a data-toggle="modal" href="#video{{ include.lecture.uid }}" class="label label-success">Video</a>
+    {% if include.lecture.video or include.lecture.videowarn %}
+      <a data-toggle="modal" href="#video{{ include.lecture.uid }}" class="label label-success">video lecture</a>
       <!-- Modal -->
       <div class="modal fade" id="video{{ include.lecture.uid }}" tabindex="-1" role="dialog" aria-hidden="true"> <div class="modal-dialog">
           <div class="modal-content">
