@@ -3,7 +3,7 @@
   selected: y
   date: 2019-04-04
   img: ibm
-  uid: ibm_em1
+  uid: pgm_ibm
   title: "IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
   note: 
   abstract: >
@@ -32,7 +32,7 @@
   selected: y
   date: 2019-04-08
   img: ibm
-  uid: ibm_em2
+  uid: ibm_em
   title: "Cont. IBM 1 and 2: Models over words and MLE via EM for categorical distributions"
   note: 
   abstract: >
@@ -114,7 +114,7 @@
   selected: y
   date: 2019-04-15
   img: bibm
-  uid: ibm_vb
+  uid: ibm_nn
   title: "Neural IBM Models"
   note:
   abstract:
