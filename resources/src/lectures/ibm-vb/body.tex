@@ -14,8 +14,8 @@
     \node[right = of f]					(theta)		{\textcolor{red}{$\theta$}};
     %\node[const, above = of theta]					(alpha)		{$\alpha$};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
-    \node[cond, above = of e]		(m)		{$ m $};
+    \node[left = of f]		(e)		{$ e_0^{m} $};
+    \node[left = of a]		(m)		{$ m $};
     
     % Connect nodes
     \edge{e,a}{f};
@@ -40,7 +40,7 @@
 	    	\item $0< \theta_e < 1$
 	    	\item $\sum_{f\in \mathcal F} \theta_{e,f} = 1$
 	    \end{itemize}
-	    and $P_{F|E}(f|e) = \Cat(F=f|\theta_e) = \theta_{e,f}$ 
+	    and $P_{F|E}(f|e) = \Cat(f|\theta_e) = \theta_{e,f}$ 
     \end{itemize}
     \pause
     Local assignments
@@ -70,8 +70,8 @@
     \node[latent, right = of f]					(theta)		{\textcolor{blue}{$\theta$}};
     \node[const, above = of theta]					(alpha)		{$\alpha$};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
-    \node[cond, above = of e]		(m)		{$ m $};
+    \node[left = of f]		(e)		{$ e_0^{m} $};
+    \node[left = of a]		(m)		{$ m $};
     
     % Connect nodes
     \edge{e,a}{f};
@@ -120,8 +120,8 @@
     \node[obs]						(f)		{$ f $};
     \node[const, right = of f]					(theta)		{\alert{$\theta$}};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
-    \node[cond, above = of e]		(m)		{$ m $};
+    \node[left = of f]		(e)		{$ e_0^{m} $};
+    \node[left=of a]		(m)		{$ m $};
     
     % Connect nodes
     \edge{e,a}{f};
@@ -146,8 +146,8 @@
     \node[latent, right = of f]					(theta)		{\textcolor{blue}{$\theta$}};
     \node[const, above = of theta]					(alpha)		{$\alpha$};
     \node[latent, above = of f]		(a)		{$ a $};
-    \node[cond, left = of f]		(e)		{$ e_0^{m} $};
-    \node[cond, above = of e]		(m)		{$ m $};
+    \node[left = of f]		(e)		{$ e_0^{m} $};
+    \node[left=of a]		(m)		{$ m $};
     
     % Connect nodes
     \edge{e,a}{f};
@@ -516,7 +516,7 @@
 	Objective
 	\begin{equation}
 	\begin{aligned}
-		(\hat{\lambda}, \hat{\phi}) &= \argmax_{\lambda, \phi}  \mathbb E_q[\log p(f_1^n, a_1^n, \theta_1^{v_E}|e_1^m, \alpha)] + \mathbb H(q)\\
+		(\hat{\lambda}, \hat{\phi}) &= \argmax_{\lambda, \phi}  \mathbb E_q[\log p(f_1^n, a_1^n, \theta_1^{v_E}|e_1^m, \alpha)] + \mathbb H(q)\\ \pause
 		&= \argmax_{\lambda, \phi} \sum_{j=1}^m \mathbb E_q[\log P(a_j|m) P(f_j|e_{a_j}, \theta_1^{v_E}) - \log Q(a_j|\phi_j)] \\
 		& ~~~~~~~~~~~ +\sum_\me \underbrace{\mathbb E_q[\log p(\theta_e|\alpha) - \log q(\theta_e|\lambda_e)]}_{-\KL(q(\theta_e|\lambda_e)||p(\theta_e|\alpha))}
 	\end{aligned}
@@ -557,7 +557,7 @@
 	\end{align}
 	~ where $\Psi(\cdot)$ is the \beamerbutton{\href{https://en.wikipedia.org/wiki/Digamma_function}{digamma function}}
 	
-	~
+	~ \pause
 	
 	Optimal $q(\theta_e|\lambda_e)$
 	\begin{align}
@@ -574,8 +574,10 @@
 	E-step as in MLE IBM1, \\
 	~however, using $Q(a_j|\phi_j)$ instead of $P(a_j|e_0^m, f_j, \theta_1^{v_E})$ 
 	\begin{itemize}
-		\item equivalent to using $\theta \approx \hat{\theta}$ where
-		\item $\hat{\theta}_{\mf|\me} = \exp\left( \Psi\left(\lambda_{\mf|\me}\right) - \Psi\left(\sum_{\mf'} \lambda_{\mf'|\me}\right) \right)$
+		\item maintain a table of parameters $\lambda$ 
+		\item where in Frequentist EM you would use $\theta$, use instead $\hat{\theta}$ 
+		\item $\hat{\theta}_{\mf|\me} = \exp\left( \Psi\left(\lambda_{\mf|\me}\right) - \Psi\left(\sum_{\mf'} \lambda_{\mf'|\me}\right) \right)$ \\
+		(note these are not normalised probability vectors)
 	\end{itemize}
 	
 	\pause
