@@ -119,11 +119,12 @@
   uid: ibm_nn
   title: "Neural IBM Models"
   note:
-  abstract:
+  abstract: >
+    In this lecture, we will show a different parameterisation of categorical distributions in terms of logistic distributions.
   background:
   further:
   discussion:
-  slides: 
+  slides: resources/slides/logistic.pdf
   classmaterial:
   code: 
   video:
