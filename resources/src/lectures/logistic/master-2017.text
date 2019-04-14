@@ -49,8 +49,7 @@
 %\usepackage{xparse}
 %\usepackage{tikz}
 %\usetikzlibrary{calc}
-\newcommand{\cblue}[1]{\textcolor{blue}{{#1}}}
-\newcommand{\cred}[1]{\textcolor{red}{{#1}}}
+
 \newcounter{savedenum}
 \newcommand*{\saveenum}{\setcounter{savedenum}{\theenumi}}
 \newcommand*{\resume}{\setcounter{enumi}{\thesavedenum}}
@@ -68,9 +67,9 @@
 	\setbeamertemplate{caption}{\raggedright\insertcaption\par}
 
 	\title{Lexical alignment: feature-rich models}
-	%\subtitle{EM for logistic CPDs}
+	\subtitle{EM for logistic CPDs}
 
-	\author{Miguel Rios}
+	\author{Wilker Aziz}
 
 	\date{\today}
 	
@@ -100,7 +99,7 @@
 
 	
 	\input{body}
-	%\input{remarks}
+	\input{remarks}
 	
 		
 	\newcounter{finalframe}

@@ -101,9 +101,9 @@
 	\frametitle{Generative story}
 	For each sentence pair independently,
 	\begin{enumerate}
-	\item observe an English sentence $e_1, \cdots, e_m$ \\
-	and a French sentence length $n$
-	\item for each French word position $j$ from 1 to $n$
+	\item observe an English sentence $e_1, \cdots, e_l$ \\
+	and a French sentence length $m$
+	\item for each French word position $j$ from 1 to $m$
 	\begin{enumerate}
 		\item select an English position $a_j$
 		\item conditioned on the English word $e_{a_j}$, generate $f_j$ 
@@ -560,6 +560,8 @@
 		\item one distribution for each tuple $(j, l, m)$
 		\item support must include length of longest English sentence
 		\item extremely over-parameterised!
+		\item Count of English sentence $l$, and a French sentence of length $m$, where word $j$ in French is aligned to word
+$i$ in English
 	\end{itemize}
 
 	\pause
