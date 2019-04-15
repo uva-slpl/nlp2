@@ -122,10 +122,13 @@
   abstract: >
     In this lecture, we will show a different parameterisation of categorical distributions in terms of logistic distributions.
   background:
+    - "[Kocisky et al., (2014)](https://arxiv.org/pdf/1405.0947.pdf)."
+    - "[Berg-Kirkpatrick et al., (2010)](https://aclweb.org/anthology/N10-1083)."
   further:
   discussion:
   slides: resources/slides/logistic.pdf
   classmaterial:
   code: 
   video:
+    - "[Videonn](https://webcolleges.uva.nl/Mediasite/Play/8cb58f44704243f082a36efc5614a2f51d)"
   data: 
