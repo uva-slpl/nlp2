@@ -105,7 +105,7 @@
 		\item $p(o|c) = \theta_{c, o}$
 		\item $0 \le \theta_{c, o} \le 1$
 		\item $\sum_o \theta_{c, o} = 1$
-		\item $O(|\mathcal c| \times |\mathcal o|)$ parameters
+		\item $O(| c| \times | o|)$ parameters
 	\end{itemize}
 	
 	~
@@ -144,9 +144,9 @@
 	\end{center}
 	\begin{itemize}
 		\item $w \in \mathbb R^d$ is a weight vector
-		\item $h: \mathcal C \times \mathcal O \rightarrow R^d$ is a feature function
+		\item $h:  C \times O \rightarrow R^d$ is a feature function
 		\item $d$ parameters
-		\item computing CPD requires $O(|\mathcal c| \times |\mathcal o| \times d)$ operations
+		\item computing CPD requires $O(| c| \times | o| \times d)$ operations
 	\end{itemize}
 	
 	~
@@ -160,7 +160,7 @@
 	
 	\begin{center}
 	\begin{footnotesize}
-	$$h: \mathcal E \times \mathcal F \rightarrow R^d$$
+	$$h: \mathcal E \times  F \rightarrow R^d$$
 	\begin{tabular}{|l | l | l | l | l | l|l|} \hline
 	\multicolumn{2}{|c|}{\sc Events $\downarrow$} & 
 	\multicolumn{5}{c|}{\sc Features $\rightarrow$} \\ \hline
@@ -236,7 +236,7 @@ The standard parameterisation using categorical distributions is limited with re
 	Features
 	\begin{itemize}
 		\item $f \in V_F$ is a French word (decision), $e \in V_E$ is an English word (conditioning context), 
-				$w \in R^d$ is the parameter vector, and $h : V_F × V_E \rightarrow R^d$ is a feature vector function.
+				$w \in R^d$ is the parameter vector, and $h : V_F \times V_E \rightarrow R^d$ is a feature vector function.
 		\item prefixes/suffixes
 		\item character $n$-grams
 		\item POS tags
@@ -475,8 +475,8 @@ $W_t \in \mathbb R^{|V_F| \times d_h}$ and $b_t \in \mathbb R^{|V_F|}$
     \end{aligned}
 	\end{equation}
 
-
-	\item Note that in fact our log-likelihood is a sum of independent terms $\mathcal L_j(\theta|e_0^m, f_j)$, thus we can characterise the contribution of each French word in each sentence pair as
+	\item  $p(f|e) = \prod_j p(f_j|e) = \prod_j \sum_{a_j} p(a_j|m,l)p(f_j|e_{a_j}) $
+	\item Note that in fact our log-likelihood is a sum of independent terms $\mathcal L_j(\theta|e_0^m, f_j)$, thus we can characterise the contribution of each French word in each sentence pair
 
 
 
@@ -509,7 +509,7 @@ $W_t \in \mathbb R^{|V_F| \times d_h}$ and $b_t \in \mathbb R^{|V_F|}$
 	\begin{itemize}
 	
 	\item With SGD we sample a subset $\mathcal S$ of the training data and compute a loss for that sample. 
-	\item We then use automatic differentiation to obtain a gradient $\nabla_\theta \mathcal l(\theta|\mathcal S)$. This gradient is used to update our deterministic parameters $\theta$.
+	\item We then use automatic differentiation to obtain a gradient $\nabla_{\theta} l(\theta|\mathcal S)$. This gradient is used to update our deterministic parameters $\theta$.
 	\begin{equation}
 	\begin{aligned}
 	\theta^{(t+1)} = \theta^{(t)} - \delta_t \nabla_{\theta^{(t)}} l(\theta^{(t)}|\mathcal S)
