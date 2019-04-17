@@ -29,3 +29,22 @@
   name: Iacer Calixto
   url: https://iacercalixto.github.io/
   github: iacercalixto
+  
+  
+-
+  layout: person
+  selected: y
+  institution: UvA
+  img: 
+  name: Bryan Eikema
+  url: https://roxot.github.io/
+  github: roxot
+  
+-
+  layout: person
+  selected: y
+  institution: UvA
+  img: 
+  name: Nuno Neto De Carvalho Mota
+  url: 
+  github: 
