@@ -4,7 +4,7 @@ title: Instructors
 menu: yes
 ---
 
-*Spring 2018*
+*Spring 2019*
 
 [Statistical Language Processing and Learning Lab][SLPLL] (minus just a few).
 
