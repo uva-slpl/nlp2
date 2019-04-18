@@ -13,7 +13,7 @@
     - "Chapter 2 of Matthew Beal's [PhD thesis](http://www.cse.buffalo.edu/faculty/mbeal/papers/beal03.pdf) gives a very clear development of variational inference for Bayesian models."
     - "An outstanding account of variational methods with lots of references to recent developments is given in David Blei's [tutorial](https://arxiv.org/pdf/1601.00670.pdf)."
   further:
-  slides:
+  slides: resources/slides/dgm4nlp.pdf
   video:
   
 -
