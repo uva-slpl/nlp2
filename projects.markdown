@@ -33,6 +33,7 @@ Resources:
 * [Training data](resources/project_ibm/training.tgz)
 * [Validation data](resources/project_ibm/validation.tgz)
 * [Test data](resources/project_ibm/testing.tgz)  ``new!``
+* [Neural IBM1](resources/project_ibm/neuralibm.tar.gz)  ``EXTRA!``
 <!---* [Tips](https://uva-slpl.github.io/nlp2/projects/2018/04/12/project1.html)--->
 * [Helper functions for validation AER](resources/project_ibm/aer.py)
     * Note that I wrote this helper class using `python3`, if you are using `python2` you will need to import `from __future__ import division` to avoid the default integer division (whereby stuff like 1/2 evaluates to 0 instead of 1.5)
