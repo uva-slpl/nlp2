@@ -1,0 +1,109 @@
+\section{Variational inference}
+
+\begin{frame}{The Basic Problem}
+The marginal likelihood
+$$ p(x) = \intl{ p(x,z) }{z} $$
+is generally \textbf{intractable},  which prevents us from computing quantities that depend on the posterior $p(z|x)$
+
+\begin{itemize}
+	\item e.g. gradients in MLE
+	\item e.g. predictive distribution in Bayesian modelling
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Strategy}
+Accept that $ p(z|x) $ is not computable.
+\pause
+\begin{itemize}
+	\item approximate it by an auxiliary distribution $ q(z|x) $ that is computable
+	\item choose $ q(z|x) $ as close as possible to $ p(z|x) $ to obtain a faithful approximation
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Evidence lowerbound}
+
+\begin{small}
+\begin{equation*}
+\begin{aligned}
+\log p(x) &= \log \intl{p(x,z)}{z} \\
+\pause
+&= \log \intl{\alert{q(z|x)}\frac{p(x,z)}{\alert{q(z|x)}}}{z} \\
+\pause
+&= \loga{\E[q(z|x)]{\frac{p(x,z)}{{q(z|x)}}}} \\ \pause
+&\geq \underbrace{\E[q(z|x)]{  \log{\frac{p(x,z)}{{q(z|x)}}}}}_{\text{ELBO}} \\
+\pause
+&= \E[q(z|x)]{ \log p(x, z)} - \E[q(z|x)]{\log q(z)}\\
+\pause
+& = \E[q(z|x)] {\log p(x, z)} + \Ent{q(z|x)}
+\end{aligned}
+\end{equation*}
+\end{small}
+\end{frame}
+
+\begin{frame}{An approximate posterior}
+\begin{equation*}
+\begin{aligned}
+\log p(x) &\geq 
+\underbrace{\E[q(z|x)] {\log{\frac{p(x, z)}{q(z|x)}}}}_{\text{ELBO}} \\
+\pause
+&= \E[q(z|x)] {\log{\frac{p(z|x)p(x)}{q(z|x)}}} \\
+\pause
+&= \E[q(z|x)] {\log{\frac{p(z|x)}{q(z|x)}}} + \underbrace{\log p(x)}_{\text{constant}}\\
+\pause
+&= - \underbrace{\E[q(z|x)] {\log{\frac{q(z|x)}{p(z|x)}}}}_{\KL{q(z|x)}{p(z|x)}} + \log p(x) 
+%&= \intl{ q(z|x) \log{\frac{p(z|x)}{q(z|x)}}}{z} + \underbrace{\log p(x)}_{\text{constant }} \\ \pause
+%&= -\KL{q(z|x)}{p(z|x)} + \log p(x)
+\end{aligned}
+\end{equation*}
+\pause
+We have derived a lower bound on the log-evidence whose gap is exactly $ \KL{q(z|x)}{p(z|x)} $.
+\end{frame}
+
+
+\begin{frame}{Variational Inference}
+Objective
+\begin{equation*}
+\underset{q(z|x)}{\max}~\E{\log p(x,z)} + \Ent{q(z|x)}
+\end{equation*}
+
+\begin{itemize}
+\item The ELBO is a lower bound on $ \log p(x) $
+\end{itemize}
+
+\ack{\citet{BleiEtAl:2016}}
+\end{frame}
+
+
+\begin{frame}{Mean field assumption}
+
+Suppose we have $N$ latent variables\\
+\begin{itemize}
+	\item assume the posterior factorises as $N$ independent terms
+	\item each with an independent set of parameters
+\end{itemize}
+
+
+\begin{equation*}
+q(z_1, \ldots, z_N) = \underbrace{\prod_{i=1}^N q_{\lambda_i}(z_i)}_{\text{mean field}}
+\end{equation*}
+
+
+\end{frame}
+
+\begin{frame}{Amortised variational inference}
+
+Amortise the cost of inference using NNs
+\begin{equation*}
+q(z_1, \ldots, z_N|x_1, \ldots, x_N) = \prod_{i=1}^N q_\lambda(z_i|x_i)
+\end{equation*}
+~ with a shared set of parameters\\
+\begin{itemize}
+	\item e.g. $Z|x \sim \mathcal N(\underbrace{\mu_\lambda(x), \sigma_\lambda(x)^2}_{\text{inference network}})$ 
+\end{itemize}
+
+\end{frame}

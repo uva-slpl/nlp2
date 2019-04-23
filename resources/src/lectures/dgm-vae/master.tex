@@ -1,0 +1,110 @@
+%\documentclass[handout]{beamer}
+\documentclass[usenames,dvipsnames]{beamer}
+\usepackage{amsmath}
+\usepackage{stdpresent}
+%\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{tikz}
+\usetikzlibrary{intersections,positioning}
+\usetikzlibrary{matrix, calc}
+\newcommand*{\hnode}[1]{\node[outer sep=0pt,anchor=base] (#1) {#1};} 
+\usepackage[absolute,overlay]{textpos}
+\usetikzlibrary{bayesnet}
+\usepackage{tcolorbox}
+\usepackage[tikz]{bclogo}
+\usepackage{textcomp}
+\usepackage{vimacros}
+\usepackage{physics}
+\usepackage[round]{natbib}
+
+\beamertemplatenavigationsymbolsempty
+%\hypersetup{breaklinks=true, colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\newcommand{\ack}[1]{\let\thefootnote\relax\footnote{\textcolor{gray}{#1}}}
+
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+
+\newcommand{\SDEC}{SDEC}
+\newcommand{\SENT}{SENT}
+
+
+%\DeclareMathOperator*{\softmax}{softmax}
+
+\title[DGMs in NLP]{Variational Auto-encoders}
+
+
+\def\W#1#2{\rnode{#1}{#2}\hfill}
+
+\newcommand{\pointthis}[2]{
+        \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
+        (#1) {\textbf{#1}};\node[overlay,rectangle callout,%
+        callout relative pointer={(0.1cm,0.5cm)},fill=yellow!90] at ($(#1.north)+(-.5cm,-1cm)$) {#2};}%
+        }%
+
+\presetkeys{bclogo}{
+ombre=true,
+epBord=3,
+couleur = blue!15!white,
+couleurBord = red,
+arrondi = 0.2,
+logo=\bctrombone
+}{}
+
+\author[Miguel Rios]{Miguel Rios\\University of Amsterdam}
+\date{\today}
+
+% add page num
+\expandafter\def\expandafter\insertshorttitle\expandafter{%
+  \insertshorttitle\hfill%
+  \insertframenumber}
+
+\begin{document}
+\maketitlepage
+
+
+\setcounter{framenumber}{0}
+
+%\include{dgms}
+\include{vi}
+\include{vae}
+%\include{applications}
+
+\begin{frame}{Summary}
+
+Deep learning in NLP
+\begin{itemize}
+	\item task-driven feature extraction
+	\item models with more realistic assumptions
+\end{itemize}
+
+~
+
+Probabilistic modelling 
+\begin{itemize}
+	\item better (or at least more explicit) statistical assumptions
+	\item compact models
+	\item semi-supervised learning
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Literature}
+\bibliographystyle{plainnat}
+\small
+\bibliography{VI}
+%\nocite{KingmaWelling:2013}
+%\nocite{HintonEtAl:1995}
+%\nocite{RezendeEtAl:2014}
+%\nocite{TitsiasLazarogredilla:2014}
+%\nocite{BergkirkpatrickEtAl:2010}
+%\nocite{KucukelbirEtAl:2017}
+\end{frame}
+
+
+
+\end{document}
+\grid
