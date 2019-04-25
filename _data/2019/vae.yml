@@ -34,7 +34,7 @@
     - "A [tutorial](https://arxiv.org/abs/1606.05908) (`disclaimer:` not my favourite!)"
     - "More on reparameterisation (`advanced!`): [Titsias and Lazaro-Gredilla (2014)](http://www2.aueb.gr/users/mtitsias/papers/titsias14.pdf) and [Ruiz et al (2016)](https://arxiv.org/abs/1610.02287)"
     - "[Automatic Differentiation Variational Inference](https://arxiv.org/pdf/1603.00788.pdf)"
-  slides:
+  slides: resources/slides/dgm4vae.pdf
   video:
   
 -
