@@ -160,7 +160,7 @@ but
 \begin{itemize}
 	\item sample more \\ \pause
 	\alert{won't scale} \pause
-	\item use variance reduction techniques (e.g. baselines and control variates)\\ \pause 		\textcolor{orange}{excellent idea, but not just yet} \pause
+	\item use variance reduction techniques (e.g. baselines and control variates)\\ \pause 		
 	\item stare at this $\pdv{\phi}\E[q_\phi(z|x)]{\log p_\theta(x|z)}$ \\ \pause
 	\textcolor{blue}{until we find a way to rewrite the expectation in terms of a density that 
 	{\bf does not depend on} $\phi$}
@@ -183,6 +183,13 @@ Invertibility implies
 
 \ack{\citep{KingmaWelling:2013,RezendeEtAl:2014,TitsiasLazarogredilla:2014}}
 
+\end{frame}
+
+\begin{frame}{Reparametrisation}
+\begin{figure}
+\includegraphics[scale=0.45]{rep_cg}
+\end{figure}
+\ack{\citep{KingmaWelling:2013}}
 \end{frame}
 
 \begin{frame}{Gaussian Transformation}
@@ -335,3 +342,109 @@ Thus backprop will compute $-\pdv{\phi} \KL{q_\phi(z|x)}{p(z)}$ for us
 but see \citet{RuizEtAl:2016} and \citet{KucukelbirEtAl:2017}
 \end{itemize}
 \end{frame}
+
+\subsection{Semi supervised VAE}
+
+\begin{frame}{Semi-supervised VAE}
+\begin{figure}
+\includegraphics[scale=0.45]{semi-sup}
+\end{figure}
+\ack{\citep{NIPS2014_5352}}
+\end{frame}
+
+\begin{frame}{Semi-supervised VAE}
+
+\begin{itemize}
+\item Generative model:
+\begin{equation}
+\begin{aligned}
+p(y)=\operatorname{cat}(y | \boldsymbol{\pi}) ;\\
+\quad p(\mathbf{z})=\mathcal{N}(\mathbf{z} | \mathbf{0}, \mathbf{I}) ;\\
+\quad p_{\theta}(\mathbf{x} | y, \mathbf{z})=f(\mathbf{x} ; y, \mathbf{z}, \boldsymbol{\theta})
+\end{aligned}
+\end{equation}
+\item Inference model:
+\begin{equation}
+\begin{aligned}
+q_{\phi}(\mathbf{z} | y, \mathbf{x})=\mathcal{N}\left(\mathbf{z} | \boldsymbol{\mu}_{\phi}(y, \mathbf{x}), \operatorname{diag}\left(\boldsymbol{\sigma}_{\phi}^{2}(\mathbf{x})\right)\right) ; \\
+q_{\phi}(y | \mathbf{x})=\operatorname{Cat}\left(y | \boldsymbol{\pi}_{\phi}(\mathbf{x})\right)
+\end{aligned}
+\end{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Objective}
+
+\begin{itemize}
+
+\item Labelled data: \\
+\begin{equation}
+\begin{aligned}
+\log p_{\theta}(\mathbf{x}, y) \geq & \mathbb{E}_{q_{\phi}(\mathbf{z} | \mathbf{x}, y)}\left[\log p_{\theta}(\mathbf{x} | y, \mathbf{z})+\log p_{\theta}(y)+\log p(\mathbf{z})-\log q_{\phi}(\mathbf{z} | \mathbf{x}, y)\right]
+= & -\mathcal{L}(\mathbf{x}, y)
+\end{aligned}
+\end{equation}
+\item Unlabelled data: \\
+\begin{equation}
+\begin{aligned} 
+\log p_{\theta}(\mathbf{x}) & \geq \mathbb{E}_{q_{\phi}(y, \mathbf{z} | \mathbf{x})}\left[\log p_{\theta}(\mathbf{x} | y, \mathbf{z})+\log p_{\theta}(y)+\log p(\mathbf{z})-\log q_{\phi}(y, \mathbf{z} | \mathbf{x})\right] \\ 
+&=\sum_{y} q_{\phi}(y | \mathbf{x})(-\mathcal{L}(\mathbf{x}, y))+\mathcal{H}\left(q_{\phi}(y | \mathbf{x})\right)=-\mathcal{U}(\mathbf{x})
+\end{aligned}
+\end{equation}
+\end{itemize}
+
+\end{frame}
+
+
+\subsection{Beyond mean field}
+
+\begin{frame}{Beyond the mean field}
+\begin{figure}
+\includegraphics[scale=0.25]{struct2meanfield}
+\end{figure}
+\ack{Mohamed S. 2017, Deep Generative Models Tutorial}
+\end{frame}
+
+\begin{frame}{Auxiliary variable}
+The mean field assumption might result in models that do not capture all dependencies in the observations:\\
+
+\begin{figure}
+\includegraphics[scale=0.45]{aux_variable2}
+\end{figure}
+\ack{\citep{pmlr-v48-maaloe16}}
+\end{frame}
+
+\begin{frame}{Auxiliary variable}
+\begin{itemize}
+\item Generative model: \\
+\begin{equation}
+\begin{aligned}
+p(z) &=\mathcal{N}(z | 0, \mathrm{I}) \\ p(y) &=\operatorname{Cat}(y | \pi) \\ p_{\theta}(a | z, y, x) &=f(a ; z, y, x, \theta) \\ p_{\theta}(x | z, y) &=f(x ; z, y, \theta) 
+\end{aligned}
+\end{equation}
+\item Inference model: \\
+\begin{equation}
+\begin{aligned}
+ q_{\phi}(a | x) &=\mathcal{N}\left(a | \mu_{\phi}(x), \operatorname{diag}\left(\sigma_{\phi}^{2}(x)\right)\right) \\
+  q_{\phi}(y | a, x) &=\operatorname{Cat}\left(y | \pi_{\phi}(a, x)\right) \\ 
+  q_{\phi}(z | a, y, x) &=\mathcal{N}\left(z | \mu_{\phi}(a, y, x), \operatorname{diag}\left(\sigma_{\phi}^{2}(a, y, x)\right)\right) 
+ \end{aligned}
+\end{equation}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Normalizing flow}
+\begin{figure}
+\includegraphics[scale=0.35]{NF}
+\end{figure}
+\end{frame}
+
+\begin{frame}{NF for NLP}
+\begin{itemize}
+\item \citep{effective2019pelsmaeker} tackle issues present in VAE models for language.
+\item Annealing
+\item Expressive posterior
+\end{itemize}
+\end{frame}
+
