@@ -36,6 +36,7 @@
     - "[Automatic Differentiation Variational Inference](https://arxiv.org/pdf/1603.00788.pdf)"
   slides: resources/slides/dgmvae.pdf
   video:
+    - "[Videovae](https://webcolleges.uva.nl/Mediasite/Play/f2b63ac0d08e4ec5b8ceddac366de44f1d)"
   
 -
   layout: lecture
