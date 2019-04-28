@@ -59,7 +59,7 @@
   discussion:
     - "[Auto-encoding variational inference for topic models](https://arxiv.org/pdf/1703.01488.pdf)"
     - "[Semantic Parsing with Semi-Supervised Sequential Autoencoders](https://arxiv.org/pdf/1609.09315.pdf)"
-  slides:
+  slides: resources/slides/dgmembed.pdf
   video:
   
 -
