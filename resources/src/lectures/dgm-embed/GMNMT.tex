@@ -1,0 +1,28 @@
+\begin{figure}
+  \centering
+ 
+    \begin{tikzpicture}
+    % Define nodes
+    
+    \node[obs]   (y) {$ y $};
+    \node[obs, left=of y]   (yprev) {$ y_{<} $};
+    \node[latent, above=of y]     (z) {$ z $};
+    \node[obs, left=of z]    (x) {$ x_1^m $};
+    \node[obs, right=of z]   (v) {$ v $};
+    \node[right=of y] (dummy) {};
+    \node[right=of dummy] (theta) {$\theta$};
+
+    % Connect nodes
+    \edge{x}{z};
+    \edge{x,z,yprev}{y};
+    \edge{z}{v};
+    \edge{theta}{y,z,v};
+
+    % add plates
+    \plate{y-sentence}{(y)(yprev)}{$n$};
+    \plate{data}{(y-sentence)(x)(z)(v)}{$N$};
+
+    \end{tikzpicture}
+ 
+  
+\end{figure}

@@ -1,0 +1,23 @@
+\begin{figure}
+\center
+\begin{tikzpicture}
+% Define nodes
+\node[obs]						(f)		{$ f $};
+\node[latent, above = of f]		(a)		{$ a $};
+\node[obs, left = of f]		(e)		{$ e_0^{l} $};
+
+
+% Connect nodes
+\edge{e,a}{f};
+%\edge{e}{a};
+
+
+% add plates
+%\plate{n-alignments}{(a)}{$n$};
+\plate {source-sentence} {(f)(a)} {$ m $};
+%\plate{pivots}{(e)}{$n$};
+%\plate {sentences} {(source-sentence) (e) (a)} {$ N $};
+
+\end{tikzpicture}
+%\caption{\label{fig:GM2}This model is a refinement of that in \rfig{GM1}, where the latent variable $z$ that participates in generating the aligned sentences. This allows for representations to be ``disambiguated'' in context.}
+\end{figure}

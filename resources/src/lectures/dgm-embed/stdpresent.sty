@@ -1,0 +1,84 @@
+\usepackage{pgf}
+\usetheme{Warsaw}
+
+%% albatross | beaver | beetle |
+%% 	crane | default | dolphin |
+%% 	dove | fly | lily | orchid |
+%% 	rose |seagull | seahorse |
+%% 	sidebartab | structure |
+%% 	whale | wolverine
+
+%% For UvA
+
+\definecolor{UniBlue}{RGB}{33,84,157}%{83,121,170}
+\usecolortheme[named=UniBlue]{structure}
+%% \logo{\pgfimage[height=0.5cm]{uva.png}}
+
+
+%\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[russian,english]{babel}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{color}
+%\usepackage{graphicx,colortbl,natbib,amsmath,url,rotating}
+
+\newcommand{\code}[1]{{\small \texttt{#1}}}
+\newcommand{\smallurl}[1]{{\small \url{#1}}}
+
+\newcommand{\markup}[2]{{\color{#1}{{\textbf{\textsl{#2}}}}}}
+
+\newcommand{\red}[1]{\textbf{\color{red}{#1}}}
+\newcommand{\blue}[1]{\textbf{\color{blue}{#1}}}
+
+
+
+
+\newcommand{\maketitlepage}{\frame{\titlepage}
+\AtBeginSection[]
+{\frame
+  { \frametitle{Outline}
+    \tableofcontents[current,currentsection]
+  }
+}
+}
+
+
+\newenvironment{narrow}[2]{%
+  \begin{list}{}{%
+  \setlength{\topsep}{0pt}%
+  \setlength{\leftmargin}{#1}%
+  \setlength{\rightmargin}{#2}%
+  \setlength{\listparindent}{\parindent}%
+  \setlength{\itemindent}{\parindent}%
+  \setlength{\parsep}{\parskip}}%
+\item[]}{\end{list}}
+
+%% Useful tricks
+
+%% \includeonlyframes{x}
+
+%% \usepackage{CJKutf8}
+%% \newcommand{\ZH}[1]{\begin{CJK}{UTF8}{gbsn}#1\end{CJK}}
+%\newcommand{\R}[1]{{\foreignlanguage{russian}{#1}}}
+
+%% \frame{
+%% \frametitle{Overlaying pictures and lists}
+%% \begin{columns}
+%% \begin{column}{5cm}
+%% \begin{itemize}
+%% \item<1-> subject 1
+%% \item<3-> subject 2
+%% \item<5-> subject 3
+%% \end{itemize}
+%% \vspace{3cm}
+%% \end{column}
+%% \begin{column}{5cm}
+%% \begin{overprint}
+%% \includegraphics<2>{PIC1}
+%% \includegraphics<4>{PIC2}
+%% \includegraphics<6>{PIC3}
+%% \end{overprint}
+%% \end{column}
+%% \end{columns}}

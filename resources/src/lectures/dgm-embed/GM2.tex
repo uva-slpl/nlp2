@@ -1,0 +1,17 @@
+\begin{figure}
+\center
+\begin{tikzpicture}
+% Define nodes
+\node[obs]						(x)		{$ x $};
+\node[latent, above = of x]		(z)		{$ z $};
+\node[left = of z] (phi) {$\phi$};
+
+% Connect nodes
+\edge[dashed]{x}{z};
+\edge[dashed]{phi}{z};
+% add plates
+
+\plate {corpus} {(x) (z)} {$ N $};
+\end{tikzpicture}
+%\caption{\label{fig:GM1}A graphical representation of our basic model. The outer plate represents a multilingual parallel corpus made of $S$ source sentences paired with translations into $n$ target languages. The model generates the source side of the data while conditioning on all $n$ target streams. Source sentences are generated one word at a time, and words are independent of one another given an alignment which selects a target position in each of the $n$ target streams.}
+\end{figure}

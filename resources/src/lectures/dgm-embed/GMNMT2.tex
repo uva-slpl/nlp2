@@ -1,0 +1,22 @@
+  \begin{figure}
+  \centering
+    \begin{tikzpicture}
+    % Define nodes
+    
+    \node[obs]    (x) {$ x_1^m $};
+    \node[obs, below=of x]   (y) {$ y_1^n $};
+    \node[latent, right=of x]     (z) {$ z $};
+    
+    \node[obs, below=of z]   (v) {$ v $};    
+    \node[right=of z] (theta) {$\lambda$};
+
+    % Connect nodes
+    \edge{x,y,v}{z};
+    \edge{theta}{z};
+
+    % add plates    
+    \plate{data}{(y)(x)(z)(v)}{$N$};
+
+    \end{tikzpicture}
+  
+  \end{figure}
