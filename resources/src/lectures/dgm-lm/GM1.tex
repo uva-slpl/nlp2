@@ -1,0 +1,27 @@
+
+\begin{tikzpicture}
+\node[obs]	       (y)		{$ y $};
+\node[latent, right = of y]		(z)		{$ z $};
+\node[obs, below = of z]	                   (x)		{$ x $};
+\node[latent, right = of z]		(s)		{$ s $};
+\node[latent, below = of y]		(a)		{$ a $};
+\node[obs, left = of y]		(yp)		{$ y_{prev} $};
+\node[latent, below = of yp]		(c)		{$ c $};
+%\node[right = of x] (theta) {$\theta$};
+
+% Connect nodes
+\edge{a}{y};
+\edge{x}{a};
+\edge{z}{x};
+\edge{s}{z};
+\edge{z}{y};
+\edge{c}{y};
+\edge{yp}{c,y};
+%\edge{theta}{y,x,z};
+
+% add plates
+\plate {L1-sentence} {(x)(z)} {$ m $};
+\plate {L2-sentence} {(y)(a)(yp)(c)} {$ n $};
+\plate {corpus} {(s) (L1-sentence) (L2-sentence)} {$|\mathcal B|$};
+\end{tikzpicture}
+

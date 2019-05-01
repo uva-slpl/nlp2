@@ -1,0 +1,32 @@
+\begin{figure}
+\center
+\begin{tikzpicture}
+% Define nodes
+%\node[obs]						(x)		{$ f_j $};
+\node[obs]						(y1)		{$ y_j^{1} $};
+\node[latent, above = of y1]		(a1)		{$ a_j $};
+\node[latent, right = of y1]		(pi)		{$ \pi_i $};
+\node[latent, above = of pi]		(z)		{$ z $};
+\node[obs, right = of pi]						(yn)		{$ y_j^{n} $};
+\node[latent, above = of yn]		(an)		{$ a_j $};
+\node[obs, below = of pi]  (x)     {$ x_i $};
+
+
+% Connect nodes
+\edge{a1}{y1};
+\edge{an}{yn};
+\edge{pi}{y1};
+\edge{pi}{yn};
+\edge{pi}{x};
+\edge{z}{pi};
+
+
+% add plates
+
+\plate{x-sentence} {(pi) (x)} {$ l $};
+\plate{y1-sentence}{(a1) (y1)}{$m$};
+\plate{yn-sentence}{(an) (yn)}{$m$};
+
+\end{tikzpicture}
+%\caption{\label{fig:GM2}This model is a refinement of that in \rfig{GM1}, where the latent variable $z$ that participates in generating the aligned sentences. This allows for representations to be ``disambiguated'' in context.}
+\end{figure}
