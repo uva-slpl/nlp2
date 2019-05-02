@@ -77,7 +77,7 @@
   discussion: 
     - "[Generating Sentences from a Continuous Space](https://arxiv.org/pdf/1511.06349.pdf)"
     - "[Variational neural machine translation](https://arxiv.org/pdf/1605.07869.pdf)"
-  slides:
+  slides: resources/slides/dgmlm.pdf
   video:
   
 -
