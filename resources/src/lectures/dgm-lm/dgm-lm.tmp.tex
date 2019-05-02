@@ -281,7 +281,7 @@ $p\left(x_{i} | x_{1}, \ldots, x_{i-1}\right) \simeq p\left(x_{i} | x_{i-4}, x_{
 
 
 \end{itemize}
-
+\ack{\citep{JelMer80, Goodman:2001:BPL:2791595.2791976}}
 }
 
 
@@ -293,6 +293,10 @@ $p\left(x_{i} | x_{1}, \ldots, x_{i-1}\right) \simeq p\left(x_{i} | x_{i-4}, x_{
 \begin{equation}
 p(x)=\prod_{i} p\left(x_{i} | x_{1}, \ldots, x_{i-1}\right)
 \end{equation}
+\item 
+\begin{figure}
+	\includegraphics[scale=0.40]{markov}
+\end{figure}
 
 \end{itemize}
 
@@ -307,6 +311,10 @@ p(x)=\prod_{i} p\left(x_{i} | x_{1}, \ldots, x_{i-1}\right)
 \begin{equation}
 p\left(x_{i} | x_{1}, \ldots, x_{i-1}\right) \simeq p\left(x_{i} | x_{i-1}\right)
 \end{equation}
+\item 
+\begin{figure}
+	\includegraphics[scale=0.50]{chainrule}
+\end{figure}
 
 \end{itemize}
 
@@ -320,9 +328,8 @@ p\left(x_{i} | x_{1}, \ldots, x_{i-1}\right) \simeq p\left(x_{i} | x_{i-1}\right
 \item We make the Markov assumption:\\
 
 $p\left(x_{i} | x_{1}, \ldots, x_{i-1}\right) \simeq p\left(x_{i} | x_{i-1}\right)$
-
-\item If we do not observe the bi-gram $p(x_i|x_{i−1}) $ will be 0. \\
-This makes the probability of the sentence 0.
+\item If we do not observe the bigram $p(x_i| x_{i-1})$ is 0 \\
+and the probability of a sentence will be 0.
 \item MLE
 \begin{equation}
 p_{\mathrm{MLE}}\left(x_{i} | x_{i-1}\right)=\frac{\operatorname{count}\left(x_{i-1}, x_{i}\right)}{\operatorname{count}\left(x_{i-1}\right)}
@@ -357,8 +364,8 @@ p(y | x)=\frac{\exp \boldsymbol{w} \cdot \phi(x, y)}{\sum_{y^{\prime} \in V_{y}}
 
 \begin{itemize}
 
-\item n-gram features: $x_{j−1}$ = the and $x_j$ = puppy;
-\item spelling features: $x_j$ first letter is capitalised;
+\item n-gram features $x_{j-1}$ =  the and $x_j$ = puppy.
+\item gappy n-gram features $x_{j-2}$ =  the and $x_j$ = puppy.
 \item class features: $x_j$  belongs to class ABC;
 \item gazetteer features: $x_j$ is a place name;
 
@@ -414,7 +421,7 @@ probability function.
 
 
 \end{itemize}
-
+\ack{\citep{journals/jmlr/BengioDVJ03}}
 }
 
 \frame[<+->]{ \frametitle{Feed-forward NLM}
@@ -490,7 +497,7 @@ space.
 
 \item FF-LM \\
 \begin{figure}
-	\includegraphics[scale=0.40]{ffnn-lm}
+	\includegraphics[scale=0.25]{ffnn-lm}
 \end{figure}
 \item We now have much better generalisation, but still a limited history/context.
 \item Recurrent neural networks have unlimited history
@@ -505,19 +512,19 @@ space.
 
 \item RNN-LM \\
 \begin{figure}
-	\includegraphics[scale=0.40]{rnnlm}
+	\includegraphics[scale=0.20]{rnnlm}
 \end{figure}
 \item Start: predict second word from first
 
 \end{itemize}
-
+\ack{\citep{conf/interspeech/MikolovKBCK10}}
 }
 
 
 \frame[<+->]{ \frametitle{RNN NLM}
 
 \begin{figure}
-	\includegraphics[scale=0.40]{rnn-lm}
+	\includegraphics[scale=0.20]{rnn-lm}
 \end{figure}
 
 
@@ -531,48 +538,220 @@ space.
 \section{Variational Auto-encoder for Sentences}
 
 
-\frame[<+->]{ \frametitle{}
+\frame[<+->]{ \frametitle{Sen VAE}
 
 \begin{itemize}
 
-\item 
-
+\item Model observations as draws from the marginal of a DGM. 
+\item An NN maps from a latent sentence embedding $z \in R^{dz}$  to a distribution $p(x|z, \theta)$ over sentences,
+\begin{equation}
+\begin{array}{l}{p(x | \theta)=\int p(z) p(x | z, \theta) \mathrm{d} z} \\ {=\int \mathcal{N}(z | 0, I) \prod_{i=1}^{|x|} \operatorname{Cat}\left(x_{i} | f\left(z, x_{<i} ; \theta\right)\right) \mathrm{d} z}\end{array}
+\end{equation}
 \end{itemize}
 
+\ack{\citep{DBLP:journals/corr/BowmanVVDJB15}}
 }
 
-\frame[<+->]{ \frametitle{}
+\begin{frame}{Sen VAE}
+	\begin{tikzpicture}
+    % Define nodes
+    \node[latent]		(z)		{$ z $};
+    \node[obs, right = of z]		(x)		{$ x_1^m $};
+    \node[right = of x]		(theta)		{$ \theta $};
+    
+    % Connect nodes
+    \edge{z,theta}{x};
+    
+    % add plates
+    \plate {x-sentence} {(x)(z)} {$ N $};
+   
+    \node[left = of z]		(lambda)		{$\phi $};   
+    \edge[dashed, bend right]{x}{z};
+    \edge[dashed]{lambda}{z};
+    \end{tikzpicture}
 
-}
+	Generative model
+    	\begin{itemize}
+			\item $Z \sim \mathcal N(0, I)$
+			\item $X_i | z, x_{<i} \sim \Cat(f_\theta(z, x_{<i}))$\\
+			%where $x_{<i}$ is represented by a recurrent hidden state\\
+			%and the categorical parameters are predicted by a single hidden layer FFNN with softmax activation
+    	\end{itemize}
+	Inference model
+    	\begin{itemize}
+			\item $Z \sim \mathcal N(\mu_\phi(x_1^m), \sigma_\phi(x_1^m)^2)$
+			%where $x_1^m$ is represented by the average embedding\\
+			%location and scale are single hidden layer FFNNs
+    	\end{itemize}
+	
+	
+	
+\end{frame}
 
-%\frame[<+->]{ \frametitle{}
-%\begin{itemize}
+
+\frame[<+->]{ \frametitle{Sen VAE}
+
+\begin{itemize}
  
-% \item 
-%\end{itemize}
-%}
-
-
-
-
-
-
-
-\subsection{Model}
-%TODO
-%\subsection{Motivation}
-%\frame[<+->]{ \frametitle{Motivation}
-%\begin{block}{Intuition}
-%TODO !!!!!
-%\end{block}
-%}
-
-%\subsection{Model 1}
-
-\frame[<+->]{ \frametitle{}
-
+ \item Generation is one word at a time without Markov assumptions, but $f()$conditions on $z$ \\
+ in addition to the observed prefix.
+ \item  The conditional $p(x|z, \theta)$ is the decoder.
+ \item $p(x | \theta)$ is the marginal likelihood.
+ \item We train the model  to assign high (marginal) probability to observations like a  LMs. 
+ \item However the model uses a latent space  to exploit neighbourhood and smoothness in latent
+space to capture regularities in data space.\\
+ For example, it may group sentences according to certain e.g. lexical choices, syntactic complexity, lexical semantics, etc...
+ 
+\end{itemize}
 }
 
+
+
+
+\frame[<+->]{ \frametitle{Approximate Inference}
+
+\begin{itemize}
+\item The model has  a diagonal Gaussian distribution as variational posterior: \\
+$q_{\phi}(z | x)=\mathcal{N}\left(z | \mu_{\phi}(x), \operatorname{diag}\left(\sigma_{\phi}(x)\right)\right)$
+\item With reparametrisation:
+$z=h_{\phi}(\epsilon, x)=\mu_{\phi}(x)+\sigma_{\phi}(x) \odot \epsilon, \quad \text { where } \epsilon \sim \mathcal{N}\left(0, \mathbf{I}\right)f$
+\item Analytical KL: \\
+$\mathrm{KL}\left[q_{\phi}(z | x) \| p_{\theta}(z)\right]=\frac{1}{2} \sum_{d=1}^{\mathrm{D}_{z}}\left(-\log \sigma_{\phi}^{2}(x)-1+\sigma_{\phi}^{2}(x)+\mu_{\phi}^{2}(x)\right)$
+\end{itemize}
+}
+
+
+\frame[<+->]{ \frametitle{Approximate Inference}
+
+\begin{itemize}
+\item We jointly estimate the parameters of both generative and inference by maximising a lowerbound on
+the log-likelihood function (ELBO):
+\begin{equation}
+\begin{array}{r}{\mathcal{L}(\theta, \phi | x)= \mathbb{E}_{q(z | x, \phi)}[\log p(x | z, \theta)].} \\ {-\operatorname{KL}(q(z | x , \phi ) | p(z)) }\end{array}
+\end{equation}
+\end{itemize}
+}
+
+
+\frame[<+->]{ \frametitle{Architecture}
+\begin{itemize}
+\item Gaussian Sen VAE  parametrises a categorical distribution over the vocabulary for each given prefix, and, it conditions on a latent embedding:\\
+$Z \sim \mathcal{N}(0, I),$ \\ $ \quad X_{i} | z, x_{<i} \sim \operatorname{Cat}\left(f\left(z, x_{<i} ; \theta\right)\right)$
+\item 
+\begin{equation}
+\begin{aligned} 
+f\left(z, x_{<i} ; \theta\right) &=\operatorname{softmax}\left(\mathbf{s}_{i}\right) \\
+\mathbf{e}_{i} &=\operatorname{emb}\left(x_{i} ; \theta_{\mathrm{emb}}\right) \\ \mathbf{h}_{0} &=\tanh \left(\operatorname{affine}\left(z ; \theta_{\text { init }}\right)\right) \\ \mathbf{h}_{i} &=\operatorname{GRU}\left(\mathbf{h}_{i-1}, \mathbf{e}_{i-1} ; \theta_{\mathrm{gru}}\right) \\ \mathbf{s}_{i} &=\operatorname{affine}\left(\mathbf{h}_{i} ; \theta_{\mathrm{out}}\right) \end{aligned}
+\end{equation}
+\end{itemize}
+}
+
+
+\frame[<+->]{ \frametitle{ The Strong Decoder Problem}
+\begin{itemize}
+\item The VAE may ignore the latent variable given the interaction between the prior and posterior in the KL divergence.
+\item  This problem appears when we have strong decoders  conditional likelihoods $p(x|z)$ 
+parametrised by high capacity models
+\item The model might achieve a high ELBO without using information from $z$
+\item RNN LM is strong decoder because they condition on all previous context when generating a word
+\end{itemize}
+}
+
+%\frame[<+->]{ \frametitle{An Information-Theoretic Perspective}
+
+%}
+
+\frame[<+->]{ \frametitle{What to do?}
+\begin{itemize}
+\item Weakening the Decoder, the model relies on the latent variables the reconstruction of the observed data.
+\item KL Annealing, weigh the KL term in the ELBO with a factor that is annealed from 0 to 1 over a fixed number of steps of size $\gamma \in (0, 1)$
+\item Word Dropout, by dropping a percentage of the input at random, the decoder has to rely on the latent variable to fill in the missing gaps. 
+\item Freebits  because it allows encoding the
+first $r$ nats of information for free.\\
+$\max (r, \operatorname{KL}(q_{\phi}(z | x) \| p(z)))$
+\end{itemize}
+}
+
+\frame[<+->]{ \frametitle{Metrics}
+\begin{itemize}
+\item For VAE models, Negative log-likelihood NLL is estimated, since we do not have access to
+the exact marginal likelihood. 
+\item We use an importance sampling (IS) estimate://
+\begin{equation}
+\begin{array}{l}{p(x | \theta)=\int p(z, x | \theta) \mathrm{d} z \stackrel{\mathrm{IS}}{=} \int q(z | x) \frac{p(z, x | \theta)}{q(z | x)} \mathrm{d} z} \\ {\approx \frac{1}{S} \sum_{s=1}^{S} \frac{p\left(z^{(s)}, x | \theta\right)}{q\left(z^{(s)} | x\right)} \text { where } z^{(s)} \sim q(z | x)}\end{array}
+\end{equation}
+\item Perplexity PPL:  the exponent of average per-word
+entropy, given $N$ i.i.d. sequences \\
+\begin{equation}
+\operatorname{PPL}=\exp \left(\frac{\sum_{i=1}^{N} \log p\left(x_{i}\right)}{\sum_{i=1}^{N}\left|x_{i}\right|}\right)
+\end{equation}
+\item perplexity is based on the importance sampled NLL
+
+\end{itemize}
+}
+
+
+\frame[<+->]{ \frametitle{Baseline}
+\begin{itemize}
+\item  RNNLM (Dyer et al., 2016)
+\item At each step, an RNNLM parameterises a categorical distribution over the vocabulary, i.e. \\
+  $X_{i} | x_{<i} \sim \operatorname{Cat}\left(f\left(x_{<i} ; \theta\right)\right)$ and
+ \begin{equation}
+ \begin{aligned} 
+ f\left(x_{<i} ; \theta\right)=& \operatorname{softmax}\left(\mathbf{s}_{i}\right) \text { and } \\ \mathbf{e}_{i} &=\operatorname{emb}\left(x_{i} ; \theta_{\mathrm{emb}}\right) \\ \mathbf{h}_{i} &=\operatorname{GRU}\left(\mathbf{h}_{i-1}, \mathbf{e}_{i-1} ; \theta_{\mathrm{gru}}\right) \\ \mathbf{s}_{i} &=\operatorname{affine}\left(\mathbf{h}_{i} ; \theta_{\mathrm{out}}\right)
+  \end{aligned}
+ \end{equation}
+ \item  Embedding layer (emb), one (or more) GRU cell(s) ($h_0 \in \theta$ is a parameter of the
+model), and an affine layer to map from the dimensionality of the GRU to the vocabulary size.
+\end{itemize}
+}
+
+
+\frame[<+->]{ \frametitle{Data}
+\begin{itemize}
+\item Wall Street Journal part of the Penn Treebank corpus
+\item Preprocessing on train-validation-test split as \citep{dyer-etal-2016-recurrent}
+\item  WSJ section 1-21 training,
+\item  Section 23 as test corpus 
+\item Section 24 as validation
+
+\end{itemize}
+}
+
+
+\frame[<+->]{ \frametitle{Results}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+          & NLL$\downarrow$            & PPL$\downarrow$          \\ \hline
+RNN-LM    & 118.7$\pm$0.12 & 107.1$\pm$0.46 \\ \hline
+VAE       & 118.4$\pm$0.09 & 105.7$\pm$0.36 \\ \hline
+Annealing & 117.9$\pm$0.08 & 103.7$\pm$0.31 \\ \hline
+Free-bits & 117.5$\pm$0.18 & 101.9$\pm$0.77 \\ \hline
+\end{tabular}
+}
+
+
+\frame[<+->]{ \frametitle{Samples}
+\begin{itemize}
+\item decode greedily from a prior sampl and the variability is due to the generator’s reliance on the latent sample.
+\item The VAE ignores z and greedy generation from a prior sample is essentially deterministic in that case \\
+\begin{figure}
+	\includegraphics[scale=0.50]{sample}
+\end{figure}
+\end{itemize}
+}
+
+
+\frame[<+->]{ \frametitle{Samples}
+\begin{itemize}
+\item Homotopy, decode greedily from
+points lying between a posterior sample conditioned on the first sentence and a posterior sample conditioned on the last sentence.
+\begin{figure}
+	\includegraphics[scale=0.50]{sample1}
+\end{figure}
+\end{itemize}
+}
 
 
 
