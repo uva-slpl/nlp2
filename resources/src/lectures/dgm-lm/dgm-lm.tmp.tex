@@ -746,7 +746,9 @@ Free-bits & 117.5$\pm$0.18 & 101.9$\pm$0.77 \\ \hline
 \frame[<+->]{ \frametitle{Samples}
 \begin{itemize}
 \item Homotopy, decode greedily from
-points lying between a posterior sample conditioned on the first sentence and a posterior sample conditioned on the last sentence.
+points lying between a posterior sample conditioned on the first sentence and a posterior sample conditioned on the last sentence. 
+\item  $z_{\alpha}=\alpha * z_{1}+(1-\alpha) * z_{2}$\\
+$\alpha \in [0, 1]$
 \begin{figure}
 	\includegraphics[scale=0.50]{sample1}
 \end{figure}
