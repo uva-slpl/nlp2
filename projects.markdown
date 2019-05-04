@@ -47,13 +47,12 @@ Assessment: [guidelines](resources/project_ibm/assessment-sheet.pdf) /  grades o
 
 # Project 2 
 
-*Deadline TBA*
+*Deadline: May 20th, 2019*
 
-
-<!---In this project you will learn about neural machine translation and will implement a basic model with attention.
+In this project you will learn and implement a deep generative language model. 
 Resources:
-* [Project description](resources/project_nmt/project2.pdf)
-* [Training data](resources/project_nmt/data/train.zip)
-* [Validation data](resources/project_nmt/data/val.zip)
-* [Test data](resources/project_nmt/data/test.zip)
-Assessment: described in the project description / grades on Canvas.--->
+* [Project description](resources/project_senvae/Project_2__Sentence_VAE.pdf)
+* [Training data](resources/project_senvae/data/02-21.10way.clean)
+* [Validation data](resources/project_senvae/data/22.auto.clean)
+* [Test data](resources/project_senvae/data/23.auto.clean)
+Assessment: described in the project description / grades on Canvas.
