@@ -51,8 +51,10 @@ Assessment: [guidelines](resources/project_ibm/assessment-sheet.pdf) /  grades o
 
 In this project you will learn and implement a deep generative language model. 
 Resources:
+
 * [Project description](resources/project_senvae/Project_2__Sentence_VAE.pdf)
 * [Training data](resources/project_senvae/data/02-21.10way.clean)
 * [Validation data](resources/project_senvae/data/22.auto.clean)
 * [Test data](resources/project_senvae/data/23.auto.clean)
+
 Assessment: described in the project description / grades on Canvas.
