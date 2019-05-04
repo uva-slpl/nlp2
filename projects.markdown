@@ -50,6 +50,7 @@ Assessment: [guidelines](resources/project_ibm/assessment-sheet.pdf) /  grades o
 *Deadline: May 20th, 2019*
 
 In this project you will learn and implement a deep generative language model. 
+
 Resources:
 
 * [Project description](resources/project_senvae/Project_2__Sentence_VAE.pdf)
