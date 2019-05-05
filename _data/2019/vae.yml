@@ -87,7 +87,26 @@
   date: 2019-05-06
   img: graphdgms
   uid: rtevae
-  title: "Generative models for natural language inference and machine translation"
+  title: "Probabilistic Topic Models"
+  instructor: 
+  abstract:  
+  background:
+    - "[Topic models](http://www.cs.columbia.edu/~blei/papers/BleiLafferty2009.pdf)"
+    - "[Neural Variational Inference for Text Processing](https://arxiv.org/pdf/1511.06038.pdf)"
+    - "[Discovering Discrete Latent Topics with Neural Variational Inference](https://arxiv.org/pdf/1706.00359.pdf)"
+    - "[Autoencoding Variational Inference For Topic Models](https://arxiv.org/pdf/1703.01488.pdf)"
+  discussion:
+  further:
+  slides: resources/slides/dgmtopic.pdf
+  code:
+  video:
+-
+  layout: lecture
+  selected: y
+  date: 2019-05-09
+  img: graphdgms
+  uid: graphdgms
+  title: "Generative models for multimodal machine translation"
   instructor: 
   abstract:  
   background:
@@ -99,32 +118,24 @@
 -
   layout: lecture
   selected: y
-  date: 2019-05-09
-  img: graphdgms
-  uid: graphdgms
-  title: "Continuous relaxations of discrete variables"
+  date: 2019-05-13
+  img: discretedgms
+  uid: discretedgms
+  title: "Generative models for natural language inference "
   instructor: 
-  abstract:  "This lecture will present models of graph induction."
+  abstract: 
   background:
-    - "[Encoding Sentences with Graph Convolutional Networks for Semantic Role Labeling](http://www.aclweb.org/anthology/D17-1159)"
-    - "[The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables](https://arxiv.org/pdf/1611.00712.pdf)"
-    - "[Categorical Reparameterization with Gumbel-Softmax](https://arxiv.org/pdf/1611.01144.pdf)"
   discussion:
-    - "[Structured Attention Networks](https://arxiv.org/pdf/1702.00887.pdf)"
-    - "[Learning to Compose Task-Specific Tree Structures](https://arxiv.org/pdf/1707.02786.pdf)"
   further:
-    - "[Learning Structured Text Representations](https://arxiv.org/pdf/1705.09207.pdf)"
-    - "[Neural Machine Translation with Source-Side Latent Graph Parsing](https://arxiv.org/pdf/1702.02265.pdf)"
-  slides: 
-  code:
+  slides:
   video:
 -
   layout: lecture
   selected: y
-  date: 2019-05-13
+  date: 2019-05-16
   img: discretedgms
   uid: discretedgms
-  title: "Discrete latent variable models and generative models for morphology"
+  title: "Discrete latent variable models"
   instructor: 
   abstract:  "This lecture will present models of whose latent variables are discrete and cannot be exactly marginalised."
   background:
@@ -139,21 +150,6 @@
     - "More on gradient estimation: [Simple Statistical Gradient-Flowing Algorithms for Connectionist Reinforcement Learning](https://link.springer.com/content/pdf/10.1007%2FBF00992696.pdf)"
   slides:
   video:
--
-  layout: lecture
-  selected: y
-  date: 2019-05-16
-  img: nmt
-  uid: guest
-  title: "Guest Lecture"
-  instructor: TBA
-  note: 
-  abstract:  
-  background:
-  discussion:
-  code: 
-  video:
-  data: 
   
 -
   layout: lecture
@@ -161,7 +157,7 @@
   date: 2019-05-20
   img: end
   uid: end
-  title: "Projects and closing remarks"
+  title: "Generative models for neural machine translation"
   note: 
   abstract:  
   background:
