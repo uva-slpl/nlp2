@@ -1,0 +1,25 @@
+\begin{figure}
+\centering
+\begin{tikzpicture}
+
+\node[obs]		(t_g)		{$ x $};
+\node[obs, below = of t_g]		(d_g)		{$ d $};
+\node[latent, right = of d_g]						(z_g)		{$ z $};
+\node[obs, left = of d_g]		(h_g)		{$ y_j $};
+\node[obs, left = of h_g]		(h_g_past)		{$ y_{<j} $};
+%\node[below = 40pt of d_g]           (theta)      {$ \theta $};
+
+\edge{t_g}{z_g,d_g};
+\edge{t_g}{h_g};
+\edge{h_g_past}{h_g};
+\edge{z_g}{d_g}
+\edge[bend left]{z_g}{h_g};
+\edge{h_g}{d_g};
+%\edge{theta}{d_g,h_g,z_g}
+
+% add plates
+%\plate {text} {(t_g)}{$ m $} 
+\plate {hypo} {(h_g) (h_g_past)}{$ |y| $}
+\plate {corpus} { (t_g) (z_g) (d_g) (hypo)} {$ S $};  %  (text)
+\end{tikzpicture}
+\end{figure}

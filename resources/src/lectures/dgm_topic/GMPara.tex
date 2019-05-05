@@ -1,0 +1,23 @@
+%\begin{figure}
+%\center
+\begin{tikzpicture}
+\node[obs]	                   (x)		{$ x $};
+\node[obs, below = of x]	       (y)		{$ y $};
+\node[latent, left = of x]		(z)		{$ z $};
+\node[latent, left = of y]		(a)		{$ a $};
+\node[right = of x] (theta) {$\theta$};
+
+% Connect nodes
+\edge{a}{y};
+\edge{z}{x};
+\edge{z}{y};
+\edge{theta}{y,x};
+
+% add plates
+\plate {L1-sentence} {(x)(z)} {$ m $};
+\plate {L2-sentence} {(y)(a)} {$ n $};
+\plate {corpus} {(L1-sentence) (L2-sentence)} {$|\mathcal B|$};
+
+\end{tikzpicture}
+%\caption{\label{fig:GM2}This model is a refinement of that in \rfig{GM1}, where the latent variable $z$ that participates in generating the aligned sentences. This allows for representations to be ``disambiguated'' in context.}
+%\end{figure}
