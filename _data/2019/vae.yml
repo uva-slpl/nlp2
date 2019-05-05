@@ -85,8 +85,8 @@
   layout: lecture
   selected: y
   date: 2019-05-06
-  img: graphdgms
-  uid: rtevae
+  img: lda
+  uid: ldavae
   title: "Probabilistic Topic Models"
   instructor: 
   abstract:  
@@ -104,8 +104,8 @@
   layout: lecture
   selected: y
   date: 2019-05-09
-  img: graphdgms
-  uid: graphdgms
+  img: mnmt
+  uid: multmt
   title: "Generative models for multimodal machine translation"
   instructor: 
   abstract:  
@@ -120,7 +120,7 @@
   selected: y
   date: 2019-05-13
   img: discretedgms
-  uid: discretedgms
+  uid: rtevae
   title: "Generative models for natural language inference "
   instructor: 
   abstract: 
