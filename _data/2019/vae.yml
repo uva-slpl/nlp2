@@ -110,9 +110,11 @@
   instructor: 
   abstract:  
   background:
+    - "[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)"
+    - "[Neural Machine Translation Slides](resources/slides/UvA___NLP2___Neural_Machine_Translation__slides_.pdf)"
   discussion:
   further:
-  slides: 
+  slides: resources/slides/UvA___NLP2__Using_Images_to_Ground_Machine_Translation__slides_.pdf
   code:
   video:
 -
