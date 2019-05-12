@@ -128,9 +128,12 @@
   instructor: 
   abstract: 
   background:
+    - "[A large annotated corpus for learning natural language inference](https://nlp.stanford.edu/pubs/snli_paper.pdf)"
+    - "[Breaking NLI Systems with Sentences that Require Simple Lexical Inferences](https://arxiv.org/abs/1805.02266)"
+    - "[Enhanced LSTM for Natural Language Inference](https://arxiv.org/pdf/1609.06038.pdf)"
   discussion:
   further:
-  slides:
+  slides: resources/slides/dgmnli.pdf
   video:
 -
   layout: lecture
