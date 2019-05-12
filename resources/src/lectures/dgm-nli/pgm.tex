@@ -1,0 +1,29 @@
+
+\begin{tikzpicture}
+
+\node[obs]		(t_g)		{$ t_1^m $};
+\node[obs, below = of t_g]		(d_g)		{$ d $};
+\node[latent, right = of d_g]						(z_g)		{$ z $};
+\node[obs, left = of d_g]		(h_g)		{$ h $};
+\node[obs, left = of h_g]		(h_g_past)		{$ h_{<} $};
+%\node[below = of d_g]           (theta)      {$ \theta $};
+
+\edge{t_g}{z_g,d_g};
+\edge{t_g}{h_g};
+\edge{h_g_past}{h_g};
+\edge{z_g}{d_g}
+\edge[bend left]{z_g}{h_g};
+\edge{h_g}{d_g};
+%\edge{theta}{d_g,h_g,z_g}
+
+% add plates
+%\plate {text} {(t_g)}{$ m $} 
+\plate {hypo} {(h_g) (h_g_past)}{$ n $}
+\plate {corpus} { (t_g) (z_g) (d_g) (hypo)} {$ S $};  %  (text)
+\end{tikzpicture}
+
+\begin{align*}
+ Z_i| t_1^m &\sim \mathcal N(\mu(s_1^m), \sigma^2(s_1^m)) \\ %& i \in \{1, \ldots, m\} \\
+H_i|z_1^m &\sim Cat(f(z_1^m, t_1^m; \theta)) \\ %& i \in \{1, \ldots, m\} \\
+D_j|z_1^m, h_1^n  &\sim Cat(g(z_1^m, t_1^m, h_1^n; \theta))  %& i \in \{1, \ldots, d\} 
+\end{align*}
