@@ -48,6 +48,7 @@ Assessment: [guidelines](resources/project_ibm/assessment-sheet.pdf) /  grades o
 # Project 2 
 
 *Deadline: May 20th, 2019*
+
 *Extension Deadline: May 20th, 2019*  ``new!``
 
 In this project you will learn and implement a deep generative language model. 
