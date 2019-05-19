@@ -169,6 +169,8 @@
   note: 
   abstract:  
   background:
+    - "[Graph Convolutional Encoders for Syntax-aware Neural Machine Translation](https://www.aclweb.org/anthology/D17-1209)"
+    - "[Modeling Latent Sentence Structure in Neural Machine Translation](https://arxiv.org/abs/1901.06436)"
   discussion:
   slides: resources/slides/nlp2-2019-Linguistically-informed-NLP.pdf
   code: 
