@@ -1,0 +1,170 @@
+
+This project will help you learn and implement a deep generative language model.
+In summary, your task is to:
+
+\begin{itemize}
+	\item Pre-process the training, validation, and test data;
+	\item Implement the models as described below;
+	\item Optionally implement one or more of the \texttt{extra}'s;
+	\item Evaluate your model on the test data;
+	\item Perform a qualitative analysis;
+	\item Write a report on the entire process.
+\end{itemize}
+
+
+\section{Deterministic Language Model}
+
+Implement a deterministic language model, using for example the following architecture:
+
+\begin{itemize}
+\item At each step, an RNNLM parameterises a categorical distribution over the vocabulary of English words $V_x$, i.e. \\
+  $X_{i} | x_{<i} \sim \operatorname{Cat}\left(f\left(x_{<i} ; \theta\right)\right)$ and
+ \begin{equation}
+ \begin{aligned} 
+ f\left(x_{<i} ; \theta\right) &= \operatorname{softmax}\left(\mathbf{s}_{i}\right) \\ \mathbf{e}_{i} &=\operatorname{emb}\left(x_{i} ; \theta_{\mathrm{emb}}\right) \\ \mathbf{h}_{i} &=\operatorname{RNN}\left(\mathbf{h}_{i-1}, \mathbf{e}_{i-1} ; \theta_{\mathrm{RNN}}\right) \\ \mathbf{s}_{i} &=\operatorname{affine}\left(\mathbf{h}_{i} ; \theta_{\mathrm{out}}\right)
+  \end{aligned}
+ \end{equation}
+ \item  Embedding layer (emb), for the RNN one (or more)  GRU or LSTM cell(s), and an affine layer to map from the dimensionality of the RNN to the vocabulary size.
+\end{itemize}
+
+This will be our Baseline. 
+
+\section{Sentence VAE}
+
+Implement a deep generative language model, using :
+
+\begin{itemize}
+ 
+ \item Generation of one word at a time without Markov assumptions, but $f(\cdot)$ conditions on $z$ in addition to the observed prefix/history $x$.
+ \item Gaussian Sen VAE  parametrises a categorical distribution over the vocabulary for each given prefix, and, it conditions on a latent embedding based on the following generative story:\\
+$Z \sim \mathcal{N}(0, I),$ \\ $ \quad X_{i} | z, x_{<i} \sim \operatorname{Cat}\left(f\left(z, x_{<i} ; \theta\right)\right)$
+\item[] and architecture
+\begin{equation}
+\begin{aligned} 
+f\left(z, x_{<i} ; \theta\right) &=\operatorname{softmax}\left(\mathbf{s}_{i}\right) \\
+\mathbf{e}_{i} &=\operatorname{emb}\left(x_{i} ; \theta_{\mathrm{emb}}\right) \\ 
+\mathbf{h}_{0} &=\tanh \left(\operatorname{affine}\left(z ; \theta_{\text { init }}\right)\right) \\ 
+\mathbf{h}_{i} &=\operatorname{RNN}\left(\mathbf{h}_{i-1}, \mathbf{e}_{i-1} ; \theta_{\mathrm{RNN}}\right) \\ 
+\mathbf{s}_{i} &=\operatorname{affine}\left(\mathbf{h}_{i} ; \theta_{\mathrm{out}}\right) 
+\end{aligned}
+\end{equation}
+\end{itemize}
+
+An example of inference Network:
+\begin{itemize}
+\item[] 
+\begin{equation}
+\begin{aligned}
+\mathbf{e}_{i} &=\operatorname{emb}\left(x_{i} ; \phi_{\mathrm{emb}}\right) \\ 
+\mathbf{f}_{i} &=\operatorname{RNN}\left(\mathbf{f}_{i-1}, \mathbf{e}_{i} ; \phi_{\mathrm{fwd}}\right) \\
+\mathbf{b}_{i} &=\operatorname{RNN}\left(\mathbf{b}_{i+1}, \mathbf{e}_{i} ; \phi_{\mathrm{bwd}}\right) \\
+h &= \operatorname{dense}([f_n ; b_1]; \phi_{hid}) \\
+\mu &= \operatorname{dense}(h; \phi_{loc}) \\
+\sigma &= \operatorname{softplus}(\operatorname{dense}(h; \phi_{scale})) \\
+z &=  \mu + \sigma \odot \epsilon
+\end{aligned}
+\end{equation}
+\item with $\epsilon \sim \mathcal N (0, I)$
+\end{itemize}
+
+In addition, implement KL annealing and Free-bits. Use word dropout, and  as an extra use variational dropout in the RNN. 
+
+
+
+
+\section{Metrics}
+
+Evaluate your model using the following metrics:
+\begin{itemize}
+\item Negative log-likelihood (NLL) is denoted by the assumption that the dataset consists of $N$ sequences of length $M$:\\
+$-\log p(x)=-\frac{1}{N} \sum_{i}^{N} \sum_{j}^{M_{i}} \log p\left(x_{i j} | x_{i,<j}\right)$
+\item In variational models the NLL is not available available and can be approximated with
+importance sampling:\\
+$- \log p(x) \approx-\frac{1}{N} \sum_{i=1}^{N} \log \left(\frac{1}{S} \sum_{k}^{S}\left[\frac{p\left(z_{i k}, x_{i}\right)}{q\left(z_{i k} | x_{i}\right)}\right]\right) \quad z_{i k} \sim q\left(z_{i} | x_{i}\right)$
+\item For latent variable models we report the negative ELBO:\\
+$-\mathrm{L}(\theta, \phi, x)=\frac{1}{N} \sum_{i=1}^{N}\left(\mathrm{KL}(q\left(z_{i} | x_{i}\right) \| p\left(z_{i}\right))-\mathbb{E}_{q\left(z_{i} | x_{i}\right)}\left[\sum_{j=1}^{M_{i}} \log p\left(x_{i j} | z_{i}\right)\right]\right)$
+\item Perplexity (PPL) is defined as the inverse of the geometric mean per-word likelihood. It can be computed as the exponent of average per-word entropy, given $N$ sequences: \\
+$\operatorname{PPL}=\exp \left(\frac{\sum_{i=1}^{N} \log p\left(x_{i}\right)}{\sum_{i=1}^{N}\left|x_{i}\right|}\right)$ \\
+where $|x_i|$ is the length of the i-th sentence in the dataset, including the end of sentence token but excluding the start of sentence token. Note that in the variational models an approximation of the perplexity based on the importance sampled negative log-likelihood.
+\item Accuracy is defined as the fraction of correctly predicted words with greedy decoding from the models. For variational models, this quantity is computed by decoding from the approximate posterior mean $mu$.
+\end{itemize}
+
+\section{Qualitative Analysis}
+
+\begin{itemize}
+\item Sample 10 sentences from the Sentence VAE models are produced by greedy decoding from a sample $z$ from the prior distribution. 
+\item Test the reconstruction of sentences from the test dataset using the approximate posterior mean and 10 samples.
+\item Test homotopy by interpolating two sentences in the test set and different $\alpha$ parameters.\\
+decode from $z_{\alpha}=\alpha * z_{1}+(1-\alpha) * z_{2}$, where $z_1$ is the encoding of the first sentence and $z_2$ is the encoding of the second sentence.
+\end{itemize}
+
+
+\section{Data}
+
+All relevant data (including details about file formats) are available from \url{https://uva-slpl.github.io/nlp2/projects.html}.
+
+In this project, you will work with the Penn Treebank (PTB) dataset, that consists of English sentences. The training data is \textit{02-21.10way.clean}, the validation data is \textit{22.auto.clean}, and the test data is \textit{23.auto.clean}. 
+Note that the sentences in the PTB dataset are annotated with syntactic trees. 
+
+We are making available \emph{training} data (which you can use to perform parameter estimation), \emph{validation} data (which you can use to debug your implementation as well as to perform model selection), and finally in due time \emph{test} data (which you will use to conduct your final empirical comparison).
+
+
+
+\section{Report}
+
+You should use \LaTeX~for your report, and you should use the ACL template available from \url{http://acl2017.org/downloads/acl17-latex.zip}. 
+
+We expect reports (5 pages plus references). The typical submission is organised as follows: 
+\begin{itemize}
+	\item \textbf{Abstract}: conveys scope and contributions;
+	\item \textbf{Introduction}: present the problem and relevant background;
+	\item \textbf{Model}: technical description of models;
+	\item \textbf{Experiments}: details about the data, experimental setup, findings, and qualitative analysis;
+	\item \textbf{Conclusion}: a critical take on contributions and limitations.
+\end{itemize}
+
+
+
+\section{Submission}
+
+You should submit a \texttt{.tgz} file containing a folder (folder name {\tt lastname1.lastname2.lastname3}) with the report as a single \texttt{pdf} file.
+Your report may contain a link to an open-source repository (such as github), but please do not attach code or additional data to your submission. You can complete your project submission on Canvas.
+%You should email your tgz file to \url{J.C.P.Bastings@uva.nl} no later than {\bf 23:59 GMT-8 on April 26}. If you do not get a confirmation email within 24h after submission, please make sure to contact one of us.
+
+\section{Assessment}
+
+Your report will be assessed according to the following evaluation criteria:
+\begin{enumerate}
+	
+	\item[Implementation]
+	\begin{itemize}
+	\item Deterministic LM
+	\item Sentence VAE
+	\item KL annealing and Free-bits
+	\item Importance Sampling for NLL
+	\item Word dropout
+	\item \textbf{Extra}: Variational dropout for RNN
+	\end{itemize}
+	
+	
+	\item[Report]
+	\begin{itemize}
+	\item \textbf{Scope} (max 2 points): Is the problem well presented? Do students understand the challenges/contributions?
+	\item \textbf{Theoretical description} (max 3 points): Are the models presented clearly and correctly?
+	\item \textbf{Empirical evaluation} (max 3 points): Is the experimental setup sound/convincing? Are experimental findings presented in an organised and effective manner? 
+	\item \textbf{Writing style} (max 2 points): use of \LaTeX , structure of report, use of tables/figures/plots, command of English.
+	
+	\end{itemize}
+	
+\end{enumerate}
+
+
+
+
+\section{Resources}
+
+A non-exaustive list of resources that might help you along the way:
+
+\begin{enumerate}
+	\item 
+\end{enumerate}
